@@ -3,7 +3,8 @@
 //   '10-12' → Grades 5–6 (Jr. Flyers or Flyers Enduro)
 //   '7-8'   → Grades 7–8
 //   '9-12'  → Grades 9–12
-export type AgeBand = 'k-6' | '10-12' | '7-8' | '9-12';
+//   'u23'   → Out of high school, up to U23 (Flyers XC only)
+export type AgeBand = 'k-6' | '10-12' | '7-8' | '9-12' | 'u23';
 export type RidingFocus = 'fundamentals' | 'endurance' | 'gravity' | 'nica-offseason';
 export type ProgramSlug = 'xc' | 'enduro' | 'jr-flyers';
 
@@ -70,6 +71,19 @@ export function matchProgramPathway(
         'For 5th and 6th graders who already ride singletrack with confidence. Flyers Enduro (January–August) coaches braking, cornering, drops, and line choice, with optional enduro races.',
       feeNote: `Registration is ${fees.enduro} and ${COVERS}.`,
       nicaNote: 'Strong bike handling helps riders when they join Flyers XC or NICA in 7th grade.',
+    };
+  }
+
+  if (ageBand === 'u23') {
+    return {
+      primaryProgram: 'xc',
+      headline: 'Try Flyers XC',
+      explanation:
+        focus === 'gravity'
+          ? 'Flyers Enduro is for grades 5–12, but Flyers XC is open to riders up to U23 (age 22). XC riders still work on descending, line choice, and bike handling.'
+          : 'Flyers XC is open to riders out of high school, up to U23 (age 22). Ride with the club from winter base miles through spring races and summer mountain rides. Racing is optional.',
+      feeNote: `Registration is ${fees.xc} and ${COVERS}.`,
+      nicaNote: 'A way to keep riding with the club after your high school NICA seasons.',
     };
   }
 
