@@ -10,7 +10,7 @@ agesLabel: Ages 10–19
 gradesLabel: Grades 5–12
 seasonLabel: January – August
 registrationWindowLabel: December – January
-registrationStatus: open
+registrationStatus: upcoming
 registrationUrl: https://www.zeffy.com/
 feeAmount: '$150'
 feeIncludes: Covers a Flyers Enduro t-shirt and gravity rider insurance.
