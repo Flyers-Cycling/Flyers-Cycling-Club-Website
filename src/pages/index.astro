@@ -9,17 +9,16 @@ import SponsorGrid from '../components/sponsors/SponsorGrid.astro';
 import { siteConfig } from '../data/site';
 import { withBase } from '../lib/urls';
 import { formatEventDate } from '../lib/dates';
+import { eventEnds, upcomingEvents } from '../lib/events';
 
 const programs = await getCollection('programs');
 const sponsors = await getCollection('sponsors');
-const events = (await getCollection('events'))
-  .sort((a, b) => a.data.startDate.localeCompare(b.data.startDate))
-  .slice(0, 3);
+const events = upcomingEvents(await getCollection('events')).slice(0, 3);
 
 const programBadgeMeta: Record<string, { label: string; style: string }> = {
   all: { label: 'Whole Club', style: 'bg-flyers-slate-dark text-white' },
   xc: { label: 'Flyers XC', style: 'bg-flyers-red text-white' },
-  enduro: { label: 'Flyers Enduro', style: 'bg-flyers-slate text-white' },
+  enduro: { label: 'Flyers Enduro', style: 'bg-flyers-pink-deep text-white' },
   'jr-flyers': { label: 'Jr. Flyers', style: 'bg-flyers-berry text-white' },
   community: { label: 'Trail & Community', style: 'bg-flyers-gold text-flyers-slate-dark' },
 };
@@ -100,7 +99,10 @@ const programBadgeMeta: Record<string, { label: string; style: string }> = {
           events.map((event) => {
             const badge = programBadgeMeta[event.data.program];
             return (
-              <article class="bg-flyers-snow flex flex-col justify-between rounded-2xl border border-neutral-200 p-6">
+              <article
+                data-event-ends={eventEnds(event.data)}
+                class="bg-flyers-snow flex flex-col justify-between rounded-2xl border border-neutral-200 p-6"
+              >
                 <div>
                   <div class="flex items-center justify-between gap-2 text-xs font-bold">
                     <span class={`rounded-full px-2.5 py-0.5 font-extrabold ${badge.style}`}>

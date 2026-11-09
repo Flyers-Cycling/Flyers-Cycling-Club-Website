@@ -3,17 +3,16 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../data/site';
 import { formatEventDateRange } from '../lib/dates';
+import { eventEnds, upcomingEvents } from '../lib/events';
 
-const events = (await getCollection('events')).sort((a, b) =>
-  a.data.startDate.localeCompare(b.data.startDate),
-);
+const events = upcomingEvents(await getCollection('events'));
 
 const programMeta: Record<string, { label: string; badgeClass: string }> = {
   all: { label: 'All Club', badgeClass: 'bg-flyers-slate-dark text-white' },
   xc: { label: 'Flyers XC', badgeClass: 'bg-[#FDF2F2] text-[#8F1616] border border-[#F2C4C4]' },
   enduro: {
     label: 'Flyers Enduro',
-    badgeClass: 'bg-[#EEF3F6] text-[#14242E] border border-[#C2D2DC]',
+    badgeClass: 'bg-flyers-pink-light text-flyers-pink-dark border border-flyers-pink/40',
   },
   'jr-flyers': {
     label: 'Jr. Flyers (K–6)',
@@ -127,7 +126,11 @@ const categoryLabels: Record<string, string> = {
           aria-live="polite"
           class="text-flyers-iron mt-3 text-xs font-semibold"
         >
-          Showing all {events.length} events
+          {
+            events.length === 0
+              ? 'No events on the calendar right now. Check back soon.'
+              : `Showing all ${events.length} ${events.length === 1 ? 'event' : 'events'}`
+          }
         </p>
       </search>
 
@@ -138,6 +141,7 @@ const categoryLabels: Record<string, string> = {
             return (
               <article
                 data-event-program={event.data.program}
+                data-event-ends={eventEnds(event.data)}
                 class="schedule-event-card flex flex-col justify-between gap-4 rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs sm:flex-row sm:items-center"
               >
                 <div class="space-y-2">
@@ -212,25 +216,37 @@ const categoryLabels: Record<string, string> = {
 </BaseLayout>
 
 <script>
+  import { todayInUtah } from '../lib/events';
+
   const form = document.getElementById('schedule-filter-form') as HTMLFormElement | null;
-  const cards = Array.from(document.querySelectorAll<HTMLElement>('.schedule-event-card'));
+  const today = todayInUtah();
+  // Drop cards whose last day has passed (BaseLayout hides them too, if a rebuild is missed).
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.schedule-event-card')).filter(
+    (card) => (card.dataset.eventEnds ?? '') >= today,
+  );
   const countEl = document.getElementById('schedule-filter-count');
 
-  if (form) {
-    form.addEventListener('change', () => {
-      const selected = String(new FormData(form).get('programFilter') || 'everything');
-      let visibleCount = 0;
+  function applyFilter() {
+    const selected = form
+      ? String(new FormData(form).get('programFilter') || 'everything')
+      : 'everything';
+    let visibleCount = 0;
 
-      for (const card of cards) {
-        const prog = card.dataset.eventProgram || 'all';
-        const show = selected === 'everything' || prog === selected || prog === 'all';
-        card.classList.toggle('hidden', !show);
-        if (show) visibleCount += 1;
-      }
+    for (const card of cards) {
+      const prog = card.dataset.eventProgram || 'all';
+      const show = selected === 'everything' || prog === selected || prog === 'all';
+      card.classList.toggle('hidden', !show);
+      if (show) visibleCount += 1;
+    }
 
-      if (countEl) {
-        countEl.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'event' : 'events'}`;
-      }
-    });
+    if (countEl) {
+      countEl.textContent =
+        visibleCount === 0
+          ? 'No events on the calendar right now. Check back soon.'
+          : `Showing ${selected === 'everything' ? 'all ' : ''}${visibleCount} ${visibleCount === 1 ? 'event' : 'events'}`;
+    }
   }
+
+  form?.addEventListener('change', applyFilter);
+  applyFilter();
 </script>

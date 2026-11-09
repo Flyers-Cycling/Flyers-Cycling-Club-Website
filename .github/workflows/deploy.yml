@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Rebuild daily so events drop off the site the day after they end.
+  # 09:00 UTC is 2–3 AM in Utah.
+  schedule:
+    - cron: '0 9 * * *'
   workflow_dispatch:
 
 permissions:
