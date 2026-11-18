@@ -8,6 +8,7 @@ const EXPECTED_HTML_FILES = [
   'index.html',
   '404.html',
   'about/index.html',
+  'winter-camp/index.html',
   'faq/index.html',
   'schedule/index.html',
   'store/index.html',

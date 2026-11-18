@@ -7,7 +7,7 @@ import ProgramCards from '../components/programs/ProgramCards.astro';
 import ProgramPathwayFinder from '../components/programs/ProgramPathwayFinder.astro';
 import SponsorGrid from '../components/sponsors/SponsorGrid.astro';
 import { siteConfig } from '../data/site';
-import { withBase } from '../lib/urls';
+import { isExternalUrl, withBase } from '../lib/urls';
 import { formatEventDate } from '../lib/dates';
 import { eventEnds, upcomingEvents } from '../lib/events';
 
@@ -123,9 +123,9 @@ const programBadgeMeta: Record<string, { label: string; style: string }> = {
                 {event.data.actionUrl && event.data.actionLabel && (
                   <div class="mt-5 border-t border-neutral-200 pt-3">
                     <a
-                      href={event.data.actionUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={withBase(event.data.actionUrl)}
+                      target={isExternalUrl(event.data.actionUrl) ? '_blank' : undefined}
+                      rel={isExternalUrl(event.data.actionUrl) ? 'noopener noreferrer' : undefined}
                       class="text-flyers-red-deep hover:text-flyers-slate-dark text-xs font-extrabold underline transition"
                     >
                       {event.data.actionLabel} &rarr;

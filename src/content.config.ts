@@ -88,7 +88,13 @@ const events = defineCollection({
     location: z.string(),
     summary: z.string(),
     actionLabel: z.string().optional(),
-    actionUrl: z.string().url().optional(),
+    // A full link (https://…) or a page on this site (/winter-camp).
+    actionUrl: z
+      .string()
+      .refine((value) => /^https?:\/\//.test(value) || value.startsWith('/'), {
+        message: 'Use a full link starting with https:// or a site page like /winter-camp',
+      })
+      .optional(),
   }),
 });
 
