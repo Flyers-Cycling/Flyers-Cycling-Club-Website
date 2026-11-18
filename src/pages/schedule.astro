@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../data/site';
+import { isExternalUrl, withBase } from '../lib/urls';
 import { formatEventDateRange } from '../lib/dates';
 import { eventEnds, upcomingEvents } from '../lib/events';
 
@@ -171,9 +172,9 @@ const categoryLabels: Record<string, string> = {
                 {event.data.actionUrl && event.data.actionLabel && (
                   <div class="shrink-0">
                     <a
-                      href={event.data.actionUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={withBase(event.data.actionUrl)}
+                      target={isExternalUrl(event.data.actionUrl) ? '_blank' : undefined}
+                      rel={isExternalUrl(event.data.actionUrl) ? 'noopener noreferrer' : undefined}
                       class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-sm font-extrabold tracking-wider text-white uppercase transition"
                     >
                       {event.data.actionLabel} &rarr;

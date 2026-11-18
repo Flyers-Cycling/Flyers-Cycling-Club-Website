@@ -3,6 +3,11 @@
  * assets work identically on GitHub Pages project URLs (/repo-name/...) and
  * root custom domains (https://www.flyerscycling.org/...).
  */
+/** True for links that leave the site (http/https). */
+export function isExternalUrl(url: string): boolean {
+  return /^https?:\/\//i.test(url);
+}
+
 export function withBase(path: string, baseUrl: string = import.meta.env.BASE_URL || '/'): string {
   if (!path) return baseUrl;
   if (/^(https?:|mailto:|tel:|#)/i.test(path)) {
