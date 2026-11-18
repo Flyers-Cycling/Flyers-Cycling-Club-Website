@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../data/site';
-import { winterCamp, winterCampHeadcount } from '../data/winter-camp';
-import { campPricePerPerson, campTotals } from '../lib/camp-budget';
+import { winterCamp } from '../data/winter-camp';
 import { formatEventDate, formatEventDateRange } from '../lib/dates';
 import { withBase } from '../lib/urls';
 
@@ -11,13 +10,6 @@ import { withBase } from '../lib/urls';
 // for rides on BLM land (Santa Clara River Reserve, Zen, JEM/Hurricane Cliffs, Prospector).
 // Snake Hollow Bike Park is run by the City of St. George.
 
-const price = campPricePerPerson(winterCamp.budget, winterCampHeadcount);
-const totals = campTotals(winterCamp.budget, winterCampHeadcount);
-const balance = price - winterCamp.deposit;
-const scenarios = winterCamp.priceScenarios.map((headcount) => ({
-  headcount,
-  price: campPricePerPerson(winterCamp.budget, headcount),
-}));
 const dates = formatEventDateRange(winterCamp.startDate, winterCamp.endDate);
 const questionsHref = `mailto:${siteConfig.contact.email}?subject=Winter%20camp`;
 const money = (n: number) => `$${n.toLocaleString('en-US')}`;
@@ -241,7 +233,9 @@ const packingList = [
         </div>
         <div class="bg-flyers-slate-dark/85 rounded-xl border border-white/15 p-4">
           <dt class="text-flyers-silver text-xs font-extrabold tracking-wider uppercase">Cost</dt>
-          <dd class="mt-1 font-bold text-white">About {money(price)} per person</dd>
+          <dd class="mt-1 font-bold text-white">
+            Up to {money(winterCamp.maxPricePerPerson)} per person
+          </dd>
         </div>
       </dl>
 
@@ -376,58 +370,16 @@ const packingList = [
           What it costs
         </h2>
         <p class="text-flyers-iron mt-3 text-base leading-relaxed">
-          Camp is about <strong class="text-flyers-slate-dark">{money(price)} per person</strong>,
-          for riders and adults alike. That covers 3 nights at the condo, 8 meals and snacks, and
-          the evening fun. Here’s the budget for {winterCamp.plannedRiders} riders and {
-            winterCamp.plannedAdults
-          } adults:
+          Camp costs up to <strong class="text-flyers-slate-dark"
+            >{money(winterCamp.maxPricePerPerson)} per person</strong
+          >, for riders and adults alike. That covers 3 nights at the condo, 8 meals and snacks, and
+          the evening fun.
         </p>
-
-        <table class="mt-5 w-full text-left text-sm">
-          <caption class="sr-only">Winter camp budget</caption>
-          <thead>
-            <tr class="border-b border-neutral-300">
-              <th scope="col" class="text-flyers-slate-dark py-2 font-extrabold">Cost</th>
-              <th scope="col" class="text-flyers-slate-dark py-2 text-right font-extrabold">
-                Amount
-              </th>
-            </tr>
-          </thead>
-          <tbody class="text-flyers-iron">
-            {
-              winterCamp.budget.fixedCosts.map((cost) => (
-                <tr class="border-b border-neutral-200">
-                  <td class="py-2 pr-4">{cost.label}</td>
-                  <td class="py-2 text-right">{money(cost.amount)}</td>
-                </tr>
-              ))
-            }
-            <tr class="border-b border-neutral-200">
-              <td class="py-2 pr-4">
-                Food: 8 meals plus snacks ({money(winterCamp.budget.foodPerPerson)} × {
-                  winterCampHeadcount
-                } people)
-              </td>
-              <td class="py-2 text-right">{money(totals.food)}</td>
-            </tr>
-            <tr class="border-b border-neutral-200">
-              <td class="py-2 pr-4">
-                Buffer ({Math.round(winterCamp.budget.bufferRate * 100)}%) for price changes and
-                drop-outs
-              </td>
-              <td class="py-2 text-right">{money(totals.buffer)}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row" class="text-flyers-slate-dark py-2 font-extrabold">Total</th>
-              <td class="text-flyers-slate-dark py-2 text-right font-extrabold">
-                {money(totals.total)}
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-        <p class="text-flyers-iron mt-4 text-sm leading-relaxed">
+        <p class="text-flyers-iron mt-3 text-base leading-relaxed">
+          The final price depends on how many people come. The condo costs the same no matter what,
+          so the more people who sign up, the lower the price for everyone.
+        </p>
+        <p class="text-flyers-iron mt-3 text-sm leading-relaxed">
           Not included: travel to and from St. George, Friday dinner, bike parts or repairs, and
           spending money.
         </p>
@@ -448,45 +400,10 @@ const packingList = [
               front.
             </li>
             <li>
-              The balance, about {money(balance)}, is due by {
-                formatEventDate(winterCamp.balanceDueDate)
-              }.
+              After the deposit deadline, we’ll count heads and tell you the final price. The rest
+              is due by {formatEventDate(winterCamp.balanceDueDate)}.
             </li>
-            <li>We’ll confirm the final price once the deposit deadline passes.</li>
           </ul>
-        </div>
-
-        <div class="rounded-2xl border border-neutral-200 bg-white p-6">
-          <h3
-            class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
-          >
-            If fewer people come
-          </h3>
-          <p class="text-flyers-iron mt-2 text-sm leading-relaxed">
-            The condo costs the same no matter how many people come, so the price per person goes up
-            if fewer sign up.
-          </p>
-          <table class="mt-3 w-full text-left text-sm">
-            <caption class="sr-only">Price per person by number of people at camp</caption>
-            <thead>
-              <tr class="border-b border-neutral-300">
-                <th scope="col" class="text-flyers-slate-dark py-2 font-extrabold">People</th>
-                <th scope="col" class="text-flyers-slate-dark py-2 text-right font-extrabold">
-                  Price per person
-                </th>
-              </tr>
-            </thead>
-            <tbody class="text-flyers-iron">
-              {
-                scenarios.map((s) => (
-                  <tr class="border-b border-neutral-200">
-                    <td class="py-2">{s.headcount}</td>
-                    <td class="py-2 text-right">{money(s.price)}</td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
         </div>
       </aside>
     </div>
