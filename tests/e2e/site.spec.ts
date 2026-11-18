@@ -10,6 +10,7 @@ const CORE_ROUTES = [
   '/sponsors',
   '/sponsors/prospectus',
   '/schedule',
+  '/winter-camp',
   '/store',
   '/about',
   '/faq',
