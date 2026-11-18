@@ -17,8 +17,14 @@ describe('camp budget', () => {
   });
 
   it('raises the price when fewer people sign up, because the condo cost is fixed', () => {
-    const prices = winterCamp.priceScenarios.map((n) => campPricePerPerson(winterCamp.budget, n));
+    const prices = [50, 45, 40, 35].map((n) => campPricePerPerson(winterCamp.budget, n));
     expect(prices).toEqual([185, 195, 210, 230]);
+  });
+
+  it('stays under the advertised maximum at the planned rider count', () => {
+    expect(campPricePerPerson(winterCamp.budget, winterCamp.plannedRiders)).toBeLessThanOrEqual(
+      winterCamp.maxPricePerPerson,
+    );
   });
 
   it('rejects a headcount that is not a positive whole number', () => {
