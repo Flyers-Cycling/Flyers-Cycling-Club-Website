@@ -4,6 +4,15 @@ import { matchProgramPathway, type ProgramFees } from '../../src/lib/pathway';
 const fees: ProgramFees = { xc: '$50', enduro: '$150', 'jr-flyers': '$50' };
 
 describe('matchProgramPathway', () => {
+  it('recommends Flyers XC for riders out of high school, even with a gravity focus', () => {
+    for (const focus of ['fundamentals', 'endurance', 'gravity', 'nica-offseason'] as const) {
+      const match = matchProgramPathway('u23', focus, fees);
+      expect(match.primaryProgram).toBe('xc');
+      expect(match.secondaryProgram).toBeUndefined();
+    }
+    expect(matchProgramPathway('u23', 'gravity', fees).explanation).toContain('U23');
+  });
+
   it('recommends Jr. Flyers for K–4 riders focused on fundamentals', () => {
     const match = matchProgramPathway('k-6', 'fundamentals', fees);
     expect(match.primaryProgram).toBe('jr-flyers');

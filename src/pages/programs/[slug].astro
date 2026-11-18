@@ -6,6 +6,7 @@ import PhotoPlaceholder from '../../components/layout/PhotoPlaceholder.astro';
 import { getProgramAccentMeta, getRegistrationStatusMeta } from '../../lib/programs';
 import { withBase } from '../../lib/urls';
 import { formatEventDate } from '../../lib/dates';
+import { eventEnds, upcomingEvents } from '../../lib/events';
 import { siteConfig } from '../../data/site';
 
 export async function getStaticPaths() {
@@ -24,9 +25,9 @@ const statusMeta = getRegistrationStatusMeta(data.registrationStatus);
 const accentMeta = getProgramAccentMeta(data.accentKey);
 
 const allSponsors = await getCollection('sponsors');
-const programEvents = (await getCollection('events'))
-  .filter((ev) => ev.data.program === data.programId || ev.data.program === 'all')
-  .sort((a, b) => a.data.startDate.localeCompare(b.data.startDate));
+const programEvents = upcomingEvents(await getCollection('events')).filter(
+  (ev) => ev.data.program === data.programId || ev.data.program === 'all',
+);
 ---
 
 <BaseLayout title={`${data.title} (${data.discipline})`} description={data.summary}>
@@ -241,7 +242,10 @@ const programEvents = (await getCollection('events'))
               </h2>
               <ul class="mt-4 space-y-3 text-sm">
                 {programEvents.map((ev) => (
-                  <li class="bg-flyers-slate-dark/80 rounded-xl border border-white/15 p-3.5">
+                  <li
+                    data-event-ends={eventEnds(ev.data)}
+                    class="bg-flyers-slate-dark/80 rounded-xl border border-white/15 p-3.5"
+                  >
                     <p class="text-flyers-gold text-xs font-bold">
                       <time datetime={ev.data.startDate}>{formatEventDate(ev.data.startDate)}</time>
                     </p>

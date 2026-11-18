@@ -6,7 +6,7 @@ import { withBase } from '../../lib/urls';
 const programs = await getCollection('programs');
 const byId = Object.fromEntries(programs.map((p) => [p.data.programId, p.data]));
 const gradesFor = (id: 'xc' | 'enduro' | 'jr-flyers') =>
-  byId[id]?.gradesLabel.replace(/^Grades/, 'grades') ?? '';
+  (byId[id]?.gradesLabel ?? '').replace(/^Grade/, 'grade').replace(' – ', ' through ');
 ---
 
 <section class="dark-surface bg-flyers-slate-dark relative overflow-hidden text-white">
@@ -95,7 +95,9 @@ const gradesFor = (id: 'xc' | 'enduro' | 'jr-flyers') =>
         <dd class="font-display mt-1 text-2xl font-black tracking-wide text-white uppercase">
           Jr. Flyers · XC · Enduro
         </dd>
-        <dd class="text-flyers-silver mt-0.5 text-xs">Grades K–12, beginners welcome</dd>
+        <dd class="text-flyers-silver mt-0.5 text-xs">
+          Kindergarten through U23, beginners welcome
+        </dd>
       </div>
       <div
         class="border-t-flyers-gold bg-flyers-slate-dark/85 rounded-xl border border-t-3 border-white/15 p-4 backdrop-blur-xs"

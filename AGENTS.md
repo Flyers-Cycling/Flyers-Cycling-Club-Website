@@ -10,11 +10,11 @@ For human-facing setup and content editing, see [README.md](./README.md) and [CO
 
 Flyers Cycling Club is the public home of three youth mountain bike programs run by **Lake Mountain Bicycle Club, Inc.**, a volunteer-run 501(c)(3) in Utah:
 
-| Program       | Who                      | Season  | Fee  |
-| ------------- | ------------------------ | ------- | ---- |
-| Jr. Flyers    | Grades K–6 (ages 5–12)   | Jun–Aug | $50  |
-| Flyers XC     | Grades 7–12 (ages 13–19) | Jan–Aug | $50  |
-| Flyers Enduro | Grades 5–12 (ages 10–19) | Jan–Aug | $150 |
+| Program       | Who                        | Season  | Fee  |
+| ------------- | -------------------------- | ------- | ---- |
+| Jr. Flyers    | Grades K–6 (ages 5–12)     | Jun–Aug | $50  |
+| Flyers XC     | Grade 7 – U23 (ages 13–22) | Jan–Aug | $50  |
+| Flyers Enduro | Grades 5–12 (ages 10–19)   | Jan–Aug | $150 |
 
 The programs run outside the fall NICA (Utah High School Cycling League) season and are meant to work alongside local school teams, not compete with them.
 
