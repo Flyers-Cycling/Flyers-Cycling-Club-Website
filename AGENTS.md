@@ -2,7 +2,24 @@
 
 Guidance for AI coding agents (Claude Code, Codex, Cursor, Copilot, etc.) and human contributors working on the **Flyers Cycling Club** website. `CLAUDE.md` imports this file, so this is the one place to keep instructions.
 
-For human-facing setup and content editing, see [README.md](./README.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). For the latest site review and peer comparison, see [docs/site-evaluation.md](./docs/site-evaluation.md).
+For human-facing setup and content editing, see [README.md](./README.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). For what each page is for, its main buttons, and its open placeholders, see [docs/content-spec.md](./docs/content-spec.md). For the latest site review and peer comparison, see [docs/site-evaluation.md](./docs/site-evaluation.md).
+
+## Quick rules
+
+Read the full sections below, but never break these:
+
+1. **Tooling:** pnpm (≥ 10) with Node 22. Never use npm or yarn, and don't commit another lockfile.
+2. **CI must pass before merging.** Run `pnpm verify` before every commit and `pnpm test:e2e` after markup changes. A human approves every merge.
+3. **Club facts live in content, not components.** Programs, events, FAQs, people, and updates are YAML/Markdown in `src/content/`. Global facts (registration links, mission, contact, minimum ages) are in `src/data/site.ts`.
+4. **Program rules:**
+   - Flyers XC: cross-country riding, racing, and endurance, in two groups: DEVO (skills and fun) and COMP (high-level racing). Ages 10–18, Jan 1–Aug; before 7th grade at the coaches' discretion.
+   - Flyers Enduro/Gravity: ages 10–18 (minimum age 10), Jan–Aug, with its own registration form.
+   - Jr. Flyers: K–6, summer only (Jun 1–mid-August), registers later than the other two.
+   - Riders can join more than one program.
+5. **Tone:** all riders welcome. Lead with programs and what riders do. Ages, grades, and fees appear only on program detail pages and in the FAQ, never on the home page, header, or program cards.
+6. **Never invent facts, people, or photos.** Use `TODO(board): …` placeholders (section 5).
+
+**Project skills** in `.claude/skills/` walk through common edits: `update-registration-links`, `manage-events`, and `update-people`.
 
 ---
 
