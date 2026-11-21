@@ -1,33 +1,52 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/layout/PageHero.astro';
-import ComingSoon from '../components/layout/ComingSoon.astro';
 import { siteConfig } from '../data/site';
 import { withBase } from '../lib/urls';
 
 const { email } = siteConfig.contact;
 
-// Roles from the parent-volunteer FAQ (src/content/faqs/07-parent-volunteers.yaml).
+// Roles confirmed by Randall (Nov 21, 2026). Time estimates are drafts until he confirms them.
 const roles = [
   {
     title: 'Sweep a ride',
     body: 'Ride at the back of a Jr. Flyers or Flyers XC group so nobody rides alone.',
+    time: 'About 2 hours, once a week or whenever you can',
   },
   {
     title: 'Help on skills days',
     body: 'Set up drills and cheer on Flyers Enduro/Gravity skills sessions.',
+    time: '2-3 hours a session, a few times a season',
   },
   {
     title: 'Run the race-day tent',
     body: 'Set up the shade tent and keep riders fed and ready on race days.',
+    time: 'A race morning, 4-6 hours. Pick the races you can make.',
   },
   {
     title: 'Work on trails',
     body: 'Join a trail workday and help keep local singletrack in shape.',
+    time: '3-4 hours, once or twice a season',
   },
   {
     title: 'Help with sponsors',
     body: 'Connect the club with local businesses that want to support kids on bikes.',
+    time: '1-2 hours a month, mostly in winter',
+  },
+  {
+    title: 'Help with team kits',
+    body: 'Help families order kits and swag, and hand them out when they arrive.',
+    time: 'A few hours during the winter order window',
+  },
+  {
+    title: 'Social media and updates',
+    body: 'Post ride photos and club news, and help get updates out to families.',
+    time: '1-2 hours a week during the season',
+  },
+  {
+    title: 'Photos and video',
+    body: "Shoot rides and races you're already at. We only share photos of riders whose families have said yes.",
+    time: "1-2 hours a month to sort and share, plus rides you're at anyway",
   },
 ];
 ---
@@ -59,6 +78,7 @@ const roles = [
                 {role.title}
               </h3>
               <p class="text-flyers-iron mt-1.5 text-sm leading-relaxed">{role.body}</p>
+              <p class="text-flyers-slate mt-2 text-xs font-bold">Time: {role.time}</p>
             </li>
           ))
         }
@@ -78,11 +98,6 @@ const roles = [
           {siteConfig.coachScreening} If you'd like to coach, email us and we'll walk you through it.
         </p>
       </section>
-
-      <!-- TODO(board): add the time each role asks for and any training for non-coach roles. -->
-      <ComingSoon id="volunteer-time-heading" title="How much time it takes">
-        <p>What each role asks of you in a typical week or season.</p>
-      </ComingSoon>
 
       <section
         aria-labelledby="volunteer-start-heading"

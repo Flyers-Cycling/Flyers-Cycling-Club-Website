@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/layout/PageHero.astro';
-import ComingSoon from '../components/layout/ComingSoon.astro';
 import { siteConfig } from '../data/site';
 import { programTheme } from '../lib/programs';
 import { withBase } from '../lib/urls';
@@ -110,17 +109,41 @@ const { email } = siteConfig.contact;
         </p>
       </section>
 
-      <!-- TODO(board): Randall to share what the emergency action plan covers and how families
-           hear about weather call-offs (Slack, email, how far ahead). -->
-      <ComingSoon id="safety-emergency-heading" title="Emergencies">
-        <p>Flyers has an emergency action plan for rides. We'll explain what it covers here.</p>
-      </ComingSoon>
-
-      <ComingSoon id="safety-weather-heading" title="Weather calls">
-        <p>
-          We call off rides when the weather isn't safe. We'll explain how and when you'll hear.
+      <section
+        aria-labelledby="safety-emergency-heading"
+        class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs sm:p-8"
+      >
+        <h2
+          id="safety-emergency-heading"
+          class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+        >
+          Emergencies
+        </h2>
+        <p class="text-flyers-iron mt-2 text-sm leading-relaxed">
+          Coaches use an emergency action plan for each place we ride. It covers:
         </p>
-      </ComingSoon>
+        <ul class="text-flyers-iron mt-2 list-disc space-y-1 pl-5 text-sm leading-relaxed">
+          <li>The nearest hospital</li>
+          <li>The riskiest trails, and areas to stay out of</li>
+          <li>Where to take shelter if lightning moves in</li>
+        </ul>
+      </section>
+
+      <section
+        aria-labelledby="safety-weather-heading"
+        class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs sm:p-8"
+      >
+        <h2
+          id="safety-weather-heading"
+          class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+        >
+          Weather calls
+        </h2>
+        <p class="text-flyers-iron mt-2 text-sm leading-relaxed">
+          We call off rides for lightning and mud. You'll hear in Slack at least 2 hours before the
+          ride starts. Lightning can still roll in mid-ride, so coaches know where to take shelter.
+        </p>
+      </section>
 
       <section
         aria-labelledby="safety-concern-heading"

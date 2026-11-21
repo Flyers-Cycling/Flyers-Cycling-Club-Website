@@ -63,12 +63,12 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 
 Parents look for these.
 
-- [ ] Safety page: coach screening and training (background check plus head-coach training), two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern. Drafted at /safety: screening, gear links, two-adult rule, national concussion guidelines, and a concern email (board follows up). Emergency plan and weather call-off details still `TODO(board)`.
+- [x] Safety page: coach screening and training (background check plus head-coach training), two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern. Drafted at /safety: screening, gear links, two-adult rule, national concussion guidelines, and a concern email (board follows up). Emergency action plan and weather call-offs (Slack, 2 hours ahead) added.
 - [ ] Coaches page with real bios and photos (adults, with consent)
 - [ ] Board page with every board member, the EIN, and a 990 or annual report link
 - [ ] Policies page: code of conduct, rider rules, waiver, refund and cancellation
 - [x] Scholarships page: what help exists and how to ask privately (today: reach out to a coach). Done at /scholarships ("Help with costs"): no set rules, families reach out, requests are private and the board follows up.
-- [ ] Volunteer page: roles, time asked, training, how to start. Drafted at /volunteer; time asked per role is still `TODO(board)`.
+- [x] Volunteer page: roles, time asked, training, how to start. Done at /volunteer: 8 roles Randall confirmed, with time estimates for him to confirm.
 
 ## Phase 4: Program sections
 
