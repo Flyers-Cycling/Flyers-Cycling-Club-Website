@@ -100,6 +100,8 @@ describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
 
     expect(homeHtml).toContain('All riders welcome');
     expect(homeHtml).toContain('Flyers Enduro/Gravity');
+    expect(homeHtml).toContain('Flyers XC Devo');
+    expect(homeHtml).toContain('Flyers XC Comp');
     expect(homeHtml).toContain('registration opens');
     expect(homeHtml).not.toContain('$50');
     expect(homeHtml).not.toContain('$150');

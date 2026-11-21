@@ -2,24 +2,24 @@ import { describe, expect, it } from 'vitest';
 import { matchProgramPathway } from '../../src/lib/pathway';
 
 describe('matchProgramPathway', () => {
-  it('recommends Flyers XC to riders in 7th grade and up who want cross-country riding', () => {
-    const match = matchProgramPathway('7-plus', 'xc');
-    expect(match.primaryProgram).toBe('xc');
-    expect(match.explanation).toContain('DEVO');
-    expect(match.explanation).toContain('COMP');
+  it('recommends Flyers XC Devo to 7th grade and up riders who want to ride with less focus on racing', () => {
+    const match = matchProgramPathway('7-plus', 'xc-devo');
+    expect(match.primaryProgram).toBe('xc-devo');
+    expect(match.headline).toBe('Try Flyers XC Devo');
+    expect(match.explanation).toContain('less focus on racing');
   });
 
-  it('recommends Flyers XC for riders between NICA seasons', () => {
-    const match = matchProgramPathway('7-plus', 'nica-offseason');
-    expect(match.primaryProgram).toBe('xc');
-    expect(match.secondaryProgram).toBe('enduro');
+  it('recommends Flyers XC Comp to riders who want to race competitively', () => {
+    const match = matchProgramPathway('7-plus', 'xc-comp');
+    expect(match.primaryProgram).toBe('xc-comp');
+    expect(match.headline).toBe('Try Flyers XC Comp');
     expect(match.nicaNote).toContain('school team');
   });
 
   it('recommends Flyers Enduro/Gravity with XC as a second program for gravity riders', () => {
     const match = matchProgramPathway('7-plus', 'gravity');
     expect(match.primaryProgram).toBe('enduro');
-    expect(match.secondaryProgram).toBe('xc');
+    expect(match.secondaryProgram).toBe('xc-devo');
     expect(match.headline).toContain('Enduro/Gravity');
   });
 
@@ -31,10 +31,9 @@ describe('matchProgramPathway', () => {
     expect(gravity.comboNote).toContain('10 and older');
   });
 
-  it('recommends Flyers XC to grades 5–6 riders who pick XC, noting it is at the coaches’ discretion', () => {
-    const match = matchProgramPathway('5-6', 'xc');
-    expect(match.primaryProgram).toBe('xc');
-    expect(match.secondaryProgram).toBe('jr-flyers');
+  it('recommends Flyers XC Comp to 5th–6th graders who want to race, at the coaches’ discretion', () => {
+    const match = matchProgramPathway('5-6', 'xc-comp');
+    expect(match.primaryProgram).toBe('xc-comp');
     expect(match.explanation).toContain('coaches’ discretion');
   });
 
@@ -46,7 +45,7 @@ describe('matchProgramPathway', () => {
 
   it('never mentions fees', () => {
     for (const band of ['k-4', '5-6', '7-plus'] as const) {
-      for (const focus of ['fundamentals', 'xc', 'gravity', 'nica-offseason'] as const) {
+      for (const focus of ['fundamentals', 'xc-devo', 'xc-comp', 'gravity'] as const) {
         const m = matchProgramPathway(band, focus);
         expect(`${m.explanation} ${m.comboNote}`).not.toMatch(/\$\d/);
       }

@@ -2,7 +2,7 @@
 programId: jr-flyers
 title: Jr. Flyers
 shortTitle: Jr. Flyers
-discipline: First Trail Skills (K–6)
+discipline: First Trail Skills
 tagline: A summer of skill games, trail riding, and new friends for our youngest riders.
 summary: Jr. Flyers is a summer program for our youngest riders. Small groups play skill games, learn to brake and shift, and ride beginner singletrack with volunteer coaches.
 order: 3
@@ -13,7 +13,7 @@ registrationWindowLabel: Later in the season (date coming soon)
 registrationStatus: upcoming
 # Jr. Flyers registers later, not on Dec 1.
 registrationForm: later
-feeAmount: '$50'
+feeAmount: '$35'
 feeIncludes: Covers a Jr. Flyers t-shirt and rider insurance.
 accentKey: jr
 practiceSchedule:

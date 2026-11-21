@@ -1,10 +1,12 @@
 // Grade bands shown in the program finder. Values are stable IDs; labels live in the component.
 //   'k-4'    → Kindergarten–4th grade (Jr. Flyers)
-//   '5-6'    → 5th–6th grade (Jr. Flyers; Flyers XC at the coaches' discretion; Enduro/Gravity from age 10)
-//   '7-plus' → 7th grade and up (Flyers XC and Flyers Enduro/Gravity)
+//   '5-6'    → 5th–6th grade (Jr. Flyers; Flyers XC at the coaches' discretion, usually advanced
+//              riders who want to race; Enduro/Gravity from age 10)
+//   '7-plus' → 7th grade and up (Flyers XC Devo or Comp, and Flyers Enduro/Gravity)
 export type AgeBand = 'k-4' | '5-6' | '7-plus';
-export type RidingFocus = 'fundamentals' | 'xc' | 'gravity' | 'nica-offseason';
-export type ProgramSlug = 'xc' | 'enduro' | 'jr-flyers';
+export type RidingFocus = 'xc-devo' | 'xc-comp' | 'gravity' | 'fundamentals';
+/** Where a recommendation points: a program, or one of the two Flyers XC groups. */
+export type ProgramSlug = 'xc-devo' | 'xc-comp' | 'enduro' | 'jr-flyers';
 
 export interface PathwayRecommendation {
   primaryProgram: ProgramSlug;
@@ -15,6 +17,11 @@ export interface PathwayRecommendation {
   comboNote: string;
   nicaNote: string;
 }
+
+const DEVO =
+  'Flyers XC Devo is for riders who want to ride, build skills, and have fun, with less focus on racing.';
+const COMP =
+  'Flyers XC Comp is for riders who want to race competitively, with structured training and race prep for Utah XC races.';
 
 export function matchProgramPathway(
   ageBand: AgeBand,
@@ -50,24 +57,25 @@ export function matchProgramPathway(
       };
     }
 
-    if (focus === 'xc') {
+    if (focus === 'xc-comp') {
       return {
-        primaryProgram: 'xc',
+        primaryProgram: 'xc-comp',
         secondaryProgram: 'jr-flyers',
-        headline: 'Try Flyers XC',
-        explanation:
-          'Flyers XC is our cross-country program. Riders before 7th grade join at the coaches’ discretion, usually advanced riders who want to race. Newer riders can build skills in Jr. Flyers first.',
+        headline: 'Try Flyers XC Comp',
+        explanation: `${COMP} Riders before 7th grade join at the coaches’ discretion, usually advanced riders who want to race.`,
         comboNote: `Riders can add Flyers Enduro/Gravity too. ${enduroAge}`,
-        nicaNote: 'Winter-to-summer riding that builds fitness before middle school NICA.',
+        nicaNote: 'Winter-to-summer racing that builds fitness before middle school NICA.',
       };
     }
 
     return {
       primaryProgram: 'jr-flyers',
-      secondaryProgram: 'enduro',
+      secondaryProgram: focus === 'xc-devo' ? 'xc-devo' : 'enduro',
       headline: 'Start with Jr. Flyers',
       explanation:
-        'Jr. Flyers is a relaxed place to build trail basics with friends, with skill games and beginner singletrack all summer.',
+        focus === 'xc-devo'
+          ? 'Jr. Flyers is the best place for 5th and 6th graders to ride and build skills. Flyers XC Devo is open from 7th grade.'
+          : 'Jr. Flyers is a relaxed place to build trail basics with friends, with skill games and beginner singletrack all summer.',
       comboNote: `${enduroAge} Riders can do it alongside Jr. Flyers.`,
       nicaNote: 'Good preparation for Flyers XC and NICA.',
     };
@@ -77,7 +85,7 @@ export function matchProgramPathway(
   if (focus === 'gravity') {
     return {
       primaryProgram: 'enduro',
-      secondaryProgram: 'xc',
+      secondaryProgram: 'xc-devo',
       headline: 'Try Flyers Enduro/Gravity',
       explanation:
         'Flyers Enduro/Gravity (January–August) is for riders who love technical descents: bike setup, line choice, track walks, and support at enduro races.',
@@ -86,23 +94,26 @@ export function matchProgramPathway(
     };
   }
 
-  const explanation: Record<Exclude<RidingFocus, 'gravity'>, string> = {
-    xc: 'Flyers XC is our cross-country program, with two groups. DEVO riders focus on riding, skills, and fun. COMP riders train to compete at a high level. We support both.',
-    'nica-offseason':
-      'Flyers XC rides once a week in winter, once or twice a week in spring, and on select summer Saturdays. It’s scheduled around the fall NICA season so riders stay fit and sharp all year.',
-    fundamentals:
-      'Flyers XC’s DEVO group is for riders who want to focus on riding, skills, and fun. Racing is optional.',
-  };
+  if (focus === 'xc-comp') {
+    return {
+      primaryProgram: 'xc-comp',
+      secondaryProgram: 'enduro',
+      headline: 'Try Flyers XC Comp',
+      explanation: COMP,
+      comboNote: 'Riders can add Flyers Enduro/Gravity to work on descending too.',
+      nicaNote: 'Winter-to-summer racing that fits around your fall school team.',
+    };
+  }
 
   return {
-    primaryProgram: 'xc',
+    primaryProgram: 'xc-devo',
     secondaryProgram: 'enduro',
-    headline: 'Try Flyers XC',
-    explanation: explanation[focus],
+    headline: 'Try Flyers XC Devo',
+    explanation:
+      focus === 'fundamentals'
+        ? `${DEVO} Newer riders are welcome. Racing is optional.`
+        : `${DEVO} Racing is optional.`,
     comboNote: 'Riders can add Flyers Enduro/Gravity to work on descending too.',
-    nicaNote:
-      focus === 'nica-offseason'
-        ? 'Designed to fit alongside your fall school team, not replace it.'
-        : 'Winter-to-summer riding that fits around your fall school team.',
+    nicaNote: 'Winter-to-summer riding that fits around your fall school team.',
   };
 }
