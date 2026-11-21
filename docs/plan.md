@@ -92,8 +92,8 @@ For families already in the club.
 
 ## Phase 6: Community and support
 
-- [ ] "Support" menu (Donate, Volunteer, Shop) plus Sponsors as its own top-level item, cross-linked
-- [ ] Donate reachable from every page
+- [x] "Support" menu (Donate, Volunteer, Shop) plus Sponsors as its own top-level item, cross-linked. A /support page in the main nav next to Sponsors; Board moved to the mobile menu, footer, and About.
+- [x] Donate reachable from every page. The header and footer Donate buttons go to /support#donate. Until the real Zeffy link is in `siteConfig`, Donate opens an email instead of the bare zeffy.com page.
 - [ ] Real sponsors only; open sponsorship spots listed separately
 - [ ] Confirm every sponsor tier perk before it stays on the site
 - [ ] Impact numbers on the home page (riders, rides, volunteer hours, scholarships)

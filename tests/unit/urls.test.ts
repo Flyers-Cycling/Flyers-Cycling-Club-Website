@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isExternalUrl, withBase } from '../../src/lib/urls';
+import { isExternalUrl, isPlaceholderUrl, withBase } from '../../src/lib/urls';
 
 describe('withBase', () => {
   it('resolves root base paths cleanly', () => {
@@ -28,5 +28,18 @@ describe('isExternalUrl', () => {
     expect(isExternalUrl('https://www.zeffy.com/')).toBe(true);
     expect(isExternalUrl('http://example.org')).toBe(true);
     expect(isExternalUrl('/winter-camp')).toBe(false);
+  });
+});
+
+describe('isPlaceholderUrl', () => {
+  it('flags empty and bare-domain links', () => {
+    expect(isPlaceholderUrl('')).toBe(true);
+    expect(isPlaceholderUrl(undefined)).toBe(true);
+    expect(isPlaceholderUrl('https://www.zeffy.com/')).toBe(true);
+    expect(isPlaceholderUrl('not a url')).toBe(true);
+  });
+
+  it('accepts real form links', () => {
+    expect(isPlaceholderUrl('https://www.zeffy.com/en-US/donation-form/flyers')).toBe(false);
   });
 });

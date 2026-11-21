@@ -23,3 +23,17 @@ export function withBase(path: string, baseUrl: string = import.meta.env.BASE_UR
 
   return `${normalizedBase}${normalizedPath}`;
 }
+
+/**
+ * True when a link is still a placeholder: empty, or a bare site root like https://www.zeffy.com/
+ * that was never swapped for the club's real form. Pages show a fallback instead of linking there.
+ */
+export function isPlaceholderUrl(url: string | undefined): boolean {
+  if (!url || !url.trim()) return true;
+  try {
+    const { pathname, search, hash } = new URL(url);
+    return (pathname === '/' || pathname === '') && !search && !hash;
+  } catch {
+    return true;
+  }
+}
