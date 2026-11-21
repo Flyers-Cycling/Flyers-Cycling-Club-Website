@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from '../../data/site';
 import { matchProgramPathway } from '../../lib/pathway';
+import { programTheme } from '../../lib/programs';
 import { withBase } from '../../lib/urls';
 
 const enduroMinimumAge = siteConfig.enduroMinimumAge;
@@ -163,7 +164,8 @@ const programRoutes = {
         <a
           id="pathway-primary-cta"
           href={programRoutes[initialMatch.primaryProgram].href}
-          class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-lg px-5 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
+          data-program={programTheme(initialMatch.primaryProgram)}
+          class="bg-program hover:bg-program-hover font-display inline-flex min-h-12 items-center justify-center rounded-lg px-5 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
         >
           {programRoutes[initialMatch.primaryProgram].label} &rarr;
         </a>
@@ -194,6 +196,7 @@ const programRoutes = {
     type RidingFocus,
     type ProgramSlug,
   } from '../../lib/pathway';
+  import { programTheme } from '../../lib/programs';
 
   const form = document.getElementById('pathway-matcher-form') as HTMLFormElement | null;
   if (form) {
@@ -240,6 +243,7 @@ const programRoutes = {
       if (primaryCta) {
         primaryCta.href = routes[match.primaryProgram].href;
         primaryCta.textContent = `${routes[match.primaryProgram].label} →`;
+        primaryCta.dataset.program = programTheme(match.primaryProgram);
       }
 
       if (secondaryCta) {

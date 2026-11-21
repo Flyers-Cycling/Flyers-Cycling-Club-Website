@@ -1,6 +1,7 @@
 name: Randall Adams
 role: Flyers XC coach
 programFocus: Flyers XC
+program: xc
 order: 2
 coach: true
 # TODO(board): add a short bio and (with consent) a photo.

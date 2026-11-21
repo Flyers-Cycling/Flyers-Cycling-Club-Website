@@ -121,6 +121,9 @@ const leadership = defineCollection({
     name: z.string(),
     role: z.string(),
     programFocus: z.string(),
+    // The program this person coaches: xc, enduro, or jr-flyers. Sets the card's color.
+    // Leave it out for club-wide roles.
+    program: z.enum(['xc', 'enduro', 'jr-flyers']).optional(),
     order: z.number().int().positive(),
     bio: z.string(),
     // true lists this person on the Coaches page.

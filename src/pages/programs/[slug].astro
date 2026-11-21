@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SponsorGrid from '../../components/sponsors/SponsorGrid.astro';
 import PhotoPlaceholder from '../../components/layout/PhotoPlaceholder.astro';
-import { getProgramAccentMeta, getRegistrationStatusMeta } from '../../lib/programs';
+import { getRegistrationStatusMeta, programClasses, programTheme } from '../../lib/programs';
 import { withBase } from '../../lib/urls';
 import { formatEventDate } from '../../lib/dates';
 import { eventEnds, isUpcoming, upcomingEvents } from '../../lib/events';
@@ -27,7 +27,7 @@ const statusMeta = getRegistrationStatusMeta(
   effectiveRegistrationStatus(data.registrationStatus, data.registrationForm),
 );
 const register = registrationCta(data.registrationForm);
-const accentMeta = getProgramAccentMeta(data.accentKey);
+const theme = programTheme(data.accentKey);
 
 const allSponsors = await getCollection('sponsors');
 const campEligible = (winterCamp.programs as readonly string[]).includes(data.programId);
@@ -41,315 +41,322 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
 ---
 
 <BaseLayout title={`${data.title} (${data.discipline})`} description={data.summary}>
-  <!-- Program Hero -->
-  <section class="dark-surface flyers-banner-bg relative overflow-hidden py-14 text-white sm:py-20">
-    <div class={`absolute top-0 left-0 h-1.5 w-full ${accentMeta.topBarClass}`} aria-hidden="true">
-    </div>
-    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-      <div class="lg:col-span-7">
-        <nav aria-label="Breadcrumb" class="text-flyers-silver mb-4 text-xs font-semibold">
-          <ol class="flex items-center gap-2">
-            <li><a href={withBase('/')} class="hover:text-white">Home</a></li>
-            <li aria-hidden="true">/</li>
-            <li><a href={withBase('/programs')} class="hover:text-white">Programs</a></li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" class="text-white">{data.title}</li>
-          </ol>
-        </nav>
-
-        <div class="flex flex-wrap items-center gap-2.5">
-          <span
-            class={`rounded-full border px-3 py-1 text-xs font-extrabold ${accentMeta.darkPillClass}`}
-          >
-            {data.discipline}
-          </span>
-          <span
-            class={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold ${statusMeta.badgeClass}`}
-          >
-            <span class={`h-2 w-2 rounded-full ${statusMeta.dotClass}`} aria-hidden="true"></span>
-            {statusMeta.label}
-          </span>
-        </div>
-
-        <h1
-          class="font-display mt-4 text-4xl leading-[0.98] font-black tracking-wide text-white uppercase sm:text-6xl"
-        >
-          {data.title}
-        </h1>
-        <p class="mt-4 text-lg leading-relaxed text-white/90">{data.tagline}</p>
-
-        <div class="mt-7 flex flex-wrap items-center gap-3.5">
-          <a
-            href={register.href}
-            target={register.external ? '_blank' : undefined}
-            rel={register.external ? 'noopener noreferrer' : undefined}
-            class={`font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-lg font-extrabold tracking-wider uppercase shadow-md transition ${accentMeta.buttonClass}`}
-          >
-            {register.label} &rarr;
-          </a>
-          <a
-            href={withBase('/schedule')}
-            class="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20"
-          >
-            See practice and race dates
-          </a>
-        </div>
+  <div data-program={theme}>
+    <!-- Program Hero -->
+    <section
+      class="dark-surface flyers-banner-bg relative overflow-hidden py-14 text-white sm:py-20"
+    >
+      <div class={`absolute top-0 left-0 h-1.5 w-full ${programClasses.bar}`} aria-hidden="true">
       </div>
+      <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-7">
+          <nav aria-label="Breadcrumb" class="text-flyers-silver mb-4 text-xs font-semibold">
+            <ol class="flex items-center gap-2">
+              <li><a href={withBase('/')} class="hover:text-white">Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href={withBase('/programs')} class="hover:text-white">Programs</a></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" class="text-white">{data.title}</li>
+            </ol>
+          </nav>
 
-      <div class="lg:col-span-5">
-        <div
-          class="bg-flyers-slate-dark overflow-hidden rounded-2xl border border-white/20 shadow-2xl"
-        >
-          {
-            data.heroImage ? (
-              <img
-                src={withBase(data.heroImage)}
-                alt={data.heroImageAlt}
-                width="1200"
-                height="669"
-                fetchpriority="high"
-                class="h-full w-full object-cover"
-              />
-            ) : (
-              <PhotoPlaceholder tone={accentMeta.topBarClass} class="aspect-[16/9]" />
-            )
-          }
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Program Content & Sidebar -->
-  <section class="py-14 sm:py-18">
-    <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
-      <!-- Left: Program Details -->
-      <div class="space-y-10 lg:col-span-7">
-        {
-          data.groups && (
-            <section
-              aria-labelledby="program-groups-heading"
-              class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8"
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span
+              class={`rounded-full border px-3 py-1 text-xs font-extrabold ${programClasses.darkPill}`}
             >
-              <h2
-                id="program-groups-heading"
-                class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
-              >
-                Pick your group
-              </h2>
-              <p class="text-flyers-iron mt-2 text-sm">
-                {data.title} has {data.groups.length} groups, and we support both.
-              </p>
-              <div class="mt-5 grid gap-4 sm:grid-cols-2">
-                {data.groups.map((group) => (
-                  <article
-                    id={group.id}
-                    class={`bg-flyers-snow scroll-mt-32 rounded-xl border border-t-4 border-neutral-200 p-5 ${accentMeta.borderClass}`}
-                  >
-                    <h3 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase">
-                      {group.name}
-                    </h3>
-                    <p class="text-flyers-iron mt-2 text-sm leading-relaxed">{group.summary}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )
-        }
+              {data.discipline}
+            </span>
+            <span
+              class={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold ${statusMeta.badgeClass}`}
+            >
+              <span class={`h-2 w-2 rounded-full ${statusMeta.dotClass}`} aria-hidden="true"></span>
+              {statusMeta.label}
+            </span>
+          </div>
 
-        <div class="club-prose rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
-          <Content />
+          <h1
+            class="font-display flyers-stroke mt-4 text-4xl leading-[0.98] font-black tracking-wide text-white uppercase sm:text-6xl"
+          >
+            {data.title}
+          </h1>
+          <p class="mt-4 text-lg leading-relaxed text-white/90">{data.tagline}</p>
+
+          <div class="mt-7 flex flex-wrap items-center gap-3.5">
+            <a
+              href={register.href}
+              target={register.external ? '_blank' : undefined}
+              rel={register.external ? 'noopener noreferrer' : undefined}
+              class={`font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-lg font-extrabold tracking-wider uppercase shadow-md transition ${programClasses.button}`}
+            >
+              {register.label} &rarr;
+            </a>
+            <a
+              href={withBase('/schedule')}
+              class="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20"
+            >
+              See practice and race dates
+            </a>
+          </div>
         </div>
 
-        <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
-          <h2
-            class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
-          >
-            When we ride
-          </h2>
-          <ul class="mt-4 space-y-3">
-            {
-              data.practiceSchedule.map((item) => (
-                <li class="text-flyers-iron flex items-start gap-3 text-sm leading-relaxed">
-                  <span
-                    class={`mt-1.5 inline-block h-2.5 w-2.5 shrink-0 rounded-full ${accentMeta.topBarClass}`}
-                    aria-hidden="true"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-
-        <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
-          <h2
-            class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
-          >
-            Who it's for
-          </h2>
-          <ul class="mt-4 space-y-3">
-            {
-              data.whoItsFor.map((item) => (
-                <li class="text-flyers-iron flex items-start gap-3 text-sm leading-relaxed">
-                  <span class="text-flyers-red font-black" aria-hidden="true">
-                    &#10003;
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))
-            }
-          </ul>
-
+        <div class="lg:col-span-5">
           <div
-            class="border-flyers-slate/25 text-flyers-slate-dark mt-6 rounded-xl border bg-[#EEF3F6] p-4 text-sm"
+            class="bg-flyers-slate-dark overflow-hidden rounded-2xl border border-white/20 shadow-2xl"
           >
-            <p class="font-extrabold">Riding with a school team</p>
-            <p class="text-flyers-charcoal mt-1 leading-relaxed">{data.schoolTeamNote}</p>
+            {
+              data.heroImage ? (
+                <img
+                  src={withBase(data.heroImage)}
+                  alt={data.heroImageAlt}
+                  width="1200"
+                  height="669"
+                  fetchpriority="high"
+                  class="h-full w-full object-cover"
+                />
+              ) : (
+                <PhotoPlaceholder tone="bg-program" class="aspect-[16/9]" />
+              )
+            }
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Right: At-a-Glance & Gear Checklist -->
-      <aside class="space-y-6 lg:col-span-5" aria-label="Program quick facts and gear requirements">
-        <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
-          <h2
-            class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
-          >
-            At a glance
-          </h2>
-          <dl class="mt-4 divide-y divide-neutral-100 text-sm">
-            <div class="py-3">
-              <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">Who</dt>
-              <dd class="text-flyers-slate-dark mt-1 font-extrabold">
-                {data.gradesLabel} · {data.agesLabel}
-              </dd>
-            </div>
-            <div class="py-3">
-              <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">Season</dt>
-              <dd class="text-flyers-charcoal mt-1 font-semibold">{data.seasonLabel}</dd>
-            </div>
-            <div class="py-3">
-              <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">
-                Registration opens
-              </dt>
-              <dd class="text-flyers-charcoal mt-1 font-semibold">
-                {data.registrationWindowLabel}
-              </dd>
-            </div>
-            <div class="py-3">
-              <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">
-                Registration
-              </dt>
-              <dd class="font-display text-flyers-red-deep mt-1 text-2xl font-black">
-                {data.feeAmount}
-              </dd>
-              <dd class="text-flyers-iron mt-1 text-xs leading-relaxed">
-                {data.feeIncludes} Bikes, gear, race entries, and optional team kits are extra. <a
-                  href={withBase('/faq')}
-                  class="text-flyers-red-deep font-bold underline">See full costs</a
-                >. If cost is a barrier, <a
-                  href={`mailto:${siteConfig.contact.email}?subject=Help%20with%20costs`}
-                  class="text-flyers-red-deep font-bold underline">ask us about help</a
-                > (confidential).
-              </dd>
-            </div>
-          </dl>
-        </div>
+    <!-- Main Program Content & Sidebar -->
+    <section class="py-14 sm:py-18">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+        <!-- Left: Program Details -->
+        <div class="space-y-10 lg:col-span-7">
+          {
+            data.groups && (
+              <section
+                aria-labelledby="program-groups-heading"
+                class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8"
+              >
+                <h2
+                  id="program-groups-heading"
+                  class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
+                >
+                  Pick your group
+                </h2>
+                <p class="text-flyers-iron mt-2 text-sm">
+                  {data.title} has {data.groups.length} groups, and we support both.
+                </p>
+                <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                  {data.groups.map((group) => (
+                    <article
+                      id={group.id}
+                      class="bg-flyers-snow border-t-program-accent scroll-mt-32 rounded-xl border border-t-4 border-neutral-200 p-5"
+                    >
+                      <h3 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase">
+                        {group.name}
+                      </h3>
+                      <p class="text-flyers-iron mt-2 text-sm leading-relaxed">{group.summary}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            )
+          }
 
-        <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
-          <h2
-            class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
-          >
-            Bike and gear
-          </h2>
-          <ul class="text-flyers-iron mt-4 space-y-2.5 text-sm">
-            {
-              data.gearChecklist.map((gear) => (
-                <li class="flex items-start gap-2.5">
-                  <span class="text-flyers-red mt-0.5 font-black" aria-hidden="true">
-                    &bull;
-                  </span>
-                  <span>{gear}</span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+          <div class="club-prose rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+            <Content />
+          </div>
 
-        {
-          showCampCallout && (
-            <a
-              href={withBase('/winter-camp')}
-              data-event-ends={winterCamp.endDate}
-              class="hover:border-flyers-slate block rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs transition"
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+            <h2
+              class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
             >
-              <p class="text-flyers-red-deep text-xs font-extrabold tracking-widest uppercase">
-                Winter camp
-              </p>
-              <p class="font-display text-flyers-slate-dark mt-1 text-2xl font-black tracking-wide uppercase">
-                St. George, {formatEventDate(winterCamp.startDate)} –{' '}
-                {formatEventDate(winterCamp.endDate)}
-              </p>
-              <p class="text-flyers-iron mt-1 text-sm">
-                Four days of desert riding over MLK weekend. See the plan &rarr;
-              </p>
-            </a>
-          )
-        }
-
-        {
-          programEvents.length > 0 && (
-            <div class="dark-surface flyers-banner-bg border-flyers-slate-mid rounded-2xl border p-6 text-white shadow-md">
-              <h2 class="font-display text-2xl font-black tracking-wide text-white uppercase">
-                Coming up
-              </h2>
-              <ul class="mt-4 space-y-3 text-sm">
-                {programEvents.map((ev) => (
-                  <li
-                    data-event-ends={eventEnds(ev.data)}
-                    class="bg-flyers-slate-dark/80 rounded-xl border border-white/15 p-3.5"
-                  >
-                    <p class="text-flyers-gold text-xs font-bold">
-                      <time datetime={ev.data.startDate}>{formatEventDate(ev.data.startDate)}</time>
-                    </p>
-                    <p class="mt-0.5 font-extrabold text-white">{ev.data.title}</p>
-                    <p class="text-flyers-silver mt-0.5 text-xs">{ev.data.location}</p>
+              When we ride
+            </h2>
+            <ul class="mt-4 space-y-3">
+              {
+                data.practiceSchedule.map((item) => (
+                  <li class="text-flyers-iron flex items-start gap-3 text-sm leading-relaxed">
+                    <span
+                      class={`mt-1.5 inline-block h-2.5 w-2.5 shrink-0 rounded-full ${programClasses.bar}`}
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
                   </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
-      </aside>
-    </div>
-  </section>
+                ))
+              }
+            </ul>
+          </div>
 
-  <!-- Program-Designated & Club Sponsors -->
-  <section
-    aria-labelledby="program-sponsors-heading"
-    class="border-t border-neutral-200 bg-white py-14 sm:py-16"
-  >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <p class="text-flyers-red-deep text-xs font-extrabold tracking-widest uppercase">
-          Thank you
-        </p>
-        <h2
-          id="program-sponsors-heading"
-          class="font-display text-flyers-slate-dark mt-2 text-3xl leading-tight font-black tracking-wide uppercase sm:text-4xl"
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+            <h2
+              class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
+            >
+              Who it's for
+            </h2>
+            <ul class="mt-4 space-y-3">
+              {
+                data.whoItsFor.map((item) => (
+                  <li class="text-flyers-iron flex items-start gap-3 text-sm leading-relaxed">
+                    <span class="text-program font-black" aria-hidden="true">
+                      &#10003;
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+
+            <div
+              class="border-flyers-slate/25 text-flyers-slate-dark bg-flyers-slate-light mt-6 rounded-xl border p-4 text-sm"
+            >
+              <p class="font-extrabold">Riding with a school team</p>
+              <p class="text-flyers-charcoal mt-1 leading-relaxed">{data.schoolTeamNote}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: At-a-Glance & Gear Checklist -->
+        <aside
+          class="space-y-6 lg:col-span-5"
+          aria-label="Program quick facts and gear requirements"
         >
-          Sponsors who support {data.title}
-        </h2>
-        <p class="text-flyers-iron mt-2 text-sm">
-          Businesses and families can support the whole club or give directly to {data.title}. <a
-            href={withBase('/sponsors')}
-            class="text-flyers-red-deep font-bold underline">Learn about sponsoring</a
-          >.
-        </p>
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+            <h2
+              class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+            >
+              At a glance
+            </h2>
+            <dl class="mt-4 divide-y divide-neutral-100 text-sm">
+              <div class="py-3">
+                <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">Who</dt>
+                <dd class="text-flyers-slate-dark mt-1 font-extrabold">
+                  {data.gradesLabel} · {data.agesLabel}
+                </dd>
+              </div>
+              <div class="py-3">
+                <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">Season</dt>
+                <dd class="text-flyers-charcoal mt-1 font-semibold">{data.seasonLabel}</dd>
+              </div>
+              <div class="py-3">
+                <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">
+                  Registration opens
+                </dt>
+                <dd class="text-flyers-charcoal mt-1 font-semibold">
+                  {data.registrationWindowLabel}
+                </dd>
+              </div>
+              <div class="py-3">
+                <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">
+                  Registration
+                </dt>
+                <dd class="font-display text-program-ink mt-1 text-2xl font-black">
+                  {data.feeAmount}
+                </dd>
+                <dd class="text-flyers-iron mt-1 text-xs leading-relaxed">
+                  {data.feeIncludes} Bikes, gear, race entries, and optional team kits are extra. <a
+                    href={withBase('/faq')}
+                    class="text-program-ink font-bold underline">See full costs</a
+                  >. If cost is a barrier, <a
+                    href={`mailto:${siteConfig.contact.email}?subject=Help%20with%20costs`}
+                    class="text-program-ink font-bold underline">ask us about help</a
+                  > (confidential).
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+            <h2
+              class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+            >
+              Bike and gear
+            </h2>
+            <ul class="text-flyers-iron mt-4 space-y-2.5 text-sm">
+              {
+                data.gearChecklist.map((gear) => (
+                  <li class="flex items-start gap-2.5">
+                    <span class="text-program mt-0.5 font-black" aria-hidden="true">
+                      &bull;
+                    </span>
+                    <span>{gear}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          {
+            showCampCallout && (
+              <a
+                href={withBase('/winter-camp')}
+                data-event-ends={winterCamp.endDate}
+                class="hover:border-flyers-slate block rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs transition"
+              >
+                <p class="text-program-ink text-xs font-extrabold tracking-widest uppercase">
+                  Winter camp
+                </p>
+                <p class="font-display text-flyers-slate-dark mt-1 text-2xl font-black tracking-wide uppercase">
+                  St. George, {formatEventDate(winterCamp.startDate)} –{' '}
+                  {formatEventDate(winterCamp.endDate)}
+                </p>
+                <p class="text-flyers-iron mt-1 text-sm">
+                  Four days of desert riding over MLK weekend. See the plan &rarr;
+                </p>
+              </a>
+            )
+          }
+
+          {
+            programEvents.length > 0 && (
+              <div class="dark-surface flyers-banner-bg border-flyers-slate-mid rounded-2xl border p-6 text-white shadow-md">
+                <h2 class="font-display text-2xl font-black tracking-wide text-white uppercase">
+                  Coming up
+                </h2>
+                <ul class="mt-4 space-y-3 text-sm">
+                  {programEvents.map((ev) => (
+                    <li
+                      data-event-ends={eventEnds(ev.data)}
+                      class="bg-flyers-slate-dark/80 rounded-xl border border-white/15 p-3.5"
+                    >
+                      <p class="text-flyers-gold text-xs font-bold">
+                        <time datetime={ev.data.startDate}>
+                          {formatEventDate(ev.data.startDate)}
+                        </time>
+                      </p>
+                      <p class="mt-0.5 font-extrabold text-white">{ev.data.title}</p>
+                      <p class="text-flyers-silver mt-0.5 text-xs">{ev.data.location}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+        </aside>
       </div>
-      <div class="mt-8">
-        <SponsorGrid sponsors={allSponsors} scope={data.programId} />
+    </section>
+
+    <!-- Program-Designated & Club Sponsors -->
+    <section
+      aria-labelledby="program-sponsors-heading"
+      class="border-t border-neutral-200 bg-white py-14 sm:py-16"
+    >
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-program-ink text-xs font-extrabold tracking-widest uppercase">Thank you</p>
+          <h2
+            id="program-sponsors-heading"
+            class="font-display text-flyers-slate-dark mt-2 text-3xl leading-tight font-black tracking-wide uppercase sm:text-4xl"
+          >
+            Sponsors who support {data.title}
+          </h2>
+          <p class="text-flyers-iron mt-2 text-sm">
+            Businesses and families can support the whole club or give directly to {data.title}. <a
+              href={withBase('/sponsors')}
+              class="text-program-ink font-bold underline">Learn about sponsoring</a
+            >.
+          </p>
+        </div>
+        <div class="mt-8">
+          <SponsorGrid sponsors={allSponsors} scope={data.programId} />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </BaseLayout>

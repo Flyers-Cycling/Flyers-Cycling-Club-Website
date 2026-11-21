@@ -1,4 +1,11 @@
 ---
+// Brand Book fonts, served from this site (no third-party font requests). Latin subset only.
+import '@fontsource/anton/latin-400.css';
+import '@fontsource/epilogue/latin-400.css';
+import '@fontsource/epilogue/latin-500.css';
+import '@fontsource/epilogue/latin-600.css';
+import '@fontsource/epilogue/latin-700.css';
+import '@fontsource/epilogue/latin-800.css';
 import '../styles/global.css';
 import { siteConfig } from '../data/site';
 import { withBase } from '../lib/urls';
@@ -22,12 +29,6 @@ const {
     <title>{title} | {siteConfig.name}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body class="bg-flyers-snow text-flyers-charcoal min-h-dvh antialiased">
     <header

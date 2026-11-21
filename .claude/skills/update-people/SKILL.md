@@ -18,6 +18,7 @@ description: Add, change, or remove a Flyers coach or board member on the Coache
 name: Tim Richards
 role: Board president and Flyers Enduro/Gravity coach
 programFocus: Flyers Enduro/Gravity # or Flyers XC, Jr. Flyers, Lake Mountain Bicycle Club, Inc.
+program: enduro # xc, enduro, or jr-flyers. Sets the card color. Leave out for club-wide roles.
 order: 3
 coach: true
 boardRole: President # leave out if not on the board

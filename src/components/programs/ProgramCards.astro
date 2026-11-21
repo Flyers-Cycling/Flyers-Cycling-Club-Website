@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getProgramAccentMeta, getRegistrationStatusMeta } from '../../lib/programs';
+import { getRegistrationStatusMeta, programClasses, programTheme } from '../../lib/programs';
 import { withBase } from '../../lib/urls';
 import { effectiveRegistrationStatus, registrationCta } from '../../lib/registration';
 
@@ -21,14 +21,15 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
         effectiveRegistrationStatus(data.registrationStatus, data.registrationForm),
       );
       const register = registrationCta(data.registrationForm);
-      const accentMeta = getProgramAccentMeta(data.accentKey);
+      const theme = programTheme(data.accentKey);
       const programHref = withBase(`/programs/${data.programId}`);
 
       return (
         <article
-          class={`group flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition ${accentMeta.borderClass}`}
+          data-program={theme}
+          class={`group flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition ${programClasses.hoverBorder}`}
         >
-          <div class={`h-2 w-full ${accentMeta.topBarClass}`} aria-hidden="true" />
+          <div class={`h-2 w-full ${programClasses.bar}`} aria-hidden="true" />
           <div class="bg-flyers-slate-dark relative aspect-[16/9] w-full overflow-hidden">
             {data.heroImage ? (
               <img
@@ -40,7 +41,7 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
                 class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
               />
             ) : (
-              <PhotoPlaceholder tone={accentMeta.topBarClass} />
+              <PhotoPlaceholder tone="bg-program" />
             )}
           </div>
 
@@ -48,7 +49,7 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
             <div>
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <span
-                  class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-extrabold ${accentMeta.badgeClass}`}
+                  class={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-extrabold ${programClasses.badge}`}
                 >
                   {data.discipline}
                 </span>
@@ -61,7 +62,7 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
               </div>
 
               <h3 class="font-display text-flyers-slate-dark mt-4 text-3xl font-black tracking-wide uppercase">
-                <a href={programHref} class="hover:text-flyers-red transition hover:underline">
+                <a href={programHref} class="hover:text-program-ink transition hover:underline">
                   {data.title}
                 </a>
               </h3>
@@ -93,7 +94,7 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
             <div class="mt-6 flex items-center justify-between gap-3 border-t border-neutral-100 pt-4">
               <a
                 href={programHref}
-                class={`font-display inline-flex min-h-12 items-center justify-center rounded-lg px-4 py-2 text-base font-extrabold tracking-wider uppercase transition ${accentMeta.buttonClass}`}
+                class={`font-display inline-flex min-h-12 items-center justify-center rounded-lg px-4 py-2 text-base font-extrabold tracking-wider uppercase transition ${programClasses.button}`}
               >
                 Explore {data.shortTitle} &rarr;
               </a>
@@ -101,7 +102,7 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
                 href={register.href}
                 target={register.external ? '_blank' : undefined}
                 rel={register.external ? 'noopener noreferrer' : undefined}
-                class="text-flyers-slate hover:text-flyers-red-deep text-right text-xs font-extrabold underline transition"
+                class="text-flyers-slate hover:text-program-ink text-right text-xs font-extrabold underline transition"
               >
                 {register.label}
               </a>

@@ -109,7 +109,7 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
           <tbody class="text-flyers-charcoal divide-y divide-neutral-200 bg-white">
             {
               tiers.map((tier) => (
-                <tr class={tier.data.featured ? 'bg-[#FFF9E6]' : ''}>
+                <tr class={tier.data.featured ? 'bg-flyers-gold-light' : ''}>
                   <th scope="row" class="text-flyers-slate-dark px-3 py-2.5 font-extrabold">
                     {tier.data.name}
                   </th>

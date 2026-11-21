@@ -1,0 +1,50 @@
+---
+// Program tag: a color dot plus the program name, so color is never the only signal (WCAG 1.4.1).
+// Colors come from the program theme (data-program, see global.css and docs/brand.md section 3).
+import { programTheme } from '../../lib/programs';
+
+interface Props {
+  /** A program or event key: 'xc', 'enduro', 'jr-flyers', 'jr', 'all', 'community'. */
+  program: string;
+  /** 'light' for white or snow backgrounds, 'dark' for slate surfaces. */
+  surface?: 'light' | 'dark';
+  class?: string;
+}
+
+const { program, surface = 'light', class: className = '' } = Astro.props;
+
+const labels: Record<string, string> = {
+  all: 'Whole club',
+  xc: 'Flyers XC',
+  enduro: 'Flyers Enduro/Gravity',
+  jr: 'Jr. Flyers',
+  'jr-flyers': 'Jr. Flyers',
+  community: 'Trail day',
+};
+
+const theme = programTheme(program);
+const label = labels[program] ?? 'Flyers';
+const isClubWide = theme === 'club';
+
+const surfaceClass = isClubWide
+  ? program === 'community'
+    ? 'bg-flyers-gold-light text-flyers-gold-ink border-flyers-gold'
+    : 'bg-flyers-slate-dark text-white border-flyers-slate-dark'
+  : surface === 'dark'
+    ? 'bg-program-accent/20 text-program-on-dark border-program-accent/60'
+    : 'bg-program-soft text-program-ink border-program-accent/40';
+
+const dotClass = isClubWide
+  ? program === 'community'
+    ? 'bg-flyers-gold-deep'
+    : 'bg-flyers-red-signature'
+  : 'bg-program-accent';
+---
+
+<span
+  data-program={theme}
+  class={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-extrabold ${surfaceClass} ${className}`}
+>
+  <span class={`h-2 w-2 shrink-0 rounded-full ${dotClass}`} aria-hidden="true"></span>
+  <slot>{label}</slot>
+</span>

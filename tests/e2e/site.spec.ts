@@ -37,6 +37,22 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     });
   }
 
+  // Each program page uses its own color (docs/brand.md section 3): XC red, Enduro/Gravity pink,
+  // Jr. Flyers blue. Checks the register button and the "Who it's for" check marks.
+  for (const [route, primary] of [
+    ['/programs/xc', 'rgb(184, 30, 30)'],
+    ['/programs/enduro', 'rgb(184, 18, 95)'],
+    ['/programs/jr-flyers', 'rgb(21, 101, 192)'],
+  ] as const) {
+    test(`${route} uses its program color`, async ({ page }) => {
+      await page.goto(route);
+      const check = page.locator('span[aria-hidden="true"]', { hasText: '✓' }).first();
+      await expect(check).toHaveCSS('color', primary);
+      const registerButton = page.locator('main a.bg-program').first();
+      await expect(registerButton).toHaveCSS('background-color', primary);
+    });
+  }
+
   test('interactive Program Pathway Finder updates recommendation dynamically', async ({
     page,
   }) => {
