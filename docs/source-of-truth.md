@@ -6,28 +6,30 @@ Status key: **Confirmed** (by Randall or the board, with the date), **Needs boar
 
 ## Club
 
-| Fact                          | Where to edit                                        | Status                                                             |
-| ----------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
-| Club name, legal entity       | `siteConfig.name`, `siteConfig.legalEntity`          | Confirmed                                                          |
-| Mission and focus areas       | `siteConfig.mission`                                 | Confirmed (Randall, Nov 2026)                                      |
-| EIN                           | `siteConfig.einPlaceholder`                          | Needs board                                                        |
-| Contact email                 | `siteConfig.contact`                                 | Confirmed (old domain, keep until the new domain is live)          |
-| Socials                       | `siteConfig.socials`                                 | Needs board (only @flyers_xc listed)                               |
-| School teams riders come from | `siteConfig.nicaPartners`                            | Needs board: which are formal partners                             |
-| Brand colors and fonts        | `src/styles/global.css` (see [brand.md](./brand.md)) | Confirmed for XC red and Enduro pink; Jr. Flyers color needs board |
+| Fact                          | Where to edit                                        | Status                                                      |
+| ----------------------------- | ---------------------------------------------------- | ----------------------------------------------------------- |
+| Club name, legal entity       | `siteConfig.name`, `siteConfig.legalEntity`          | Confirmed                                                   |
+| Mission and focus areas       | `siteConfig.mission`                                 | Confirmed (Randall, Nov 2026)                               |
+| EIN                           | `siteConfig.einPlaceholder`                          | Needs board                                                 |
+| Contact email                 | `siteConfig.contact`                                 | Confirmed (old domain, keep until the new domain is live)   |
+| Socials                       | `siteConfig.socials`                                 | Needs board (only @flyers_xc listed)                        |
+| School teams riders come from | `siteConfig.nicaPartners`                            | Needs board: which are formal partners                      |
+| Brand colors and fonts        | `src/styles/global.css` (see [brand.md](./brand.md)) | Confirmed: XC and Jr. Flyers red, Enduro pink (Nov 21 2026) |
 
 ## Programs
 
 One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. Ages, grades, season, fee, what the fee covers, practice rhythm, who it's for, gear, and the NICA note all live in the frontmatter.
 
-| Fact                                | Status                                                            |
-| ----------------------------------- | ----------------------------------------------------------------- |
-| Flyers XC ages, season, fee, groups | Confirmed (Randall, Nov 21 2026). Devo and Comp naming in PR #8.  |
-| Flyers Enduro/Gravity ages, season  | Confirmed. Minimum age is `siteConfig.enduroMinimumAge`.          |
-| Enduro/Gravity fee and insurance    | Needs board: what the gravity insurance is, and why $150          |
-| Jr. Flyers grades, season           | Confirmed                                                         |
-| Jr. Flyers fee                      | $35 confirmed by Randall. Lands with PR #8 (main still says $50). |
-| Practice days, times, locations     | Needs board for all three programs                                |
+| Fact                                | Status                                                                                      |
+| ----------------------------------- | ------------------------------------------------------------------------------------------- |
+| Flyers XC ages, season, fee, groups | Confirmed (Randall, Nov 21 2026). Devo and Comp naming in PR #8.                            |
+| Flyers Enduro/Gravity ages, season  | Confirmed. Minimum age is `siteConfig.enduroMinimumAge`.                                    |
+| Enduro/Gravity fee and insurance    | Needs board: what the gravity insurance is, and why $150                                    |
+| Jr. Flyers grades, season           | Confirmed                                                                                   |
+| Jr. Flyers fee                      | $35 confirmed by Randall. Lands with PR #8 (main still says $50).                           |
+| Practice days                       | Confirmed Nov 21 2026 (in plan.md, not yet in program files). Enduro/Gravity needs a check. |
+| Practice times, locations           | Needs board for all three programs                                                          |
+| Races each program follows          | Confirmed Nov 21 2026 (in plan.md, not yet on program pages)                                |
 
 ## Registration
 

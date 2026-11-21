@@ -8,8 +8,6 @@ Last reviewed: Nov 21, 2026.
 
 A site a parent can trust in 2 minutes on a phone, and a member can use every week. Durango DEVO is the model: one club, many groups, clear safety and support pages, and lots of real photos. Flyers has 3 programs instead of 15 age groups, so each program gets its own section with its own color.
 
-Later, a team-management app (rosters, attendance, messages) sits behind a "Member login" link. The site and the app share one design system ([brand.md](./brand.md)).
-
 ### What we're borrowing from Durango DEVO
 
 - A clear "how we work" statement (theirs is "age based" and "community based"). Ours: organized by program, age, and ability, and community based.
@@ -51,7 +49,7 @@ Later, a team-management app (rosters, attendance, messages) sits behind a "Memb
 - [ ] Add the semantic and program-theme token layers to `global.css` (brand.md section 3)
 - [ ] Replace raw hex in `getProgramAccentMeta()` with tokens
 - [ ] Each program page sets `data-program` so its color comes from one place
-- [ ] Confirm the Jr. Flyers color and get logo source files
+- [ ] Get logo source files (Jr. Flyers color is settled: red)
 - [ ] Self-host the two fonts
 - [ ] Build the shared components list (brand.md section 6) as Astro components
 - [ ] A `/styleguide` page (not in the nav) that shows tokens and components
@@ -60,11 +58,11 @@ Later, a team-management app (rosters, attendance, messages) sits behind a "Memb
 
 Parents look for these first.
 
-- [ ] Safety page: coach screening and training, two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern
+- [ ] Safety page: coach screening and training (background check plus head-coach training), two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern
 - [ ] Coaches page with real bios and photos (adults, with consent)
 - [ ] Board page with every board member, the EIN, and a 990 or annual report link
 - [ ] Policies page: code of conduct, rider rules, waiver, refund and cancellation
-- [ ] Scholarships page: what help exists and how to ask privately
+- [ ] Scholarships page: what help exists and how to ask privately (today: reach out to a coach)
 - [ ] Volunteer page: roles, time asked, training, how to start
 
 ## Phase 4: Program sections
@@ -94,32 +92,44 @@ For families already in the club.
 - [ ] Real sponsors only; open sponsorship spots listed separately
 - [ ] Confirm every sponsor tier perk before it stays on the site
 - [ ] Impact numbers on the home page (riders, rides, volunteer hours, scholarships)
-- [ ] Adult riders: how parents and adults can ride, coach, and help
+- [ ] Adult riders: how parents and adults can ride, coach, and help (confirmed: the club wants this)
 - [ ] Rider and family stories, with permission
 - [ ] Newsletter sign-up
 
-## Phase 7: Team app
+## Confirmed facts to add to the site
 
-- [ ] List what the app does first (Randall to decide: rosters, attendance, messages, waivers, payments?)
-- [ ] Architecture decision: stack, sign-in, where member data lives
-- [ ] Move design tokens into a shared package
-- [ ] "Member login" link in the header
+Randall answered these on Nov 21, 2026. Each one goes into its home in content (see [source-of-truth.md](./source-of-truth.md)), after PR #8 merges so the program files don't conflict.
+
+- [ ] **Practice rhythm.** Flyers XC: Saturdays only through mid-March, then Tuesdays and some Saturdays through August. Jr. Flyers: Tuesdays, June to August. Flyers Enduro/Gravity: "the same" (see the question below). Update `practiceSchedule` in each program file.
+- [ ] **Flyers XC kickoff meeting, Dec 15, 2026.** Add an event (skill: `manage-events`). Time and place still needed.
+- [ ] **Flyers XC rides:** Winter Classic, Eagle Mountain to Eureka and back (January). Big Water Rim (February). Spring Classic, White Rim (April). Add as events once dates are set.
+- [ ] **Races each program follows.** Flyers XC: Intermountain Cup and the weekly race series. Flyers Enduro/Gravity: the youth enduro series, plus Mountain States Cup and Monster Pro Series for downhill. Jr. Flyers: no races, weekly practices from June. Name these on each program page.
+- [ ] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
+- [ ] **Help with costs.** Some help is available. Families reach out to a coach. Use this on the FAQ and the future Scholarships page.
+- [ ] **Jr. Flyers uses red and the club logo.** Switch the `jr` accent from berry to red.
+- [ ] **Adults are welcome.** Add the adult riders page in Phase 6.
 
 ## Board and content questions
 
 Open facts the site needs. Resolve one, update the fact in its home ([source-of-truth.md](./source-of-truth.md)), and tick it here.
 
 - [ ] Which NICA teams are formal partners, and which just share riders?
-- [ ] What screening and training do Flyers coaches complete (background check provider, concussion, abuse awareness, first aid/CPR)?
+- [x] What screening and training do Flyers coaches complete? Background check plus training from head coaches; many are NICA coaches.
+- [ ] Which background check provider, and do coaches also complete concussion, abuse-awareness, or first aid/CPR training?
 - [ ] EIN, the full board list, and a 990 or annual report link
-- [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepard (Jr. Flyers)
+- [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepard (Jr. Flyers). Randall is sending these.
 - [ ] Registration form links (Dec 1, 2026) and the Jr. Flyers opening date
 - [ ] Real Zeffy links for donations, each tier, and the shop. Real Google Calendar embed. Real Volt store URL.
 - [ ] Is Lake Mountain Trails Coalition a current sponsor? What is its URL?
 - [ ] What the Enduro/Gravity "gravity rider insurance" is, and why the fee is $150
-- [ ] Scholarship details: fee waivers, loaner bikes, who reviews requests
+- [x] Is there help with costs? Yes, some. Families reach out to a coach.
+- [ ] Scholarship details: what kinds of help (fee waivers, loaner bikes), and can we publish a contact?
 - [ ] Refund policy and waiver links
 - [ ] Confirm the club will deliver every sponsor tier perk in `src/content/tiers/`
 - [ ] Media releases for the Enduro/Gravity photo (4 riders), and real photos for the home page hero, Flyers XC, and Jr. Flyers
-- [ ] Practice days, times, and locations for each program
-- [ ] Jr. Flyers brand color, and logo source files
+- [x] Practice days for each program (see "Confirmed facts" above)
+- [ ] Practice times and locations for each program
+- [ ] Flyers Enduro/Gravity practices: same as Flyers XC (Saturdays, then Tuesdays) or same as Jr. Flyers (Tuesdays, June to August)?
+- [ ] Dec 15 kickoff meeting time and place, and dates for the Winter Classic, Big Water Rim, and Spring Classic rides
+- [x] Jr. Flyers brand color: red, reusing the club logo
+- [ ] Logo source files
