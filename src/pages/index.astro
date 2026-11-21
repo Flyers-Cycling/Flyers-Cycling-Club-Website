@@ -18,7 +18,7 @@ const events = upcomingEvents(await getCollection('events')).slice(0, 3);
 const programBadgeMeta: Record<string, { label: string; style: string }> = {
   all: { label: 'Whole Club', style: 'bg-flyers-slate-dark text-white' },
   xc: { label: 'Flyers XC', style: 'bg-flyers-red text-white' },
-  enduro: { label: 'Flyers Enduro', style: 'bg-flyers-pink-deep text-white' },
+  enduro: { label: 'Flyers Enduro/Gravity', style: 'bg-flyers-pink-deep text-white' },
   'jr-flyers': { label: 'Jr. Flyers', style: 'bg-flyers-berry text-white' },
   community: { label: 'Trail & Community', style: 'bg-flyers-gold text-flyers-slate-dark' },
 };
@@ -44,8 +44,11 @@ const programBadgeMeta: Record<string, { label: string; style: string }> = {
             id="home-programs-heading"
             class="font-display text-flyers-slate-dark mt-2 text-4xl leading-tight font-black tracking-wide uppercase sm:text-5xl"
           >
-            Three programs, kindergarten through 12th grade
+            Find your program
           </h2>
+          <p class="text-flyers-iron mt-3 text-base leading-relaxed">
+            Endurance, gravity, or first trail skills. Riders can join more than one program.
+          </p>
         </div>
         <a
           href={withBase('/programs')}
@@ -83,7 +86,7 @@ const programBadgeMeta: Record<string, { label: string; style: string }> = {
             id="home-schedule-heading"
             class="font-display text-flyers-slate-dark mt-2 text-4xl leading-tight font-black tracking-wide uppercase sm:text-5xl"
           >
-            Upcoming rides, clinics, and trail days
+            Upcoming rides and camps
           </h2>
         </div>
         <a

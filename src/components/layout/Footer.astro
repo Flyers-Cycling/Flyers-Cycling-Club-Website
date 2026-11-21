@@ -27,8 +27,7 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
           </span>
         </a>
         <p class="text-sm leading-relaxed text-white/80">
-          Youth mountain biking for Utah kids, kindergarten through 12th grade. Beginners welcome,
-          racing optional.
+          Youth mountain biking in Utah. All riders welcome, and racing is optional.
         </p>
         <div
           class="bg-flyers-slate/70 rounded-xl border border-white/15 p-3.5 text-xs leading-relaxed text-white/85"
@@ -51,7 +50,7 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
                   href={withBase(`/programs/${data.programId}`)}
                   class="text-white/85 transition hover:text-white"
                 >
-                  {data.title} ({data.gradesLabel})
+                  {data.title}
                 </a>
               </li>
             ))
@@ -74,8 +73,28 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
         </h2>
         <ul class="mt-4 space-y-2.5 text-sm">
           <li>
+            <a href={withBase('/register')} class="text-white/85 transition hover:text-white">
+              Registration
+            </a>
+          </li>
+          <li>
             <a href={withBase('/schedule')} class="text-white/85 transition hover:text-white">
               Schedule
+            </a>
+          </li>
+          <li>
+            <a href={withBase('/onboarding')} class="text-white/85 transition hover:text-white">
+              New family onboarding
+            </a>
+          </li>
+          <li>
+            <a href={withBase('/coaches')} class="text-white/85 transition hover:text-white">
+              Coaches
+            </a>
+          </li>
+          <li>
+            <a href={withBase('/board')} class="text-white/85 transition hover:text-white">
+              Board
             </a>
           </li>
           <li>

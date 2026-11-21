@@ -1,0 +1,145 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/layout/PageHero.astro';
+import { siteConfig } from '../data/site';
+import { registrationCta, registrationOpensLabel } from '../lib/registration';
+import { withBase } from '../lib/urls';
+
+const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
+const register = registrationCta();
+const { season } = siteConfig.registration;
+const opens = registrationOpensLabel();
+---
+
+<BaseLayout
+  title={`${season} Registration`}
+  description={`Registration for the ${season} Flyers Cycling Club season opens ${opens}. One sign-up covers Flyers XC, Flyers Enduro/Gravity, and Jr. Flyers.`}
+>
+  <PageHero
+    eyebrow={`${season} season`}
+    title={register.isOpen ? 'Registration is open' : `Registration opens ${opens}`}
+  >
+    <p>
+      One sign-up covers every Flyers program. Riders can join more than one program, and beginners
+      are always welcome.
+    </p>
+  </PageHero>
+
+  <section aria-labelledby="register-how-heading" class="py-14 sm:py-18">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
+      <div class="space-y-6 lg:col-span-7">
+        <h2
+          id="register-how-heading"
+          class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase sm:text-4xl"
+        >
+          How to sign up
+        </h2>
+        {
+          register.isOpen ? (
+            <p class="text-flyers-iron text-base leading-relaxed">
+              Use the button below to open the registration form. If you have questions, email{' '}
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                class="text-flyers-red-deep font-bold underline"
+              >
+                {siteConfig.contact.email}
+              </a>
+              .
+            </p>
+          ) : (
+            <p class="text-flyers-iron text-base leading-relaxed">
+              The registration form goes live here on {opens}. Until then, look over the programs
+              and pick the ones that fit your rider. Questions are welcome anytime at{' '}
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                class="text-flyers-red-deep font-bold underline"
+              >
+                {siteConfig.contact.email}
+              </a>
+              .
+            </p>
+          )
+        }
+        <ul class="text-flyers-iron space-y-3 text-sm leading-relaxed">
+          <li class="flex items-start gap-3">
+            <span class="text-flyers-red font-black" aria-hidden="true">&#10003;</span>
+            <span
+              >Riders can join more than one program, like Flyers Enduro/Gravity plus Flyers XC.</span
+            >
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-flyers-red font-black" aria-hidden="true">&#10003;</span>
+            <span
+              >Riders need to be {siteConfig.enduroMinimumAge} or older for Flyers Enduro/Gravity.</span
+            >
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-flyers-red font-black" aria-hidden="true">&#10003;</span>
+            <span
+              >Each program page lists who it's for, the season, the cost, and the gear you'll need.</span
+            >
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-flyers-red font-black" aria-hidden="true">&#10003;</span>
+            <span
+              >If cost is a barrier, <a
+                href={`mailto:${siteConfig.contact.email}?subject=Help%20with%20costs`}
+                class="text-flyers-red-deep font-bold underline">ask us about help</a
+              >. Requests are confidential.</span
+            >
+          </li>
+        </ul>
+        {
+          register.isOpen ? (
+            <a
+              href={register.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-lg font-extrabold tracking-wider text-white uppercase transition"
+            >
+              Register now &rarr;
+            </a>
+          ) : (
+            <p class="bg-flyers-snow text-flyers-slate-dark rounded-xl border border-neutral-200 p-4 text-sm font-bold">
+              The sign-up link will appear here on {opens}.
+            </p>
+          )
+        }
+        <p class="text-flyers-iron text-sm leading-relaxed">
+          Already signed up? See <a
+            href={withBase('/onboarding')}
+            class="text-flyers-red-deep font-bold underline">what to expect as a new family</a
+          >.
+        </p>
+      </div>
+
+      <aside
+        aria-labelledby="register-programs-heading"
+        class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs lg:col-span-5"
+      >
+        <h2
+          id="register-programs-heading"
+          class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+        >
+          The programs
+        </h2>
+        <ul class="mt-4 space-y-3">
+          {
+            programs.map(({ data }) => (
+              <li>
+                <a
+                  href={withBase(`/programs/${data.programId}`)}
+                  class="bg-flyers-snow hover:border-flyers-slate block min-h-12 rounded-xl border border-neutral-200 p-4 transition"
+                >
+                  <span class="text-flyers-slate-dark block font-extrabold">{data.title}</span>
+                  <span class="text-flyers-iron mt-0.5 block text-xs">{data.seasonLabel}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

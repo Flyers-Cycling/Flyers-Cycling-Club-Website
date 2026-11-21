@@ -8,6 +8,10 @@ const EXPECTED_HTML_FILES = [
   'index.html',
   '404.html',
   'about/index.html',
+  'register/index.html',
+  'coaches/index.html',
+  'board/index.html',
+  'onboarding/index.html',
   'winter-camp/index.html',
   'faq/index.html',
   'schedule/index.html',
@@ -37,7 +41,7 @@ function resolveDistTarget(hrefOrSrc: string): boolean {
 }
 
 describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
-  it('generates all 12 static HTML pages plus sitemap-index.xml', () => {
+  it('generates every static HTML page plus sitemap-index.xml', () => {
     for (const relPath of EXPECTED_HTML_FILES) {
       expect(fs.existsSync(path.join(DIST_DIR, relPath)), `Missing dist/${relPath}`).toBe(true);
     }
@@ -90,12 +94,16 @@ describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
     }
   });
 
-  it('includes accurate club differentiators ($50/$150 volunteer-led fees & all 5 NICA schools)', () => {
+  it('keeps the home page on programs and registration, not fees, and lists all 5 NICA schools on About', () => {
     const homeHtml = fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf8');
     const aboutHtml = fs.readFileSync(path.join(DIST_DIR, 'about/index.html'), 'utf8');
 
-    expect(homeHtml).toContain('$50 or $150');
-    expect(homeHtml).toContain('100% Volunteer-Led');
+    expect(homeHtml).toContain('All riders welcome');
+    expect(homeHtml).toContain('Flyers Enduro/Gravity');
+    expect(homeHtml).toContain('registration opens');
+    expect(homeHtml).not.toContain('$50');
+    expect(homeHtml).not.toContain('$150');
+    expect(homeHtml).not.toContain('U23');
     expect(homeHtml).toContain('closedby="any"');
 
     for (const school of ['Westlake', 'Lehi', 'Cedar Valley', 'Skyridge', 'Lone Peak']) {

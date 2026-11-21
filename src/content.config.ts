@@ -19,7 +19,7 @@ const programs = defineCollection({
       seasonLabel: z.string(),
       registrationWindowLabel: z.string(),
       registrationStatus: z.enum(['open', 'upcoming', 'waitlist', 'closed']),
-      registrationUrl: z.string().url(),
+      // Registration links live in src/data/site.ts (one form for every program).
       feeAmount: z.enum(['$50', '$150']),
       feeIncludes: z.string(),
       accentKey: z.enum(['xc', 'enduro', 'jr']),

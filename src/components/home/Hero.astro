@@ -1,12 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import { siteConfig } from '../../data/site';
+import { registrationCta, registrationOpensLabel } from '../../lib/registration';
 import { withBase } from '../../lib/urls';
 
-const programs = await getCollection('programs');
-const byId = Object.fromEntries(programs.map((p) => [p.data.programId, p.data]));
-const gradesFor = (id: 'xc' | 'enduro' | 'jr-flyers') =>
-  (byId[id]?.gradesLabel ?? '').replace(/^Grade/, 'grade').replace(' – ', ' through ');
+const register = registrationCta();
+const season = siteConfig.registration.season;
 ---
 
 <section class="dark-surface bg-flyers-slate-dark relative overflow-hidden text-white">
@@ -50,16 +48,13 @@ const gradesFor = (id: 'xc' | 'enduro' | 'jr-flyers') =>
       <h1
         class="font-display mt-6 text-5xl leading-[0.95] font-black tracking-wide text-white uppercase sm:text-6xl lg:text-7xl"
       >
-        Mountain biking for Utah kids, <span class="text-flyers-gold"
-          >kindergarten through 12th grade.</span
-        >
+        Youth mountain biking in Utah. <span class="text-flyers-gold">All riders welcome.</span>
       </h1>
 
       <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
-        Jr. Flyers is for {gradesFor('jr-flyers')}, Flyers XC is for {gradesFor('xc')}, and Flyers
-        Enduro is for riders in {gradesFor('enduro')} who love to descend. Volunteer coaches, friendly
-        teammates, and registration of {siteConfig.feePhilosophy.rangeLabel}. You don't need to be
-        fast, and racing is optional.
+        Three programs, one club: Flyers XC for longer rides and endurance, Flyers Enduro/Gravity
+        for descending, and Jr. Flyers for first trail skills. Volunteer coaches and friendly
+        teammates. You don't need to be fast, and racing is optional.
       </p>
 
       <div class="mt-8 flex flex-wrap items-center gap-3.5">
@@ -70,12 +65,6 @@ const gradesFor = (id: 'xc' | 'enduro' | 'jr-flyers') =>
           Explore programs &rarr;
         </a>
         <a
-          href="#pathway-finder"
-          class="text-flyers-slate-dark hover:bg-flyers-snow inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 text-base font-extrabold shadow-md transition"
-        >
-          Which program fits my rider?
-        </a>
-        <a
           href={withBase('/sponsors')}
           class="border-flyers-gold/65 bg-flyers-slate-dark/80 text-flyers-gold hover:bg-flyers-gold hover:text-flyers-slate-dark inline-flex min-h-12 items-center justify-center rounded-xl border px-5 py-3 text-base font-extrabold backdrop-blur-xs transition"
         >
@@ -84,54 +73,35 @@ const gradesFor = (id: 'xc' | 'enduro' | 'jr-flyers') =>
       </div>
     </div>
 
-    <!-- Quick Impact & Differentiator Metrics Strip -->
-    <dl class="mt-14 grid gap-4 border-t border-white/15 pt-8 sm:grid-cols-2 lg:grid-cols-4">
-      <div
-        class="border-t-flyers-red bg-flyers-slate-dark/85 rounded-xl border border-t-3 border-white/15 p-4 backdrop-blur-xs"
-      >
-        <dt class="text-flyers-silver text-xs font-extrabold tracking-wider uppercase">
-          3 Programs
-        </dt>
-        <dd class="font-display mt-1 text-2xl font-black tracking-wide text-white uppercase">
-          Jr. Flyers · XC · Enduro
-        </dd>
-        <dd class="text-flyers-silver mt-0.5 text-xs">
-          Kindergarten through U23, beginners welcome
-        </dd>
+    <!-- Registration announcement -->
+    <aside
+      id="registration"
+      aria-labelledby="registration-announcement-heading"
+      class="border-t-flyers-gold bg-flyers-slate-dark/85 mt-12 flex flex-col gap-4 rounded-2xl border border-t-4 border-white/15 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+    >
+      <div>
+        <h2
+          id="registration-announcement-heading"
+          class="font-display text-2xl font-black tracking-wide text-white uppercase sm:text-3xl"
+        >
+          {
+            register.isOpen
+              ? `${season} registration is open`
+              : `${season} registration opens ${registrationOpensLabel()}`
+          }
+        </h2>
+        <p class="mt-1 text-sm text-white/85">
+          One sign-up for every program. Riders can join more than one.
+        </p>
       </div>
-      <div
-        class="border-t-flyers-gold bg-flyers-slate-dark/85 rounded-xl border border-t-3 border-white/15 p-4 backdrop-blur-xs"
+      <a
+        href={register.href}
+        target={register.external ? '_blank' : undefined}
+        rel={register.external ? 'noopener noreferrer' : undefined}
+        class="bg-flyers-gold text-flyers-slate-dark hover:bg-flyers-gold-bright inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl px-5 py-3 text-base font-extrabold transition"
       >
-        <dt class="text-flyers-silver text-xs font-extrabold tracking-wider uppercase">
-          Rider Registration
-        </dt>
-        <dd class="text-flyers-gold font-display mt-1 text-2xl font-black tracking-wide uppercase">
-          {siteConfig.feePhilosophy.rangeLabel}
-        </dd>
-        <dd class="text-flyers-silver mt-0.5 text-xs">Covers a rider t-shirt and insurance</dd>
-      </div>
-      <div
-        class="border-t-flyers-red bg-flyers-slate-dark/85 rounded-xl border border-t-3 border-white/15 p-4 backdrop-blur-xs"
-      >
-        <dt class="text-flyers-silver text-xs font-extrabold tracking-wider uppercase">
-          Coaches &amp; Board
-        </dt>
-        <dd class="font-display mt-1 text-2xl font-black tracking-wide text-white uppercase">
-          100% Volunteer-Led
-        </dd>
-        <dd class="text-flyers-silver mt-0.5 text-xs">{siteConfig.legalEntity}, a 501(c)(3)</dd>
-      </div>
-      <div
-        class="border-t-flyers-gold bg-flyers-slate-dark/85 rounded-xl border border-t-3 border-white/15 p-4 backdrop-blur-xs"
-      >
-        <dt class="text-flyers-silver text-xs font-extrabold tracking-wider uppercase">
-          Fits Your School Team
-        </dt>
-        <dd class="font-display mt-1 text-2xl font-black tracking-wide text-white uppercase">
-          Winter to Summer
-        </dd>
-        <dd class="text-flyers-silver mt-0.5 text-xs">Scheduled around the fall NICA season</dd>
-      </div>
-    </dl>
+        {register.isOpen ? 'Register now' : 'How registration works'} &rarr;
+      </a>
+    </aside>
   </div>
 </section>

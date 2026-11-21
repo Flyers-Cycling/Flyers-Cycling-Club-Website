@@ -42,14 +42,12 @@ const leadership = (await getCollection('leadership')).sort((a, b) => a.data.ord
           Flyers Cycling Club is run by <strong class="text-flyers-slate-dark"
             >{siteConfig.legalEntity}</strong
           >, a registered 501(c)(3) non-profit. The club brings together three programs: Flyers XC
-          (started in 2020), Flyers Enduro, and Jr. Flyers.
+          (started in 2020), Flyers Enduro/Gravity, and Jr. Flyers.
         </p>
         <p class="text-flyers-iron text-base leading-relaxed">
-          Every board member, program director, and ride leader is a volunteer. Registration ({
-            siteConfig.feePhilosophy.rangeLabel
-          }, depending on the program) covers each rider's club t-shirt and insurance. Sponsors and
-          donors pay for the rest: coach safety training, first-aid kits, pit tents, tools, and help
-          for families who need it.
+          Every board member, program director, and ride leader is a volunteer. Registration covers
+          each rider's club t-shirt and insurance. Sponsors and donors pay for the rest: coach
+          safety training, first-aid kits, pit tents, tools, and help for families who need it.
         </p>
         <p class="text-flyers-iron text-base leading-relaxed">
           If cost is a barrier for your family, email <a
@@ -152,7 +150,7 @@ const leadership = (await getCollection('leadership')).sort((a, b) => a.data.ord
               href={withBase('/schedule')}
               class="bg-flyers-slate hover:bg-flyers-slate-dark font-display inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-sm font-extrabold tracking-wider text-white uppercase transition"
             >
-              See upcoming trail days &rarr;
+              See the schedule &rarr;
             </a>
             <a
               href={`mailto:${siteConfig.contact.email}`}
@@ -176,7 +174,11 @@ const leadership = (await getCollection('leadership')).sort((a, b) => a.data.ord
         Who runs Flyers
       </h2>
       <p class="text-flyers-iron mt-3 max-w-2xl text-base leading-relaxed">
-        Every role below is filled by a volunteer.
+        Every role below is filled by a volunteer. Meet them on our <a
+          href={withBase('/coaches')}
+          class="text-flyers-red-deep font-bold underline">coaches</a
+        > and <a href={withBase('/board')} class="text-flyers-red-deep font-bold underline">board</a
+        > pages.
       </p>
       <!-- TODO(board): replace these role cards with real names, short bios, and (adult, consented) photos. -->
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

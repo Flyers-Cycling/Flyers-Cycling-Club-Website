@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/layout/PageHero.astro';
+import ComingSoon from '../components/layout/ComingSoon.astro';
+import { siteConfig } from '../data/site';
+
+const board = (await getCollection('leadership')).find((entry) =>
+  entry.data.role.toLowerCase().includes('board'),
+);
+---
+
+<BaseLayout
+  title="Board"
+  description={`The volunteer board of ${siteConfig.legalEntity}, the 501(c)(3) non-profit that runs Flyers Cycling Club.`}
+>
+  <PageHero eyebrow={siteConfig.legalEntity} title="Our board">
+    <p>
+      {
+        board?.data.bio ??
+          'A volunteer board looks after the club’s finances, insurance, and partnerships.'
+      }
+    </p>
+  </PageHero>
+
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto max-w-4xl space-y-8 px-4 sm:px-6 lg:px-8">
+      <ComingSoon id="board-members-heading" title="Board members">
+        <!-- TODO(board): add board member names and roles. Keep this list consistent with the 990. -->
+        <p>We'll list each board member and their role here.</p>
+      </ComingSoon>
+
+      <ComingSoon id="board-transparency-heading" title="Financials and documents">
+        <!-- TODO(board): EIN, and a link to the latest Form 990 or annual report. -->
+        <p>
+          {siteConfig.legalEntity} is a {siteConfig.nonProfitStatus.toLowerCase()}. We'll share our
+          EIN and annual reports here.
+        </p>
+      </ComingSoon>
+
+      <p class="text-flyers-iron text-sm">
+        Questions for the board? Email <a
+          href={`mailto:${siteConfig.contact.email}?subject=Question%20for%20the%20board`}
+          class="text-flyers-red-deep font-bold underline">{siteConfig.contact.email}</a
+        >.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

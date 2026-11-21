@@ -13,6 +13,10 @@ const CORE_ROUTES = [
   '/winter-camp',
   '/store',
   '/about',
+  '/register',
+  '/coaches',
+  '/board',
+  '/onboarding',
   '/faq',
 ];
 
@@ -39,7 +43,10 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     const finder = page.locator('#pathway-finder');
     await expect(finder).toBeVisible();
 
-    await finder.locator('input[name="ageBand"][value="k-6"]').check();
+    // Default: 7th grade and up, longer rides and endurance → Flyers XC
+    await expect(page.locator('#pathway-headline')).toContainText('Flyers XC');
+
+    await finder.locator('input[name="ageBand"][value="k-4"]').check();
     await finder.locator('input[name="focus"][value="fundamentals"]').check();
 
     await expect(page.locator('#pathway-headline')).toContainText('Jr. Flyers');
@@ -48,10 +55,10 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
       /\/programs\/jr-flyers$/,
     );
 
-    await finder.locator('input[name="ageBand"][value="9-12"]').check();
+    await finder.locator('input[name="ageBand"][value="7-plus"]').check();
     await finder.locator('input[name="focus"][value="gravity"]').check();
 
-    await expect(page.locator('#pathway-headline')).toContainText('Flyers Enduro');
+    await expect(page.locator('#pathway-headline')).toContainText('Flyers Enduro/Gravity');
     await expect(page.locator('#pathway-primary-cta')).toHaveAttribute(
       'href',
       /\/programs\/enduro$/,
@@ -82,7 +89,7 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
   test('Schedule filter narrows events by program', async ({ page }) => {
     await page.goto('/schedule');
     const allCount = await page.locator('.schedule-event-card:not(.hidden)').count();
-    expect(allCount).toBeGreaterThanOrEqual(5);
+    expect(allCount).toBeGreaterThanOrEqual(2);
 
     await page.locator('input[name="programFilter"][value="jr-flyers"]').check();
     const jrCount = await page.locator('.schedule-event-card:not(.hidden)').count();

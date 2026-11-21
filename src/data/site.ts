@@ -7,7 +7,7 @@ export interface NicaPartnerTeam {
 export const siteConfig = {
   name: 'Flyers Cycling Club',
   shortName: 'Flyers',
-  tagline: 'Youth mountain biking for Utah kids, K–12.',
+  tagline: 'Youth mountain biking in Utah. All riders welcome.',
   legalEntity: 'Lake Mountain Bicycle Club, Inc.',
   nonProfitStatus: '501(c)(3) Non-Profit Organization',
   einPlaceholder: 'Available upon request for corporate & foundation matching',
@@ -18,6 +18,16 @@ export const siteConfig = {
     detail:
       "Every Flyers program is run by volunteers. Registration is $50 or $150, depending on the program, and covers a club t-shirt and rider insurance. Sponsors and donors pay for the rest, so cost doesn't keep kids off the trail.",
   },
+  // One registration form covers every program for the season.
+  registration: {
+    season: '2027',
+    opensDate: '2026-12-01',
+    // TODO(board): paste the registration form link here on Dec 1. While it's empty, the
+    // site says "Registration opens Dec 1" and links to /register instead of a form.
+    formUrl: '' as string,
+  },
+  // Enduro/Gravity has a minimum age. Shown on the Enduro/Gravity page, /register, and the FAQ.
+  enduroMinimumAge: 10,
   contact: {
     email: 'info@lakemountainflyers.com',
     sponsorshipEmail: 'info@lakemountainflyers.com',
