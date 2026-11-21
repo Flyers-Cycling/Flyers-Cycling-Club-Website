@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/layout/PageHero.astro';
-import ComingSoon from '../components/layout/ComingSoon.astro';
 import { siteConfig } from '../data/site';
 import { withBase } from '../lib/urls';
 
@@ -60,11 +59,21 @@ const { email } = siteConfig.contact;
         </p>
       </section>
 
-      <!-- TODO(board): list the kinds of help the club offers (fee waivers, loaner bikes or gear,
-           race entries) before filling this in. -->
-      <ComingSoon id="cost-kinds-heading" title="What help looks like">
-        <p>The kinds of help we can offer, like registration fees or gear.</p>
-      </ComingSoon>
+      <section
+        aria-labelledby="cost-kinds-heading"
+        class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs sm:p-8"
+      >
+        <h2
+          id="cost-kinds-heading"
+          class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+        >
+          No forms, no rules
+        </h2>
+        <p class="text-flyers-iron mt-2 text-sm leading-relaxed">
+          There's no application. Tell us what would help, and a board member will follow up with
+          you privately.
+        </p>
+      </section>
 
       <section
         aria-labelledby="cost-give-heading"
