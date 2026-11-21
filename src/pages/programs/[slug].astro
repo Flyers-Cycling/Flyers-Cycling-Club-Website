@@ -32,6 +32,27 @@ const allSponsors = await getCollection('sponsors');
 const campEligible = (winterCamp.programs as readonly string[]).includes(data.programId);
 const showCampCallout =
   campEligible && isUpcoming({ startDate: winterCamp.startDate, endDate: winterCamp.endDate });
+const coaches = (await getCollection('leadership'))
+  .filter((person) => person.data.coach && person.data.program === data.programId)
+  .sort((a, b) => a.data.order - b.data.order);
+const news = (await getCollection('updates'))
+  .filter((post) => post.data.program === data.programId || post.data.program === 'all')
+  .sort((a, b) => b.data.publishedDate.localeCompare(a.data.publishedDate))
+  .slice(0, 2);
+const scheduleHref = withBase(`/schedule?program=${data.programId}`);
+
+// In-page links for the program section. Each target below carries the matching id.
+const sectionLinks = [
+  ...(data.groups ? [{ href: '#groups', label: 'Groups' }] : []),
+  { href: '#about', label: 'What riders do' },
+  { href: '#when', label: 'When we ride' },
+  { href: '#who', label: "Who it's for" },
+  { href: '#cost', label: 'Cost' },
+  { href: '#gear', label: 'Gear' },
+  ...(coaches.length > 0 ? [{ href: '#coaches', label: 'Coaches' }] : []),
+  { href: '#sponsors', label: 'Sponsors' },
+];
+
 const programEvents = upcomingEvents(await getCollection('events')).filter(
   (ev) =>
     (ev.data.program === data.programId || ev.data.program === 'all') &&
@@ -90,10 +111,10 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
               {register.label} &rarr;
             </a>
             <a
-              href={withBase('/schedule')}
+              href={scheduleHref}
               class="inline-flex min-h-12 items-center justify-center rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20"
             >
-              See practice and race dates
+              See {data.title} dates
             </a>
           </div>
         </div>
@@ -121,6 +142,24 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
       </div>
     </section>
 
+    <!-- Program section links -->
+    <nav aria-label={`${data.title} sections`} class="border-b border-neutral-200 bg-white">
+      <ul class="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
+        {
+          sectionLinks.map((link) => (
+            <li class="shrink-0">
+              <a
+                href={link.href}
+                class="text-flyers-slate-dark hover:border-program-accent hover:bg-program-soft inline-flex min-h-12 items-center rounded-full border border-neutral-200 px-4 text-sm font-bold transition"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
     <!-- Main Program Content & Sidebar -->
     <section class="py-14 sm:py-18">
       <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
@@ -129,6 +168,7 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
           {
             data.groups && (
               <section
+                id="groups"
                 aria-labelledby="program-groups-heading"
                 class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8"
               >
@@ -158,11 +198,14 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
             )
           }
 
-          <div class="club-prose rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <div
+            id="about"
+            class="club-prose rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8"
+          >
             <Content />
           </div>
 
-          <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <div id="when" class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
             <h2
               class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
             >
@@ -183,7 +226,7 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
             </ul>
           </div>
 
-          <div class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+          <div id="who" class="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
             <h2
               class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
             >
@@ -216,7 +259,7 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
           class="space-y-6 lg:col-span-5"
           aria-label="Program quick facts and gear requirements"
         >
-          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+          <div id="cost" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
             <h2
               class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
             >
@@ -261,7 +304,7 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
             </dl>
           </div>
 
-          <div class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+          <div id="gear" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
             <h2
               class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
             >
@@ -280,6 +323,64 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
               }
             </ul>
           </div>
+
+          {
+            coaches.length > 0 && (
+              <div
+                id="coaches"
+                class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs"
+              >
+                <h2 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase">
+                  {coaches.length === 1 ? 'Your coach' : 'Your coaches'}
+                </h2>
+                <ul class="mt-4 space-y-4">
+                  {coaches.map((coach) => (
+                    <li class="border-l-program-accent border-l-4 pl-3">
+                      <p class="text-flyers-slate-dark font-extrabold">{coach.data.name}</p>
+                      <p class="text-flyers-iron text-xs font-semibold">{coach.data.role}</p>
+                    </li>
+                  ))}
+                </ul>
+                <p class="text-flyers-iron mt-4 text-xs leading-relaxed">
+                  Every Flyers coach is screened and trained.{' '}
+                  <a href={withBase('/safety')} class="text-program-ink font-bold underline">
+                    How we keep riders safe
+                  </a>
+                </p>
+              </div>
+            )
+          }
+
+          {
+            news.length > 0 && (
+              <div id="news" class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+                <h2 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase">
+                  Club news
+                </h2>
+                <ul class="mt-4 space-y-4">
+                  {news.map((post) => (
+                    <li>
+                      <p class="text-program-ink text-xs font-bold">
+                        <time datetime={post.data.publishedDate}>
+                          {formatEventDate(post.data.publishedDate)}
+                        </time>
+                      </p>
+                      <p class="text-flyers-slate-dark mt-0.5 font-extrabold">{post.data.title}</p>
+                      <p class="text-flyers-iron mt-0.5 text-xs leading-relaxed">
+                        {post.data.summary}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={withBase('/store#updates-heading')}
+                  class="text-program-ink mt-4 inline-flex min-h-12 items-center text-xs font-extrabold underline"
+                >
+                  All club news &rarr;
+                </a>
+              </div>
+            )
+          }
 
           {
             showCampCallout && (
@@ -333,6 +434,7 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
 
     <!-- Program-Designated & Club Sponsors -->
     <section
+      id="sponsors"
       aria-labelledby="program-sponsors-heading"
       class="border-t border-neutral-200 bg-white py-14 sm:py-16"
     >
