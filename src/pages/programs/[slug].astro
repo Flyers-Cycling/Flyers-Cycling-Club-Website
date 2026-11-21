@@ -9,6 +9,7 @@ import { formatEventDate } from '../../lib/dates';
 import { eventEnds, isUpcoming, upcomingEvents } from '../../lib/events';
 import { winterCamp } from '../../data/winter-camp';
 import { siteConfig } from '../../data/site';
+import { effectiveRegistrationStatus, registrationCta } from '../../lib/registration';
 
 export async function getStaticPaths() {
   const programs = await getCollection('programs');
@@ -22,7 +23,10 @@ const { program } = Astro.props;
 const { data } = program;
 const { Content } = await render(program);
 
-const statusMeta = getRegistrationStatusMeta(data.registrationStatus);
+const statusMeta = getRegistrationStatusMeta(
+  effectiveRegistrationStatus(data.registrationStatus, data.registrationForm),
+);
+const register = registrationCta(data.registrationForm);
 const accentMeta = getProgramAccentMeta(data.accentKey);
 
 const allSponsors = await getCollection('sponsors');
@@ -76,12 +80,12 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
 
         <div class="mt-7 flex flex-wrap items-center gap-3.5">
           <a
-            href={data.registrationUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={register.href}
+            target={register.external ? '_blank' : undefined}
+            rel={register.external ? 'noopener noreferrer' : undefined}
             class={`font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-lg font-extrabold tracking-wider uppercase shadow-md transition ${accentMeta.buttonClass}`}
           >
-            {statusMeta.ctaLabel} ({data.feeAmount}) &rarr;
+            {register.label} &rarr;
           </a>
           <a
             href={withBase('/schedule')}

@@ -12,8 +12,11 @@ const { currentPath = Astro.url.pathname } = Astro.props;
 const navItems = [
   { label: 'Programs', href: withBase('/programs'), matchPrefix: '/programs' },
   { label: 'Schedule', href: withBase('/schedule'), matchPrefix: '/schedule' },
+  { label: 'New Families', href: withBase('/onboarding'), matchPrefix: '/onboarding' },
+  { label: 'Coaches', href: withBase('/coaches'), matchPrefix: '/coaches' },
+  { label: 'Board', href: withBase('/board'), matchPrefix: '/board' },
   { label: 'Sponsors', href: withBase('/sponsors'), matchPrefix: '/sponsors' },
-  { label: 'Gear & News', href: withBase('/store'), matchPrefix: '/store' },
+  { label: 'Gear & News', href: withBase('/store'), matchPrefix: '/store', mobileOnly: true },
   { label: 'About', href: withBase('/about'), matchPrefix: '/about' },
   { label: 'FAQ', href: withBase('/faq'), matchPrefix: '/faq' },
 ];
@@ -28,7 +31,7 @@ const programQuickLinks = (await getCollection('programs'))
   .sort((a, b) => a.data.order - b.data.order)
   .map(({ data }) => ({
     label: data.title,
-    sub: data.gradesLabel,
+    sub: data.discipline,
     href: withBase(`/programs/${data.programId}`),
     dot: programDots[data.accentKey] ?? 'bg-white',
   }));
@@ -86,48 +89,50 @@ function isActive(matchPrefix: string): boolean {
           Cycling Club
         </span>
         <span
-          class="text-flyers-silver mt-0.5 block text-[11px] font-bold tracking-wider uppercase"
+          class="text-flyers-silver mt-0.5 hidden text-[11px] font-bold tracking-wider whitespace-nowrap uppercase sm:block xl:hidden"
         >
-          XC · Enduro · Jr. Flyers
+          XC · Enduro/Gravity · Jr. Flyers
         </span>
       </div>
     </a>
 
-    <nav aria-label="Main navigation" class="hidden items-center gap-1 lg:flex">
+    <nav aria-label="Main navigation" class="hidden items-center gap-1 xl:flex">
       <ul class="flex items-center gap-1">
         {
-          navItems.map((item) => {
-            const active = isActive(item.matchPrefix);
-            return (
-              <li>
-                <a
-                  href={item.href}
-                  aria-current={active ? 'page' : undefined}
-                  class={`rounded-lg px-3 py-2 text-sm font-bold tracking-wide transition ${
-                    active
-                      ? 'bg-flyers-slate-dark text-flyers-gold ring-1 ring-white/15'
-                      : 'text-white/90 hover:bg-white/10 hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </li>
-            );
-          })
+          navItems
+            .filter((item) => !item.mobileOnly)
+            .map((item) => {
+              const active = isActive(item.matchPrefix);
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={active ? 'page' : undefined}
+                    class={`rounded-lg px-2.5 py-2 text-sm font-bold tracking-wide whitespace-nowrap transition ${
+                      active
+                        ? 'bg-flyers-slate-dark text-flyers-gold ring-1 ring-white/15'
+                        : 'text-white/90 hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
         }
       </ul>
     </nav>
 
     <div class="hidden items-center gap-2.5 sm:flex">
       <a
-        href={withBase('/programs#pathway-finder')}
-        class="rounded-lg border border-white/25 bg-white/5 px-3.5 py-2 text-sm font-bold text-white transition hover:border-white/50 hover:bg-white/15"
+        href={withBase('/register')}
+        class="rounded-lg border border-white/25 bg-white/5 px-3.5 py-2 text-sm font-bold whitespace-nowrap text-white transition hover:border-white/50 hover:bg-white/15"
       >
-        Find a program
+        Register
       </a>
       <a
         href={withBase('/sponsors')}
-        class="bg-flyers-red hover:bg-flyers-red-bright font-display rounded-lg px-4 py-2 text-base font-extrabold tracking-wider text-white uppercase shadow-sm transition"
+        class="bg-flyers-red hover:bg-flyers-red-bright font-display rounded-lg px-4 py-2 text-base font-extrabold tracking-wider whitespace-nowrap text-white uppercase shadow-sm transition"
       >
         Sponsor or donate
       </a>
@@ -138,7 +143,7 @@ function isActive(matchPrefix: string): boolean {
       id="mobile-menu-open"
       aria-haspopup="dialog"
       aria-controls="mobile-nav-dialog"
-      class="bg-flyers-slate-dark inline-flex min-h-12 min-w-12 items-center justify-center rounded-lg border border-white/25 p-2.5 text-white transition hover:bg-white/10 lg:hidden"
+      class="bg-flyers-slate-dark inline-flex min-h-12 min-w-12 items-center justify-center rounded-lg border border-white/25 p-2.5 text-white transition hover:bg-white/10 xl:hidden"
       aria-label="Open navigation menu"
     >
       <svg
@@ -241,10 +246,10 @@ function isActive(matchPrefix: string): boolean {
 
       <div class="space-y-2.5 border-t border-white/15 pt-4">
         <a
-          href={withBase('/programs#pathway-finder')}
+          href={withBase('/register')}
           class="block w-full rounded-lg border border-white/25 bg-white/5 px-4 py-3 text-center text-sm font-bold text-white hover:bg-white/15"
         >
-          Which program fits my rider?
+          Registration
         </a>
         <a
           href={withBase('/sponsors')}

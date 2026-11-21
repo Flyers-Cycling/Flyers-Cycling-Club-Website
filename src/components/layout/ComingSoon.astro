@@ -1,0 +1,27 @@
+---
+// A clearly marked "details coming soon" card for sections the board hasn't filled in yet.
+interface Props {
+  title: string;
+  id: string;
+}
+
+const { title, id } = Astro.props;
+---
+
+<section
+  aria-labelledby={id}
+  class="rounded-2xl border border-dashed border-neutral-300 bg-white p-6 shadow-xs sm:p-8"
+>
+  <h2
+    id={id}
+    class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+  >
+    {title}
+  </h2>
+  <div class="text-flyers-iron mt-2 text-sm leading-relaxed">
+    <slot />
+  </div>
+  <p class="text-flyers-slate mt-4 text-xs font-extrabold tracking-wider uppercase">
+    Details coming soon
+  </p>
+</section>

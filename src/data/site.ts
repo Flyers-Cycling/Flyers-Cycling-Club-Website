@@ -7,8 +7,29 @@ export interface NicaPartnerTeam {
 export const siteConfig = {
   name: 'Flyers Cycling Club',
   shortName: 'Flyers',
-  tagline: 'Youth mountain biking for Utah kids, K–12.',
+  tagline: 'Youth mountain biking in Utah. All riders welcome.',
   legalEntity: 'Lake Mountain Bicycle Club, Inc.',
+  // Approved by Randall (Nov 2026). A modernized version of the lakemountainflyers.com mission.
+  mission: {
+    statement:
+      'Flyers Cycling Club helps young riders become lifelong mountain bikers. Through our programs, we build skills, fitness, and friendships in a club that welcomes every rider, whatever their skill level, gender, or fitness.',
+    focusAreas: [
+      { title: 'Fun', body: 'Riding with friends comes first, in every program.' },
+      {
+        title: 'Skills and training',
+        body: 'Coaching that meets each rider where they are, from first trail skills to race training.',
+      },
+      {
+        title: 'Racing, if you want it',
+        body: 'DEVO for riders who ride for skills and fun, and COMP for riders who want to race at a high level. We support both.',
+      },
+      {
+        title: 'Education',
+        body: 'Bike safety, bike care, and trail etiquette for riders and families.',
+      },
+      { title: 'Service', body: 'Giving back through trail days and volunteering.' },
+    ],
+  },
   nonProfitStatus: '501(c)(3) Non-Profit Organization',
   einPlaceholder: 'Available upon request for corporate & foundation matching',
   region: 'Utah',
@@ -18,6 +39,20 @@ export const siteConfig = {
     detail:
       "Every Flyers program is run by volunteers. Registration is $50 or $150, depending on the program, and covers a club t-shirt and rider insurance. Sponsors and donors pay for the rest, so cost doesn't keep kids off the trail.",
   },
+  // Flyers XC and Flyers Enduro/Gravity each have their own registration form, opening Dec 1.
+  // Jr. Flyers registers later (registrationForm: later in src/content/programs/jr-flyers.md).
+  registration: {
+    season: '2027',
+    opensDate: '2026-12-01',
+    // TODO(board): paste each form link between the quotes on Dec 1. While a link is empty,
+    // that program's buttons say "Registration opens Dec 1" and go to /register.
+    forms: {
+      xc: '' as string,
+      enduro: '' as string,
+    },
+  },
+  // Enduro/Gravity has a minimum age. Shown on the Enduro/Gravity page, /register, and the FAQ.
+  enduroMinimumAge: 10,
   contact: {
     email: 'info@lakemountainflyers.com',
     sponsorshipEmail: 'info@lakemountainflyers.com',

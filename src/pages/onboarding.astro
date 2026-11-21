@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/layout/PageHero.astro';
+import ComingSoon from '../components/layout/ComingSoon.astro';
+import { siteConfig } from '../data/site';
+import { withBase } from '../lib/urls';
+---
+
+<BaseLayout
+  title="New Family Onboarding"
+  description="What to expect after you register with Flyers Cycling Club: calendars, team communication, forms, and your rider's first ride."
+>
+  <PageHero eyebrow="New families" title="Welcome to Flyers">
+    <p>
+      Just registered? Here's how to get set up for the season. We're still filling in this page, so
+      check back soon.
+    </p>
+  </PageHero>
+
+  <!-- TODO(board): fill in each section below with the club's real calendar, comms, and forms. -->
+  <section class="py-14 sm:py-16">
+    <div class="mx-auto grid max-w-5xl gap-6 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
+      <ComingSoon id="onboarding-calendar-heading" title="Google Calendar">
+        <!-- TODO(board): add the club's Google Calendar link (also siteConfig.integrations.googleCalendarEmbedUrl). -->
+        <p>
+          Rides, practices, and events go on the club's Google Calendar. We'll add a link here so
+          you can add it to your phone. Until then, see the <a
+            href={withBase('/schedule')}
+            class="text-flyers-red-deep font-bold underline">schedule</a
+          >.
+        </p>
+      </ComingSoon>
+
+      <ComingSoon id="onboarding-comms-heading" title="Slack and email">
+        <!-- TODO(board): add the Slack invite link and the email sign-up link. -->
+        <p>
+          Coaches share ride plans, weather changes, and updates in the club Slack. Important
+          announcements also go out by email. We'll add the invite and sign-up links here.
+        </p>
+      </ComingSoon>
+
+      <ComingSoon id="onboarding-forms-heading" title="Forms and waivers">
+        <p>The forms each rider needs before their first ride.</p>
+      </ComingSoon>
+
+      <ComingSoon id="onboarding-first-ride-heading" title="Your first ride">
+        <p>
+          What to bring and what to expect. Each program page has a gear checklist you can use now.
+        </p>
+      </ComingSoon>
+    </div>
+
+    <p class="text-flyers-iron mx-auto mt-10 max-w-5xl px-4 text-sm sm:px-6 lg:px-8">
+      Questions? Email <a
+        href={`mailto:${siteConfig.contact.email}`}
+        class="text-flyers-red-deep font-bold underline">{siteConfig.contact.email}</a
+      >.
+    </p>
+  </section>
+</BaseLayout>

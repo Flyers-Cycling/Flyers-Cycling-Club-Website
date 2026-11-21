@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { getProgramAccentMeta, getRegistrationStatusMeta } from '../../lib/programs';
 import { withBase } from '../../lib/urls';
+import { effectiveRegistrationStatus, registrationCta } from '../../lib/registration';
 
 interface Props {
   programs: CollectionEntry<'programs'>[];
@@ -16,7 +17,10 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
   {
     sorted.map((program) => {
       const { data } = program;
-      const statusMeta = getRegistrationStatusMeta(data.registrationStatus);
+      const statusMeta = getRegistrationStatusMeta(
+        effectiveRegistrationStatus(data.registrationStatus, data.registrationForm),
+      );
+      const register = registrationCta(data.registrationForm);
       const accentMeta = getProgramAccentMeta(data.accentKey);
       const programHref = withBase(`/programs/${data.programId}`);
 
@@ -63,24 +67,9 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
               </h3>
               <p class="text-flyers-iron mt-2 text-sm leading-relaxed">{data.summary}</p>
 
-              <dl class="bg-flyers-snow mt-5 grid grid-cols-2 gap-3 rounded-xl border border-neutral-200/80 p-3.5 text-xs">
-                <div>
-                  <dt class="text-flyers-iron font-bold">Who</dt>
-                  <dd class="text-flyers-slate-dark mt-0.5 font-extrabold">
-                    {data.gradesLabel} ({data.agesLabel})
-                  </dd>
-                </div>
-                <div>
-                  <dt class="text-flyers-iron font-bold">Registration</dt>
-                  <dd class="text-flyers-slate-dark mt-0.5 font-extrabold">
-                    {data.feeAmount}{' '}
-                    <span class="text-flyers-iron font-medium">(t-shirt + insurance)</span>
-                  </dd>
-                </div>
-                <div class="col-span-2 border-t border-neutral-200 pt-2">
-                  <dt class="text-flyers-iron font-bold">Season</dt>
-                  <dd class="text-flyers-charcoal mt-0.5 font-semibold">{data.seasonLabel}</dd>
-                </div>
+              <dl class="bg-flyers-snow mt-5 rounded-xl border border-neutral-200/80 p-3.5 text-xs">
+                <dt class="text-flyers-iron font-bold">Season</dt>
+                <dd class="text-flyers-charcoal mt-0.5 font-semibold">{data.seasonLabel}</dd>
               </dl>
             </div>
 
@@ -92,12 +81,12 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
                 Explore {data.shortTitle} &rarr;
               </a>
               <a
-                href={data.registrationUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-flyers-slate hover:text-flyers-red-deep text-xs font-extrabold underline transition"
+                href={register.href}
+                target={register.external ? '_blank' : undefined}
+                rel={register.external ? 'noopener noreferrer' : undefined}
+                class="text-flyers-slate hover:text-flyers-red-deep text-right text-xs font-extrabold underline transition"
               >
-                {statusMeta.ctaLabel}
+                {register.label}
               </a>
             </div>
           </div>

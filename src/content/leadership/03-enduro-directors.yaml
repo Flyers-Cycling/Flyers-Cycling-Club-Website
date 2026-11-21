@@ -1,5 +1,8 @@
-name: Flyers Enduro Leads
-role: Volunteer program directors
-programFocus: Flyers Enduro (Grades 5–12)
+name: Tim Richards
+role: Board president and Flyers Enduro/Gravity coach
+programFocus: Flyers Enduro/Gravity
 order: 3
-bio: Volunteer coaches and mechanics who teach safe descending, bike setup, and line choice, and support riders at Utah enduro races.
+coach: true
+boardRole: President
+# TODO(board): add a short bio and (with consent) a photo.
+bio: Leads the club's volunteer board and coaches Flyers Enduro/Gravity.

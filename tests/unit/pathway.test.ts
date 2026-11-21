@@ -1,48 +1,55 @@
 import { describe, expect, it } from 'vitest';
-import { matchProgramPathway, type ProgramFees } from '../../src/lib/pathway';
-
-const fees: ProgramFees = { xc: '$50', enduro: '$150', 'jr-flyers': '$50' };
+import { matchProgramPathway } from '../../src/lib/pathway';
 
 describe('matchProgramPathway', () => {
-  it('recommends Flyers XC for riders out of high school, even with a gravity focus', () => {
-    for (const focus of ['fundamentals', 'endurance', 'gravity', 'nica-offseason'] as const) {
-      const match = matchProgramPathway('u23', focus, fees);
-      expect(match.primaryProgram).toBe('xc');
-      expect(match.secondaryProgram).toBeUndefined();
-    }
-    expect(matchProgramPathway('u23', 'gravity', fees).explanation).toContain('U23');
+  it('recommends Flyers XC to riders in 7th grade and up who want cross-country riding', () => {
+    const match = matchProgramPathway('7-plus', 'xc');
+    expect(match.primaryProgram).toBe('xc');
+    expect(match.explanation).toContain('DEVO');
+    expect(match.explanation).toContain('COMP');
   });
 
-  it('recommends Jr. Flyers for K–4 riders focused on fundamentals', () => {
-    const match = matchProgramPathway('k-6', 'fundamentals', fees);
-    expect(match.primaryProgram).toBe('jr-flyers');
-    expect(match.secondaryProgram).toBeUndefined();
-    expect(match.feeNote).toContain('$50');
-  });
-
-  it('points K–4 gravity riders to Jr. Flyers, with Enduro as the next step', () => {
-    const match = matchProgramPathway('k-6', 'gravity', fees);
-    expect(match.primaryProgram).toBe('jr-flyers');
-    expect(match.secondaryProgram).toBe('enduro');
-  });
-
-  it('recommends Flyers Enduro for grades 5–6 ready for technical trails', () => {
-    const match = matchProgramPathway('10-12', 'gravity', fees);
-    expect(match.primaryProgram).toBe('enduro');
-    expect(match.feeNote).toContain('$150');
-  });
-
-  it('recommends Flyers XC for grades 9–12 riding between NICA seasons', () => {
-    const match = matchProgramPathway('9-12', 'nica-offseason', fees);
+  it('recommends Flyers XC for riders between NICA seasons', () => {
+    const match = matchProgramPathway('7-plus', 'nica-offseason');
     expect(match.primaryProgram).toBe('xc');
     expect(match.secondaryProgram).toBe('enduro');
-    expect(match.feeNote).toContain('$50');
     expect(match.nicaNote).toContain('school team');
   });
 
-  it('recommends Flyers Enduro with XC secondary for high school gravity riders', () => {
-    const match = matchProgramPathway('9-12', 'gravity', fees);
+  it('recommends Flyers Enduro/Gravity with XC as a second program for gravity riders', () => {
+    const match = matchProgramPathway('7-plus', 'gravity');
     expect(match.primaryProgram).toBe('enduro');
     expect(match.secondaryProgram).toBe('xc');
+    expect(match.headline).toContain('Enduro/Gravity');
+  });
+
+  it('recommends Jr. Flyers for K–4 riders, with Enduro/Gravity as a later step for gravity fans', () => {
+    expect(matchProgramPathway('k-4', 'fundamentals').primaryProgram).toBe('jr-flyers');
+    const gravity = matchProgramPathway('k-4', 'gravity');
+    expect(gravity.primaryProgram).toBe('jr-flyers');
+    expect(gravity.secondaryProgram).toBe('enduro');
+    expect(gravity.comboNote).toContain('10 and older');
+  });
+
+  it('recommends Flyers XC to grades 5–6 riders who pick XC, noting it is at the coaches’ discretion', () => {
+    const match = matchProgramPathway('5-6', 'xc');
+    expect(match.primaryProgram).toBe('xc');
+    expect(match.secondaryProgram).toBe('jr-flyers');
+    expect(match.explanation).toContain('coaches’ discretion');
+  });
+
+  it('recommends Flyers Enduro/Gravity for grades 5–6 gravity riders and states the minimum age', () => {
+    const match = matchProgramPathway('5-6', 'gravity', 10);
+    expect(match.primaryProgram).toBe('enduro');
+    expect(match.comboNote).toContain('10 and older');
+  });
+
+  it('never mentions fees', () => {
+    for (const band of ['k-4', '5-6', '7-plus'] as const) {
+      for (const focus of ['fundamentals', 'xc', 'gravity', 'nica-offseason'] as const) {
+        const m = matchProgramPathway(band, focus);
+        expect(`${m.explanation} ${m.comboNote}`).not.toMatch(/\$\d/);
+      }
+    }
   });
 });

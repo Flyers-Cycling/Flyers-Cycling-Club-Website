@@ -1,28 +1,29 @@
 ---
 programId: enduro
-title: Flyers Enduro
-shortTitle: Enduro
-discipline: Enduro & Descending
-tagline: Descending skills for grades 5–12. Learn to brake, corner, and ride steeper trails with control, with optional enduro races.
-summary: Flyers Enduro is for riders who love going downhill. Coaches teach braking, cornering, line choice, and safe progression on steeper terrain, with optional enduro races around Utah.
+title: Flyers Enduro/Gravity
+shortTitle: Enduro/Gravity
+discipline: Enduro & Gravity
+tagline: Learn to brake, corner, and ride steeper trails with control, with optional enduro races.
+summary: Flyers Enduro/Gravity is for riders who love going downhill. Coaches teach braking, cornering, line choice, and safe progression on steeper terrain, with optional enduro races around Utah. Riders must be 10 or older, and many also ride in another Flyers program.
 order: 2
-agesLabel: Ages 10–19
+agesLabel: Ages 10–18
 gradesLabel: Grades 5–12
 seasonLabel: January – August
-registrationWindowLabel: December – January
+registrationWindowLabel: Opens Dec 1, 2026
 registrationStatus: upcoming
-registrationUrl: https://www.zeffy.com/
+registrationForm: enduro
 feeAmount: '$150'
-feeIncludes: Covers a Flyers Enduro t-shirt and gravity rider insurance.
+feeIncludes: Covers a Flyers Enduro/Gravity t-shirt and gravity rider insurance.
 accentKey: enduro
 heroImage: /images/program-enduro.jpg
-heroImageAlt: Four Flyers Enduro riders in black and pink team jerseys smile and hold up medals beside their bikes on a dirt path at a ski area, with a chairlift and pine trees behind them.
+heroImageAlt: Four Flyers Enduro/Gravity riders in black and pink team jerseys smile and hold up medals beside their bikes on a dirt path at a ski area, with a chairlift and pine trees behind them.
 practiceSchedule:
   - 'Early season (Jan–Mar): Bike setup and suspension clinics, braking practice, and skill sessions at lower, drier trails'
   - 'Core season (Apr–Jun): Weekly afternoon practices on technical trails, plus pre-rides of Utah enduro race venues'
   - 'Summer (Jun–Aug): Bike park and high-elevation trail sessions'
 whoItsFor:
-  - Riders in grades 5–12 who love descents, bike parks, flow trails, and rock rolls
+  - Riders 10 and older (grades 5–12) who love descents, bike parks, flow trails, and rock rolls
+  - Riders already in Flyers XC or Jr. Flyers. You can join Enduro/Gravity as well as another program.
   - Cross-country and NICA riders who want to descend with more control on technical courses
   - Riders curious about enduro racing who want teammates, pit support, and help walking a course
 gearChecklist:
@@ -31,12 +32,12 @@ gearChecklist:
   - Knee pads (mandatory), cycling gloves, and shatter-resistant goggles or eyewear
   - Chest/back protection and elbow pads strongly recommended for race venues
   - Multi-tool, tubeless plug kit, spare derailleur hanger/master link, and hydration pack
-schoolTeamNote: Learning to descend well makes riders safer on every trail, including their NICA courses. Many Flyers Enduro riders also race cross-country for their school team in the fall.
+schoolTeamNote: Learning to descend well makes riders safer on every trail, including their NICA courses. Many Flyers Enduro/Gravity riders also race cross-country for their school team in the fall.
 ---
 
 ## Learn to ride downhill with control
 
-Utah has great descending trails, and Flyers Enduro helps young riders learn to ride them safely. Volunteer coaches teach one step at a time, so riders build skills before they take on harder terrain.
+Utah has great descending trails, and Flyers Enduro/Gravity helps young riders learn to ride them safely. Volunteer coaches teach one step at a time, so riders build skills before they take on harder terrain.
 
 ### What riders work on
 

@@ -1,124 +1,108 @@
 // Grade bands shown in the program finder. Values are stable IDs; labels live in the component.
-//   'k-6'   → Grades K–4 (Jr. Flyers only)
-//   '10-12' → Grades 5–6 (Jr. Flyers or Flyers Enduro)
-//   '7-8'   → Grades 7–8
-//   '9-12'  → Grades 9–12
-//   'u23'   → Out of high school, up to U23 (Flyers XC only)
-export type AgeBand = 'k-6' | '10-12' | '7-8' | '9-12' | 'u23';
-export type RidingFocus = 'fundamentals' | 'endurance' | 'gravity' | 'nica-offseason';
+//   'k-4'    → Kindergarten–4th grade (Jr. Flyers)
+//   '5-6'    → 5th–6th grade (Jr. Flyers; Flyers XC at the coaches' discretion; Enduro/Gravity from age 10)
+//   '7-plus' → 7th grade and up (Flyers XC and Flyers Enduro/Gravity)
+export type AgeBand = 'k-4' | '5-6' | '7-plus';
+export type RidingFocus = 'fundamentals' | 'xc' | 'gravity' | 'nica-offseason';
 export type ProgramSlug = 'xc' | 'enduro' | 'jr-flyers';
-
-/** Registration fee per program, read from the program content collection (e.g. "$50"). */
-export type ProgramFees = Record<ProgramSlug, string>;
 
 export interface PathwayRecommendation {
   primaryProgram: ProgramSlug;
   secondaryProgram?: ProgramSlug;
   headline: string;
   explanation: string;
-  feeNote: string;
+  /** How this rider could combine programs. Riders can join more than one. */
+  comboNote: string;
   nicaNote: string;
 }
-
-const COVERS = 'covers a club t-shirt and rider insurance';
 
 export function matchProgramPathway(
   ageBand: AgeBand,
   focus: RidingFocus,
-  fees: ProgramFees,
+  enduroMinimumAge = 10,
 ): PathwayRecommendation {
-  if (ageBand === 'k-6') {
+  const enduroAge = `Flyers Enduro/Gravity is open to riders ${enduroMinimumAge} and older.`;
+
+  if (ageBand === 'k-4') {
+    return {
+      primaryProgram: 'jr-flyers',
+      secondaryProgram: focus === 'gravity' ? 'enduro' : undefined,
+      headline: 'Start with Jr. Flyers',
+      explanation:
+        focus === 'gravity'
+          ? 'Jr. Flyers (June–August) builds the braking, cornering, and balance skills every descender needs.'
+          : 'Jr. Flyers is a summer program (June–August) for kids who can ride a two-wheeler. Small groups play skill games, learn to brake and shift, and ride beginner singletrack together.',
+      comboNote: `${enduroAge} Jr. Flyers riders can add it once they're old enough.`,
+      nicaNote: 'A fun first step before Flyers XC, Flyers Enduro/Gravity, or a NICA team.',
+    };
+  }
+
+  if (ageBand === '5-6') {
     if (focus === 'gravity') {
       return {
-        primaryProgram: 'jr-flyers',
-        secondaryProgram: 'enduro',
-        headline: 'Start with Jr. Flyers',
+        primaryProgram: 'enduro',
+        secondaryProgram: 'jr-flyers',
+        headline: 'Try Flyers Enduro/Gravity',
         explanation:
-          'Jr. Flyers (June–August) builds the braking, cornering, and balance skills every descender needs. Flyers Enduro opens up in 5th grade, so it’s a good one to plan for.',
-        feeNote: `Jr. Flyers registration is ${fees['jr-flyers']} and ${COVERS}.`,
-        nicaNote: 'Years of trail confidence before middle school and NICA.',
+          'For riders who already ride singletrack with confidence. Flyers Enduro/Gravity (January–August) coaches braking, cornering, drops, and line choice, with optional enduro races.',
+        comboNote: `${enduroAge} Many riders do Jr. Flyers in the summer too.`,
+        nicaNote: 'Strong bike handling carries into Flyers XC and NICA racing.',
+      };
+    }
+
+    if (focus === 'xc') {
+      return {
+        primaryProgram: 'xc',
+        secondaryProgram: 'jr-flyers',
+        headline: 'Try Flyers XC',
+        explanation:
+          'Flyers XC is our cross-country program. Riders before 7th grade join at the coaches’ discretion, usually advanced riders who want to race. Newer riders can build skills in Jr. Flyers first.',
+        comboNote: `Riders can add Flyers Enduro/Gravity too. ${enduroAge}`,
+        nicaNote: 'Winter-to-summer riding that builds fitness before middle school NICA.',
       };
     }
 
     return {
       primaryProgram: 'jr-flyers',
+      secondaryProgram: 'enduro',
       headline: 'Start with Jr. Flyers',
       explanation:
-        'Jr. Flyers is a summer program (June–August) for kids who can ride a two-wheeler. Small groups play skill games, learn to brake and shift, and ride beginner singletrack together.',
-      feeNote: `Registration is ${fees['jr-flyers']} and ${COVERS}.`,
-      nicaNote: 'A fun first step before Flyers XC, Flyers Enduro, or a middle school NICA team.',
+        'Jr. Flyers is a relaxed place to build trail basics with friends, with skill games and beginner singletrack all summer.',
+      comboNote: `${enduroAge} Riders can do it alongside Jr. Flyers.`,
+      nicaNote: 'Good preparation for Flyers XC and NICA.',
     };
   }
 
-  if (ageBand === '10-12') {
-    if (focus === 'fundamentals') {
-      return {
-        primaryProgram: 'jr-flyers',
-        secondaryProgram: 'enduro',
-        headline: 'Start with Jr. Flyers',
-        explanation:
-          'If your rider is still building trail basics, Jr. Flyers is a relaxed place to do it. Once they’re comfortable on intermediate trails, Flyers Enduro is open to 5th and 6th graders too.',
-        feeNote: `Jr. Flyers is ${fees['jr-flyers']} and Flyers Enduro is ${fees.enduro}. Each ${COVERS}.`,
-        nicaNote: 'Good preparation for Flyers XC and NICA, which start in 7th grade.',
-      };
-    }
-
-    return {
-      primaryProgram: 'enduro',
-      secondaryProgram: 'jr-flyers',
-      headline: 'Try Flyers Enduro',
-      explanation:
-        'For 5th and 6th graders who already ride singletrack with confidence. Flyers Enduro (January–August) coaches braking, cornering, drops, and line choice, with optional enduro races.',
-      feeNote: `Registration is ${fees.enduro} and ${COVERS}.`,
-      nicaNote: 'Strong bike handling helps riders when they join Flyers XC or NICA in 7th grade.',
-    };
-  }
-
-  if (ageBand === 'u23') {
-    return {
-      primaryProgram: 'xc',
-      headline: 'Try Flyers XC',
-      explanation:
-        focus === 'gravity'
-          ? 'Flyers Enduro is for grades 5–12, but Flyers XC is open to riders up to U23 (age 22). XC riders still work on descending, line choice, and bike handling.'
-          : 'Flyers XC is open to riders out of high school, up to U23 (age 22). Ride with the club from winter base miles through spring races and summer mountain rides. Racing is optional.',
-      feeNote: `Registration is ${fees.xc} and ${COVERS}.`,
-      nicaNote: 'A way to keep riding with the club after your high school NICA seasons.',
-    };
-  }
-
-  // Grades 7–8 or 9–12
+  // 7th grade and up
   if (focus === 'gravity') {
     return {
       primaryProgram: 'enduro',
       secondaryProgram: 'xc',
-      headline: 'Try Flyers Enduro',
+      headline: 'Try Flyers Enduro/Gravity',
       explanation:
-        'Flyers Enduro (January–August) is for riders who love technical descents: bike setup, line choice, track walks, and support at enduro races. Some riders add Flyers XC to keep their climbing fitness up.',
-      feeNote: `Flyers Enduro is ${fees.enduro}, and adding Flyers XC is ${fees.xc}. Each ${COVERS}.`,
+        'Flyers Enduro/Gravity (January–August) is for riders who love technical descents: bike setup, line choice, track walks, and support at enduro races.',
+      comboNote: 'Many riders add Flyers XC to keep their climbing fitness up.',
       nicaNote: 'Better descending skills carry straight into fall NICA racing.',
     };
   }
 
-  if (focus === 'nica-offseason') {
-    return {
-      primaryProgram: 'xc',
-      secondaryProgram: 'enduro',
-      headline: 'Try Flyers XC',
-      explanation:
-        'Flyers XC rides once a week in winter, once or twice a week in spring, and on select summer Saturdays. It’s scheduled around the fall NICA season so riders stay fit and sharp all year.',
-      feeNote: `Registration is ${fees.xc} and ${COVERS}.`,
-      nicaNote: 'Designed to fit alongside your fall school team, not replace it.',
-    };
-  }
+  const explanation: Record<Exclude<RidingFocus, 'gravity'>, string> = {
+    xc: 'Flyers XC is our cross-country program, with two groups. DEVO riders focus on riding, skills, and fun. COMP riders train to compete at a high level. We support both.',
+    'nica-offseason':
+      'Flyers XC rides once a week in winter, once or twice a week in spring, and on select summer Saturdays. It’s scheduled around the fall NICA season so riders stay fit and sharp all year.',
+    fundamentals:
+      'Flyers XC’s DEVO group is for riders who want to focus on riding, skills, and fun. Racing is optional.',
+  };
 
   return {
     primaryProgram: 'xc',
-    secondaryProgram: focus === 'endurance' ? 'enduro' : undefined,
+    secondaryProgram: 'enduro',
     headline: 'Try Flyers XC',
-    explanation:
-      'Riders are grouped by pace and skill, so newer riders building trail confidence and experienced racers both have a place. Racing is optional.',
-    feeNote: `Registration is ${fees.xc} and ${COVERS}.`,
-    nicaNote: 'Winter-to-summer riding that fits around your fall school team.',
+    explanation: explanation[focus],
+    comboNote: 'Riders can add Flyers Enduro/Gravity to work on descending too.',
+    nicaNote:
+      focus === 'nica-offseason'
+        ? 'Designed to fit alongside your fall school team, not replace it.'
+        : 'Winter-to-summer riding that fits around your fall school team.',
   };
 }
