@@ -3,15 +3,14 @@ programId: xc
 title: Flyers XC
 shortTitle: XC
 discipline: Cross-Country
-tagline: Winter-to-summer cross-country riding from 7th grade through U23. Build fitness, trail skills, and friendships. Racing is optional.
-summary: Flyers XC (started in 2020) helps riders from 7th grade through U23 build fitness, trail skills, and confidence, from winter base rides through spring ICUP races and summer mountain rides. Racing is optional.
+tagline: Winter-to-summer cross-country riding. Build endurance, trail skills, and friendships. Racing is optional.
+summary: Flyers XC (started in 2020) is for riders who love longer rides. Build endurance, trail skills, and confidence, from winter base rides through spring ICUP races and summer mountain rides. Racing is optional.
 order: 1
 agesLabel: Ages 13–22
 gradesLabel: Grade 7 – U23
 seasonLabel: January – August (Winter, Spring & Summer)
-registrationWindowLabel: November – January (questions welcome anytime)
-registrationStatus: open
-registrationUrl: https://www.zeffy.com/
+registrationWindowLabel: Opens Dec 1, 2026
+registrationStatus: upcoming
 feeAmount: '$50'
 feeIncludes: Covers a club t-shirt and rider insurance.
 accentKey: xc
@@ -21,9 +20,10 @@ practiceSchedule:
   - 'Summer (Jun–Aug): Select Saturday rides in the mountains before the fall school season starts'
 whoItsFor:
   - Middle and high school riders (grades 7–12) who want to keep riding outside the fall NICA season
-  - Riders out of high school, up to U23 (age 22), who want to keep training and racing with the club
+  - Riders out of high school who want to keep training and racing with the club
   - Newer riders getting comfortable on singletrack, and experienced racers getting ready for ICUP. Both have a group.
   - Riders from any school who want a friendly club to ride with
+  - Riders who want to add Flyers Enduro/Gravity too. You can join more than one program.
 gearChecklist:
   - Cross-country or trail mountain bike in safe working order (hardtail or full-suspension, 27.5" or 29" wheels)
   - CPSC-certified cycling helmet in good condition (required on every ride)

@@ -10,11 +10,11 @@ For human-facing setup and content editing, see [README.md](./README.md) and [CO
 
 Flyers Cycling Club is the public home of three youth mountain bike programs run by **Lake Mountain Bicycle Club, Inc.**, a volunteer-run 501(c)(3) in Utah:
 
-| Program       | Who                        | Season  | Fee  |
-| ------------- | -------------------------- | ------- | ---- |
-| Jr. Flyers    | Grades K–6 (ages 5–12)     | Jun–Aug | $50  |
-| Flyers XC     | Grade 7 – U23 (ages 13–22) | Jan–Aug | $50  |
-| Flyers Enduro | Grades 5–12 (ages 10–19)   | Jan–Aug | $150 |
+| Program               | Who                         | Season  | Fee  |
+| --------------------- | --------------------------- | ------- | ---- |
+| Jr. Flyers            | Grades K–6 (ages 5–12)      | Jun–Aug | $50  |
+| Flyers XC             | Grade 7 – U23 (ages 13–22)  | Jan–Aug | $50  |
+| Flyers Enduro/Gravity | Grades 5–12 (age 10 and up) | Jan–Aug | $150 |
 
 The programs run outside the fall NICA (Utah High School Cycling League) season and are meant to work alongside local school teams, not compete with them.
 
@@ -79,7 +79,8 @@ The models are the best-loved grassroots youth cycling non-profits: Durango DEVO
 
 - **Headings:** short, human, at most about 8 words. Display headings are uppercased by CSS, so write them in sentence case in source.
 - **Body:** about a 7th–8th grade reading level. Use second person ("your rider"). Use active voice.
-- **Program names:** "Flyers XC", "Flyers Enduro", "Jr. Flyers". "Flyers" alone means the whole club. Use "Lake Mountain Bicycle Club, Inc." only where the legal entity matters (tax, legal, footer, prospectus).
+- **Program names:** "Flyers XC", "Flyers Enduro/Gravity", "Jr. Flyers". Riders can join more than one program; Enduro/Gravity has a minimum age of 10 (`siteConfig.enduroMinimumAge`). "Flyers" alone means the whole club. Use "Lake Mountain Bicycle Club, Inc." only where the legal entity matters (tax, legal, footer, prospectus).
+- **Lead with programs, not ages or fees.** The home page, header, and cards name programs and what riders do in them. Grades, ages, and fees live on each program page and in the FAQ. Don't feature U23 riders.
 - **Numbers:** use numerals ("3 programs", "$50"). Use an en dash for ranges (K–6, $50–$150).
 - **Dates shown to users:** human format ("Sat, Jan 16"), never raw ISO strings.
 - **Exclamation points:** at most one per page.
@@ -174,7 +175,7 @@ These are facts the site states or needs that agents can't verify. Resolve them 
 - Which NICA teams are formal partners, and which simply share riders?
 - Coach screening and training actually required (background check provider, concussion and abuse-awareness training, first aid/CPR)?
 - EIN, board member names, and whether a 990 or annual report can be linked.
-- Real Zeffy URLs for each registration, donation, and tier. Real Google Calendar embed. Real Volt store URL.
+- The 2027 registration form link (opens Dec 1, 2026; paste it into `siteConfig.registration.formUrl`). Does Jr. Flyers register on Dec 1 too? Real Zeffy URLs for each donation and tier. Real Google Calendar embed. Real Volt store URL.
 - Is "Lake Mountain Trails Coalition" an actual current sponsor (and its URL)?
 - What the Enduro "gravity rider insurance" is, and why Enduro costs $150 (so the copy can explain it in one line).
 - Scholarship and assistance specifics: fee waivers, loaner bikes, who reviews requests.

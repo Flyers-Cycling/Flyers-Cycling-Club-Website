@@ -3,15 +3,14 @@ programId: jr-flyers
 title: Jr. Flyers
 shortTitle: Jr. Flyers
 discipline: First Trail Skills (K–6)
-tagline: A summer of skill games, trail riding, and new friends for kids in kindergarten through 6th grade.
-summary: Jr. Flyers is a summer program for kids in grades K–6. Small groups play skill games, learn to brake and shift, and ride beginner singletrack with volunteer coaches.
+tagline: A summer of skill games, trail riding, and new friends for our youngest riders.
+summary: Jr. Flyers is a summer program for our youngest riders. Small groups play skill games, learn to brake and shift, and ride beginner singletrack with volunteer coaches.
 order: 3
 agesLabel: Ages 5–12
 gradesLabel: Grades K–6
 seasonLabel: Summer (June – August)
-registrationWindowLabel: April – May
+registrationWindowLabel: Opens Dec 1, 2026
 registrationStatus: upcoming
-registrationUrl: https://www.zeffy.com/
 feeAmount: '$50'
 feeIncludes: Covers a Jr. Flyers t-shirt and rider insurance.
 accentKey: jr
@@ -27,7 +26,7 @@ gearChecklist:
   - Properly sized kids' bike with hand brakes and knobby tires (gears strongly recommended for grades 2–6)
   - Properly fitted cycling helmet (mandatory at all times when straddling a bike)
   - Closed-toe athletic shoes, cycling gloves (highly recommended for little hands), and a water bottle or small hydration pack
-schoolTeamNote: Jr. Flyers is a fun first step. Riders can move on to Flyers Enduro in 5th grade, and to Flyers XC or a NICA team in 7th grade.
+schoolTeamNote: Jr. Flyers is a fun first step. Riders 10 and older can add Flyers Enduro/Gravity, and riders move on to Flyers XC or a NICA team in 7th grade.
 ---
 
 ## Where lifelong riders get their start
