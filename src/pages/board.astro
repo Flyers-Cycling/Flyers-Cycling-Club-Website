@@ -5,9 +5,11 @@ import PageHero from '../components/layout/PageHero.astro';
 import ComingSoon from '../components/layout/ComingSoon.astro';
 import { siteConfig } from '../data/site';
 
-const board = (await getCollection('leadership')).find((entry) =>
-  entry.data.role.toLowerCase().includes('board'),
-);
+const leadership = await getCollection('leadership');
+const board = leadership.find((entry) => entry.data.name === 'Club Board');
+const members = leadership
+  .filter((entry) => entry.data.boardRole)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
@@ -25,10 +27,30 @@ const board = (await getCollection('leadership')).find((entry) =>
 
   <section class="py-14 sm:py-16">
     <div class="mx-auto max-w-4xl space-y-8 px-4 sm:px-6 lg:px-8">
-      <ComingSoon id="board-members-heading" title="Board members">
-        <!-- TODO(board): add board member names and roles. Keep this list consistent with the 990. -->
-        <p>We'll list each board member and their role here.</p>
-      </ComingSoon>
+      <section aria-labelledby="board-members-heading">
+        <h2
+          id="board-members-heading"
+          class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
+        >
+          Board members
+        </h2>
+        <!-- TODO(board): add the other board members. Keep this list consistent with the 990. -->
+        <ul class="mt-4 grid gap-4 sm:grid-cols-2">
+          {
+            members.map((member) => (
+              <li class="rounded-2xl border border-neutral-200 bg-white p-5 shadow-xs">
+                <p class="text-flyers-red-deep text-xs font-extrabold tracking-wide uppercase">
+                  {member.data.boardRole}
+                </p>
+                <p class="font-display text-flyers-slate-dark mt-1 text-2xl font-black tracking-wide uppercase">
+                  {member.data.name}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="text-flyers-iron mt-3 text-sm">More board members coming soon.</p>
+      </section>
 
       <ComingSoon id="board-transparency-heading" title="Financials and documents">
         <!-- TODO(board): EIN, and a link to the latest Form 990 or annual report. -->

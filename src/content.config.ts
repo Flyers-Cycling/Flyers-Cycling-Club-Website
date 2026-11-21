@@ -19,9 +19,9 @@ const programs = defineCollection({
       seasonLabel: z.string(),
       registrationWindowLabel: z.string(),
       registrationStatus: z.enum(['open', 'upcoming', 'waitlist', 'closed']),
-      // The season registration form lives in src/data/site.ts. Set this to false for a
-      // program that registers later (its buttons then say "Registration opens later").
-      inSeasonRegistration: z.boolean().default(true),
+      // Which sign-up form this program uses: xc or enduro (links live in src/data/site.ts),
+      // or later for a program that isn't open yet (buttons say "Registration opens later").
+      registrationForm: z.enum(['xc', 'enduro', 'later']),
       feeAmount: z.enum(['$50', '$150']),
       feeIncludes: z.string(),
       accentKey: z.enum(['xc', 'enduro', 'jr']),
@@ -118,6 +118,10 @@ const leadership = defineCollection({
     programFocus: z.string(),
     order: z.number().int().positive(),
     bio: z.string(),
+    // true lists this person on the Coaches page.
+    coach: z.boolean().default(false),
+    // Set for board members (e.g. President). Listed on the Board page.
+    boardRole: z.string().optional(),
   }),
 });
 

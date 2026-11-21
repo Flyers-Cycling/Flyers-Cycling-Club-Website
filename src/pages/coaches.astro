@@ -5,9 +5,9 @@ import PageHero from '../components/layout/PageHero.astro';
 import ComingSoon from '../components/layout/ComingSoon.astro';
 import { siteConfig } from '../data/site';
 
-// Program leads from the leadership collection. The board has its own page.
+// Coaches from the leadership collection (coach: true). The board has its own page.
 const leads = (await getCollection('leadership'))
-  .filter((entry) => entry.data.role.toLowerCase().includes('program'))
+  .filter((entry) => entry.data.coach)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -29,7 +29,7 @@ const leads = (await getCollection('leadership'))
           id="coach-leads-heading"
           class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase sm:text-4xl"
         >
-          Program leads
+          Program coaches
         </h2>
         <!-- TODO(board): add coach names, roles, short bios, and adult photos (with consent). -->
         <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -37,11 +37,12 @@ const leads = (await getCollection('leadership'))
             leads.map((lead) => (
               <article class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
                 <p class="text-flyers-red-deep text-xs font-extrabold tracking-wide uppercase">
-                  {lead.data.role}
+                  {lead.data.programFocus}
                 </p>
                 <h3 class="font-display text-flyers-slate-dark mt-1.5 text-2xl font-black tracking-wide uppercase">
                   {lead.data.name}
                 </h3>
+                <p class="text-flyers-slate text-xs font-bold">{lead.data.role}</p>
                 <p class="text-flyers-iron mt-3 text-sm leading-relaxed">{lead.data.bio}</p>
               </article>
             ))

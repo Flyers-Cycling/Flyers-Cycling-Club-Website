@@ -6,11 +6,12 @@ discipline: Enduro & Gravity
 tagline: Learn to brake, corner, and ride steeper trails with control, with optional enduro races.
 summary: Flyers Enduro/Gravity is for riders who love going downhill. Coaches teach braking, cornering, line choice, and safe progression on steeper terrain, with optional enduro races around Utah. Riders must be 10 or older, and many also ride in another Flyers program.
 order: 2
-agesLabel: Age 10 and up
+agesLabel: Ages 10–18
 gradesLabel: Grades 5–12
 seasonLabel: January – August
 registrationWindowLabel: Opens Dec 1, 2026
 registrationStatus: upcoming
+registrationForm: enduro
 feeAmount: '$150'
 feeIncludes: Covers a Flyers Enduro/Gravity t-shirt and gravity rider insurance.
 accentKey: enduro

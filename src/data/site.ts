@@ -18,14 +18,17 @@ export const siteConfig = {
     detail:
       "Every Flyers program is run by volunteers. Registration is $50 or $150, depending on the program, and covers a club t-shirt and rider insurance. Sponsors and donors pay for the rest, so cost doesn't keep kids off the trail.",
   },
-  // One registration form covers Flyers XC and Flyers Enduro/Gravity. Jr. Flyers opens later
-  // (inSeasonRegistration: false in src/content/programs/jr-flyers.md).
+  // Flyers XC and Flyers Enduro/Gravity each have their own registration form, opening Dec 1.
+  // Jr. Flyers registers later (registrationForm: later in src/content/programs/jr-flyers.md).
   registration: {
     season: '2027',
     opensDate: '2026-12-01',
-    // TODO(board): paste the registration form link here on Dec 1. While it's empty, the
-    // site says "Registration opens Dec 1" and links to /register instead of a form.
-    formUrl: '' as string,
+    // TODO(board): paste each form link between the quotes on Dec 1. While a link is empty,
+    // that program's buttons say "Registration opens Dec 1" and go to /register.
+    forms: {
+      xc: '' as string,
+      enduro: '' as string,
+    },
   },
   // Enduro/Gravity has a minimum age. Shown on the Enduro/Gravity page, /register, and the FAQ.
   enduroMinimumAge: 10,

@@ -1,9 +1,9 @@
 ---
 import { siteConfig } from '../../data/site';
-import { registrationCta, registrationOpensLabel } from '../../lib/registration';
+import { anyRegistrationOpen, registrationOpensLabel } from '../../lib/registration';
 import { withBase } from '../../lib/urls';
 
-const register = registrationCta();
+const registrationOpen = anyRegistrationOpen();
 const season = siteConfig.registration.season;
 ---
 
@@ -85,22 +85,21 @@ const season = siteConfig.registration.season;
           class="font-display text-2xl font-black tracking-wide text-white uppercase sm:text-3xl"
         >
           {
-            register.isOpen
+            registrationOpen
               ? `${season} registration is open`
               : `${season} registration opens ${registrationOpensLabel()}`
           }
         </h2>
         <p class="mt-1 text-sm text-white/85">
-          For Flyers XC and Flyers Enduro/Gravity. Riders can join both. Jr. Flyers opens later.
+          Flyers XC and Flyers Enduro/Gravity each have a sign-up form. Riders can join both. Jr.
+          Flyers opens later.
         </p>
       </div>
       <a
-        href={register.href}
-        target={register.external ? '_blank' : undefined}
-        rel={register.external ? 'noopener noreferrer' : undefined}
+        href={withBase('/register')}
         class="bg-flyers-gold text-flyers-slate-dark hover:bg-flyers-gold-bright inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl px-5 py-3 text-base font-extrabold transition"
       >
-        {register.isOpen ? 'Register now' : 'How registration works'} &rarr;
+        {registrationOpen ? 'Register now' : 'How registration works'} &rarr;
       </a>
     </aside>
   </div>

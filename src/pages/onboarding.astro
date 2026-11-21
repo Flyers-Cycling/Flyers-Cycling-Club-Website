@@ -20,18 +20,23 @@ import { withBase } from '../lib/urls';
   <!-- TODO(board): fill in each section below with the club's real calendar, comms, and forms. -->
   <section class="py-14 sm:py-16">
     <div class="mx-auto grid max-w-5xl gap-6 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
-      <ComingSoon id="onboarding-calendar-heading" title="Calendars">
+      <ComingSoon id="onboarding-calendar-heading" title="Google Calendar">
+        <!-- TODO(board): add the club's Google Calendar link (also siteConfig.integrations.googleCalendarEmbedUrl). -->
         <p>
-          How to add the club calendar to your phone, and where practice times and trailheads are
-          posted. Until then, see the <a
+          Rides, practices, and events go on the club's Google Calendar. We'll add a link here so
+          you can add it to your phone. Until then, see the <a
             href={withBase('/schedule')}
             class="text-flyers-red-deep font-bold underline">schedule</a
           >.
         </p>
       </ComingSoon>
 
-      <ComingSoon id="onboarding-comms-heading" title="Team communication">
-        <p>How coaches share updates, weather changes, and ride plans with families.</p>
+      <ComingSoon id="onboarding-comms-heading" title="Slack and email">
+        <!-- TODO(board): add the Slack invite link and the email sign-up link. -->
+        <p>
+          Coaches share ride plans, weather changes, and updates in the club Slack. Important
+          announcements also go out by email. We'll add the invite and sign-up links here.
+        </p>
       </ComingSoon>
 
       <ComingSoon id="onboarding-forms-heading" title="Forms and waivers">

@@ -3,6 +3,10 @@ import { formatEventDate } from './dates';
 import type { RegistrationStatus } from './programs';
 import { withBase } from './urls';
 
+/** Which sign-up form a program uses. 'later' means it isn't open for registration yet. */
+export type RegistrationForm = 'xc' | 'enduro' | 'later';
+export type RegistrationFormLinks = Record<Exclude<RegistrationForm, 'later'>, string>;
+
 export interface RegistrationCta {
   href: string;
   label: string;
@@ -15,15 +19,30 @@ export function registrationOpensLabel(opensDate: string = siteConfig.registrati
   return formatEventDate(opensDate).replace(/, \d{4}$/, '');
 }
 
+/** The form link for a program, or '' if it isn't set yet. */
+export function registrationFormUrl(
+  form: RegistrationForm,
+  links: RegistrationFormLinks = siteConfig.registration.forms,
+): string {
+  return form === 'later' ? '' : links[form].trim();
+}
+
+/** True once any program's form link is in site.ts. */
+export function anyRegistrationOpen(
+  links: RegistrationFormLinks = siteConfig.registration.forms,
+): boolean {
+  return Object.values(links).some((url) => url.trim() !== '');
+}
+
 /**
- * Where a "Register" button should go. Once the form link is in site.ts, buttons go straight
- * to the form. Until then they go to /register, which explains when registration opens.
+ * Where a program's "Register" button should go. Once its form link is in site.ts, the button
+ * goes straight to the form. Until then it goes to /register, which explains when it opens.
  */
 export function registrationCta(
-  inSeasonRegistration = true,
-  formUrl: string = siteConfig.registration.formUrl,
+  form: RegistrationForm,
+  links: RegistrationFormLinks = siteConfig.registration.forms,
 ): RegistrationCta {
-  if (!inSeasonRegistration) {
+  if (form === 'later') {
     return {
       href: withBase('/register'),
       label: 'Registration opens later',
@@ -31,7 +50,7 @@ export function registrationCta(
       isOpen: false,
     };
   }
-  const url = formUrl.trim();
+  const url = registrationFormUrl(form, links);
   if (url) {
     return { href: url, label: 'Register now', external: true, isOpen: true };
   }
@@ -43,11 +62,11 @@ export function registrationCta(
   };
 }
 
-/** A program marked "upcoming" shows as open once the season's form link is added. */
+/** A program marked "upcoming" shows as open once its form link is added. */
 export function effectiveRegistrationStatus(
   status: RegistrationStatus,
-  inSeasonRegistration = true,
-  formUrl: string = siteConfig.registration.formUrl,
+  form: RegistrationForm,
+  links: RegistrationFormLinks = siteConfig.registration.forms,
 ): RegistrationStatus {
-  return inSeasonRegistration && status === 'upcoming' && formUrl.trim() ? 'open' : status;
+  return status === 'upcoming' && registrationFormUrl(form, links) ? 'open' : status;
 }

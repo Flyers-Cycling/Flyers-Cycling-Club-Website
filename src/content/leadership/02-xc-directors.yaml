@@ -1,5 +1,7 @@
-name: Flyers XC Leads
-role: Volunteer program directors
+name: Randall Adams
+role: Flyers XC coach
 programFocus: Flyers XC
 order: 2
-bio: Volunteer riders who lead Flyers XC through the year, from winter base rides and spring ICUP races to summer mountain rides.
+coach: true
+# TODO(board): add a short bio and (with consent) a photo.
+bio: Coaches Flyers XC, from winter base rides to summer mountain rides.

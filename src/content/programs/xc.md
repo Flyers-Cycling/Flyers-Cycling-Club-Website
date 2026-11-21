@@ -11,6 +11,7 @@ gradesLabel: Grade 7 and up (younger at the coaches' discretion)
 seasonLabel: Jan 1 – August (Winter, Spring & Summer)
 registrationWindowLabel: Opens Dec 1, 2026
 registrationStatus: upcoming
+registrationForm: xc
 feeAmount: '$50'
 feeIncludes: Covers a club t-shirt and rider insurance.
 accentKey: xc

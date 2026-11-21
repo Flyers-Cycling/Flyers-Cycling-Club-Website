@@ -10,16 +10,17 @@ You can edit schedules, registration status, sponsors, and FAQs right in your we
 
 ### 1. Opening or Closing Seasonal Registration
 
-One registration form covers every program.
+Flyers XC and Flyers Enduro/Gravity each have their own registration form. Jr. Flyers registers later.
 
 1. Open `src/data/site.ts` and click the **Pencil (Edit)** icon on GitHub.
-2. Under `registration`, paste the form link between the quotes in `formUrl: ''`. Every "Register" button on the site (home, `/register`, program pages) then goes to that form, and programs marked `upcoming` show as open.
-3. To change a single program's badge, open `src/content/programs/` (`xc.md`, `enduro.md`, or `jr-flyers.md`) and set `registrationStatus` to one of:
+2. Under `registration.forms`, paste each form link between the quotes (`xc: ''`, `enduro: ''`). That program's "Register" buttons (program page, program cards, `/register`) then go to its form, and the program shows as open if it's marked `upcoming`.
+3. Each program file says which form it uses with `registrationForm: xc`, `enduro`, or `later`. Use `later` for a program that isn't open yet.
+4. To change a single program's badge, open `src/content/programs/` (`xc.md`, `enduro.md`, or `jr-flyers.md`) and set `registrationStatus` to one of:
    - `open` (Green "Registration Open" badge)
-   - `upcoming` (Amber "Opening Soon" badge; shows as open once `formUrl` is set)
+   - `upcoming` (Amber "Opening Soon" badge; shows as open once its form link is set)
    - `waitlist` (Blue "Waitlist Open" badge)
    - `closed` (Neutral "In Season / Closed" badge)
-4. Click **Commit changes... -> Create a new branch and start a pull request**.
+5. Click **Commit changes... -> Create a new branch and start a pull request**.
 
 ### 2. Adding a New Club or Program Sponsor
 

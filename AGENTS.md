@@ -14,7 +14,7 @@ Flyers Cycling Club is the public home of three youth mountain bike programs run
 | --------------------- | ---------------------------------------------------- | --------------------------- | ---- |
 | Jr. Flyers            | Grades K–6 (ages 5–12)                               | Jun 1–mid-Aug (summer only) | $50  |
 | Flyers XC             | Ages 10–18 (before 7th grade at coaches' discretion) | Jan 1–Aug                   | $50  |
-| Flyers Enduro/Gravity | Grades 5–12 (age 10 and up)                          | Jan–Aug                     | $150 |
+| Flyers Enduro/Gravity | Ages 10–18 (grades 5–12)                             | Jan–Aug                     | $150 |
 
 The programs run outside the fall NICA (Utah High School Cycling League) season and are meant to work alongside local school teams, not compete with them.
 
@@ -174,8 +174,8 @@ These are facts the site states or needs that agents can't verify. Resolve them 
 
 - Which NICA teams are formal partners, and which simply share riders?
 - Coach screening and training actually required (background check provider, concussion and abuse-awareness training, first aid/CPR)?
-- EIN, board member names, and whether a 990 or annual report can be linked.
-- The 2027 registration form link (opens Dec 1, 2026; paste it into `siteConfig.registration.formUrl`). Jr. Flyers registers later (date TBD). Real Zeffy URLs for each donation and tier. Real Google Calendar embed. Real Volt store URL.
+- EIN, the rest of the board (Tim Richards is president), and whether a 990 or annual report can be linked. Coaches: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepard (Jr. Flyers); bios and photos still needed.
+- The 2027 registration form link (opens Dec 1, 2026; XC and Enduro/Gravity each have a form; paste them into `siteConfig.registration.forms`). Jr. Flyers registers later (date TBD). Real Zeffy URLs for each donation and tier. Real Google Calendar embed. Real Volt store URL.
 - Is "Lake Mountain Trails Coalition" an actual current sponsor (and its URL)?
 - What the Enduro "gravity rider insurance" is, and why Enduro costs $150 (so the copy can explain it in one line).
 - Scholarship and assistance specifics: fee waivers, loaner bikes, who reviews requests.

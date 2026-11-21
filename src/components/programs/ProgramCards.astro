@@ -18,9 +18,9 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
     sorted.map((program) => {
       const { data } = program;
       const statusMeta = getRegistrationStatusMeta(
-        effectiveRegistrationStatus(data.registrationStatus, data.inSeasonRegistration),
+        effectiveRegistrationStatus(data.registrationStatus, data.registrationForm),
       );
-      const register = registrationCta(data.inSeasonRegistration);
+      const register = registrationCta(data.registrationForm);
       const accentMeta = getProgramAccentMeta(data.accentKey);
       const programHref = withBase(`/programs/${data.programId}`);
 

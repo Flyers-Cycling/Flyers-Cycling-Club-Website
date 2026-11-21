@@ -11,8 +11,8 @@ gradesLabel: Grades K–6
 seasonLabel: Summer only (Jun 1 – mid-August)
 registrationWindowLabel: Later in the season (date coming soon)
 registrationStatus: upcoming
-# Jr. Flyers registers later, not on the Dec 1 season form.
-inSeasonRegistration: false
+# Jr. Flyers registers later, not on Dec 1.
+registrationForm: later
 feeAmount: '$50'
 feeIncludes: Covers a Jr. Flyers t-shirt and rider insurance.
 accentKey: jr
