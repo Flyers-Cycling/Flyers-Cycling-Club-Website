@@ -26,7 +26,7 @@ Durango DEVO is the closest model. Their lines work because they are short and t
 
 ### Principles
 
-1. **Lead with the rider's experience.** Fun, friends, confidence, skills, and a love of riding come first. Racing is there for riders who want it.
+1. **Lead with the rider's experience.** Fun, friends, confidence, skills, and a love of riding come first. Racing is there for riders who want it. We welcome every rider, from first-timers to podium chasers, and we celebrate effort over placing.
 2. **Be specific.** "Tuesdays 6-7:30 PM at the skills park" beats "flexible, high-quality practices." If you don't know the detail yet, use a `TODO(board)` placeholder instead of an adjective.
 3. **Welcome beginners out loud.** You don't need to be fast, race, or own an expensive bike.
 4. **Be confident, not defensive.** Say what Flyers does. Don't compare us to other clubs or "expensive programs." Those clubs are often our riders' NICA teams, coaches, and friends.

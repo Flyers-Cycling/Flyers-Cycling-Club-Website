@@ -8,19 +8,19 @@ Status: the tokens below exist today in `src/styles/global.css`. The program-the
 
 ## 1. Brand architecture
 
-| Level   | Name                  | Primary color                                   | Used for                                                                                  |
-| ------- | --------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Club    | Flyers Cycling Club   | Red, with black, slate, gold                    | Header, footer, home page, About, Sponsors, Board, non-profit details, anything club-wide |
-| Program | Flyers XC             | Red                                             | XC pages, XC events, XC Devo and XC Comp                                                  |
-| Program | Flyers Enduro/Gravity | Pink                                            | Enduro/Gravity pages and events                                                           |
-| Program | Jr. Flyers            | Red (Brand Book says Youth Blue: see section 8) | Jr. Flyers pages and events. Shares Flyers XC red and the same logo.                      |
+| Level   | Name                  | Primary color                | Used for                                                                                  |
+| ------- | --------------------- | ---------------------------- | ----------------------------------------------------------------------------------------- |
+| Club    | Flyers Cycling Club   | Red, with black, slate, gold | Header, footer, home page, About, Sponsors, Board, non-profit details, anything club-wide |
+| Program | Flyers XC             | Red                          | XC pages, XC events, XC Devo and XC Comp                                                  |
+| Program | Flyers Enduro/Gravity | Pink                         | Enduro/Gravity pages and events                                                           |
+| Program | Jr. Flyers            | Youth Blue `#1e88e5`         | Jr. Flyers pages and events. Same logo.                                                   |
 
 Rules:
 
 - **The club frame never changes.** Header, footer, nav, and type are the same on every page. Only the program accent changes inside a program section.
 - **One accent per screen.** A program page uses its own color. Mixed pages (home, schedule, programs list) use each program's color only on that program's card, dot, or tag.
 - **Color is never the only signal.** Every program color appears with the program name next to it (WCAG 1.4.1).
-- **Flyers XC, XC Devo, XC Comp, and Jr. Flyers all use red.** Tell them apart with the program name, not a second color.
+- **Flyers XC, XC Devo, and XC Comp all use red.** Tell them apart with the program name, not a second color.
 - **Program colors never replace red on club-wide pieces.** (Brand Book.)
 - **Keep the Flyers wordmark visible** on every program page, so the family reads as one club.
 - **Signature device:** a short red underline stroke under display headlines (pink inside Enduro/Gravity).
@@ -34,12 +34,12 @@ Rules from the Brand Book:
 - Clear space equal to the height of the "F" in Flyers on every side. Minimum 32px tall on screen, 0.5 in in print.
 - Use the white or pink logo on black or on photos. Don't stretch, recolor, add effects, rotate, place it on a busy photo, or rebuild a lockup in another font.
 
-`TODO(board)`: we need the source files. Please send SVG or high-resolution PNG versions of:
+Files: `public/images/brand/` (SVG, traced from the club's PNGs) and `public/images/brand/png/`. They're published on the site at [/brand](../src/pages/brand.astro). Still needed:
 
-- The Flyers club logo (full color, one-color white, one-color dark)
-- Any Flyers XC or Flyers Enduro/Gravity marks (Jr. Flyers uses the club logo)
+- Program lockups (Flyers XC, Flyers Enduro/Gravity, Jr. Flyers) and the Flyers Enduro script wordmark
+- The Lake Mountain long logo
 
-Until then, the site uses the files already in `public/`. Don't redraw, trace, or generate a logo.
+Don't redraw or generate a logo. The SVGs were traced directly from the club's PNG files; replace them with original vector files if the club finds them.
 
 ## 3. Color tokens
 
@@ -60,8 +60,12 @@ palette         --color-flyers-*                                                
 | `flyers-charcoal`              | `#212121` | 16.1:1               | Body text on light backgrounds.                                                                          |
 | `flyers-red-signature`         | `#da4444` | 4.3:1                | Brand Book "Red". Underlines, large headlines, accents. Not small text or white-text buttons (fails AA). |
 | `flyers-red-bright`            | `#d12323` | 5.3:1                | Brand Book "Vivid Red". Hover and emphasis.                                                              |
-| `flyers-red`                   | `#b81e1e` | 6.5:1                | Accessible red for buttons and small text. Flyers XC and Jr. Flyers primary.                             |
+| `flyers-red`                   | `#b81e1e` | 6.5:1                | Accessible red for buttons and small text. Flyers XC primary.                                            |
 | `flyers-red-deep`              | `#8f1616` | 9.2:1                | Hover and pressed states.                                                                                |
+| `flyers-blue`                  | `#1e88e5` | 4.3:1 on slate-dark  | Brand Book "Youth Blue", Jr. Flyers. Bars, dots, accents. Not behind white text (3.7:1).                 |
+| `flyers-blue-deep`             | `#1565c0` | 5.8:1                | Jr. Flyers buttons and text on white.                                                                    |
+| `flyers-blue-dark`             | `#0d47a1` | 8.6:1                | Jr. Flyers hover and badge text.                                                                         |
+| `flyers-blue-bright`           | `#64b5f6` | 7.2:1 on slate-dark  | Jr. Flyers text on dark.                                                                                 |
 | `flyers-berry`                 | `#9d112a` | 8.2:1                | Spare accent. No longer the Jr. Flyers color.                                                            |
 | `flyers-pink`                  | `#fe6cd0` | 6.3:1 on slate-dark  | Brand Book "Enduro Pink". Bars, dots, underlines, text on dark. Never behind white text (2.5:1).         |
 | `flyers-pink-deep`             | `#b8125f` | 6.4:1                | Enduro/Gravity buttons and text on white.                                                                |
@@ -117,17 +121,15 @@ Build these once and reuse them on every page.
 
 If the club adds a members area or app later, move the tokens into one shared source file then, and keep anything behind a login (rosters, medical info, waivers) out of this public repo. Not planned for now.
 
-## 8. Brand Book conflicts to resolve
+## 8. Brand Book decisions (Randall, Nov 21 2026)
 
-The Brand Book disagrees with itself, or with decisions made since, in a few places. The site follows the right-hand column until Randall decides.
-
-| Topic                                   | Brand Book says                                                                                                           | Site does now                                                                      |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Club accent                             | Section 1: "Primary accent: Enduro Pink", identity "black, white, and pink". Sections 2, 4, 7: red is the club signature. | Red for the club, pink only for Enduro/Gravity.                                    |
-| Jr. Flyers color                        | Youth Blue, given as two different blues (`#5cbce0` and `#1e88e5`).                                                       | Red, per Randall on Nov 21, 2026.                                                  |
-| "Black" and "Slate"                     | Section 2 lists both as `#14242e`. Section 4 says Black `#14242e`, Slate `#203746`.                                       | Section 4 values.                                                                  |
-| Website theme                           | Black backgrounds and white text everywhere.                                                                              | Dark header, hero, and footer, with light content sections for reading on a phone. |
-| Headline underline                      | Pink stroke (section 3) or red underline (section 7).                                                                     | Red for club pages, pink on Enduro/Gravity pages (planned).                        |
-| Tagline                                 | "Fast Follows Fun".                                                                                                       | Not used yet.                                                                      |
-| "Nation's largest youth enduro program" | Stated as fact.                                                                                                           | Not used. It needs a source before it goes on the site (AGENTS.md section 5).      |
-| School teams as "Affiliated"            | Lehi HS, Lehi Jr Devo, Westlake Rolling Thunder, Cedar Valley.                                                            | Not called partners until the board confirms.                                      |
+| Topic                                   | Decision                                                                    |
+| --------------------------------------- | --------------------------------------------------------------------------- |
+| Club accent                             | Red. Pink is Flyers Enduro/Gravity only.                                    |
+| Jr. Flyers color                        | Youth Blue `#1e88e5`.                                                       |
+| "Black" and "Slate"                     | Black `#14242e`, Slate `#203746`.                                           |
+| Website theme                           | Dark header, hero, and footer. Reading sections stay light.                 |
+| "Nation's largest youth enduro program" | Confirmed by Randall. Used on the Enduro/Gravity page.                      |
+| Voice on results                        | Welcome every rider, from first-timers to podium chasers. Celebrate effort. |
+| Tagline                                 | "Fast Follows Fun". Shown on /brand.                                        |
+| School teams as "Affiliated"            | Still not called partners until the board confirms.                         |

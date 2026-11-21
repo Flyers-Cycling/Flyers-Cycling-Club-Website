@@ -49,13 +49,13 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 - [ ] Add the semantic and program-theme token layers to `global.css` (brand.md section 3)
 - [ ] Replace raw hex in `getProgramAccentMeta()` with tokens
 - [ ] Each program page sets `data-program` so its color comes from one place
-- [ ] Get logo source files (Jr. Flyers color is settled: red)
+- [x] Logo files (SVG traced from the club PNGs) published at /brand. Jr. Flyers color: Youth Blue `#1e88e5`.
 - [x] Switch to the Brand Book fonts (Anton, Epilogue) and colors (Enduro Pink `#fe6cd0`, signature red `#da4444`)
-- [ ] Resolve the Brand Book conflicts in brand.md section 8
+- [x] Resolve the Brand Book conflicts (brand.md section 8)
 - [ ] Red (pink on Enduro/Gravity) underline stroke under display headlines
 - [ ] Self-host the two fonts
 - [ ] Build the shared components list (brand.md section 6) as Astro components
-- [ ] A `/styleguide` page (not in the nav) that shows tokens and components
+- [x] A `/brand` page (footer link) with logos, colors, type, voice, and photos
 
 ## Phase 3: Trust and safety
 
@@ -134,5 +134,5 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Practice times and locations for each program
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
 - [ ] Dec 15 kickoff meeting time and place, and dates for the Winter Classic, Big Water Rim, and Spring Classic rides
-- [x] Jr. Flyers brand color: red, reusing the club logo
+- [x] Jr. Flyers brand color: Youth Blue #1e88e5, same logo
 - [ ] Logo source files

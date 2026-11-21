@@ -38,7 +38,7 @@ schoolTeamNote: Learning to descend well makes riders safer on every trail, incl
 
 ## Learn to ride downhill with control
 
-Utah has great descending trails, and Flyers Enduro/Gravity helps young riders learn to ride them safely. Volunteer coaches teach one step at a time, so riders build skills before they take on harder terrain.
+Utah has great descending trails, and Flyers Enduro/Gravity, the largest youth enduro program in the country, helps young riders learn to ride them safely. Volunteer coaches teach one step at a time, so riders build skills before they take on harder terrain.
 
 ### What riders work on
 

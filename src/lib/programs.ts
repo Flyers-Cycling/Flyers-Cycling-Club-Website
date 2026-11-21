@@ -51,9 +51,7 @@ export interface AccentThemeMeta {
 
 export function getProgramAccentMeta(accent: ProgramAccent): AccentThemeMeta {
   switch (accent) {
-    // Jr. Flyers shares Flyers XC red (Randall, Nov 2026). See docs/brand.md.
     case 'xc':
-    case 'jr':
       return {
         badgeClass: 'bg-[#FDF2F2] text-[#8F1616] border-[#F2C4C4]',
         borderClass: 'hover:border-[#B81E1E]',
@@ -68,6 +66,15 @@ export function getProgramAccentMeta(accent: ProgramAccent): AccentThemeMeta {
         topBarClass: 'bg-flyers-pink',
         darkPillClass: 'bg-flyers-pink/20 text-flyers-pink-bright border-flyers-pink-bright/50',
         buttonClass: 'bg-flyers-pink-deep text-white hover:bg-flyers-pink-dark',
+      };
+    // Jr. Flyers Youth Blue (Brand Book; Randall chose #1e88e5, Nov 2026).
+    case 'jr':
+      return {
+        badgeClass: 'bg-flyers-blue-light text-flyers-blue-dark border-flyers-blue/40',
+        borderClass: 'hover:border-flyers-blue',
+        topBarClass: 'bg-flyers-blue',
+        darkPillClass: 'bg-flyers-blue/20 text-flyers-blue-bright border-flyers-blue-bright/50',
+        buttonClass: 'bg-flyers-blue-deep text-white hover:bg-flyers-blue-dark',
       };
   }
 }

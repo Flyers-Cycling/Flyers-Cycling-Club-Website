@@ -16,6 +16,7 @@ const CORE_ROUTES = [
   '/register',
   '/coaches',
   '/board',
+  '/brand',
   '/onboarding',
   '/faq',
 ];

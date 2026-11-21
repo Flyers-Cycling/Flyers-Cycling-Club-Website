@@ -14,7 +14,7 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
       <div class="space-y-4">
         <a href={withBase('/')} class="inline-flex items-center gap-3 text-white">
           <img
-            src={withBase('/images/brand/flyers-logo-dark-bg.svg')}
+            src={withBase('/images/brand/flyers-logo-white.svg')}
             alt=""
             width="86"
             height="61"
@@ -95,6 +95,11 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
           <li>
             <a href={withBase('/board')} class="text-white/85 transition hover:text-white">
               Board
+            </a>
+          </li>
+          <li>
+            <a href={withBase('/brand')} class="text-white/85 transition hover:text-white">
+              Brand guidelines
             </a>
           </li>
           <li>

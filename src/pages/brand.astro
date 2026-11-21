@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/layout/PageHero.astro';
+import { brand } from '../data/brand';
+import { siteConfig } from '../data/site';
+import { withBase } from '../lib/urls';
+
+const h2 = 'font-display text-flyers-slate-dark text-3xl tracking-wide uppercase';
+const card = 'rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs';
+---
+
+<BaseLayout
+  title="Brand guidelines"
+  description="Flyers Cycling Club logos, colors, type, voice, and photo guidelines for volunteers, sponsors, and anyone making something for the club."
+>
+  <PageHero eyebrow="For volunteers, sponsors, and partners" title="Brand guidelines">
+    <p>
+      Making a flyer, a jersey, a slide, or a social post for Flyers? Start here. Download the
+      logos, use the colors and fonts below, and keep it fun.
+    </p>
+  </PageHero>
+
+  <div class="mx-auto max-w-6xl space-y-16 px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+    <section aria-labelledby="glance-heading">
+      <h2 id="glance-heading" class={h2}>At a glance</h2>
+      <dl class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class={card}>
+          <dt class="text-flyers-iron text-xs font-extrabold tracking-wide uppercase">Tagline</dt>
+          <dd class="font-display text-flyers-slate-dark mt-2 text-2xl uppercase">
+            {brand.tagline}
+          </dd>
+        </div>
+        <div class={card}>
+          <dt class="text-flyers-iron text-xs font-extrabold tracking-wide uppercase">Look</dt>
+          <dd class="text-flyers-charcoal mt-2">
+            Black, white, and red. Each program adds one color.
+          </dd>
+        </div>
+        <div class={card}>
+          <dt class="text-flyers-iron text-xs font-extrabold tracking-wide uppercase">Type</dt>
+          <dd class="text-flyers-charcoal mt-2">
+            Anton for headlines. Epilogue for everything else.
+          </dd>
+        </div>
+        <div class={card}>
+          <dt class="text-flyers-iron text-xs font-extrabold tracking-wide uppercase">
+            Personality
+          </dt>
+          <dd class="text-flyers-charcoal mt-2">{brand.personality}</dd>
+        </div>
+      </dl>
+      <p class="text-flyers-charcoal mt-6 max-w-3xl">
+        One test for anything you make: is it black, white, and red? Does it look like the same
+        club? Does it feel like fun? If yes, it's on brand.
+      </p>
+    </section>
+
+    <section aria-labelledby="programs-brand-heading">
+      <h2 id="programs-brand-heading" class={h2}>One club, three programs</h2>
+      <p class="text-flyers-charcoal mt-3 max-w-3xl">
+        Flyers is one club. Every program uses the same logo, fonts, and layout, then adds a single
+        color. Club-wide pieces (donations, the website, anything for more than one program) stay
+        red. Program colors never replace red on those.
+      </p>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+        {
+          brand.programColors.map((color) => (
+            <li class={`${card} overflow-hidden p-0`}>
+              <div class="h-3" style={`background-color: ${color.hex}`} aria-hidden="true" />
+              <div class="p-5">
+                <p class="font-display text-flyers-slate-dark text-xl uppercase">{color.name}</p>
+                <p class="text-flyers-iron mt-1 font-mono text-sm">{color.hex}</p>
+                <p class="text-flyers-charcoal mt-2 text-sm">{color.use}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="logos-heading">
+      <h2 id="logos-heading" class={h2}>Logos</h2>
+      <p class="text-flyers-charcoal mt-3 max-w-3xl">
+        Download the SVG for anything printed or scaled up, and the PNG for slides, email, and
+        social. Program lockups are the Flyers logo plus the program name set in Anton.
+      </p>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          brand.logos.map((logo) => (
+            <li class={card}>
+              <div
+                class={`flex h-40 items-center justify-center rounded-xl p-6 ${logo.onDark ? 'bg-flyers-slate-dark' : 'bg-flyers-snow border border-neutral-200'}`}
+              >
+                <img
+                  src={withBase(`/images/brand/${logo.file}.svg`)}
+                  alt={logo.name}
+                  width="200"
+                  height="120"
+                  loading="lazy"
+                  class="max-h-28 w-auto"
+                />
+              </div>
+              <p class="font-display text-flyers-slate-dark mt-4 text-xl uppercase">{logo.name}</p>
+              <p class="text-flyers-charcoal text-sm">{logo.use}</p>
+              <div class="mt-3 flex gap-2">
+                <a
+                  href={withBase(`/images/brand/${logo.file}.svg`)}
+                  download
+                  class="border-flyers-slate text-flyers-slate-dark hover:bg-flyers-snow inline-flex min-h-12 items-center rounded-lg border px-4 text-sm font-bold"
+                >
+                  SVG<span class="sr-only"> for {logo.name}</span>
+                </a>
+                <a
+                  href={withBase(`/images/brand/png/${logo.file}.png`)}
+                  download
+                  class="border-flyers-slate text-flyers-slate-dark hover:bg-flyers-snow inline-flex min-h-12 items-center rounded-lg border px-4 text-sm font-bold"
+                >
+                  PNG<span class="sr-only"> for {logo.name}</span>
+                </a>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class={card}>
+          <h3 class="font-display text-flyers-slate-dark text-xl uppercase">Do</h3>
+          <ul class="text-flyers-charcoal mt-2 list-disc space-y-1 pl-5">
+            <li>Use the white logo on black or on photos.</li>
+            <li>Leave clear space equal to the height of the "F" in Flyers on every side.</li>
+            <li>Keep it at least 32px tall on screen, or 0.5 inch in print.</li>
+            <li>Scale it proportionally.</li>
+          </ul>
+        </div>
+        <div class={card}>
+          <h3 class="font-display text-flyers-slate-dark text-xl uppercase">Don't</h3>
+          <ul class="text-flyers-charcoal mt-2 list-disc space-y-1 pl-5">
+            <li>Stretch, rotate, or recolor it, or add effects.</li>
+            <li>Put it on a busy part of a photo.</li>
+            <li>Rebuild a lockup in a different font. Use Anton.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="colors-heading">
+      <h2 id="colors-heading" class={h2}>Colors</h2>
+      <p class="text-flyers-charcoal mt-3 max-w-3xl">
+        Black is the canvas and red is the signature. On the website, long reading sections stay
+        light so they're easy to read on a phone.
+      </p>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          brand.coreColors.map((color) => (
+            <li class={`${card} overflow-hidden p-0`}>
+              <div
+                class="h-20 border-b border-neutral-200"
+                style={`background-color: ${color.hex}`}
+                aria-hidden="true"
+              />
+              <div class="p-4">
+                <p class="font-display text-flyers-slate-dark text-lg uppercase">{color.name}</p>
+                <p class="text-flyers-iron font-mono text-sm">{color.hex}</p>
+                <p class="text-flyers-charcoal mt-1 text-sm">{color.use}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="type-heading">
+      <h2 id="type-heading" class={h2}>Type</h2>
+      <p class="text-flyers-charcoal mt-3 max-w-3xl">
+        Both fonts are free from Google Fonts, so anyone can make on-brand materials. When they
+        aren't available (Office, email), use Arial or Calibri.
+      </p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class={card}>
+          <p class="text-flyers-iron text-xs font-extrabold tracking-wide uppercase">
+            Headlines: Anton
+          </p>
+          <p class="font-display text-flyers-slate-dark mt-2 text-5xl uppercase">Ride with us</p>
+          <p class="text-flyers-charcoal mt-2 text-sm">
+            One heavy weight. Uppercase and tight for headlines. Sentence case, sparingly, for
+            subheads.
+          </p>
+        </div>
+        <div class={card}>
+          <p class="text-flyers-iron text-xs font-extrabold tracking-wide uppercase">
+            Body: Epilogue
+          </p>
+          <p class="text-flyers-charcoal mt-2 text-lg">
+            Practices start in January. You don't need to be fast, and racing is optional.
+          </p>
+          <p class="text-flyers-charcoal mt-2 text-sm">
+            Regular or Medium, sentence case, with generous line spacing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="voice-heading">
+      <h2 id="voice-heading" class={h2}>Voice</h2>
+      <p class="text-flyers-charcoal mt-3 max-w-3xl">
+        We sound like the coach every kid wants: upbeat, encouraging, and real. We welcome every
+        rider, from first-timers to podium chasers, and we celebrate effort.
+      </p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <div class={card}>
+          <h3 class="font-display text-flyers-slate-dark text-xl uppercase">We are</h3>
+          <ul class="text-flyers-charcoal mt-2 list-disc space-y-1 pl-5">
+            {brand.weAre.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class={card}>
+          <h3 class="font-display text-flyers-slate-dark text-xl uppercase">We aren't</h3>
+          <ul class="text-flyers-charcoal mt-2 list-disc space-y-1 pl-5">
+            {brand.weAreNot.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+      <div class={`${card} mt-4`}>
+        <h3 class="font-display text-flyers-slate-dark text-xl uppercase">In practice</h3>
+        <ul class="text-flyers-charcoal mt-2 list-disc space-y-1 pl-5">
+          <li>Lead with fun and belonging. Use active verbs and short sentences.</li>
+          <li>
+            Write "Come ride with us. Sign-ups are open." Not "Registration is now open for the
+            competitive enduro race team."
+          </li>
+          <li>No em dashes. Use a hyphen, a colon, or a full stop.</li>
+          <li>Say how much things cost, plainly. Don't write "only $50".</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="photo-heading">
+      <h2 id="photo-heading" class={h2}>Photos</h2>
+      <p class="text-flyers-charcoal mt-3 max-w-3xl">
+        Candid, joyful, and in action, with riders of every ability. Fun over polish. Use real club
+        photos only: no AI-generated or stock images. Only use photos the club has media releases
+        for, and never put a rider's full name next to a photo of a minor.
+      </p>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <img
+          src={withBase('/images/enduro-iron-springs.jpg')}
+          alt="Six Flyers Enduro riders in black and pink team jerseys and full-face helmets sit on their bikes in front of Flyers Enduro team tents at a desert race venue."
+          width="1400"
+          height="1050"
+          loading="lazy"
+          class="h-full w-full rounded-2xl object-cover sm:col-span-2"
+        />
+        <img
+          src={withBase('/images/enduro-rider-portrait.jpg')}
+          alt="A young Flyers Enduro rider in a purple full-face helmet and a black and pink Flyers Enduro hoodie leans on a bike at a mountain race venue."
+          width="1050"
+          height="1400"
+          loading="lazy"
+          class="h-full w-full rounded-2xl object-cover"
+        />
+      </div>
+    </section>
+
+    <p class="text-flyers-iron text-sm">
+      Questions about the brand, or need a file that isn't here? Email <a
+        href={`mailto:${siteConfig.contact.email}?subject=Brand%20question`}
+        class="text-flyers-red font-bold underline">{siteConfig.contact.email}</a
+      >.
+    </p>
+  </div>
+</BaseLayout>

@@ -11,6 +11,7 @@ const EXPECTED_HTML_FILES = [
   'register/index.html',
   'coaches/index.html',
   'board/index.html',
+  'brand/index.html',
   'onboarding/index.html',
   'winter-camp/index.html',
   'faq/index.html',
@@ -120,8 +121,8 @@ describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
       'utf8',
     );
 
-    expect(homeHtml).toContain('/images/brand/flyers-logo-dark-bg.svg');
+    expect(homeHtml).toContain('/images/brand/flyers-logo-white.svg');
     expect(homeHtml).toContain('fetchpriority="low"');
-    expect(prospectusHtml).toContain('/images/brand/flyers-logo-red.svg');
+    expect(prospectusHtml).toContain('/images/brand/flyers-logo-black.svg');
   });
 });

@@ -18,6 +18,14 @@
   --color-flyers-pink-dark: #8a0c45;
   --color-flyers-pink-light: #fdf0f6;
 
+  /* Jr. Flyers Youth Blue from the Brand Book (#1e88e5). Same rules as pink: -deep or -dark behind
+     white text, -bright for text on dark slate, the base blue for bars, dots, and blocks. */
+  --color-flyers-blue: #1e88e5;
+  --color-flyers-blue-bright: #64b5f6;
+  --color-flyers-blue-deep: #1565c0;
+  --color-flyers-blue-dark: #0d47a1;
+  --color-flyers-blue-light: #e8f3fc;
+
   --color-flyers-slate: #203746;
   --color-flyers-slate-dark: #14242e;
   --color-flyers-slate-mid: #2b4759;
