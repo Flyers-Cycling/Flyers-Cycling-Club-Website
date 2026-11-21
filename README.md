@@ -5,7 +5,7 @@ Official static website for **Flyers Cycling Club** — unifying **Flyers XC**, 
 ## Club Differentiators Highlighted on the Site
 
 1. **Volunteer-run 501(c)(3) non-profit**: Coaches, ride leaders, and board members are volunteers. Riders help care for local Utah trails, and the seasons fit around fall NICA school teams.
-2. **Gravity + Endurance + Youth Under One Roof**: Serving **Jr. Flyers (K–6)**, **Flyers XC (Grade 7 – U23)**, and **Flyers Enduro (Ages 10–19)** in one easy-to-navigate platform.
+2. **Gravity + Endurance + Youth Under One Roof**: Serving **Jr. Flyers (K–6)**, **Flyers XC (Ages 10–22, U23)**, and **Flyers Enduro/Gravity (Ages 10–18)** in one easy-to-navigate platform.
 3. **Low cost, with help available**: Registration is $50 or $150 depending on the program and covers a t-shirt and rider insurance. Sponsors and donors pay for the rest, including help for families who need it.
 
 ---
