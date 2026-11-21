@@ -129,7 +129,8 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Scholarship details: what kinds of help (fee waivers, loaner bikes), and can we publish a contact?
 - [ ] Refund policy and waiver links, and links to the Google Docs behind each policy
 - [ ] Confirm the club will deliver every sponsor tier perk in `src/content/tiers/`
-- [ ] Media releases for the Enduro/Gravity photo (4 riders), and real photos for the home page hero, Flyers XC, and Jr. Flyers
+- [x] Media releases for the Enduro/Gravity photos (confirmed by Randall, Nov 21 2026)
+- [ ] Real photos for the home page hero, coaches, Flyers XC, and Jr. Flyers (Randall uploading to the club Drive folder)
 - [x] Practice days for each program (see "Confirmed facts" above)
 - [ ] Practice times and locations for each program
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
