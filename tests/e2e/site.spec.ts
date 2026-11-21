@@ -128,6 +128,16 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     expect(jrCount).toBeLessThan(allCount);
   });
 
+  test('Program pages link to a filtered schedule', async ({ page }) => {
+    await page.goto('/schedule?program=enduro');
+    await expect(page.locator('input[name="programFilter"][value="enduro"]')).toBeChecked();
+    await page.goto('/programs/enduro');
+    await expect(
+      page.getByRole('navigation', { name: 'Flyers Enduro/Gravity sections' }),
+    ).toBeVisible();
+    await expect(page.locator('#gear')).toBeVisible();
+  });
+
   test('Mobile navigation modal dialog opens and closes cleanly', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');

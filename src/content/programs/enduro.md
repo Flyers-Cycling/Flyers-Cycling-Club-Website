@@ -48,6 +48,10 @@ In enduro racing, riders pedal up untimed climbs and race timed downhill stages.
 - **Race skills (optional):** walking a course, remembering blind sections, pacing over several stages, and fixing common mechanicals on the trail.
 - **Team days at races:** a shared shade tent, bike checks, and teammates cheering each other on.
 
+### Where we ride
+
+Most rides are close to home on Eagle Mountain and Lake Mountain. We also head out to Kyhv Peak (formerly Squaw Peak), Sundance, Deer Valley, Solitude, and other spots.
+
 ### Races, if you want them
 
 Riders who want to race follow the youth enduro series. Downhill riders race the Mountain States Cup and the Monster Pro Series. Racing is never required.

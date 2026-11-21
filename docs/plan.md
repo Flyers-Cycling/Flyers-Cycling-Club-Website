@@ -74,11 +74,11 @@ Parents look for these.
 
 Each program becomes its own section, the way the club runs.
 
-- [ ] Section layout: overview, groups, schedule, coaches, gear, resources, news
-- [ ] Flyers XC: separate Devo and Comp pages, with how a rider picks or moves between them
-- [ ] Flyers Enduro/Gravity: protective gear, bike park days, race support, Youth Enduro Series races
-- [ ] Jr. Flyers: what a first session looks like, a parent's guide, bike sizing
-- [ ] Program filter on Schedule and News (events and posts already carry a program)
+- [x] Section layout: overview, groups, schedule, coaches, gear, resources, news. Each program page has section links, its coaches, club news, and a link to its own dates. A resources section waits on Phase 5 content.
+- [ ] Flyers XC: separate Devo and Comp pages, with how a rider picks or moves between them. Switching (Devo to Comp when a rider wants to race and commit to training) is on the XC page; separate pages still to do.
+- [ ] Flyers Enduro/Gravity: protective gear, bike park days, race support, Youth Enduro Series races. Where we ride (Eagle Mountain, Lake Mountain, Kyhv Peak, Sundance, Deer Valley, Solitude) is on the page.
+- [ ] Jr. Flyers: what a first session looks like, a parent's guide, bike sizing. Bike sizing: "ask a coach" (Randall). First-session details coming from Jessie Shepard.
+- [x] Program filter on Schedule and News (events and posts already carry a program). Schedule opens filtered from each program page (`/schedule?program=xc`); program pages show news for that program plus club-wide posts.
 - [ ] Program-specific photos (real ones, with media releases)
 
 ## Phase 5: Member resources

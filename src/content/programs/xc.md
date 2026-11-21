@@ -22,6 +22,7 @@ groups:
   - id: comp
     name: Flyers XC Comp
     summary: For riders who want to race competitively. Riders add structured training, race starts, line choice, and pacing for Utah XC races like the Intermountain Cup (ICUP).
+groupsNote: Riders can move from Flyers XC Devo to Flyers XC Comp during the season once they decide they want to race and are ready to commit to training. Talk to your coach about switching.
 practiceSchedule:
   # TODO(board): add practice times and locations.
   - 'January to mid-March: Saturday rides, planned around the weather, with base miles and skill drills'

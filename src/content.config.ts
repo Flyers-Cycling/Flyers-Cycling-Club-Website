@@ -35,6 +35,8 @@ const programs = defineCollection({
       groups: z
         .array(z.object({ id: z.string(), name: z.string(), summary: z.string() }))
         .optional(),
+      // One or two sentences on how riders pick a group or move between groups.
+      groupsNote: z.string().optional(),
       practiceSchedule: z.array(z.string()).min(1),
       whoItsFor: z.array(z.string()).min(1),
       gearChecklist: z.array(z.string()).min(1),

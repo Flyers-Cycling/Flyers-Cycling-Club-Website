@@ -70,6 +70,10 @@ const categoryLabels: Record<string, string> = {
                   value="xc"
                   class="accent-flyers-gold h-3.5 w-3.5"
                 />
+                <span
+                  data-program="xc"
+                  class="bg-program-accent h-2.5 w-2.5 rounded-full"
+                  aria-hidden="true"></span>
                 <span>Flyers XC</span>
               </label>
               <label
@@ -81,6 +85,10 @@ const categoryLabels: Record<string, string> = {
                   value="enduro"
                   class="accent-flyers-gold h-3.5 w-3.5"
                 />
+                <span
+                  data-program="enduro"
+                  class="bg-program-accent h-2.5 w-2.5 rounded-full"
+                  aria-hidden="true"></span>
                 <span>Flyers Enduro/Gravity</span>
               </label>
               <label
@@ -92,6 +100,10 @@ const categoryLabels: Record<string, string> = {
                   value="jr-flyers"
                   class="accent-flyers-gold h-3.5 w-3.5"
                 />
+                <span
+                  data-program="jr-flyers"
+                  class="bg-program-accent h-2.5 w-2.5 rounded-full"
+                  aria-hidden="true"></span>
                 <span>Jr. Flyers</span>
               </label>
             </div>
@@ -220,6 +232,15 @@ const categoryLabels: Record<string, string> = {
           ? 'No events on the calendar right now. Check back soon.'
           : `Showing ${selected === 'everything' ? 'all ' : ''}${visibleCount} ${visibleCount === 1 ? 'event' : 'events'}`;
     }
+  }
+
+  // Program pages link here with ?program=xc (or enduro, jr-flyers) to open the filtered list.
+  const requested = new URLSearchParams(window.location.search).get('program');
+  if (form && requested) {
+    const radio = form.querySelector<HTMLInputElement>(
+      `input[name="programFilter"][value="${CSS.escape(requested)}"]`,
+    );
+    if (radio) radio.checked = true;
   }
 
   form?.addEventListener('change', applyFilter);
