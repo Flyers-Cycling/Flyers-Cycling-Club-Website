@@ -4,10 +4,11 @@ import { matchProgramPathway } from '../../lib/pathway';
 import { withBase } from '../../lib/urls';
 
 const enduroMinimumAge = siteConfig.enduroMinimumAge;
-const initialMatch = matchProgramPathway('7-plus', 'xc', enduroMinimumAge);
+const initialMatch = matchProgramPathway('7-plus', 'xc-devo', enduroMinimumAge);
 
 const programRoutes = {
-  xc: { label: 'Explore Flyers XC', href: withBase('/programs/xc') },
+  'xc-devo': { label: 'Explore Flyers XC Devo', href: withBase('/programs/xc#devo') },
+  'xc-comp': { label: 'Explore Flyers XC Comp', href: withBase('/programs/xc#comp') },
   enduro: { label: 'Explore Flyers Enduro/Gravity', href: withBase('/programs/enduro') },
   'jr-flyers': { label: 'Explore Jr. Flyers', href: withBase('/programs/jr-flyers') },
 };
@@ -37,7 +38,8 @@ const programRoutes = {
   <form
     id="pathway-matcher-form"
     class="mt-8 grid gap-8 lg:grid-cols-12"
-    data-xc-href={programRoutes.xc.href}
+    data-xc-devo-href={programRoutes['xc-devo'].href}
+    data-xc-comp-href={programRoutes['xc-comp'].href}
     data-enduro-href={programRoutes.enduro.href}
     data-jr-href={programRoutes['jr-flyers'].href}
     data-enduro-min-age={enduroMinimumAge}
@@ -55,11 +57,11 @@ const programRoutes = {
             <input
               type="radio"
               name="focus"
-              value="xc"
+              value="xc-devo"
               checked
               class="accent-flyers-gold h-4 w-4"
             />
-            <span>Cross-country (XC) riding and racing</span>
+            <span>XC riding and skills, less focus on racing</span>
           </label>
           <label
             class="bg-flyers-snow text-flyers-charcoal has-[:checked]:border-flyers-slate has-[:checked]:bg-flyers-slate flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-neutral-300 px-4 py-3 text-sm font-semibold transition has-[:checked]:text-white"
@@ -81,13 +83,8 @@ const programRoutes = {
           <label
             class="bg-flyers-snow text-flyers-charcoal has-[:checked]:border-flyers-slate has-[:checked]:bg-flyers-slate flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-neutral-300 px-4 py-3 text-sm font-semibold transition has-[:checked]:text-white"
           >
-            <input
-              type="radio"
-              name="focus"
-              value="nica-offseason"
-              class="accent-flyers-gold h-4 w-4"
-            />
-            <span>Staying sharp between NICA seasons</span>
+            <input type="radio" name="focus" value="xc-comp" class="accent-flyers-gold h-4 w-4" />
+            <span>Competitive XC racing</span>
           </label>
         </div>
       </fieldset>
@@ -202,7 +199,14 @@ const programRoutes = {
   if (form) {
     const enduroMinimumAge = Number(form.dataset.enduroMinAge) || 10;
     const routes: Record<ProgramSlug, { label: string; href: string }> = {
-      xc: { label: 'Explore Flyers XC', href: form.dataset.xcHref || '/programs/xc' },
+      'xc-devo': {
+        label: 'Explore Flyers XC Devo',
+        href: form.dataset.xcDevoHref || '/programs/xc#devo',
+      },
+      'xc-comp': {
+        label: 'Explore Flyers XC Comp',
+        href: form.dataset.xcCompHref || '/programs/xc#comp',
+      },
       enduro: {
         label: 'Explore Flyers Enduro/Gravity',
         href: form.dataset.enduroHref || '/programs/enduro',
@@ -225,7 +229,7 @@ const programRoutes = {
     const updateRecommendation = () => {
       const data = new FormData(form);
       const ageBand = (data.get('ageBand') as AgeBand) || '7-plus';
-      const focus = (data.get('focus') as RidingFocus) || 'xc';
+      const focus = (data.get('focus') as RidingFocus) || 'xc-devo';
       const match = matchProgramPathway(ageBand, focus, enduroMinimumAge);
 
       if (headlineEl) headlineEl.textContent = match.headline;

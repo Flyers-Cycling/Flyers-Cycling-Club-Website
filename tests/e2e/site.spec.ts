@@ -43,8 +43,19 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     const finder = page.locator('#pathway-finder');
     await expect(finder).toBeVisible();
 
-    // Default: 7th grade and up, cross-country riding → Flyers XC
-    await expect(page.locator('#pathway-headline')).toContainText('Flyers XC');
+    // Default: 7th grade and up, XC riding with less focus on racing → Flyers XC Devo
+    await expect(page.locator('#pathway-headline')).toContainText('Flyers XC Devo');
+    await expect(page.locator('#pathway-primary-cta')).toHaveAttribute(
+      'href',
+      /\/programs\/xc#devo$/,
+    );
+
+    await finder.locator('input[name="focus"][value="xc-comp"]').check();
+    await expect(page.locator('#pathway-headline')).toContainText('Flyers XC Comp');
+    await expect(page.locator('#pathway-primary-cta')).toHaveAttribute(
+      'href',
+      /\/programs\/xc#comp$/,
+    );
 
     await finder.locator('input[name="ageBand"][value="k-4"]').check();
     await finder.locator('input[name="focus"][value="fundamentals"]').check();
