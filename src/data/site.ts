@@ -51,6 +51,15 @@ export const siteConfig = {
       enduro: '' as string,
     },
   },
+  // Confirmed by Randall (Nov 21, 2026). Used on /safety, /coaches, and /volunteer.
+  // Say nothing stronger until the board confirms more (see docs/plan.md, board questions).
+  coachScreening:
+    'Every Flyers coach completes a background check and training from our head coaches. Many are also NICA coaches.',
+  // Confirmed by Randall (Nov 21, 2026): some help is available, and families reach out to a coach.
+  costHelp: {
+    summary:
+      "Some help with costs is available. Talk to your rider's coach, or email us. We keep every request private.",
+  },
   // Enduro/Gravity has a minimum age. Shown on the Enduro/Gravity page, /register, and the FAQ.
   enduroMinimumAge: 10,
   contact: {

@@ -5,6 +5,7 @@ import PageHero from '../components/layout/PageHero.astro';
 import ComingSoon from '../components/layout/ComingSoon.astro';
 import { siteConfig } from '../data/site';
 import { programTheme } from '../lib/programs';
+import { withBase } from '../lib/urls';
 
 // Coaches from the leadership collection (coach: true). The board has its own page.
 const leads = (await getCollection('leadership'))
@@ -58,10 +59,24 @@ const leads = (await getCollection('leadership'))
         <p>We'll introduce each coach here with a short bio and photo.</p>
       </ComingSoon>
 
-      <ComingSoon id="coach-training-heading" title="Coach screening and training">
-        <!-- TODO(board): list the screening and training Flyers coaches actually complete. -->
-        <p>We'll explain how coaches are screened and trained before they ride with kids.</p>
-      </ComingSoon>
+      <section
+        aria-labelledby="coach-training-heading"
+        class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs sm:p-8"
+      >
+        <h2
+          id="coach-training-heading"
+          class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase"
+        >
+          Coach screening and training
+        </h2>
+        <!-- TODO(board): add the background check provider and any other training once confirmed. -->
+        <p class="text-flyers-iron mt-2 text-sm leading-relaxed">
+          {siteConfig.coachScreening} More on the <a
+            href={withBase('/safety')}
+            class="text-flyers-red-deep font-bold underline">safety page</a
+          >.
+        </p>
+      </section>
 
       <p class="text-flyers-iron text-sm">
         Want to help coach or lead rides? Email <a

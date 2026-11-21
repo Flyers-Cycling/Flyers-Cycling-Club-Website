@@ -19,6 +19,9 @@ const CORE_ROUTES = [
   '/brand',
   '/onboarding',
   '/faq',
+  '/safety',
+  '/scholarships',
+  '/volunteer',
 ];
 
 test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', () => {

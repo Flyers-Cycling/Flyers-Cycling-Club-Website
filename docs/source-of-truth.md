@@ -6,15 +6,16 @@ Status key: **Confirmed** (by Randall or the board, with the date), **Needs boar
 
 ## Club
 
-| Fact                          | Where to edit                                        | Status                                                      |
-| ----------------------------- | ---------------------------------------------------- | ----------------------------------------------------------- |
-| Club name, legal entity       | `siteConfig.name`, `siteConfig.legalEntity`          | Confirmed                                                   |
-| Mission and focus areas       | `siteConfig.mission`                                 | Confirmed (Randall, Nov 2026)                               |
-| EIN                           | `siteConfig.einPlaceholder`                          | Needs board                                                 |
-| Contact email                 | `siteConfig.contact`                                 | Confirmed (old domain, keep until the new domain is live)   |
-| Socials                       | `siteConfig.socials`                                 | Needs board (only @flyers_xc listed)                        |
-| School teams riders come from | `siteConfig.nicaPartners`                            | Needs board: which are formal partners                      |
-| Brand colors and fonts        | `src/styles/global.css` (see [brand.md](./brand.md)) | Confirmed: XC and Jr. Flyers red, Enduro pink (Nov 21 2026) |
+| Fact                          | Where to edit                                        | Status                                                                |
+| ----------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------- |
+| Club name, legal entity       | `siteConfig.name`, `siteConfig.legalEntity`          | Confirmed                                                             |
+| Mission and focus areas       | `siteConfig.mission`                                 | Confirmed (Randall, Nov 2026)                                         |
+| EIN                           | `siteConfig.einPlaceholder`                          | Needs board                                                           |
+| Contact email                 | `siteConfig.contact`                                 | Confirmed (old domain, keep until the new domain is live)             |
+| Socials                       | `siteConfig.socials`                                 | Needs board (only @flyers_xc listed)                                  |
+| School teams riders come from | `siteConfig.nicaPartners`                            | Needs board: which are formal partners                                |
+| Brand colors and fonts        | `src/styles/global.css` (see [brand.md](./brand.md)) | Confirmed: XC red, Enduro/Gravity pink, Jr. Flyers blue (Nov 21 2026) |
+| Help with costs               | `siteConfig.costHelp`                                | Confirmed: some help, ask a coach. Kinds of help need board           |
 
 ## Programs
 
@@ -42,11 +43,11 @@ One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. 
 
 ## People
 
-| Fact                      | Where to edit             | Status                                           |
-| ------------------------- | ------------------------- | ------------------------------------------------ |
-| Coaches                   | `src/content/leadership/` | Names confirmed. Bios and photos needed.         |
-| Board                     | `src/content/leadership/` | Tim Richards (president) confirmed. Rest needed. |
-| Coach screening, training | (planned Safety page)     | Needs board                                      |
+| Fact                      | Where to edit               | Status                                                                                 |
+| ------------------------- | --------------------------- | -------------------------------------------------------------------------------------- |
+| Coaches                   | `src/content/leadership/`   | Names confirmed. Bios and photos needed.                                               |
+| Board                     | `src/content/leadership/`   | Tim Richards (president) confirmed. Rest needed.                                       |
+| Coach screening, training | `siteConfig.coachScreening` | Confirmed (background check, head-coach training). Provider and other training needed. |
 
 ## Events and communications
 
