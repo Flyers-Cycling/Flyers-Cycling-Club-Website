@@ -66,6 +66,23 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
                 </a>
               </h3>
               <p class="text-flyers-iron mt-2 text-sm leading-relaxed">{data.summary}</p>
+              {data.groups && (
+                <ul class="mt-4 space-y-2">
+                  {data.groups.map((group) => (
+                    <li class="bg-flyers-snow rounded-xl border border-neutral-200/80 p-3 text-xs">
+                      <a
+                        href={withBase(`/programs/${data.programId}#${group.id}`)}
+                        class="text-flyers-slate-dark font-extrabold hover:underline"
+                      >
+                        {group.name}
+                      </a>
+                      <p class="text-flyers-iron mt-0.5 leading-relaxed">
+                        {group.summary.split('. ')[0]}.
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <dl class="bg-flyers-snow mt-5 rounded-xl border border-neutral-200/80 p-3.5 text-xs">
                 <dt class="text-flyers-iron font-bold">Season</dt>

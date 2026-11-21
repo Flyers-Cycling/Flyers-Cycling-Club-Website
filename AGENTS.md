@@ -12,7 +12,7 @@ Read the full sections below, but never break these:
 2. **CI must pass before merging.** Run `pnpm verify` before every commit and `pnpm test:e2e` after markup changes. A human approves every merge.
 3. **Club facts live in content, not components.** Programs, events, FAQs, people, and updates are YAML/Markdown in `src/content/`. Global facts (registration links, mission, contact, minimum ages) are in `src/data/site.ts`.
 4. **Program rules:**
-   - Flyers XC: cross-country riding, racing, and endurance, in two groups: DEVO (skills and fun) and COMP (high-level racing). Ages 10–18, Jan 1–Aug; before 7th grade at the coaches' discretion.
+   - Flyers XC: cross-country riding, racing, and endurance, in two groups: Flyers XC Devo (riding and skills, less focus on racing) and Flyers XC Comp (competitive racing). Ages 10–18, Jan 1–Aug; before 7th grade at the coaches' discretion.
    - Flyers Enduro/Gravity: ages 10–18 (minimum age 10), Jan–Aug, with its own registration form.
    - Jr. Flyers: K–6, summer only (Jun 1–mid-August), registers later than the other two.
    - Riders can join more than one program.
@@ -29,7 +29,7 @@ Flyers Cycling Club is the public home of three youth mountain bike programs run
 
 | Program               | Who                                                  | Season                      | Fee  |
 | --------------------- | ---------------------------------------------------- | --------------------------- | ---- |
-| Jr. Flyers            | Grades K–6 (ages 5–12)                               | Jun 1–mid-Aug (summer only) | $50  |
+| Jr. Flyers            | Grades K–6 (ages 5–12)                               | Jun 1–mid-Aug (summer only) | $35  |
 | Flyers XC             | Ages 10–18 (before 7th grade at coaches' discretion) | Jan 1–Aug                   | $50  |
 | Flyers Enduro/Gravity | Ages 10–18 (grades 5–12)                             | Jan–Aug                     | $150 |
 

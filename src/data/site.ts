@@ -21,7 +21,7 @@ export const siteConfig = {
       },
       {
         title: 'Racing, if you want it',
-        body: 'DEVO for riders who ride for skills and fun, and COMP for riders who want to race at a high level. We support both.',
+        body: 'Flyers XC Devo for riders who want to ride with less focus on racing, and Flyers XC Comp for competitive racing. We support both.',
       },
       {
         title: 'Education',
@@ -34,10 +34,10 @@ export const siteConfig = {
   einPlaceholder: 'Available upon request for corporate & foundation matching',
   region: 'Utah',
   feePhilosophy: {
-    rangeLabel: '$50 or $150',
-    shortSummary: '$50–$150 registration covers a t-shirt and insurance',
+    rangeLabel: '$35–$150',
+    shortSummary: '$35–$150 registration covers a t-shirt and insurance',
     detail:
-      "Every Flyers program is run by volunteers. Registration is $50 or $150, depending on the program, and covers a club t-shirt and rider insurance. Sponsors and donors pay for the rest, so cost doesn't keep kids off the trail.",
+      "Every Flyers program is run by volunteers. Registration is $35–$150, depending on the program, and covers a club t-shirt and rider insurance. Sponsors and donors pay for the rest, so cost doesn't keep kids off the trail.",
   },
   // Flyers XC and Flyers Enduro/Gravity each have their own registration form, opening Dec 1.
   // Jr. Flyers registers later (registrationForm: later in src/content/programs/jr-flyers.md).

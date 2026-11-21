@@ -22,7 +22,7 @@ const programs = defineCollection({
       // Which sign-up form this program uses: xc or enduro (links live in src/data/site.ts),
       // or later for a program that isn't open yet (buttons say "Registration opens later").
       registrationForm: z.enum(['xc', 'enduro', 'later']),
-      feeAmount: z.enum(['$50', '$150']),
+      feeAmount: z.enum(['$35', '$50', '$150']),
       feeIncludes: z.string(),
       accentKey: z.enum(['xc', 'enduro', 'jr']),
       // Optional. A real photo of Flyers riders (never AI-generated or stock), e.g.
@@ -30,6 +30,11 @@ const programs = defineCollection({
       heroImage: z.string().optional(),
       // Required when heroImage is set. Describe only what is actually in the photo.
       heroImageAlt: z.string().optional(),
+      // Optional groups within a program (e.g. Flyers XC Devo and Flyers XC Comp). Shown on the
+      // program cards and the program page. id becomes the page anchor (/programs/xc#devo).
+      groups: z
+        .array(z.object({ id: z.string(), name: z.string(), summary: z.string() }))
+        .optional(),
       practiceSchedule: z.array(z.string()).min(1),
       whoItsFor: z.array(z.string()).min(1),
       gearChecklist: z.array(z.string()).min(1),
