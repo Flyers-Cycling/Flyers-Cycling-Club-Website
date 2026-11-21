@@ -179,7 +179,7 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
                   Pick your group
                 </h2>
                 <p class="text-flyers-iron mt-2 text-sm">
-                  {data.title} has {data.groups.length} groups, and we support both.
+                  {data.groupsNote ?? `${data.title} has ${data.groups.length} groups.`}
                 </p>
                 <div class="mt-5 grid gap-4 sm:grid-cols-2">
                   {data.groups.map((group) => (

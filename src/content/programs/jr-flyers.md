@@ -29,6 +29,7 @@ gearChecklist:
   - Properly sized kids' bike with hand brakes and knobby tires (gears strongly recommended for grades 2–6)
   - Properly fitted cycling helmet (mandatory at all times when straddling a bike)
   - Closed-toe athletic shoes, cycling gloves (highly recommended for little hands), and a water bottle or small hydration pack
+  - Not sure what size bike fits? Ask a coach.
 schoolTeamNote: Jr. Flyers is a fun first step. Riders 10 and older can add Flyers Enduro/Gravity, and Flyers XC is open to younger riders at the coaches' discretion, usually advanced riders who want to race.
 ---
 
