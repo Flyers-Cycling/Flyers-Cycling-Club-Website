@@ -4,6 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/layout/PageHero.astro';
 import { siteConfig } from '../data/site';
 import { anyRegistrationOpen, registrationCta, registrationOpensLabel } from '../lib/registration';
+import { programTheme } from '../lib/programs';
 import { withBase } from '../lib/urls';
 
 const programs = (await getCollection('programs'))
@@ -40,7 +41,10 @@ const isOpen = anyRegistrationOpen();
         <div class="mt-6 grid gap-6 lg:grid-cols-3">
           {
             programs.map(({ data, cta }) => (
-              <article class="flex flex-col justify-between rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs">
+              <article
+                data-program={programTheme(data.accentKey)}
+                class="border-t-program-accent flex flex-col justify-between rounded-2xl border border-t-4 border-neutral-200 bg-white p-6 shadow-xs"
+              >
                 <div>
                   <h3 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase">
                     <a href={withBase(`/programs/${data.programId}`)} class="hover:underline">
@@ -54,7 +58,7 @@ const isOpen = anyRegistrationOpen();
                     href={cta.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="bg-flyers-red hover:bg-flyers-red-bright font-display mt-5 inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
+                    class="bg-program hover:bg-program-hover font-display mt-5 inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
                   >
                     Register for {data.shortTitle} &rarr;
                   </a>

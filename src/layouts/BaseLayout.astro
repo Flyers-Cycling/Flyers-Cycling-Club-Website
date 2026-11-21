@@ -1,4 +1,11 @@
 ---
+// Brand Book fonts, served from this site (no third-party font requests). Latin subset only.
+import '@fontsource/anton/latin-400.css';
+import '@fontsource/epilogue/latin-400.css';
+import '@fontsource/epilogue/latin-500.css';
+import '@fontsource/epilogue/latin-600.css';
+import '@fontsource/epilogue/latin-700.css';
+import '@fontsource/epilogue/latin-800.css';
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
@@ -12,7 +19,7 @@ interface Props {
 
 const {
   title,
-  description = `${siteConfig.name} is a volunteer-run, non-profit youth mountain bike club in Utah with three programs: Jr. Flyers, Flyers XC, and Flyers Enduro. Beginners welcome.`,
+  description = `${siteConfig.name} is a volunteer-run, non-profit youth mountain bike club in Utah with three programs: Jr. Flyers, Flyers XC, and Flyers Enduro/Gravity. Beginners welcome.`,
 } = Astro.props;
 
 const fullTitle =
@@ -34,12 +41,6 @@ const canonicalUrl = new URL(
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />

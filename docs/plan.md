@@ -46,15 +46,17 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 
 ## Phase 2: Design system
 
-- [ ] Add the semantic and program-theme token layers to `global.css` (brand.md section 3)
-- [ ] Replace raw hex in `getProgramAccentMeta()` with tokens
-- [ ] Each program page sets `data-program` so its color comes from one place
+- [x] Add the program-theme token layer to `global.css` (brand.md section 3)
+- [ ] Add the semantic token layer (surface, text, border, action, focus)
+- [x] Replace raw hex with tokens (`getProgramAccentMeta()` is now `programTheme()` plus the program utilities)
+- [x] Each program page sets `data-program` so its color comes from one place
 - [x] Logo files (SVG traced from the club PNGs) published at /brand. Jr. Flyers color: Youth Blue `#1e88e5`.
 - [x] Switch to the Brand Book fonts (Anton, Epilogue) and colors (Enduro Pink `#fe6cd0`, signature red `#da4444`)
 - [x] Resolve the Brand Book conflicts (brand.md section 8)
-- [ ] Red (pink on Enduro/Gravity) underline stroke under display headlines
-- [ ] Self-host the two fonts
-- [ ] Build the shared components list (brand.md section 6) as Astro components
+- [x] Underline stroke under display headlines, in the program color (red, pink on Enduro/Gravity, blue on Jr. Flyers)
+- [x] Self-host the two fonts
+- [ ] Build the shared components list (brand.md section 6) as Astro components (program badge done; buttons, event card, person card, notice banner still to do)
+- [x] Brand review of every page: program pages, cards, register, schedule, coaches, and About use each program's own color (Nov 21, 2026)
 - [x] A `/brand` page (footer link) with logos, colors, type, voice, and photos
 
 ## Phase 3: Trust and safety
@@ -109,7 +111,7 @@ Randall answered these on Nov 21, 2026. Each one goes into its home in content (
 - [x] **Races each program follows.** Flyers XC: Intermountain Cup and the weekly race series. Flyers Enduro/Gravity: the youth enduro series, plus Mountain States Cup and Monster Pro Series for downhill. Jr. Flyers: no races, weekly practices from June. On the XC and Enduro/Gravity pages.
 - [ ] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
 - [ ] **Help with costs.** Some help is available. Families reach out to a coach. Use this on the FAQ and the future Scholarships page.
-- [x] **Jr. Flyers uses red and the club logo.** Switch the `jr` accent from berry to red.
+- [x] **Jr. Flyers uses Youth Blue and the club logo.** Switched the `jr` accent from berry to Youth Blue `#1e88e5`.
 - [ ] **Adults are welcome.** Add the adult riders page in Phase 6.
 
 ## Board and content questions

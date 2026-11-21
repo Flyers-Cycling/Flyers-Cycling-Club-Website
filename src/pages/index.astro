@@ -10,18 +10,12 @@ import { siteConfig } from '../data/site';
 import { isExternalUrl, withBase } from '../lib/urls';
 import { formatEventDate } from '../lib/dates';
 import { eventEnds, upcomingEvents } from '../lib/events';
+import { programTheme } from '../lib/programs';
+import ProgramBadge from '../components/programs/ProgramBadge.astro';
 
 const programs = await getCollection('programs');
 const sponsors = await getCollection('sponsors');
 const events = upcomingEvents(await getCollection('events')).slice(0, 3);
-
-const programBadgeMeta: Record<string, { label: string; style: string }> = {
-  all: { label: 'Whole Club', style: 'bg-flyers-slate-dark text-white' },
-  xc: { label: 'Flyers XC', style: 'bg-flyers-red text-white' },
-  enduro: { label: 'Flyers Enduro/Gravity', style: 'bg-flyers-pink-deep text-white' },
-  'jr-flyers': { label: 'Jr. Flyers', style: 'bg-flyers-blue-deep text-white' },
-  community: { label: 'Trail & Community', style: 'bg-flyers-gold text-flyers-slate-dark' },
-};
 ---
 
 <BaseLayout title={siteConfig.name}>
@@ -100,17 +94,15 @@ const programBadgeMeta: Record<string, { label: string; style: string }> = {
       <div class="mt-8 grid gap-6 md:grid-cols-3">
         {
           events.map((event) => {
-            const badge = programBadgeMeta[event.data.program];
             return (
               <article
                 data-event-ends={eventEnds(event.data)}
-                class="bg-flyers-snow flex flex-col justify-between rounded-2xl border border-neutral-200 p-6"
+                data-program={programTheme(event.data.program)}
+                class="bg-flyers-snow border-t-program-accent flex flex-col justify-between rounded-2xl border border-t-4 border-neutral-200 p-6"
               >
                 <div>
                   <div class="flex items-center justify-between gap-2 text-xs font-bold">
-                    <span class={`rounded-full px-2.5 py-0.5 font-extrabold ${badge.style}`}>
-                      {badge.label}
-                    </span>
+                    <ProgramBadge program={event.data.program} />
                     <time datetime={event.data.startDate} class="text-flyers-iron font-extrabold">
                       {formatEventDate(event.data.startDate)}
                     </time>
@@ -129,7 +121,7 @@ const programBadgeMeta: Record<string, { label: string; style: string }> = {
                       href={withBase(event.data.actionUrl)}
                       target={isExternalUrl(event.data.actionUrl) ? '_blank' : undefined}
                       rel={isExternalUrl(event.data.actionUrl) ? 'noopener noreferrer' : undefined}
-                      class="text-flyers-red-deep hover:text-flyers-slate-dark text-xs font-extrabold underline transition"
+                      class="text-program-ink hover:text-flyers-slate-dark text-xs font-extrabold underline transition"
                     >
                       {event.data.actionLabel} &rarr;
                     </a>

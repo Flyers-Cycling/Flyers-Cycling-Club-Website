@@ -4,7 +4,7 @@ One club brand, with an optional color for each program. Anything else the club 
 
 **Source:** the club's Brand Book (Google Doc "Flyers Cycling - Brand Book", v1.1). This file is how the website applies it. Where the two disagree, section 8 lists what's open.
 
-Status: the tokens below exist today in `src/styles/global.css`. The program-theme layer and the shared package are planned (see [plan.md](./plan.md), Phase 2). Items marked `TODO(board)` need answers before they are final.
+Status: the palette and the program-theme layer below exist today in `src/styles/global.css` (see [plan.md](./plan.md), Phase 2). Items marked `TODO(board)` need answers before they are final.
 
 ## 1. Brand architecture
 
@@ -46,7 +46,7 @@ Don't redraw or generate a logo. The SVGs were traced directly from the club's P
 Three layers. Components use the top layer whenever it exists.
 
 ```
-program theme   --program-primary, --program-on-primary, --program-soft, --program-text   (planned)
+program theme   --program-primary, --program-accent, --program-soft, --program-ink        (exists)
 semantic        surface, text, border, action, focus                                       (planned)
 palette         --color-flyers-*                                                            (exists)
 ```
@@ -75,19 +75,22 @@ palette         --color-flyers-*                                                
 | `flyers-gray-light`            | `#dcdcdc` | 11.6:1 on slate-dark | Brand Book "Light Gray". Secondary text and captions on dark.                                            |
 | `flyers-snow`, `flyers-silver` |           |                      | Page background and borders.                                                                             |
 
-### Program theme (planned)
+### Program theme (exists)
 
-Each program sets the same four variables, so one component works for every program:
+Each program sets the same variables in `src/styles/global.css`, so one component works for every program. A wrapper sets `data-program="xc"` (or `enduro`, `jr-flyers`), and everything inside it uses the `*-program*` utilities. Outside a wrapper they fall back to the club red. `programTheme()` in `src/lib/programs.ts` turns a content key (`xc`, `enduro`, `jr`, `jr-flyers`, `all`, ...) into the right `data-program` value.
 
-| Variable            | Flyers XC              | Flyers Enduro/Gravity | Jr. Flyers             |
-| ------------------- | ---------------------- | --------------------- | ---------------------- |
-| `--program-primary` | `flyers-red`           | `flyers-pink-deep`    | `flyers-red`           |
-| `--program-hover`   | `flyers-red-deep`      | `flyers-pink-dark`    | `flyers-red-deep`      |
-| `--program-accent`  | `flyers-red-signature` | `flyers-pink`         | `flyers-red-signature` |
-| `--program-soft`    | light red tint         | `flyers-pink-light`   | light red tint         |
-| `--program-on-dark` | `flyers-red-bright`    | `flyers-pink-bright`  | white                  |
+| Utility                      | Use                                  | Flyers XC (and club)   | Flyers Enduro/Gravity | Jr. Flyers           |
+| ---------------------------- | ------------------------------------ | ---------------------- | --------------------- | -------------------- |
+| `bg-program`, `text-program` | Buttons, check marks, white-text bg  | `flyers-red`           | `flyers-pink-deep`    | `flyers-blue-deep`   |
+| `bg-program-hover`           | Button hover                         | `flyers-red-deep`      | `flyers-pink-dark`    | `flyers-blue-dark`   |
+| `*-program-accent`           | Bars, dots, borders, headline stroke | `flyers-red-signature` | `flyers-pink`         | `flyers-blue`        |
+| `bg-program-soft`            | Badge and callout tint               | `flyers-red-light`     | `flyers-pink-light`   | `flyers-blue-light`  |
+| `text-program-ink`           | Small text and links on white        | `flyers-red-deep`      | `flyers-pink-dark`    | `flyers-blue-dark`   |
+| `text-program-on-dark`       | Text on slate                        | white                  | `flyers-pink-bright`  | `flyers-blue-bright` |
 
-A program section sets `data-program="xc"` (or `enduro`, `jr-flyers`) on its wrapper, and CSS maps the variables. This replaces the raw hex in `getProgramAccentMeta()` (`src/lib/programs.ts`).
+Use `<ProgramBadge program="..."/>` (`src/components/programs/ProgramBadge.astro`) for program tags: it pairs the color dot with the program name. The `flyers-stroke` class adds the signature underline under a display headline, in the program accent.
+
+Rule of thumb: never write a program's hex or a `flyers-pink-*` / `flyers-blue-*` class inside a program page or card. Set `data-program` and use the program utilities.
 
 ## 4. Type
 
@@ -97,7 +100,7 @@ A program section sets `data-program="xc"` (or `enduro`, `jr-flyers`) on its wra
 | Body     | Epilogue         | Regular or Medium, sentence case, generous line spacing. 16px minimum on mobile.                                   |
 | Fallback | Arial or Calibri | Office and email, when Anton and Epilogue aren't available.                                                        |
 
-Both come from the Brand Book and are loaded from Google Fonts today. Plan: self-host them so the site serves its own files and don't call a third party.
+Both come from the Brand Book. The site serves its own copies (the `@fontsource/anton` and `@fontsource/epilogue` packages, Latin subset), so pages make no third-party font requests.
 
 ## 5. Photos
 

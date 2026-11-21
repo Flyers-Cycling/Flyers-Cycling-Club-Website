@@ -5,25 +5,10 @@ import { siteConfig } from '../data/site';
 import { isExternalUrl, withBase } from '../lib/urls';
 import { formatEventDateRange } from '../lib/dates';
 import { eventEnds, upcomingEvents } from '../lib/events';
+import { programTheme } from '../lib/programs';
+import ProgramBadge from '../components/programs/ProgramBadge.astro';
 
 const events = upcomingEvents(await getCollection('events'));
-
-const programMeta: Record<string, { label: string; badgeClass: string }> = {
-  all: { label: 'All Club', badgeClass: 'bg-flyers-slate-dark text-white' },
-  xc: { label: 'Flyers XC', badgeClass: 'bg-[#FDF2F2] text-[#8F1616] border border-[#F2C4C4]' },
-  enduro: {
-    label: 'Flyers Enduro/Gravity',
-    badgeClass: 'bg-flyers-pink-light text-flyers-pink-dark border border-flyers-pink/40',
-  },
-  'jr-flyers': {
-    label: 'Jr. Flyers',
-    badgeClass: 'bg-flyers-blue-light text-flyers-blue-dark border border-flyers-blue/40',
-  },
-  community: {
-    label: 'Trail Day',
-    badgeClass: 'bg-[#FFF9E6] text-[#5C4500] border border-[#E6C245]',
-  },
-};
 
 const categoryLabels: Record<string, string> = {
   practice: 'Practice / Ride',
@@ -128,18 +113,16 @@ const categoryLabels: Record<string, string> = {
       <div id="schedule-events-list" class="mt-8 space-y-4">
         {
           events.map((event) => {
-            const pMeta = programMeta[event.data.program];
             return (
               <article
                 data-event-program={event.data.program}
+                data-program={programTheme(event.data.program)}
                 data-event-ends={eventEnds(event.data)}
-                class="schedule-event-card flex flex-col justify-between gap-4 rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs sm:flex-row sm:items-center"
+                class="schedule-event-card border-l-program-accent flex flex-col justify-between gap-4 rounded-2xl border border-l-4 border-neutral-200 bg-white p-6 shadow-xs sm:flex-row sm:items-center"
               >
                 <div class="space-y-2">
                   <div class="flex flex-wrap items-center gap-2 text-xs">
-                    <span class={`rounded-full px-2.5 py-0.5 font-extrabold ${pMeta.badgeClass}`}>
-                      {pMeta.label}
-                    </span>
+                    <ProgramBadge program={event.data.program} />
                     <span class="bg-flyers-snow text-flyers-iron rounded-full border border-neutral-200 px-2.5 py-0.5 font-bold">
                       {categoryLabels[event.data.category]}
                     </span>
@@ -165,7 +148,7 @@ const categoryLabels: Record<string, string> = {
                       href={withBase(event.data.actionUrl)}
                       target={isExternalUrl(event.data.actionUrl) ? '_blank' : undefined}
                       rel={isExternalUrl(event.data.actionUrl) ? 'noopener noreferrer' : undefined}
-                      class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-sm font-extrabold tracking-wider text-white uppercase transition"
+                      class="bg-program hover:bg-program-hover font-display inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-sm font-extrabold tracking-wider text-white uppercase transition"
                     >
                       {event.data.actionLabel} &rarr;
                     </a>

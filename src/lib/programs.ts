@@ -20,15 +20,15 @@ export function getRegistrationStatusMeta(status: RegistrationStatus): StatusBad
     case 'upcoming':
       return {
         label: 'Opening Soon',
-        badgeClass: 'bg-[#FFF9E6] text-[#5C4500] border-[#E6C245]',
-        dotClass: 'bg-[#C99A00]',
+        badgeClass: 'bg-flyers-gold-light text-flyers-gold-ink border-flyers-gold',
+        dotClass: 'bg-flyers-gold-deep',
         ctaLabel: 'Join Interest List',
       };
     case 'waitlist':
       return {
         label: 'Waitlist Open',
-        badgeClass: 'bg-[#EEF3F6] text-[#14242E] border-[#B8CAD6]',
-        dotClass: 'bg-[#203746]',
+        badgeClass: 'bg-flyers-slate-light text-flyers-slate-dark border-flyers-slate/25',
+        dotClass: 'bg-flyers-slate',
         ctaLabel: 'Join Waitlist',
       };
     case 'closed':
@@ -41,40 +41,31 @@ export function getRegistrationStatusMeta(status: RegistrationStatus): StatusBad
   }
 }
 
-export interface AccentThemeMeta {
-  badgeClass: string;
-  borderClass: string;
-  topBarClass: string;
-  darkPillClass: string;
-  buttonClass: string;
+/** The value a wrapper puts in `data-program` to pick up a program's colors (global.css). */
+export type ProgramTheme = 'club' | 'xc' | 'enduro' | 'jr-flyers';
+
+/**
+ * Maps a program, event, or sponsor key to its color theme. Accepts the content keys used across
+ * collections ('xc', 'enduro', 'jr', 'jr-flyers', 'all', 'xc-devo', ...). Unknown keys use the club
+ * colors.
+ */
+export function programTheme(key: string | undefined): ProgramTheme {
+  if (!key) return 'club';
+  if (key === 'xc' || key.startsWith('xc-')) return 'xc';
+  if (key === 'enduro') return 'enduro';
+  if (key === 'jr' || key === 'jr-flyers') return 'jr-flyers';
+  return 'club';
 }
 
-export function getProgramAccentMeta(accent: ProgramAccent): AccentThemeMeta {
-  switch (accent) {
-    case 'xc':
-      return {
-        badgeClass: 'bg-[#FDF2F2] text-[#8F1616] border-[#F2C4C4]',
-        borderClass: 'hover:border-[#B81E1E]',
-        topBarClass: 'bg-[#B81E1E]',
-        darkPillClass: 'bg-[#B81E1E]/30 text-white border-[#D12323]/60',
-        buttonClass: 'bg-[#B81E1E] text-white hover:bg-[#8F1616]',
-      };
-    case 'enduro':
-      return {
-        badgeClass: 'bg-flyers-pink-light text-flyers-pink-dark border-flyers-pink/40',
-        borderClass: 'hover:border-flyers-pink',
-        topBarClass: 'bg-flyers-pink',
-        darkPillClass: 'bg-flyers-pink/20 text-flyers-pink-bright border-flyers-pink-bright/50',
-        buttonClass: 'bg-flyers-pink-deep text-white hover:bg-flyers-pink-dark',
-      };
-    // Jr. Flyers Youth Blue (Brand Book; Randall chose #1e88e5, Nov 2026).
-    case 'jr':
-      return {
-        badgeClass: 'bg-flyers-blue-light text-flyers-blue-dark border-flyers-blue/40',
-        borderClass: 'hover:border-flyers-blue',
-        topBarClass: 'bg-flyers-blue',
-        darkPillClass: 'bg-flyers-blue/20 text-flyers-blue-bright border-flyers-blue-bright/50',
-        buttonClass: 'bg-flyers-blue-deep text-white hover:bg-flyers-blue-dark',
-      };
-  }
-}
+/**
+ * Classes that read the program theme. Put them inside an element with `data-program` set.
+ * Every program uses the same classes; only the CSS variables change.
+ */
+export const programClasses = {
+  badge: 'bg-program-soft text-program-ink border-program-accent/40',
+  hoverBorder: 'hover:border-program-accent',
+  bar: 'bg-program-accent',
+  darkPill: 'bg-program-accent/20 text-program-on-dark border-program-accent/60',
+  button: 'bg-program text-white hover:bg-program-hover',
+  link: 'text-program-ink font-bold underline',
+} as const;

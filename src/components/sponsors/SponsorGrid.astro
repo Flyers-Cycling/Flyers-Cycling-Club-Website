@@ -22,13 +22,22 @@ const records = sponsors.map((entry) => ({
 const filtered = filterSponsorsByScope(records, scope, openSlots);
 
 const tierBadgeLabels: Record<string, { label: string; style: string }> = {
-  title: { label: 'Title Partner', style: 'bg-[#FFF9E6] text-[#5C4500] border-[#E6C245]' },
-  gold: { label: 'Gold Partner', style: 'bg-[#FDF2F2] text-[#8F1616] border-[#F2C4C4]' },
-  silver: { label: 'Silver Partner', style: 'bg-[#EEF3F6] text-[#14242E] border-[#C2D2DC]' },
+  title: {
+    label: 'Title Partner',
+    style: 'bg-flyers-gold-light text-flyers-gold-ink border-flyers-gold',
+  },
+  gold: {
+    label: 'Gold Partner',
+    style: 'bg-flyers-red-light text-flyers-red-deep border-flyers-red-signature/40',
+  },
+  silver: {
+    label: 'Silver Partner',
+    style: 'bg-flyers-slate-light text-flyers-slate-dark border-flyers-slate/25',
+  },
   bronze: { label: 'Bronze Partner', style: 'bg-neutral-100 text-neutral-800 border-neutral-300' },
   community: {
     label: 'Community Supporter',
-    style: 'bg-[#FCF1F4] text-[#840E23] border-[#EFC2CC]',
+    style: 'bg-flyers-red-light text-flyers-berry border-flyers-berry/25',
   },
 };
 

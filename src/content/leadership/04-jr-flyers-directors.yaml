@@ -1,6 +1,7 @@
 name: Jessie Shepard
 role: Jr. Flyers coach
 programFocus: Jr. Flyers
+program: jr-flyers
 order: 4
 coach: true
 # TODO(board): add a short bio and (with consent) a photo.

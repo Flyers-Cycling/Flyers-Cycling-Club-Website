@@ -9,6 +9,7 @@
      only: it is under 4.5:1 with white, so buttons and small text keep flyers-red. */
   --color-flyers-red-signature: #da4444;
   --color-flyers-red-deep: #8f1616;
+  --color-flyers-red-light: #fdf2f2;
   --color-flyers-berry: #9d112a;
   /* Enduro Pink from the Brand Book (#fe6cd0). Use -deep or -dark behind white text and
      -bright for text on dark slate; the base pink is for bars, dots, and blocks only. */
@@ -29,11 +30,16 @@
   --color-flyers-slate: #203746;
   --color-flyers-slate-dark: #14242e;
   --color-flyers-slate-mid: #2b4759;
+  --color-flyers-slate-light: #eef3f6;
   --color-flyers-charcoal: #212121;
   --color-flyers-iron: #3b4342;
 
   --color-flyers-gold: #f4ce50;
   --color-flyers-gold-bright: #fae078;
+  /* Gold tints for light "coming soon" and title-tier badges. -ink is the text color on -light. */
+  --color-flyers-gold-light: #fff9e6;
+  --color-flyers-gold-deep: #c99a00;
+  --color-flyers-gold-ink: #5c4500;
   --color-flyers-silver: #cecece;
   --color-flyers-gray-light: #dcdcdc;
   --color-flyers-snow: #f7f7f7;
@@ -42,6 +48,54 @@
   --font-sans:
     'Epilogue', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     sans-serif;
+}
+
+/* Program theme layer (docs/brand.md section 3).
+   A wrapper sets data-program="xc" | "enduro" | "jr-flyers" and everything inside it picks up that
+   program's color through these utilities: bg-program, text-program-ink, border-program-accent, ...
+   Outside a program wrapper the values fall back to the club red. Components never pick a program
+   hex themselves. */
+@theme inline {
+  /* Buttons and solid blocks behind white text (AA with white). */
+  --color-program: var(--program-primary);
+  --color-program-hover: var(--program-hover);
+  /* Bars, dots, underlines, check marks. The brand color itself; not for small text on white. */
+  --color-program-accent: var(--program-accent);
+  /* Light tint for badges and callouts. */
+  --color-program-soft: var(--program-soft);
+  /* Small text and links on white or on -soft (AA). */
+  --color-program-ink: var(--program-ink);
+  /* Text and accents on the dark slate surfaces. */
+  --color-program-on-dark: var(--program-on-dark);
+}
+
+:root,
+[data-program='club'],
+[data-program='xc'] {
+  --program-primary: var(--color-flyers-red);
+  --program-hover: var(--color-flyers-red-deep);
+  --program-accent: var(--color-flyers-red-signature);
+  --program-soft: var(--color-flyers-red-light);
+  --program-ink: var(--color-flyers-red-deep);
+  --program-on-dark: #ffffff;
+}
+
+[data-program='enduro'] {
+  --program-primary: var(--color-flyers-pink-deep);
+  --program-hover: var(--color-flyers-pink-dark);
+  --program-accent: var(--color-flyers-pink);
+  --program-soft: var(--color-flyers-pink-light);
+  --program-ink: var(--color-flyers-pink-dark);
+  --program-on-dark: var(--color-flyers-pink-bright);
+}
+
+[data-program='jr-flyers'] {
+  --program-primary: var(--color-flyers-blue-deep);
+  --program-hover: var(--color-flyers-blue-dark);
+  --program-accent: var(--color-flyers-blue);
+  --program-soft: var(--color-flyers-blue-light);
+  --program-ink: var(--color-flyers-blue-dark);
+  --program-on-dark: var(--color-flyers-blue-bright);
 }
 
 @layer base {
@@ -69,7 +123,7 @@
 
   /* High-contrast accessible focus ring */
   :focus-visible {
-    outline: 3px solid var(--color-flyers-red);
+    outline: 3px solid var(--program-primary);
     outline-offset: 2px;
   }
 
@@ -99,6 +153,18 @@
     );
 }
 
+/* Signature stroke (docs/brand.md section 1): a short bar under a display headline, in the
+   program accent (club red by default, pink inside Enduro/Gravity, blue inside Jr. Flyers). */
+.flyers-stroke::after {
+  content: '';
+  display: block;
+  width: 4.5rem;
+  height: 0.3rem;
+  margin-top: 0.85rem;
+  border-radius: 999px;
+  background-color: var(--program-accent);
+}
+
 /* Native modal dialog backdrop styling (modern-web-guidance: light-dismiss-a-dialog) */
 dialog::backdrop {
   background-color: rgb(20 36 46 / 0.72);
@@ -116,8 +182,8 @@ dialog::backdrop {
 .form-field input.user-invalid-fallback,
 .form-field textarea.user-invalid-fallback,
 .form-field select.user-invalid-fallback {
-  border-color: #b81e1e;
-  background-color: #fef2f2;
+  border-color: var(--color-flyers-red);
+  background-color: var(--color-flyers-red-light);
 }
 
 .form-field input:user-valid,
