@@ -1,0 +1,74 @@
+# Source of truth: where each club fact lives
+
+Every club fact lives in exactly one place. Pages and components read it from there. This file is the map: it says where to edit a fact and whether it's confirmed. It doesn't repeat the values, so it can't drift out of date.
+
+Status key: **Confirmed** (by Randall or the board, with the date), **Needs board** (placeholder on the site), **Stale** (known to be wrong).
+
+## Club
+
+| Fact                          | Where to edit                                        | Status                                                             |
+| ----------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
+| Club name, legal entity       | `siteConfig.name`, `siteConfig.legalEntity`          | Confirmed                                                          |
+| Mission and focus areas       | `siteConfig.mission`                                 | Confirmed (Randall, Nov 2026)                                      |
+| EIN                           | `siteConfig.einPlaceholder`                          | Needs board                                                        |
+| Contact email                 | `siteConfig.contact`                                 | Confirmed (old domain, keep until the new domain is live)          |
+| Socials                       | `siteConfig.socials`                                 | Needs board (only @flyers_xc listed)                               |
+| School teams riders come from | `siteConfig.nicaPartners`                            | Needs board: which are formal partners                             |
+| Brand colors and fonts        | `src/styles/global.css` (see [brand.md](./brand.md)) | Confirmed for XC red and Enduro pink; Jr. Flyers color needs board |
+
+## Programs
+
+One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. Ages, grades, season, fee, what the fee covers, practice rhythm, who it's for, gear, and the NICA note all live in the frontmatter.
+
+| Fact                                | Status                                                            |
+| ----------------------------------- | ----------------------------------------------------------------- |
+| Flyers XC ages, season, fee, groups | Confirmed (Randall, Nov 21 2026). Devo and Comp naming in PR #8.  |
+| Flyers Enduro/Gravity ages, season  | Confirmed. Minimum age is `siteConfig.enduroMinimumAge`.          |
+| Enduro/Gravity fee and insurance    | Needs board: what the gravity insurance is, and why $150          |
+| Jr. Flyers grades, season           | Confirmed                                                         |
+| Jr. Flyers fee                      | $35 confirmed by Randall. Lands with PR #8 (main still says $50). |
+| Practice days, times, locations     | Needs board for all three programs                                |
+
+## Registration
+
+| Fact                             | Where to edit                               | Status                           |
+| -------------------------------- | ------------------------------------------- | -------------------------------- |
+| Opening date (Dec 1, 2026)       | `siteConfig.registration.opensDate`         | Confirmed                        |
+| XC and Enduro/Gravity form links | `siteConfig.registration.forms`             | Needs board: Randall sends Dec 1 |
+| Jr. Flyers opening date          | `registrationWindowLabel` in `jr-flyers.md` | Needs board                      |
+| Refund policy, waiver            | (no home yet; planned Policies page)        | Needs board                      |
+
+## People
+
+| Fact                      | Where to edit             | Status                                           |
+| ------------------------- | ------------------------- | ------------------------------------------------ |
+| Coaches                   | `src/content/leadership/` | Names confirmed. Bios and photos needed.         |
+| Board                     | `src/content/leadership/` | Tim Richards (president) confirmed. Rest needed. |
+| Coach screening, training | (planned Safety page)     | Needs board                                      |
+
+## Events and communications
+
+| Fact                        | Where to edit                                       | Status                                                   |
+| --------------------------- | --------------------------------------------------- | -------------------------------------------------------- |
+| Club events                 | `src/content/events/`                               | Kickoff Jan 2, 2027 confirmed; time and trailhead needed |
+| Winter camp                 | `src/data/winter-camp.ts`                           | Registration link and BLM permit needed                  |
+| Google Calendar embed       | `siteConfig.integrations.googleCalendarEmbedUrl`    | Needs board                                              |
+| Slack invite, email sign-up | `src/pages/onboarding.astro` (move to `siteConfig`) | Needs board                                              |
+| News posts                  | `src/content/updates/`                              | Confirmed per post                                       |
+
+## Money
+
+| Fact                        | Where to edit                          | Status                                                              |
+| --------------------------- | -------------------------------------- | ------------------------------------------------------------------- |
+| Donate, sponsor, shop links | `siteConfig.integrations.zeffy*Url`    | Needs board: all are the bare zeffy.com link                        |
+| Sponsor tiers and perks     | `src/content/tiers/`                   | Needs board: confirm each perk will be delivered                    |
+| Sponsors                    | `src/content/sponsors/`                | Needs board: confirm Lake Mountain Trails Coalition                 |
+| Kit store                   | `siteConfig.integrations.voltKitStore` | Needs board: real Volt URL                                          |
+| Fee summary line            | `siteConfig.feePhilosophy`             | Stale once PR #8 merges? Check the $35 Jr. Flyers fee is reflected. |
+
+## When a fact changes
+
+1. Edit it in the one place listed above.
+2. Update its status here.
+3. If it was an open board question, tick it off in [plan.md](./plan.md).
+4. Run `pnpm verify`.
