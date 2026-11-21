@@ -59,6 +59,7 @@ Flyers XC and Flyers Enduro/Gravity each have their own registration form. Jr. F
    ---
    ```
 3. Write the guide below in plain Markdown, with `##` headings. Follow [docs/voice.md](./docs/voice.md).
+4. For a coach guide, add `audience: coaches`. It shows at `/coaches/resources/<name>` instead. Add `needsCoachReview: true` while a coach is still checking it.
 
 ---
 

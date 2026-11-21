@@ -4,7 +4,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/layout/PageHero.astro';
 import { withBase } from '../../lib/urls';
 
-const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+const guides = (await getCollection('guides', (guide) => guide.data.audience === 'riders')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <BaseLayout

@@ -155,6 +155,10 @@ const guides = defineCollection({
     summary: z.string(),
     // Lower numbers show first.
     order: z.number().int().positive(),
+    // riders: listed at /learn. coaches: listed at /coaches/resources.
+    audience: z.enum(['riders', 'coaches']).default('riders'),
+    // true shows a "draft, a coach is reviewing this" note. Set to false once a coach signs off.
+    needsCoachReview: z.boolean().default(false),
   }),
 });
 

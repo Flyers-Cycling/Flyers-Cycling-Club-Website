@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import GuidePage from '../../../components/guides/GuidePage.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides', (guide) => guide.data.audience === 'coaches');
+  return guides.map((guide) => ({
+    params: { slug: guide.id.replace(/^\d+-/, '') },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+---
+
+<GuidePage
+  guide={guide}
+  eyebrow="Coach resources"
+  backHref="/coaches/resources"
+  backLabel="All coach resources"
+/>

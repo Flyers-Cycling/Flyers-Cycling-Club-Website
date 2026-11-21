@@ -31,6 +31,11 @@ const EXPECTED_HTML_FILES = [
   'learn/trail-etiquette/index.html',
   'learn/food-and-water/index.html',
   'learn/race-day/index.html',
+  'coaches/resources/index.html',
+  'coaches/resources/ride-leader-checklist/index.html',
+  'coaches/resources/emergency-action-plan/index.html',
+  'coaches/resources/ride-groups/index.html',
+  'coaches/resources/skills-progression/index.html',
 ];
 
 function resolveDistTarget(hrefOrSrc: string): boolean {
