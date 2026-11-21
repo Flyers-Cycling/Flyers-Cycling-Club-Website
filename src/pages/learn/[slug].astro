@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import GuidePage from '../../components/guides/GuidePage.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides', (guide) => guide.data.audience === 'riders');
+  // File names start with a number for ordering (01-pre-ride-check.md). The URL drops it.
+  return guides.map((guide) => ({
+    params: { slug: guide.id.replace(/^\d+-/, '') },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+---
+
+<GuidePage guide={guide} eyebrow="Rider guide" backHref="/learn" backLabel="All rider guides" />

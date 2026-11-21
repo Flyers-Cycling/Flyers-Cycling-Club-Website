@@ -146,7 +146,24 @@ const updates = defineCollection({
   }),
 });
 
+// Rider knowledge library (/learn). General riding know-how, written for riders and parents.
+const guides = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/guides' }),
+  schema: z.object({
+    title: z.string(),
+    // One sentence shown on the library page.
+    summary: z.string(),
+    // Lower numbers show first.
+    order: z.number().int().positive(),
+    // riders: listed at /learn. coaches: listed at /coaches/resources.
+    audience: z.enum(['riders', 'coaches']).default('riders'),
+    // true shows a "draft, a coach is reviewing this" note. Set to false once a coach signs off.
+    needsCoachReview: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
+  guides,
   programs,
   tiers,
   sponsors,
