@@ -6,7 +6,7 @@ discipline: Cross-Country
 tagline: Winter-to-summer cross-country (XC) riding, racing, and endurance, in two groups. Flyers XC Devo for riding, Flyers XC Comp for competitive racing.
 summary: Flyers XC (started in 2020) is our cross-country program for riding, racing, and endurance. Choose Flyers XC Devo or Flyers XC Comp.
 order: 1
-agesLabel: Ages 10–18
+agesLabel: Ages 10–22 (U23)
 gradesLabel: Grade 7 and up (younger at the coaches' discretion)
 seasonLabel: Jan 1 – August (Winter, Spring & Summer)
 registrationWindowLabel: Opens Dec 1, 2026
@@ -23,11 +23,12 @@ groups:
     name: Flyers XC Comp
     summary: For riders who want to race competitively. Riders add structured training, race starts, line choice, and pacing for Utah XC races like the Intermountain Cup (ICUP).
 practiceSchedule:
-  - 'Winter (Jan–Feb): 1 ride a week, planned around the weather, with base miles and skill drills'
-  - 'Spring (Mar–May): 1–2 practices a week, building toward ICUP and other spring XC races'
-  - 'Summer (Jun–Aug): Select Saturday rides in the mountains before the fall school season starts'
+  # TODO(board): add practice times and locations.
+  - 'January to mid-March: Saturday rides, planned around the weather, with base miles and skill drills'
+  - 'Mid-March to August: Tuesday practices plus some Saturday rides'
+  - 'Racing is optional. Riders who want to race follow the Intermountain Cup (ICUP) and the weekly race series.'
 whoItsFor:
-  - Middle and high school riders who want to keep riding outside the fall NICA season
+  - Middle school, high school, and college-age riders (up to U23) who want to keep riding outside the fall NICA season
   - Younger riders, before 7th grade, at the coaches' discretion. Usually these are advanced riders who want to race.
   - Riders who want to ride and build skills (Flyers XC Devo), and riders who want to race competitively (Flyers XC Comp)
   - Riders from any school who want a friendly club to ride with
@@ -43,6 +44,16 @@ schoolTeamNote: Flyers XC runs January through August so it fits around the fall
 ## Ride all year with friends
 
 Flyers XC keeps riders on their bikes between fall seasons. Winter rides build a base, spring practices get riders ready for races if they want them, and summer rides head up into the mountains. You don't need to be fast, and you don't need to race.
+
+### Big rides each year
+
+A few long group rides give the season something to look forward to:
+
+- **Winter Classic (January):** Eagle Mountain to Eureka and back.
+- **Big Water Rim (February).**
+- **Spring Classic (April):** the White Rim.
+
+<!-- TODO(board): add dates and details for each ride, and add them to src/content/events/ once set. -->
 
 ### Taking care of our trails
 

@@ -24,7 +24,7 @@ const navItems = [
 const programDots: Record<string, string> = {
   xc: 'bg-flyers-red-bright',
   enduro: 'bg-flyers-pink',
-  jr: 'bg-white',
+  jr: 'bg-flyers-blue-bright',
 };
 
 const programQuickLinks = (await getCollection('programs'))
@@ -75,7 +75,7 @@ function isActive(matchPrefix: string): boolean {
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
     <a href={withBase('/')} class="group flex items-center gap-3.5">
       <img
-        src={withBase('/images/brand/flyers-logo-dark-bg.svg')}
+        src={withBase('/images/brand/flyers-logo-white.svg')}
         alt=""
         width="72"
         height="51"
@@ -177,7 +177,7 @@ function isActive(matchPrefix: string): boolean {
         <div class="flex items-center justify-between border-b border-white/15 pb-4">
           <div class="flex items-center gap-3">
             <img
-              src={withBase('/images/brand/flyers-symbol-crest.svg')}
+              src={withBase('/images/brand/flyers-symbol-white.svg')}
               alt=""
               width="40"
               height="22"

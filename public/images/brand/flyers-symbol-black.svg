@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768.5 394.5" role="img" aria-labelledby="t">
+  <title id="t">Flyers mountain symbol</title>
+  <defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#1b1b1b"/><stop offset="1" stop-color="#2a2a2a"/></linearGradient></defs>
+  <path fill="url(#g)" fill-rule="nonzero" d="M384.25,10 L385.25,10.5 L758.5,383.75 L758.5,384 L572,384 L291.25,103.25 L292.75,101.5Z M240,154.25 L241,154.75 L470.25,384 L470.25,384.25 L283.5,384.25 L240.5,341.25 L239.5,341.75 L196.75,384.5 L10,384.5 L11.5,382.75Z"/>
+</svg>

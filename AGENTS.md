@@ -2,7 +2,7 @@
 
 Guidance for AI coding agents (Claude Code, Codex, Cursor, Copilot, etc.) and human contributors working on the **Flyers Cycling Club** website. `CLAUDE.md` imports this file, so this is the one place to keep instructions.
 
-For human-facing setup and content editing, see [README.md](./README.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). For what each page is for, its main buttons, and its open placeholders, see [docs/content-spec.md](./docs/content-spec.md). For the latest site review and peer comparison, see [docs/site-evaluation.md](./docs/site-evaluation.md).
+For human-facing setup and content editing, see [README.md](./README.md) and [CONTRIBUTING.md](./CONTRIBUTING.md). For what each page is for, its main buttons, and its open placeholders, see [docs/content-spec.md](./docs/content-spec.md). For the latest site review and peer comparison, see [docs/site-evaluation.md](./docs/site-evaluation.md). For voice, brand, where facts live, and the roadmap, see [docs/voice.md](./docs/voice.md), [docs/brand.md](./docs/brand.md), [docs/source-of-truth.md](./docs/source-of-truth.md), and [docs/plan.md](./docs/plan.md).
 
 ## Quick rules
 
@@ -12,11 +12,11 @@ Read the full sections below, but never break these:
 2. **CI must pass before merging.** Run `pnpm verify` before every commit and `pnpm test:e2e` after markup changes. A human approves every merge.
 3. **Club facts live in content, not components.** Programs, events, FAQs, people, and updates are YAML/Markdown in `src/content/`. Global facts (registration links, mission, contact, minimum ages) are in `src/data/site.ts`.
 4. **Program rules:**
-   - Flyers XC: cross-country riding, racing, and endurance, in two groups: Flyers XC Devo (riding and skills, less focus on racing) and Flyers XC Comp (competitive racing). Ages 10–18, Jan 1–Aug; before 7th grade at the coaches' discretion.
+   - Flyers XC: cross-country riding, racing, and endurance, in two groups: Flyers XC Devo (riding and skills, less focus on racing) and Flyers XC Comp (competitive racing). Ages 10–22 (U23), Jan 1–Aug; before 7th grade at the coaches' discretion. The overlap with Jr. Flyers is on purpose, so advanced Jr. Flyers can ride in Flyers XC.
    - Flyers Enduro/Gravity: ages 10–18 (minimum age 10), Jan–Aug, with its own registration form.
    - Jr. Flyers: K–6, summer only (Jun 1–mid-August), registers later than the other two.
    - Riders can join more than one program.
-5. **Tone:** all riders welcome. Lead with programs and what riders do. Ages, grades, and fees appear only on program detail pages and in the FAQ, never on the home page, header, or program cards.
+5. **Tone:** all riders welcome. Follow docs/voice.md. No em dashes in copy. Lead with programs and what riders do. Ages, grades, and fees appear only on program detail pages and in the FAQ, never on the home page, header, or program cards.
 6. **Never invent facts, people, or photos.** Use `TODO(board): …` placeholders (section 5).
 
 **Project skills** in `.claude/skills/` walk through common edits: `update-registration-links`, `manage-events`, and `update-people`.
@@ -27,11 +27,11 @@ Read the full sections below, but never break these:
 
 Flyers Cycling Club is the public home of three youth mountain bike programs run by **Lake Mountain Bicycle Club, Inc.**, a volunteer-run 501(c)(3) in Utah:
 
-| Program               | Who                                                  | Season                      | Fee  |
-| --------------------- | ---------------------------------------------------- | --------------------------- | ---- |
-| Jr. Flyers            | Grades K–6 (ages 5–12)                               | Jun 1–mid-Aug (summer only) | $35  |
-| Flyers XC             | Ages 10–18 (before 7th grade at coaches' discretion) | Jan 1–Aug                   | $50  |
-| Flyers Enduro/Gravity | Ages 10–18 (grades 5–12)                             | Jan–Aug                     | $150 |
+| Program               | Who                                                       | Season                      | Fee  |
+| --------------------- | --------------------------------------------------------- | --------------------------- | ---- |
+| Jr. Flyers            | Grades K–6 (ages 5–12)                                    | Jun 1–mid-Aug (summer only) | $35  |
+| Flyers XC             | Ages 10–22 (U23; before 7th grade at coaches' discretion) | Jan 1–Aug                   | $50  |
+| Flyers Enduro/Gravity | Ages 10–18 (grades 5–12)                                  | Jan–Aug                     | $150 |
 
 The programs run outside the fall NICA (Utah High School Cycling League) season and are meant to work alongside local school teams, not compete with them.
 
@@ -78,41 +78,13 @@ Run `pnpm verify` before every commit. Run `pnpm test:e2e` when you change marku
 
 ---
 
-## 4. Voice and tone
+## 4. Voice, brand, and the plan
 
-The models are the best-loved grassroots youth cycling non-profits: Durango DEVO ("developing lifelong cyclists, one ride at a time"), Little Bellas (confidence and mentorship first), Boulder Junior Cycling, and local NICA teams like Lehi MTB ("improving against yourself"). They sound like **a friendly coach talking to a parent at the trailhead**, not like an ad agency.
-
-### Principles
-
-1. **Lead with the kid's experience, not the club's features.** Fun, friends, confidence, skills, and a lifelong love of riding come first. Racing is optional and comes second.
-2. **Be warm, plain, and specific.** Short sentences. Concrete details ("Tuesdays 6–7:30 PM at the skills park") beat adjectives ("world-class progression").
-3. **Welcome beginners out loud.** Say plainly that you don't need to be fast, race, or own an expensive bike to join.
-4. **Be confident, not defensive.** Describe what Flyers does. Don't define it against "other clubs" or "multi-thousand-dollar programs". Those clubs are often our riders' NICA teams, coaches, and friends.
-5. **Say each key fact once per page, where it matters.** The fee belongs on the program page and in the FAQ, not in every section. The same goes for "volunteer-led" and the school list.
-6. **Be honest about the full cost.** State the fee, what it covers, and what it doesn't (bike, gear, optional race entries, optional kit, travel), and say how to ask for help. Lehi MTB does this well.
-7. **Thank people like neighbors.** Sponsor and volunteer copy is gratitude plus specific impact ("Your $500 covers two coaches' first-aid certifications"), not a list of placements.
-
-### Style rules
-
-- **Headings:** short, human, at most about 8 words. Display headings are uppercased by CSS, so write them in sentence case in source.
-- **Body:** about a 7th–8th grade reading level. Use second person ("your rider"). Use active voice.
-- **Program names:** "Flyers XC", "Flyers Enduro/Gravity", "Jr. Flyers". Riders can join more than one program; Enduro/Gravity has a minimum age of 10 (`siteConfig.enduroMinimumAge`). "Flyers" alone means the whole club. Use "Lake Mountain Bicycle Club, Inc." only where the legal entity matters (tax, legal, footer, prospectus).
-- **Lead with programs, not ages or fees.** The home page, header, and cards name programs and what riders do in them. Grades, ages, and fees live on each program page and in the FAQ. Don't feature U23 riders.
-- **Numbers:** use numerals ("3 programs", "$50"). Use an en dash for ranges (K–6, $50–$150).
-- **Dates shown to users:** human format ("Sat, Jan 16"), never raw ISO strings.
-- **Exclamation points:** at most one per page.
-- **Emphasis:** don't bold whole phrases inside paragraphs. Bold a key fact at most once per paragraph.
-- **Avoid these words:** synergy, seamless(ly), next-level, world-class, radically, unified hub/platform, leverage, elevate, empower (unless quoting a mission), "strictly", "just $X" and "only $X" (state the price plainly).
-
-### Before / after
-
-| Instead of                                                                   | Write                                                                                       |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| "Competitive Progression Without the Multi-Thousand-Dollar Price Tag"        | "Great coaching. Low cost. Every kid welcome."                                              |
-| "One Cycling Club. Three Dirt Pathways. Built for Every Local Kid."          | "Mountain biking for Utah kids, K through 12."                                              |
-| "Why are fees only $50 or $150 when other clubs cost thousands?"             | "Why is registration so affordable?"                                                        |
-| "Gravity skills make safer, faster all-around riders… next-level confidence" | "Learning to descend well makes riders safer on every trail, including their NICA courses." |
-| "Pairs seamlessly with fall NICA racing at Westlake, Lehi, Cedar Valley…"    | "Winter through summer riding that fits around your fall school team."                      |
+- **Voice:** [docs/voice.md](./docs/voice.md) is the standard for all copy. Read it before writing or editing any user-facing text. The short version: a friendly coach talking to a parent at the trailhead. Warm, plain, specific. Lead with the rider's experience. Racing is optional.
+- **Hard rules from the club:** no em dashes (use a hyphen, colon, or full stop; en dashes are fine in number ranges), no throat-clearing openers or stock closings, no "it's not just X, it's Y", no forced lists of three, and none of the banned words listed in voice.md.
+- **Brand and design system:** [docs/brand.md](./docs/brand.md). One club frame (slate, red, gold) with a color per program: Flyers XC red, Flyers Enduro/Gravity pink (`#fe6cd0`), Jr. Flyers Youth Blue (`#1e88e5`). All programs use the same Flyers logo. The public version is the `/brand` page.
+- **Where facts live:** [docs/source-of-truth.md](./docs/source-of-truth.md) maps every club fact to its one home and says whether it's confirmed.
+- **The plan:** [docs/plan.md](./docs/plan.md) is the phased roadmap. Tick its boxes in the PR that finishes the work.
 
 ---
 
@@ -181,21 +153,10 @@ Use this as the checklist for new pages and reviews. It's drawn from peer clubs 
 
 1. Read the relevant content collection and `site.ts` before editing copy. The fact you need is probably already there.
 2. Keep diffs focused. Do content/voice changes and structural refactors in separate commits.
-3. When you change copy, re-read it against section 4. When you add facts, check them against section 5.
+3. When you change copy, re-read it against docs/voice.md. When you add facts, check them against section 5.
 4. Run `pnpm verify` (and `pnpm test:e2e` for UI changes) and report the results honestly.
 5. In the PR description, list any `TODO(board)` placeholders and any claims that need board confirmation.
 
 ### Open questions for the board
 
-These are facts the site states or needs that agents can't verify. Resolve them before publishing related copy, then delete each line once it's answered.
-
-- Which NICA teams are formal partners, and which simply share riders?
-- Coach screening and training actually required (background check provider, concussion and abuse-awareness training, first aid/CPR)?
-- EIN, the rest of the board (Tim Richards is president), and whether a 990 or annual report can be linked. Coaches: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepard (Jr. Flyers); bios and photos still needed.
-- The 2027 registration form link (opens Dec 1, 2026; XC and Enduro/Gravity each have a form; paste them into `siteConfig.registration.forms`). Jr. Flyers registers later (date TBD). Real Zeffy URLs for each donation and tier. Real Google Calendar embed. Real Volt store URL.
-- Is "Lake Mountain Trails Coalition" an actual current sponsor (and its URL)?
-- What the Enduro "gravity rider insurance" is, and why Enduro costs $150 (so the copy can explain it in one line).
-- Scholarship and assistance specifics: fee waivers, loaner bikes, who reviews requests.
-- Refund policy and waiver links.
-- Every sponsorship perk in `src/content/tiers/*.yaml` is a promise to a sponsor (jersey placement, framed photo, year-end summary, social posts). Confirm the club will deliver each one.
-- Real photos needed. The homepage hero and the three program photos were removed in Nov 2026 because they appeared to be AI-generated (riders in Trek, Giant, and Specialized jerseys, not Flyers kits). Each spot now shows a plain brand-colored block. Flyers Enduro has a real club photo again (Nov 2026; confirm the club has media releases for all 4 riders). Still needed: the homepage hero, Flyers XC, and Jr. Flyers. Add a program photo with `heroImage` and `heroImageAlt` in its `src/content/programs/*.md` file.
+The list of facts agents can't verify lives in the "Board and content questions" section of [docs/plan.md](./docs/plan.md). Don't publish copy that depends on an open question. When one is answered, update the fact in its home and tick the box.
