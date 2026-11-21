@@ -43,7 +43,7 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     const finder = page.locator('#pathway-finder');
     await expect(finder).toBeVisible();
 
-    // Default: 7th grade and up, longer rides and endurance → Flyers XC
+    // Default: 7th grade and up, cross-country riding → Flyers XC
     await expect(page.locator('#pathway-headline')).toContainText('Flyers XC');
 
     await finder.locator('input[name="ageBand"][value="k-4"]').check();

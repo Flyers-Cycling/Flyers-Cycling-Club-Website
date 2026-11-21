@@ -3,7 +3,7 @@
 //   '5-6'    → 5th–6th grade (Jr. Flyers; Flyers XC at the coaches' discretion; Enduro/Gravity from age 10)
 //   '7-plus' → 7th grade and up (Flyers XC and Flyers Enduro/Gravity)
 export type AgeBand = 'k-4' | '5-6' | '7-plus';
-export type RidingFocus = 'fundamentals' | 'endurance' | 'gravity' | 'nica-offseason';
+export type RidingFocus = 'fundamentals' | 'xc' | 'gravity' | 'nica-offseason';
 export type ProgramSlug = 'xc' | 'enduro' | 'jr-flyers';
 
 export interface PathwayRecommendation {
@@ -50,13 +50,13 @@ export function matchProgramPathway(
       };
     }
 
-    if (focus === 'endurance') {
+    if (focus === 'xc') {
       return {
         primaryProgram: 'xc',
         secondaryProgram: 'jr-flyers',
         headline: 'Try Flyers XC',
         explanation:
-          'Flyers XC is our endurance program. Riders before 7th grade join at the coaches’ discretion, usually advanced riders who want to race. Newer riders can build skills in Jr. Flyers first.',
+          'Flyers XC is our cross-country program. Riders before 7th grade join at the coaches’ discretion, usually advanced riders who want to race. Newer riders can build skills in Jr. Flyers first.',
         comboNote: `Riders can add Flyers Enduro/Gravity too. ${enduroAge}`,
         nicaNote: 'Winter-to-summer riding that builds fitness before middle school NICA.',
       };
@@ -87,12 +87,11 @@ export function matchProgramPathway(
   }
 
   const explanation: Record<Exclude<RidingFocus, 'gravity'>, string> = {
-    endurance:
-      'Flyers XC is our endurance program. Winter base rides, spring race prep, and summer mountain rides build fitness for longer days on the bike. Racing is optional.',
+    xc: 'Flyers XC is our cross-country program, with two groups. DEVO riders focus on riding, skills, and fun. COMP riders train to compete at a high level. We support both.',
     'nica-offseason':
       'Flyers XC rides once a week in winter, once or twice a week in spring, and on select summer Saturdays. It’s scheduled around the fall NICA season so riders stay fit and sharp all year.',
     fundamentals:
-      'Riders are grouped by pace and skill, so newer riders building trail confidence and experienced racers both have a place. Racing is optional.',
+      'Flyers XC’s DEVO group is for riders who want to focus on riding, skills, and fun. Racing is optional.',
   };
 
   return {

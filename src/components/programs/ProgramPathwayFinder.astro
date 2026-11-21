@@ -4,7 +4,7 @@ import { matchProgramPathway } from '../../lib/pathway';
 import { withBase } from '../../lib/urls';
 
 const enduroMinimumAge = siteConfig.enduroMinimumAge;
-const initialMatch = matchProgramPathway('7-plus', 'endurance', enduroMinimumAge);
+const initialMatch = matchProgramPathway('7-plus', 'xc', enduroMinimumAge);
 
 const programRoutes = {
   xc: { label: 'Explore Flyers XC', href: withBase('/programs/xc') },
@@ -55,11 +55,11 @@ const programRoutes = {
             <input
               type="radio"
               name="focus"
-              value="endurance"
+              value="xc"
               checked
               class="accent-flyers-gold h-4 w-4"
             />
-            <span>Longer rides and building endurance</span>
+            <span>Cross-country (XC) riding and racing</span>
           </label>
           <label
             class="bg-flyers-snow text-flyers-charcoal has-[:checked]:border-flyers-slate has-[:checked]:bg-flyers-slate flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-neutral-300 px-4 py-3 text-sm font-semibold transition has-[:checked]:text-white"
@@ -225,7 +225,7 @@ const programRoutes = {
     const updateRecommendation = () => {
       const data = new FormData(form);
       const ageBand = (data.get('ageBand') as AgeBand) || '7-plus';
-      const focus = (data.get('focus') as RidingFocus) || 'endurance';
+      const focus = (data.get('focus') as RidingFocus) || 'xc';
       const match = matchProgramPathway(ageBand, focus, enduroMinimumAge);
 
       if (headlineEl) headlineEl.textContent = match.headline;

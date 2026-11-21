@@ -3,8 +3,8 @@ programId: xc
 title: Flyers XC
 shortTitle: XC
 discipline: Cross-Country
-tagline: Winter-to-summer cross-country riding. Build endurance, trail skills, and friendships. Racing is optional.
-summary: Flyers XC (started in 2020) is for riders who love longer rides. Build endurance, trail skills, and confidence, from winter base rides through spring ICUP races and summer mountain rides. Racing is optional.
+tagline: Winter-to-summer cross-country (XC) riding in two groups. DEVO for skills and fun, COMP for riders who want to race at a high level.
+summary: Flyers XC (started in 2020) is our cross-country program, with two groups. DEVO riders focus on riding, skills, and fun. COMP riders train to compete at a high level. We support both.
 order: 1
 agesLabel: Ages 10–18
 gradesLabel: Grade 7 and up (younger at the coaches' discretion)
@@ -21,7 +21,7 @@ practiceSchedule:
 whoItsFor:
   - Middle and high school riders who want to keep riding outside the fall NICA season
   - Younger riders, before 7th grade, at the coaches' discretion. Usually these are advanced riders who want to race.
-  - Newer riders getting comfortable on singletrack, and experienced racers getting ready for ICUP. Both have a group.
+  - Riders who want to build skills and have fun (DEVO), and riders who want to race at a high level (COMP)
   - Riders from any school who want a friendly club to ride with
   - Riders who want to add Flyers Enduro/Gravity too. You can join more than one program.
 gearChecklist:
@@ -36,12 +36,12 @@ schoolTeamNote: Flyers XC runs January through August so it fits around the fall
 
 Flyers XC keeps riders on their bikes between fall seasons. Winter rides build a base, spring practices get riders ready for races if they want them, and summer rides head up into the mountains. You don't need to be fast, and you don't need to race.
 
-### How groups work
+### Two groups: DEVO and COMP
 
-Riders are split into small groups by pace and skill, each with a volunteer ride leader and a parent sweep:
+Flyers XC has two groups, and we support both:
 
-- **Trail confidence groups** work on smooth shifting, climbing traction, cornering position, and how to ride well in a group.
-- **Race and endurance groups** add intervals, line choice through rocky sections, race starts, and pacing for Utah XC series races like the Intermountain Cup (ICUP).
+- **DEVO (development)** is for riders who want to focus on riding, skills, and fun. Riders work on smooth shifting, climbing traction, cornering, and how to ride well in a group.
+- **COMP (competitive)** is for riders who want to compete at a high level. Riders add structured training, line choice through rocky sections, race starts, and pacing for Utah XC races like the Intermountain Cup (ICUP).
 
 ### Taking care of our trails
 
