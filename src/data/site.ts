@@ -9,6 +9,27 @@ export const siteConfig = {
   shortName: 'Flyers',
   tagline: 'Youth mountain biking in Utah. All riders welcome.',
   legalEntity: 'Lake Mountain Bicycle Club, Inc.',
+  // Approved by Randall (Nov 2026). A modernized version of the lakemountainflyers.com mission.
+  mission: {
+    statement:
+      'Flyers Cycling Club helps young riders become lifelong mountain bikers. Through our programs, we build skills, fitness, and friendships in a club that welcomes every rider, whatever their skill level, gender, or fitness.',
+    focusAreas: [
+      { title: 'Fun', body: 'Riding with friends comes first, in every program.' },
+      {
+        title: 'Skills and training',
+        body: 'Coaching that meets each rider where they are, from first trail skills to race training.',
+      },
+      {
+        title: 'Racing, if you want it',
+        body: 'DEVO for riders who ride for skills and fun, and COMP for riders who want to race at a high level. We support both.',
+      },
+      {
+        title: 'Education',
+        body: 'Bike safety, bike care, and trail etiquette for riders and families.',
+      },
+      { title: 'Service', body: 'Giving back through trail days and volunteering.' },
+    ],
+  },
   nonProfitStatus: '501(c)(3) Non-Profit Organization',
   einPlaceholder: 'Available upon request for corporate & foundation matching',
   region: 'Utah',
