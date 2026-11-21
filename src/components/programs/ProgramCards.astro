@@ -10,7 +10,6 @@ interface Props {
 
 const { programs } = Astro.props;
 const sorted = [...programs].sort((a, b) => a.data.order - b.data.order);
-const register = registrationCta();
 import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
 ---
 
@@ -19,8 +18,9 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
     sorted.map((program) => {
       const { data } = program;
       const statusMeta = getRegistrationStatusMeta(
-        effectiveRegistrationStatus(data.registrationStatus),
+        effectiveRegistrationStatus(data.registrationStatus, data.inSeasonRegistration),
       );
+      const register = registrationCta(data.inSeasonRegistration);
       const accentMeta = getProgramAccentMeta(data.accentKey);
       const programHref = withBase(`/programs/${data.programId}`);
 

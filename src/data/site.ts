@@ -18,7 +18,8 @@ export const siteConfig = {
     detail:
       "Every Flyers program is run by volunteers. Registration is $50 or $150, depending on the program, and covers a club t-shirt and rider insurance. Sponsors and donors pay for the rest, so cost doesn't keep kids off the trail.",
   },
-  // One registration form covers every program for the season.
+  // One registration form covers Flyers XC and Flyers Enduro/Gravity. Jr. Flyers opens later
+  // (inSeasonRegistration: false in src/content/programs/jr-flyers.md).
   registration: {
     season: '2027',
     opensDate: '2026-12-01',

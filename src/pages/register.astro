@@ -7,6 +7,10 @@ import { registrationCta, registrationOpensLabel } from '../lib/registration';
 import { withBase } from '../lib/urls';
 
 const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
+const seasonPrograms = programs.filter((p) => p.data.inSeasonRegistration);
+const laterPrograms = programs.filter((p) => !p.data.inSeasonRegistration);
+const listNames = (list: typeof programs) =>
+  list.map((p) => p.data.title).join(list.length === 2 ? ' and ' : ', ');
 const register = registrationCta();
 const { season } = siteConfig.registration;
 const opens = registrationOpensLabel();
@@ -14,15 +18,16 @@ const opens = registrationOpensLabel();
 
 <BaseLayout
   title={`${season} Registration`}
-  description={`Registration for the ${season} Flyers Cycling Club season opens ${opens}. One sign-up covers Flyers XC, Flyers Enduro/Gravity, and Jr. Flyers.`}
+  description={`Registration for the ${season} Flyers Cycling Club season opens ${opens}. Covers ${listNames(seasonPrograms)}.`}
 >
   <PageHero
     eyebrow={`${season} season`}
     title={register.isOpen ? 'Registration is open' : `Registration opens ${opens}`}
   >
     <p>
-      One sign-up covers every Flyers program. Riders can join more than one program, and beginners
-      are always welcome.
+      This sign-up covers {listNames(seasonPrograms)}. Riders can join more than one program, and
+      beginners are always welcome.
+      {laterPrograms.length > 0 && ` ${listNames(laterPrograms)} registration opens later.`}
     </p>
   </PageHero>
 
@@ -133,7 +138,10 @@ const opens = registrationOpensLabel();
                   class="bg-flyers-snow hover:border-flyers-slate block min-h-12 rounded-xl border border-neutral-200 p-4 transition"
                 >
                   <span class="text-flyers-slate-dark block font-extrabold">{data.title}</span>
-                  <span class="text-flyers-iron mt-0.5 block text-xs">{data.seasonLabel}</span>
+                  <span class="text-flyers-iron mt-0.5 block text-xs">
+                    {data.seasonLabel}
+                    {!data.inSeasonRegistration && ' · Registration opens later'}
+                  </span>
                 </a>
               </li>
             ))

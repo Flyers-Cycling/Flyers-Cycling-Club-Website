@@ -30,10 +30,11 @@ describe('matchProgramPathway', () => {
     expect(gravity.comboNote).toContain('10 and older');
   });
 
-  it('points grades 5–6 endurance riders to Flyers XC as the next step', () => {
+  it('recommends Flyers XC to grades 5–6 endurance riders, noting it is at the coaches’ discretion', () => {
     const match = matchProgramPathway('5-6', 'endurance');
-    expect(match.primaryProgram).toBe('jr-flyers');
-    expect(match.secondaryProgram).toBe('xc');
+    expect(match.primaryProgram).toBe('xc');
+    expect(match.secondaryProgram).toBe('jr-flyers');
+    expect(match.explanation).toContain('coaches’ discretion');
   });
 
   it('recommends Flyers Enduro/Gravity for grades 5–6 gravity riders and states the minimum age', () => {

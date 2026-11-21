@@ -1,6 +1,6 @@
 // Grade bands shown in the program finder. Values are stable IDs; labels live in the component.
 //   'k-4'    → Kindergarten–4th grade (Jr. Flyers)
-//   '5-6'    → 5th–6th grade (Jr. Flyers, and Flyers Enduro/Gravity from age 10)
+//   '5-6'    → 5th–6th grade (Jr. Flyers; Flyers XC at the coaches' discretion; Enduro/Gravity from age 10)
 //   '7-plus' → 7th grade and up (Flyers XC and Flyers Enduro/Gravity)
 export type AgeBand = 'k-4' | '5-6' | '7-plus';
 export type RidingFocus = 'fundamentals' | 'endurance' | 'gravity' | 'nica-offseason';
@@ -46,21 +46,30 @@ export function matchProgramPathway(
         explanation:
           'For riders who already ride singletrack with confidence. Flyers Enduro/Gravity (January–August) coaches braking, cornering, drops, and line choice, with optional enduro races.',
         comboNote: `${enduroAge} Many riders do Jr. Flyers in the summer too.`,
-        nicaNote:
-          'Strong bike handling helps riders when they join Flyers XC or NICA in 7th grade.',
+        nicaNote: 'Strong bike handling carries into Flyers XC and NICA racing.',
+      };
+    }
+
+    if (focus === 'endurance') {
+      return {
+        primaryProgram: 'xc',
+        secondaryProgram: 'jr-flyers',
+        headline: 'Try Flyers XC',
+        explanation:
+          'Flyers XC is our endurance program. Riders before 7th grade join at the coaches’ discretion, usually advanced riders who want to race. Newer riders can build skills in Jr. Flyers first.',
+        comboNote: `Riders can add Flyers Enduro/Gravity too. ${enduroAge}`,
+        nicaNote: 'Winter-to-summer riding that builds fitness before middle school NICA.',
       };
     }
 
     return {
       primaryProgram: 'jr-flyers',
-      secondaryProgram: focus === 'endurance' ? 'xc' : 'enduro',
+      secondaryProgram: 'enduro',
       headline: 'Start with Jr. Flyers',
       explanation:
-        focus === 'endurance'
-          ? 'Jr. Flyers builds the trail skills and fitness for longer rides. Flyers XC, our endurance program, starts in 7th grade.'
-          : 'Jr. Flyers is a relaxed place to build trail basics with friends, with skill games and beginner singletrack all summer.',
+        'Jr. Flyers is a relaxed place to build trail basics with friends, with skill games and beginner singletrack all summer.',
       comboNote: `${enduroAge} Riders can do it alongside Jr. Flyers.`,
-      nicaNote: 'Good preparation for Flyers XC and NICA, which start in 7th grade.',
+      nicaNote: 'Good preparation for Flyers XC and NICA.',
     };
   }
 

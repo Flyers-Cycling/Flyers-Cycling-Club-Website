@@ -23,8 +23,10 @@ const { program } = Astro.props;
 const { data } = program;
 const { Content } = await render(program);
 
-const statusMeta = getRegistrationStatusMeta(effectiveRegistrationStatus(data.registrationStatus));
-const register = registrationCta();
+const statusMeta = getRegistrationStatusMeta(
+  effectiveRegistrationStatus(data.registrationStatus, data.inSeasonRegistration),
+);
+const register = registrationCta(data.inSeasonRegistration);
 const accentMeta = getProgramAccentMeta(data.accentKey);
 
 const allSponsors = await getCollection('sponsors');

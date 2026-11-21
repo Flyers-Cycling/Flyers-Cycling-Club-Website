@@ -6,9 +6,9 @@ discipline: Cross-Country
 tagline: Winter-to-summer cross-country riding. Build endurance, trail skills, and friendships. Racing is optional.
 summary: Flyers XC (started in 2020) is for riders who love longer rides. Build endurance, trail skills, and confidence, from winter base rides through spring ICUP races and summer mountain rides. Racing is optional.
 order: 1
-agesLabel: Ages 13–22
-gradesLabel: Grade 7 – U23
-seasonLabel: January – August (Winter, Spring & Summer)
+agesLabel: Ages 10–18
+gradesLabel: Grade 7 and up (younger at the coaches' discretion)
+seasonLabel: Jan 1 – August (Winter, Spring & Summer)
 registrationWindowLabel: Opens Dec 1, 2026
 registrationStatus: upcoming
 feeAmount: '$50'
@@ -19,8 +19,8 @@ practiceSchedule:
   - 'Spring (Mar–May): 1–2 practices a week, building toward ICUP and other spring XC races'
   - 'Summer (Jun–Aug): Select Saturday rides in the mountains before the fall school season starts'
 whoItsFor:
-  - Middle and high school riders (grades 7–12) who want to keep riding outside the fall NICA season
-  - Riders out of high school who want to keep training and racing with the club
+  - Middle and high school riders who want to keep riding outside the fall NICA season
+  - Younger riders, before 7th grade, at the coaches' discretion. Usually these are advanced riders who want to race.
   - Newer riders getting comfortable on singletrack, and experienced racers getting ready for ICUP. Both have a group.
   - Riders from any school who want a friendly club to ride with
   - Riders who want to add Flyers Enduro/Gravity too. You can join more than one program.

@@ -8,9 +8,11 @@ summary: Jr. Flyers is a summer program for our youngest riders. Small groups pl
 order: 3
 agesLabel: Ages 5–12
 gradesLabel: Grades K–6
-seasonLabel: Summer (June – August)
-registrationWindowLabel: Opens Dec 1, 2026
+seasonLabel: Summer only (Jun 1 – mid-August)
+registrationWindowLabel: Later in the season (date coming soon)
 registrationStatus: upcoming
+# Jr. Flyers registers later, not on the Dec 1 season form.
+inSeasonRegistration: false
 feeAmount: '$50'
 feeIncludes: Covers a Jr. Flyers t-shirt and rider insurance.
 accentKey: jr
@@ -26,7 +28,7 @@ gearChecklist:
   - Properly sized kids' bike with hand brakes and knobby tires (gears strongly recommended for grades 2–6)
   - Properly fitted cycling helmet (mandatory at all times when straddling a bike)
   - Closed-toe athletic shoes, cycling gloves (highly recommended for little hands), and a water bottle or small hydration pack
-schoolTeamNote: Jr. Flyers is a fun first step. Riders 10 and older can add Flyers Enduro/Gravity, and riders move on to Flyers XC or a NICA team in 7th grade.
+schoolTeamNote: Jr. Flyers is a fun first step. Riders 10 and older can add Flyers Enduro/Gravity, and Flyers XC is open to younger riders at the coaches' discretion, usually advanced riders who want to race.
 ---
 
 ## Where lifelong riders get their start
