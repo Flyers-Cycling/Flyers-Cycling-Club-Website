@@ -23,6 +23,9 @@ const EXPECTED_HTML_FILES = [
   'programs/jr-flyers/index.html',
   'sponsors/index.html',
   'sponsors/prospectus/index.html',
+  'safety/index.html',
+  'scholarships/index.html',
+  'volunteer/index.html',
 ];
 
 function resolveDistTarget(hrefOrSrc: string): boolean {

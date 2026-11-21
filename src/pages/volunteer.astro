@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/layout/PageHero.astro';
+import ComingSoon from '../components/layout/ComingSoon.astro';
+import { siteConfig } from '../data/site';
+import { withBase } from '../lib/urls';
+
+const { email } = siteConfig.contact;
+
+// Roles from the parent-volunteer FAQ (src/content/faqs/07-parent-volunteers.yaml).
+const roles = [
+  {
+    title: 'Sweep a ride',
+    body: 'Ride at the back of a Jr. Flyers or Flyers XC group so nobody rides alone.',
+  },
+  {
+    title: 'Help on skills days',
+    body: 'Set up drills and cheer on Flyers Enduro/Gravity skills sessions.',
+  },
+  {
+    title: 'Run the race-day tent',
+    body: 'Set up the shade tent and keep riders fed and ready on race days.',
+  },
+  {
+    title: 'Work on trails',
+    body: 'Join a trail workday and help keep local singletrack in shape.',
+  },
+  {
+    title: 'Help with sponsors',
+    body: 'Connect the club with local businesses that want to support kids on bikes.',
+  },
+];
+---
+
+<BaseLayout
+  title="Volunteer"
+  description="Flyers Cycling Club runs on volunteers. You don't need to be fast. Here's how parents and adult riders can help."
+>
+  <PageHero eyebrow="Volunteer" title="You don't need to be fast">
+    <p>
+      Every Flyers coach, ride leader, and board member is a volunteer, and most are parents. We'll
+      show you what to do.
+    </p>
+  </PageHero>
+
+  <section aria-labelledby="volunteer-roles-heading" class="py-14 sm:py-16">
+    <div class="mx-auto max-w-5xl space-y-6 px-4 sm:px-6 lg:px-8">
+      <h2
+        id="volunteer-roles-heading"
+        class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase sm:text-4xl"
+      >
+        Ways to help
+      </h2>
+      <ul class="grid gap-4 sm:grid-cols-2">
+        {
+          roles.map((role) => (
+            <li class="border-t-flyers-red rounded-2xl border border-t-4 border-neutral-200 bg-white p-5 shadow-xs">
+              <h3 class="font-display text-flyers-slate-dark text-xl font-black tracking-wide uppercase">
+                {role.title}
+              </h3>
+              <p class="text-flyers-iron mt-1.5 text-sm leading-relaxed">{role.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <section
+        aria-labelledby="volunteer-coach-heading"
+        class="rounded-2xl border border-neutral-200 bg-white p-6 shadow-xs sm:p-8"
+      >
+        <h2
+          id="volunteer-coach-heading"
+          class="font-display text-flyers-slate-dark text-3xl font-black tracking-wide uppercase"
+        >
+          Want to coach?
+        </h2>
+        <p class="text-flyers-charcoal mt-3 text-base leading-relaxed">
+          {siteConfig.coachScreening} If you'd like to coach, email us and we'll walk you through it.
+        </p>
+      </section>
+
+      <!-- TODO(board): add the time each role asks for and any training for non-coach roles. -->
+      <ComingSoon id="volunteer-time-heading" title="How much time it takes">
+        <p>What each role asks of you in a typical week or season.</p>
+      </ComingSoon>
+
+      <section
+        aria-labelledby="volunteer-start-heading"
+        class="dark-surface flyers-banner-bg rounded-2xl p-6 text-white shadow-md sm:p-8"
+      >
+        <h2
+          id="volunteer-start-heading"
+          class="font-display text-3xl font-black tracking-wide text-white uppercase"
+        >
+          Get started
+        </h2>
+        <p class="mt-3 text-base leading-relaxed text-white/90">
+          Email <a
+            href={`mailto:${email}?subject=Volunteering`}
+            class="text-flyers-gold font-bold underline">{email}</a
+          > and tell us which program your rider is in and what sounds fun. Prefer to give money instead
+          of time? <a href={withBase('/sponsors')} class="text-flyers-gold font-bold underline"
+            >Support the club</a
+          >.
+        </p>
+      </section>
+    </div>
+  </section>
+</BaseLayout>

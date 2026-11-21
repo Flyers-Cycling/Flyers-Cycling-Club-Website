@@ -63,12 +63,12 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 
 Parents look for these.
 
-- [ ] Safety page: coach screening and training (background check plus head-coach training), two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern
+- [ ] Safety page: coach screening and training (background check plus head-coach training), two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern. Drafted at /safety with the confirmed screening line, gear links, and a concern email; the rest are `TODO(board)` cards.
 - [ ] Coaches page with real bios and photos (adults, with consent)
 - [ ] Board page with every board member, the EIN, and a 990 or annual report link
 - [ ] Policies page: code of conduct, rider rules, waiver, refund and cancellation
-- [ ] Scholarships page: what help exists and how to ask privately (today: reach out to a coach)
-- [ ] Volunteer page: roles, time asked, training, how to start
+- [ ] Scholarships page: what help exists and how to ask privately (today: reach out to a coach). Drafted at /scholarships ("Help with costs"); the kinds of help are still `TODO(board)`.
+- [ ] Volunteer page: roles, time asked, training, how to start. Drafted at /volunteer; time asked per role is still `TODO(board)`.
 
 ## Phase 4: Program sections
 
@@ -109,8 +109,8 @@ Randall answered these on Nov 21, 2026. Each one goes into its home in content (
 - [x] **Flyers XC kickoff meeting, Dec 15, 2026.** Add an event (skill: `manage-events`). Time and place still needed.
 - [x] **Flyers XC rides:** Winter Classic, Eagle Mountain to Eureka and back (January). Big Water Rim (February). Spring Classic, White Rim (April). On the XC page. Add as events once dates are set.
 - [x] **Races each program follows.** Flyers XC: Intermountain Cup and the weekly race series. Flyers Enduro/Gravity: the youth enduro series, plus Mountain States Cup and Monster Pro Series for downhill. Jr. Flyers: no races, weekly practices from June. On the XC and Enduro/Gravity pages.
-- [ ] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
-- [ ] **Help with costs.** Some help is available. Families reach out to a coach. Use this on the FAQ and the future Scholarships page.
+- [x] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
+- [x] **Help with costs.** Some help is available. Families reach out to a coach. Use this on the FAQ and the future Scholarships page.
 - [x] **Jr. Flyers uses Youth Blue and the club logo.** Switched the `jr` accent from berry to Youth Blue `#1e88e5`.
 - [ ] **Adults are welcome.** Add the adult riders page in Phase 6.
 

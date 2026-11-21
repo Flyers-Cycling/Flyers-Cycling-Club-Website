@@ -8,7 +8,6 @@ import { withBase } from '../../lib/urls';
 import { formatEventDate } from '../../lib/dates';
 import { eventEnds, isUpcoming, upcomingEvents } from '../../lib/events';
 import { winterCamp } from '../../data/winter-camp';
-import { siteConfig } from '../../data/site';
 import { effectiveRegistrationStatus, registrationCta } from '../../lib/registration';
 
 export async function getStaticPaths() {
@@ -254,7 +253,7 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
                     href={withBase('/faq')}
                     class="text-program-ink font-bold underline">See full costs</a
                   >. If cost is a barrier, <a
-                    href={`mailto:${siteConfig.contact.email}?subject=Help%20with%20costs`}
+                    href={withBase('/scholarships')}
                     class="text-program-ink font-bold underline">ask us about help</a
                   > (confidential).
                 </dd>
