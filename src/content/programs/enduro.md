@@ -18,9 +18,10 @@ accentKey: enduro
 heroImage: /images/program-enduro.jpg
 heroImageAlt: Four Flyers Enduro/Gravity riders in black and pink team jerseys smile and hold up medals beside their bikes on a dirt path at a ski area, with a chairlift and pine trees behind them.
 practiceSchedule:
-  - 'Early season (Jan–Mar): Bike setup and suspension clinics, braking practice, and skill sessions at lower, drier trails'
-  - 'Core season (Apr–Jun): Weekly afternoon practices on technical trails, plus pre-rides of Utah enduro race venues'
-  - 'Summer (Jun–Aug): Bike park and high-elevation trail sessions'
+  # Same days as Flyers XC (Randall, Nov 2026). TODO(board): add practice times and locations.
+  - 'January to mid-March: Saturday sessions: bike setup, braking practice, and skills on lower, drier trails'
+  - 'Mid-March to August: Tuesday practices on technical trails, plus some Saturdays'
+  - 'Summer: bike park and high-elevation trail days'
 whoItsFor:
   - Riders 10 and older (grades 5–12) who love descents, bike parks, flow trails, and rock rolls
   - Riders already in Flyers XC or Jr. Flyers. You can join Enduro/Gravity as well as another program.
@@ -45,4 +46,8 @@ In enduro racing, riders pedal up untimed climbs and race timed downhill stages.
 
 - **The basics:** braking zones, letting the bike move under you, choosing a line, and controlled drops and jumps.
 - **Race skills (optional):** walking a course, remembering blind sections, pacing over several stages, and fixing common mechanicals on the trail.
-- **Team days at races:** a shared shade tent, bike checks, and teammates cheering each other on at Utah enduro races.
+- **Team days at races:** a shared shade tent, bike checks, and teammates cheering each other on.
+
+### Races, if you want them
+
+Riders who want to race follow the youth enduro series. Downhill riders race the Mountain States Cup and the Monster Pro Series. Racing is never required.

@@ -35,7 +35,7 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 
 ## Phase 1: Ready for registration (by Dec 1, 2026)
 
-- [ ] Merge PR #8 (Jr. Flyers $35, Flyers XC Devo and Comp)
+- [x] Merge PR #8 (Jr. Flyers $35, Flyers XC Devo and Comp)
 - [ ] Paste the XC and Enduro/Gravity form links into `siteConfig.registration.forms` (skill: `update-registration-links`)
 - [ ] Kickoff ride time and trailhead (skill: `manage-events`)
 - [ ] Real Zeffy donate link, so the Donate button works
@@ -98,15 +98,15 @@ For families already in the club.
 
 ## Confirmed facts to add to the site
 
-Randall answered these on Nov 21, 2026. Each one goes into its home in content (see [source-of-truth.md](./source-of-truth.md)), after PR #8 merges so the program files don't conflict.
+Randall answered these on Nov 21, 2026. Each one goes into its home in content (see [source-of-truth.md](./source-of-truth.md)).
 
-- [ ] **Practice rhythm.** Flyers XC: Saturdays only through mid-March, then Tuesdays and some Saturdays through August. Jr. Flyers: Tuesdays, June to August. Flyers Enduro/Gravity: "the same" (see the question below). Update `practiceSchedule` in each program file.
-- [ ] **Flyers XC kickoff meeting, Dec 15, 2026.** Add an event (skill: `manage-events`). Time and place still needed.
-- [ ] **Flyers XC rides:** Winter Classic, Eagle Mountain to Eureka and back (January). Big Water Rim (February). Spring Classic, White Rim (April). Add as events once dates are set.
-- [ ] **Races each program follows.** Flyers XC: Intermountain Cup and the weekly race series. Flyers Enduro/Gravity: the youth enduro series, plus Mountain States Cup and Monster Pro Series for downhill. Jr. Flyers: no races, weekly practices from June. Name these on each program page.
+- [x] **Practice rhythm.** Flyers XC and Flyers Enduro/Gravity: Saturdays only through mid-March, then Tuesdays and some Saturdays through August. Jr. Flyers: Tuesdays, June to August. In each program's `practiceSchedule`.
+- [x] **Flyers XC kickoff meeting, Dec 15, 2026.** Add an event (skill: `manage-events`). Time and place still needed.
+- [x] **Flyers XC rides:** Winter Classic, Eagle Mountain to Eureka and back (January). Big Water Rim (February). Spring Classic, White Rim (April). On the XC page. Add as events once dates are set.
+- [x] **Races each program follows.** Flyers XC: Intermountain Cup and the weekly race series. Flyers Enduro/Gravity: the youth enduro series, plus Mountain States Cup and Monster Pro Series for downhill. Jr. Flyers: no races, weekly practices from June. On the XC and Enduro/Gravity pages.
 - [ ] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
 - [ ] **Help with costs.** Some help is available. Families reach out to a coach. Use this on the FAQ and the future Scholarships page.
-- [ ] **Jr. Flyers uses red and the club logo.** Switch the `jr` accent from berry to red.
+- [x] **Jr. Flyers uses red and the club logo.** Switch the `jr` accent from berry to red.
 - [ ] **Adults are welcome.** Add the adult riders page in Phase 6.
 
 ## Board and content questions
@@ -129,7 +129,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Media releases for the Enduro/Gravity photo (4 riders), and real photos for the home page hero, Flyers XC, and Jr. Flyers
 - [x] Practice days for each program (see "Confirmed facts" above)
 - [ ] Practice times and locations for each program
-- [ ] Flyers Enduro/Gravity practices: same as Flyers XC (Saturdays, then Tuesdays) or same as Jr. Flyers (Tuesdays, June to August)?
+- [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
 - [ ] Dec 15 kickoff meeting time and place, and dates for the Winter Classic, Big Water Rim, and Spring Classic rides
 - [x] Jr. Flyers brand color: red, reusing the club logo
 - [ ] Logo source files

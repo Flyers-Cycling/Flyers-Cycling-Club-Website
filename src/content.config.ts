@@ -91,7 +91,7 @@ const events = defineCollection({
     endDate: z.string().optional(),
     timeLabel: z.string(),
     program: z.enum(['all', 'xc', 'enduro', 'jr-flyers', 'community']),
-    category: z.enum(['practice', 'race', 'clinic', 'trail-work', 'registration']),
+    category: z.enum(['practice', 'race', 'clinic', 'trail-work', 'registration', 'meeting']),
     location: z.string(),
     summary: z.string(),
     actionLabel: z.string().optional(),

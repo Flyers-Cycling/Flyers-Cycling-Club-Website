@@ -20,7 +20,7 @@ startDate: '2027-01-02' # ISO date, quoted
 endDate: '2027-01-03' # optional, for multi-day events
 timeLabel: Saturday · 10:00 AM – 12:00 PM # or "Time and trailhead coming soon"
 program: xc # all | xc | enduro | jr-flyers | community
-category: practice # practice | race | clinic | trail-work | registration
+category: practice # practice | race | clinic | trail-work | registration | meeting
 location: Local foothill trailhead
 summary: One or two plain sentences on what riders do.
 actionLabel: See the camp plan # optional, needs actionUrl
@@ -31,7 +31,7 @@ actionUrl: /winter-camp # optional; https://… or a site page starting with /
 
 1. Get the real date, time, place, and program from the person. If any are unknown, say so in the copy ("Time and trailhead coming soon") and add a `# TODO(board):` comment. Never invent them.
 2. To add an event, create the file. To remove one, delete the file with `git rm`. To change one, edit it in place.
-3. Keep the voice in AGENTS.md section 4: plain, warm, beginners welcome, and no fees in the summary.
+3. Keep the voice in docs/voice.md: plain, warm, beginners welcome, and no fees in the summary.
 4. If the schedule drops below 2 upcoming events, the e2e schedule filter test (`tests/e2e/site.spec.ts`) may need its counts adjusted. Don't delete the test.
 5. Run `pnpm verify` and `pnpm test:e2e`. Check `/schedule` and the home page.
 

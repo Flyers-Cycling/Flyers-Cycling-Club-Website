@@ -20,16 +20,16 @@ Status key: **Confirmed** (by Randall or the board, with the date), **Needs boar
 
 One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. Ages, grades, season, fee, what the fee covers, practice rhythm, who it's for, gear, and the NICA note all live in the frontmatter.
 
-| Fact                                | Status                                                                                      |
-| ----------------------------------- | ------------------------------------------------------------------------------------------- |
-| Flyers XC ages, season, fee, groups | Confirmed (Randall, Nov 21 2026). Devo and Comp naming in PR #8.                            |
-| Flyers Enduro/Gravity ages, season  | Confirmed. Minimum age is `siteConfig.enduroMinimumAge`.                                    |
-| Enduro/Gravity fee and insurance    | Needs board: what the gravity insurance is, and why $150                                    |
-| Jr. Flyers grades, season           | Confirmed                                                                                   |
-| Jr. Flyers fee                      | $35 confirmed by Randall. Lands with PR #8 (main still says $50).                           |
-| Practice days                       | Confirmed Nov 21 2026 (in plan.md, not yet in program files). Enduro/Gravity needs a check. |
-| Practice times, locations           | Needs board for all three programs                                                          |
-| Races each program follows          | Confirmed Nov 21 2026 (in plan.md, not yet on program pages)                                |
+| Fact                                | Status                                                             |
+| ----------------------------------- | ------------------------------------------------------------------ |
+| Flyers XC ages, season, fee, groups | Confirmed (Randall, Nov 21 2026). Devo and Comp groups in `xc.md`. |
+| Flyers Enduro/Gravity ages, season  | Confirmed. Minimum age is `siteConfig.enduroMinimumAge`.           |
+| Enduro/Gravity fee and insurance    | Needs board: what the gravity insurance is, and why $150           |
+| Jr. Flyers grades, season           | Confirmed                                                          |
+| Jr. Flyers fee                      | Confirmed $35 (Randall, Nov 21 2026)                               |
+| Practice days                       | Confirmed Nov 21 2026. In each program's `practiceSchedule`.       |
+| Practice times, locations           | Needs board for all three programs                                 |
+| Races each program follows          | Confirmed Nov 21 2026. In the XC and Enduro/Gravity program files. |
 
 ## Registration
 
@@ -60,13 +60,13 @@ One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. 
 
 ## Money
 
-| Fact                        | Where to edit                          | Status                                                              |
-| --------------------------- | -------------------------------------- | ------------------------------------------------------------------- |
-| Donate, sponsor, shop links | `siteConfig.integrations.zeffy*Url`    | Needs board: all are the bare zeffy.com link                        |
-| Sponsor tiers and perks     | `src/content/tiers/`                   | Needs board: confirm each perk will be delivered                    |
-| Sponsors                    | `src/content/sponsors/`                | Needs board: confirm Lake Mountain Trails Coalition                 |
-| Kit store                   | `siteConfig.integrations.voltKitStore` | Needs board: real Volt URL                                          |
-| Fee summary line            | `siteConfig.feePhilosophy`             | Stale once PR #8 merges? Check the $35 Jr. Flyers fee is reflected. |
+| Fact                        | Where to edit                          | Status                                              |
+| --------------------------- | -------------------------------------- | --------------------------------------------------- |
+| Donate, sponsor, shop links | `siteConfig.integrations.zeffy*Url`    | Needs board: all are the bare zeffy.com link        |
+| Sponsor tiers and perks     | `src/content/tiers/`                   | Needs board: confirm each perk will be delivered    |
+| Sponsors                    | `src/content/sponsors/`                | Needs board: confirm Lake Mountain Trails Coalition |
+| Kit store                   | `siteConfig.integrations.voltKitStore` | Needs board: real Volt URL                          |
+| Fee summary line            | `siteConfig.feePhilosophy`             | Check it matches the program fees                   |
 
 ## When a fact changes
 
