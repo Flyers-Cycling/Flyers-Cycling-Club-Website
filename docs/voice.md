@@ -1,6 +1,6 @@
 # Flyers voice guide
 
-How Flyers sounds, on the website, in the future team app, in emails, and on social. This is the standard for every page. If a draft breaks a rule here, fix the draft.
+How Flyers sounds, on the website, in emails, and on social. This is the standard for every page. If a draft breaks a rule here, fix the draft.
 
 ## Who we are, in one line
 
@@ -10,8 +10,8 @@ The full mission lives in `siteConfig.mission` (`src/data/site.ts`). Quote it fr
 
 ## Who we're talking to
 
-1. **Parents and guardians** deciding whether to trust volunteers with their kid. Most are on a phone.
-2. **Riders**, especially new and nervous ones.
+1. **Parents and guardians** deciding whether to trust volunteers with their kid.
+2. **Riders**, especially new and nervous ones, but also riders trying to compete at very high levels, including podium chasers.
 3. **Current members** who need a fact fast: when, where, what to bring, how to register.
 4. **Volunteers and adult riders** who might coach, lead rides, or help at events.
 5. **Sponsors and donors** who want to know what their money does.
@@ -68,7 +68,7 @@ These come from Randall and the board. No exceptions.
 | Instead of                                                                   | Write                                                                                       |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | "Competitive Progression Without the Multi-Thousand-Dollar Price Tag"        | "Great coaching. Low cost. Every kid welcome."                                              |
-| "One Cycling Club. Three Dirt Pathways. Built for Every Local Kid."          | "Mountain biking for Utah kids, K through 12."                                              |
+| "One Cycling Club. Three Dirt Pathways. Built for Every Local Kid."          | "Mountain biking for Utah kids, K through college."                                         |
 | "Why are fees only $50 or $150 when other clubs cost thousands?"             | "Why is registration so affordable?"                                                        |
 | "Gravity skills make safer, faster all-around riders… next-level confidence" | "Learning to descend well makes riders safer on every trail, including their NICA courses." |
 | "Pairs seamlessly with fall NICA racing at Westlake, Lehi, Cedar Valley…"    | "Winter through summer riding that fits around your fall school team."                      |

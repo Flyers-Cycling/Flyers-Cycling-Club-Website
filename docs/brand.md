@@ -1,17 +1,17 @@
 # Flyers brand and design system
 
-One club brand, with a color for each program. Anything else the club builds later (for example a members area) should use the same design tokens, so it looks like it belongs with the site.
+One club brand, with an optional color for each program. Anything else the club builds later (for example a members area) should use the same design tokens, so it looks like it belongs with the site.
 
 Status: the tokens below exist today in `src/styles/global.css`. The program-theme layer and the shared package are planned (see [plan.md](./plan.md), Phase 2). Items marked `TODO(board)` need answers before they are final.
 
 ## 1. Brand architecture
 
-| Level   | Name                  | Primary color          | Used for                                                                                    |
-| ------- | --------------------- | ---------------------- | ------------------------------------------------------------------------------------------- |
-| Club    | Flyers Cycling Club   | Slate, with red + gold | Header, footer, home page, About, Sponsors, Board, anything club-wide                       |
-| Program | Flyers XC             | Red                    | XC pages, XC events, XC Devo and XC Comp                                                    |
-| Program | Flyers Enduro/Gravity | Pink                   | Enduro/Gravity pages and events                                                             |
-| Program | Jr. Flyers            | Red                    | Jr. Flyers pages and events. Shares Flyers XC red and the club logo (Randall, Nov 21 2026). |
+| Level   | Name                  | Primary color           | Used for                                                                                  |
+| ------- | --------------------- | ----------------------- | ----------------------------------------------------------------------------------------- |
+| Club    | Flyers Cycling Club   | Red, black, slate, gold | Header, footer, home page, About, Sponsors, Board, non-profit details, anything club-wide |
+| Program | Flyers XC             | Red                     | XC pages, XC events, XC Devo and XC Comp                                                  |
+| Program | Flyers Enduro/Gravity | Pink                    | Enduro/Gravity pages and events                                                           |
+| Program | Jr. Flyers            | Red                     | Jr. Flyers pages and events. Shares Flyers XC red and the same logo.                      |
 
 Rules:
 
@@ -46,6 +46,7 @@ palette         --color-flyers-*                                                
 | ------------------------------ | --------- | -------------------- | ------------------------------------------------------------------------ |
 | `flyers-slate`                 | `#203746` | 12.4:1               | Club primary. Header, footer, dark sections.                             |
 | `flyers-slate-dark`            | `#14242e` | 15.9:1               | Darkest surface.                                                         |
+| `flyers-charcoal`              | `#212121` | 16.1:1               | Club black. Body text and black brand elements.                          |
 | `flyers-red`                   | `#b81e1e` | 6.5:1                | Club accent and Flyers XC primary. White text OK.                        |
 | `flyers-red-deep`              | `#8f1616` | 9.2:1                | Hover and pressed states.                                                |
 | `flyers-berry`                 | `#9d112a` | 8.2:1                | Spare accent. No longer the Jr. Flyers color.                            |

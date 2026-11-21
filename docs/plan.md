@@ -6,14 +6,14 @@ Last reviewed: Nov 21, 2026.
 
 ## Where we're headed
 
-A site a parent can trust in 2 minutes on a phone, and a member can use every week. Durango DEVO is the model: one club, many groups, clear safety and support pages, and lots of real photos. Flyers has 3 programs instead of 15 age groups, so each program gets its own section with its own color.
+A site a parent can trust in 2 minutes on a phone, and a member can use every week. Durango DEVO is the model: one club, many groups, clear safety and support pages, and lots of real photos. Flyers has 3 programs instead of 15 age groups, so each program gets its own section with its own color. Each program has an age range: Jr. Flyers is K-6th grade. Flyers XC is 10-22 (U23), and it overlaps with Jr. Flyers on purpose so advanced Jr. Flyers can ride in Flyers XC. Flyers Enduro/Gravity is 10-18.
 
 ### What we're borrowing from Durango DEVO
 
-- A clear "how we work" statement (theirs is "age based" and "community based"). Ours: organized by program, age, and ability, and community based.
+- A clear "how we work" statement (theirs is "age based" and "community based"). Ours: organized by program, age, and ability. Community based.
 - A Safety page with a way to report a concern.
 - Scholarships with their own page, not one FAQ line.
-- Donate, Volunteer, and Sponsors grouped under one "Support" menu.
+- Donate and Volunteer grouped under one "Support" menu. Sponsors also gets its own top-level nav item, and the two link to each other.
 - A Policies area: rider rules, cancellation and refund, code of conduct.
 - Coach resources for volunteers.
 - Real impact numbers on the home page, once we have them.
@@ -21,7 +21,7 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 ### What we're not borrowing
 
 - Stale event listings. Our schedule hides past events automatically.
-- Policies in loose Google Docs. Ours live on the site.
+- Policies in loose Google Docs. Ours live on the site, backed by the club's Google Docs (`TODO(board)`: links to the source docs).
 - Numbers that change from page to page. Ours come from one place ([source-of-truth.md](./source-of-truth.md)).
 
 ## Phase 0: Foundation (this PR)
@@ -56,7 +56,7 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 
 ## Phase 3: Trust and safety
 
-Parents look for these first.
+Parents look for these.
 
 - [ ] Safety page: coach screening and training (background check plus head-coach training), two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern
 - [ ] Coaches page with real bios and photos (adults, with consent)
@@ -71,7 +71,7 @@ Each program becomes its own section, the way the club runs.
 
 - [ ] Section layout: overview, groups, schedule, coaches, gear, resources, news
 - [ ] Flyers XC: separate Devo and Comp pages, with how a rider picks or moves between them
-- [ ] Flyers Enduro/Gravity: protective gear rules, bike park days, race support
+- [ ] Flyers Enduro/Gravity: protective gear, bike park days, race support, Youth Enduro Series races
 - [ ] Jr. Flyers: what a first session looks like, a parent's guide, bike sizing
 - [ ] Program filter on Schedule and News (events and posts already carry a program)
 - [ ] Program-specific photos (real ones, with media releases)
@@ -83,11 +83,11 @@ For families already in the club.
 - [ ] Parent handbook: how communication works (Slack, email, calendar), weather calls, what to bring
 - [ ] Rider knowledge library: bike fit, basic maintenance, trail etiquette, nutrition and hydration, race day basics
 - [ ] Coach resources: ride leader checklists, emergency plan, skills progressions
-- [ ] Simple contact form that routes to the right person by topic
+- [ ] Simple contact form that routes to the right person by topic (`TODO`: pick how to run a working form on a static site)
 
 ## Phase 6: Community and support
 
-- [ ] "Support" menu: Donate, Sponsor, Volunteer, Shop
+- [ ] "Support" menu (Donate, Volunteer, Shop) plus Sponsors as its own top-level item, cross-linked
 - [ ] Donate reachable from every page
 - [ ] Real sponsors only; open sponsorship spots listed separately
 - [ ] Confirm every sponsor tier perk before it stays on the site
@@ -124,7 +124,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] What the Enduro/Gravity "gravity rider insurance" is, and why the fee is $150
 - [x] Is there help with costs? Yes, some. Families reach out to a coach.
 - [ ] Scholarship details: what kinds of help (fee waivers, loaner bikes), and can we publish a contact?
-- [ ] Refund policy and waiver links
+- [ ] Refund policy and waiver links, and links to the Google Docs behind each policy
 - [ ] Confirm the club will deliver every sponsor tier perk in `src/content/tiers/`
 - [ ] Media releases for the Enduro/Gravity photo (4 riders), and real photos for the home page hero, Flyers XC, and Jr. Flyers
 - [x] Practice days for each program (see "Confirmed facts" above)
