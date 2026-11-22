@@ -18,8 +18,9 @@ accentKey: enduro
 heroImage: /images/program-enduro.jpg
 heroImageAlt: Four Flyers Enduro/Gravity riders in black and pink team jerseys smile and hold up medals beside their bikes on a dirt path at a ski area, with a chairlift and pine trees behind them.
 practiceSchedule:
-  # Same days as Flyers XC (Randall, Nov 2026). TODO(board): add practice times and locations.
-  - 'January to mid-March: Saturday sessions: bike setup, braking practice, and skills on lower, drier trails'
+  # Same days and Saturday time as Flyers XC (Randall, Nov 2026). TODO(board): add Saturday location and Tuesday times.
+  - 'January to mid-March: Saturday sessions at 10am: bike setup, braking practice, and skills on lower, drier trails. Place to be announced.'
+  - 'When the trails are muddy, Saturday sessions move to the paved Jordan River Trail or Murdock Canal Trail. We post any change in Slack at least 2 hours before.'
   - 'Mid-March to August: Tuesday practices on technical trails, plus some Saturdays'
   - 'Summer: bike park and high-elevation trail days'
 whoItsFor:

@@ -134,7 +134,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [x] Media releases for the Enduro/Gravity photos (confirmed by Randall, Nov 21 2026)
 - [ ] Real photos for the home page hero, coaches, Flyers XC, and Jr. Flyers (Randall uploading to the club Drive folder)
 - [x] Practice days for each program (see "Confirmed facts" above)
-- [ ] Practice times and locations for each program
+- [ ] Practice times and locations for each program. Saturdays at 10am for Flyers XC and Enduro/Gravity, with the Jordan River or Murdock Canal trails when muddy (Randall, Nov 22 2026). Saturday place and Tuesday times still needed.
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
 - [ ] Dec 15 kickoff meeting time and place, and dates for the Winter Classic, Big Water Rim, and Spring Classic rides
 - [x] Jr. Flyers brand color: Youth Blue #1e88e5, same logo
