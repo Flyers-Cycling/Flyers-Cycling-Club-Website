@@ -107,7 +107,7 @@ Randall answered these on Nov 21, 2026. Each one goes into its home in content (
 
 - [x] **Practice rhythm.** Flyers XC and Flyers Enduro/Gravity: Saturdays only through mid-March, then Tuesdays and some Saturdays through August. Jr. Flyers: Tuesdays, June to August. In each program's `practiceSchedule`.
 - [x] **Flyers XC kickoff meeting, Dec 15, 2026.** Add an event (skill: `manage-events`). Time and place still needed.
-- [x] **Flyers XC rides:** Winter Classic, Eagle Mountain to Eureka and back (January). Big Water Rim (February). Spring Classic, White Rim (April). On the XC page. Add as events once dates are set.
+- [x] **Flyers XC rides:** Winter Classic, Eagle Mountain to Eureka and back (January). Good Water Rim (February), Antelope Island (March). Spring Classic, White Rim (April). On the XC page. Added as events with 2027 dates (Nov 22 2026).
 - [x] **Races each program follows.** Flyers XC: Intermountain Cup and the weekly race series. Flyers Enduro/Gravity: the youth enduro series, plus Mountain States Cup and Monster Pro Series for downhill. Jr. Flyers: no races, weekly practices from June. On the XC and Enduro/Gravity pages.
 - [x] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
 - [x] **Help with costs.** Some help is available. Families reach out to a coach. Use this on the FAQ and the future Scholarships page.
@@ -136,6 +136,6 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [x] Practice days for each program (see "Confirmed facts" above)
 - [ ] Practice times and locations for each program. Saturdays at 10am for Flyers XC and Enduro/Gravity, with the Jordan River or Murdock Canal trails when muddy (Randall, Nov 22 2026). Saturday place and Tuesday times still needed.
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
-- [ ] Dec 15 kickoff meeting time and place, and dates for the Winter Classic, Big Water Rim, and Spring Classic rides
+- [ ] Dec 15 kickoff meeting time and place. Signature ride dates set (Randall, Nov 22 2026): Winter Classic Jan 23, Good Water Rim Feb 20, Antelope Island Mar 13, White Rim Spring Classic Apr 17. Start times still needed.
 - [x] Jr. Flyers brand color: Youth Blue #1e88e5, same logo
 - [ ] Logo source files
