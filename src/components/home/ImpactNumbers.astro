@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import { siteConfig } from '../../data/site';
+import { programTheme } from '../../lib/programs';
+
+const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
+const { season, riders } = siteConfig.impact;
+const rows = programs
+  .map((program) => ({
+    id: program.id,
+    title: program.data.title,
+    count: riders[program.id as keyof typeof riders],
+  }))
+  .filter((row) => typeof row.count === 'number');
+---
+
+<section aria-labelledby="home-impact-heading" class="border-t border-neutral-200 bg-white py-14">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <p class="text-flyers-red-deep text-xs font-extrabold tracking-widest uppercase">
+      {season} season
+    </p>
+    <h2
+      id="home-impact-heading"
+      class="font-display text-flyers-slate-dark mt-2 text-3xl leading-tight font-black tracking-wide uppercase sm:text-4xl"
+    >
+      Who rode with us
+    </h2>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-3">
+      {
+        rows.map((row) => (
+          <li
+            data-program={programTheme(row.id)}
+            class="border-program-accent bg-program-soft rounded-lg border-l-4 p-5"
+          >
+            <p class="font-display text-program-ink text-5xl font-black">{row.count}</p>
+            <p class="text-flyers-slate-dark mt-1 font-bold">{row.title} riders</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

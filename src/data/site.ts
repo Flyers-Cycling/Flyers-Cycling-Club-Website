@@ -63,6 +63,16 @@ export const siteConfig = {
   // Confirmed by Randall (Nov 21, 2026). Used on /safety and /onboarding.
   weatherCalls:
     "We call off rides for lightning and mud. You'll hear in Slack at least 2 hours before the ride starts.",
+  // Riders per program, from Randall (Nov 22, 2026). Shown on the home page.
+  // TODO(board): update after each season, and add volunteer hours and families helped when known.
+  impact: {
+    season: '2026',
+    riders: {
+      'jr-flyers': 238,
+      enduro: 50,
+      xc: 20,
+    },
+  },
   // Enduro/Gravity has a minimum age. Shown on the Enduro/Gravity page, /register, and the FAQ.
   enduroMinimumAge: 10,
   contact: {
@@ -71,7 +81,8 @@ export const siteConfig = {
     location: 'Utah County, Utah',
   },
   integrations: {
-    zeffyDonateUrl: 'https://www.zeffy.com/',
+    zeffyDonateUrl:
+      'https://www.zeffy.com/en-US/donation-form/donate-to-fuel-the-ride?source=org-page',
     zeffySponsorUrl: 'https://www.zeffy.com/',
     zeffyShopUrl: 'https://www.zeffy.com/',
     voltKitStore: {
