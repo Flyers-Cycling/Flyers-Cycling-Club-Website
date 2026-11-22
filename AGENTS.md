@@ -82,7 +82,7 @@ Run `pnpm verify` before every commit. Run `pnpm test:e2e` when you change marku
 
 - **Voice:** [docs/voice.md](./docs/voice.md) is the standard for all copy. Read it before writing or editing any user-facing text. The short version: a friendly coach talking to a parent at the trailhead. Warm, plain, specific. Lead with the rider's experience. Racing is optional.
 - **Hard rules from the club:** no em dashes (use a hyphen, colon, or full stop; en dashes are fine in number ranges), no throat-clearing openers or stock closings, no "it's not just X, it's Y", no forced lists of three, and none of the banned words listed in voice.md.
-- **Brand and design system:** [docs/brand.md](./docs/brand.md). One club frame (slate, red, gold) with a color per program: Flyers XC red, Flyers Enduro/Gravity pink (`#fe6cd0`), Jr. Flyers Youth Blue (`#1e88e5`). All programs use the same Flyers logo. The public version is the `/brand` page.
+- **Brand and design system:** [docs/brand.md](./docs/brand.md). One club frame (slate, red, gold) with a color per program: Flyers XC red, Flyers Enduro/Gravity pink (`#fe6cd0`), Jr. Flyers Youth Blue (`#1e88e5`). Flyers XC and Flyers Enduro/Gravity use the Flyers logo; Jr. Flyers has its own Junior Flyers logo. The public version is the `/brand` page.
 - **Where facts live:** [docs/source-of-truth.md](./docs/source-of-truth.md) maps every club fact to its one home and says whether it's confirmed.
 - **The plan:** [docs/plan.md](./docs/plan.md) is the phased roadmap. Tick its boxes in the PR that finishes the work.
 

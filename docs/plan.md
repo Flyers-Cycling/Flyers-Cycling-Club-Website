@@ -137,5 +137,5 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Practice times and locations for each program. Saturdays at 10am for Flyers XC and Enduro/Gravity, with the Jordan River or Murdock Canal trails when muddy (Randall, Nov 22 2026). Saturday place and Tuesday times still needed.
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
 - [ ] Dec 15 kickoff meeting time and place. Signature ride dates set (Randall, Nov 22 2026): Winter Classic Jan 23, Good Water Rim Feb 20, Antelope Island Mar 13, White Rim Spring Classic Apr 17. Start times still needed.
-- [x] Jr. Flyers brand color: Youth Blue #1e88e5, same logo
+- [x] Jr. Flyers brand color: Youth Blue #1e88e5. Its own Junior Flyers logo arrived Nov 2026 (on the Jr. Flyers page and /brand).
 - [ ] Logo source files

@@ -30,6 +30,22 @@ const programs = defineCollection({
       heroImage: z.string().optional(),
       // Required when heroImage is set. Describe only what is actually in the photo.
       heroImageAlt: z.string().optional(),
+      // Optional. The program's own logo from public/images/brand/, e.g.
+      // /images/brand/jr-flyers-logo-blue.svg. Shown in the page header when there is no heroImage.
+      logo: z.string().optional(),
+      // Optional photo gallery shown in a "Photos" section on the program page. Real club photos
+      // only, with media releases on file. Alt text describes only what is in the photo, and never
+      // names a minor. width and height are the image's pixel size.
+      gallery: z
+        .array(
+          z.object({
+            src: z.string(),
+            alt: z.string().min(1),
+            width: z.number().int().positive(),
+            height: z.number().int().positive(),
+          }),
+        )
+        .optional(),
       // Optional groups within a program (e.g. Flyers XC Devo and Flyers XC Comp). Shown on the
       // program cards and the program page. id becomes the page anchor (/programs/xc#devo).
       groups: z

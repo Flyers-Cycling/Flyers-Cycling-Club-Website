@@ -107,6 +107,18 @@ export const brand = {
       onDark: true,
       use: 'One-color use on black or photos.',
     },
+    {
+      name: 'Jr. Flyers logo, blue',
+      file: 'jr-flyers-logo-blue',
+      onDark: false,
+      use: 'Jr. Flyers pieces on light backgrounds and print.',
+    },
+    {
+      name: 'Jr. Flyers logo, white',
+      file: 'jr-flyers-logo-white',
+      onDark: true,
+      use: 'Jr. Flyers on black or photos.',
+    },
   ],
   weAre: [
     'Warm and welcoming to every level, from first-time riders to podium chasers',

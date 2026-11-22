@@ -13,7 +13,7 @@ Status: the palette and the program-theme layer below exist today in `src/styles
 | Club    | Flyers Cycling Club   | Red, with black, slate, gold | Header, footer, home page, About, Sponsors, Board, non-profit details, anything club-wide |
 | Program | Flyers XC             | Red                          | XC pages, XC events, XC Devo and XC Comp                                                  |
 | Program | Flyers Enduro/Gravity | Pink                         | Enduro/Gravity pages and events                                                           |
-| Program | Jr. Flyers            | Youth Blue `#1e88e5`         | Jr. Flyers pages and events. Same logo.                                                   |
+| Program | Jr. Flyers            | Youth Blue `#1e88e5`         | Jr. Flyers pages and events. Has its own Junior Flyers logo.                              |
 
 Rules:
 
@@ -34,9 +34,11 @@ Rules from the Brand Book:
 - Clear space equal to the height of the "F" in Flyers on every side. Minimum 32px tall on screen, 0.5 in in print.
 - Use the white or pink logo on black or on photos. Don't stretch, recolor, add effects, rotate, place it on a busy photo, or rebuild a lockup in another font.
 
-Files: `public/images/brand/` (SVG, traced from the club's PNGs) and `public/images/brand/png/`. They're published on the site at [/brand](../src/pages/brand.astro). Still needed:
+Files: `public/images/brand/` (SVG, traced from the club's PNGs) and `public/images/brand/png/`.
 
-- Program lockups (Flyers XC, Flyers Enduro/Gravity, Jr. Flyers) and the Flyers Enduro script wordmark
+The Junior Flyers logo (`jr-flyers-logo-blue.svg` and `jr-flyers-logo-white.svg`) came from the club's original Illustrator PDF (Nov 2026), so it is true vector art, not a trace. Its blue is `#00ADEF`, a lighter cyan than the Youth Blue `#1e88e5` the site uses for Jr. Flyers accents. TODO(board): confirm whether Youth Blue should change to match the logo. They're published on the site at [/brand](../src/pages/brand.astro). Still needed:
+
+- Program lockups (Flyers XC, Flyers Enduro/Gravity) and the Flyers Enduro script wordmark
 - The Lake Mountain long logo
 
 Don't redraw or generate a logo. The SVGs were traced directly from the club's PNG files; replace them with original vector files if the club finds them.

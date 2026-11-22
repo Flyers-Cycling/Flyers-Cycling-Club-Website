@@ -17,6 +17,32 @@ feeIncludes: Covers a Flyers Enduro/Gravity t-shirt and gravity rider insurance.
 accentKey: enduro
 heroImage: /images/program-enduro.jpg
 heroImageAlt: Four Flyers Enduro/Gravity riders in black and pink team jerseys smile and hold up medals beside their bikes on a dirt path at a ski area, with a chairlift and pine trees behind them.
+# Photos from the 2025 and 2026 seasons (Randall, Nov 2026). Media releases are on file.
+gallery:
+  - src: /images/enduro/enduro-jump-chairlift.jpg
+    alt: A rider in a black and pink kit and full-face helmet sails off a dirt jump at a ski area while people on a chairlift and a crowd on the hillside watch.
+    width: 1200
+    height: 797
+  - src: /images/enduro/enduro-rock-drop.jpg
+    alt: A rider in a full-face helmet and orange goggles rolls off a red rock ledge on a dusty desert trail lined with juniper trees.
+    width: 797
+    height: 1200
+  - src: /images/enduro/enduro-berm-pink-jersey.jpg
+    alt: A young rider in a pink jersey and full-face helmet leans the bike hard through a dirt berm, kicking up dust.
+    width: 797
+    height: 1200
+  - src: /images/enduro/enduro-berm-desert.jpg
+    alt: A rider in a pink and black jersey, chest protector, and goggles carves a sandy berm between juniper trees as people watch.
+    width: 1200
+    height: 797
+  - src: /images/enduro/enduro-watching-the-line.jpg
+    alt: Seen from behind, a person in a black Firefly jersey and cap watches a rider in pink and black come down a red dirt trail toward them.
+    width: 797
+    height: 1200
+  - src: /images/enduro/enduro-red-dirt.jpg
+    alt: A young rider in a pink shirt and helmet rides a white bike over red dirt below sandstone cliffs and juniper trees.
+    width: 1200
+    height: 797
 practiceSchedule:
   # Same days and Saturday time as Flyers XC (Randall, Nov 2026). TODO(board): add Saturday location and Tuesday times.
   - 'January to mid-March: Saturday sessions at 10am: bike setup, braking practice, and skills on lower, drier trails. Place to be announced.'
