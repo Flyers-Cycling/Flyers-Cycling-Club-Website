@@ -106,7 +106,7 @@ For families already in the club.
 Randall answered these on Nov 21, 2026. Each one goes into its home in content (see [source-of-truth.md](./source-of-truth.md)).
 
 - [x] **Practice rhythm.** Flyers XC and Flyers Enduro/Gravity: Saturdays only through mid-March, then Tuesdays and some Saturdays through August. Jr. Flyers: Tuesdays, June to August. In each program's `practiceSchedule`.
-- [x] **Flyers XC kickoff meeting, Dec 15, 2026.** Add an event (skill: `manage-events`). Time and place still needed.
+- [x] **Flyers XC kickoff meeting, Sat Dec 19, 2026, 6 PM, at Coach Randall's house.** Moved from Dec 15 (Randall, Nov 22 2026). The address goes out by email only.
 - [x] **Flyers XC rides:** Winter Classic, Eagle Mountain to Eureka and back (January). Good Water Rim (February), Antelope Island (March). Spring Classic, White Rim (April). On the XC page. Added as events with 2027 dates (Nov 22 2026).
 - [x] **Races each program follows.** Flyers XC: Intermountain Cup and the weekly race series. Flyers Enduro/Gravity: the youth enduro series, plus Mountain States Cup and Monster Pro Series for downhill. Jr. Flyers: no races, weekly practices from June. On the XC and Enduro/Gravity pages.
 - [x] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
@@ -136,6 +136,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [x] Practice days for each program (see "Confirmed facts" above)
 - [ ] Practice times and locations for each program. Saturdays at 10am for Flyers XC and Enduro/Gravity, with the Jordan River or Murdock Canal trails when muddy (Randall, Nov 22 2026). Saturday place and Tuesday times still needed.
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
-- [ ] Dec 15 kickoff meeting time and place. Signature ride dates set (Randall, Nov 22 2026): Winter Classic Jan 23, Good Water Rim Feb 20, Antelope Island Mar 13, White Rim Spring Classic Apr 17. Start times still needed.
+- [x] Kickoff meeting time and place: Sat Dec 19, 6 PM, Coach Randall's house (Randall, Nov 22 2026).
+- [ ] Signature ride dates set (Randall, Nov 22 2026): Winter Classic Jan 23, Good Water Rim Feb 20, Antelope Island Mar 13, White Rim Spring Classic Apr 17. Start times still needed.
 - [x] Jr. Flyers brand color: Youth Blue #00adef, matched to its logo. Its own Junior Flyers logo arrived Nov 2026 (on the Jr. Flyers page and /brand).
 - [ ] Logo source files
