@@ -24,8 +24,9 @@ groups:
     summary: For riders who want to race competitively. Riders add structured training, race starts, line choice, and pacing for Utah XC races like the Intermountain Cup (ICUP).
 groupsNote: Riders can move from Flyers XC Devo to Flyers XC Comp during the season once they decide they want to race and are ready to commit to training. Talk to your coach about switching.
 practiceSchedule:
-  # TODO(board): add practice times and locations.
-  - 'January to mid-March: Saturday rides, planned around the weather, with base miles and skill drills'
+  # Saturday time and mud plan from Randall (Nov 22, 2026). TODO(board): add Saturday location and Tuesday times.
+  - 'January to mid-March: Saturday rides at 10am, planned around the weather, with base miles and skill drills. Place to be announced.'
+  - 'When the trails are muddy, Saturday rides move to the paved Jordan River Trail or Murdock Canal Trail. We post any change in Slack at least 2 hours before.'
   - 'Mid-March to August: Tuesday practices plus some Saturday rides'
   - 'Racing is optional. Riders who want to race follow the Intermountain Cup (ICUP) and the weekly race series.'
 whoItsFor:
@@ -50,11 +51,12 @@ Flyers XC keeps riders on their bikes between fall seasons. Winter rides build a
 
 A few long group rides give the season something to look forward to:
 
-- **Winter Classic (January):** Eagle Mountain to Eureka and back.
-- **Big Water Rim (February).**
-- **Spring Classic (April):** the White Rim.
+- **Winter Classic (Jan 23):** Eagle Mountain to Eureka and back, about 70 miles, with a support vehicle.
+- **Good Water Rim (Feb 20):** singletrack on the rim of the Little Grand Canyon in the San Rafael Swell.
+- **Antelope Island (Mar 13):** the White Rock Bay Loop, with bison for company.
+- **Spring Classic (Apr 17):** the White Rim in Canyonlands, with a Friday night campout in Moab and support vehicles.
 
-<!-- TODO(board): add dates and details for each ride, and add them to src/content/events/ once set. -->
+Each ride has a backup Saturday the next week if the weather is bad. Dates and details are on the schedule.
 
 ### Taking care of our trails
 
