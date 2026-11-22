@@ -3,6 +3,13 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../data/site';
 import { formatPostDate } from '../lib/dates';
+import { isPlaceholderUrl } from '../lib/urls';
+
+// Until the real Zeffy shop link is set, send families to email instead of a bare zeffy.com page.
+const shopReady = !isPlaceholderUrl(siteConfig.integrations.zeffyShopUrl);
+const shopHref = shopReady
+  ? siteConfig.integrations.zeffyShopUrl
+  : `mailto:${siteConfig.contact.email}?subject=Club%20shop%20order`;
 
 const updates = (await getCollection('updates')).sort((a, b) =>
   b.data.publishedDate.localeCompare(a.data.publishedDate),
@@ -126,12 +133,12 @@ const renderedUpdates = await Promise.all(
           </div>
           <div class="mt-6 pt-4">
             <a
-              href={siteConfig.integrations.zeffyShopUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={shopHref}
+              target={shopReady ? '_blank' : undefined}
+              rel={shopReady ? 'noopener noreferrer' : undefined}
               class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
             >
-              Visit the club shop &rarr;
+              {shopReady ? 'Visit the club shop' : 'Email us to order'} &rarr;
             </a>
           </div>
         </article>
