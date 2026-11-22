@@ -122,7 +122,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [x] What screening and training do Flyers coaches complete? Background check plus training from head coaches; many are NICA coaches.
 - [ ] Which background check provider, and do coaches also complete concussion, abuse-awareness, or first aid/CPR training?
 - [ ] EIN, the full board list, and a 990 or annual report link
-- [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepherd (Jr. Flyers). Randall is sending these. Jessie's bio and photo, Randall's photo and draft bio, and a head coaches group photo are on /coaches (Nov 22, 2026). Still needed: Tim's bio and photo, and Randall's final bio.
+- [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepherd (Jr. Flyers). Randall is sending these. Jessie's bio and photo, Randall's photo and draft bio, and a head coaches group photo are on /coaches (Nov 22, 2026). Still needed: Tim's bio and photo.
 - [ ] Registration form links (Dec 1, 2026) and the Jr. Flyers opening date
 - [ ] Real Zeffy links for donations, each tier, and the shop. Real Google Calendar embed. Real Volt store URL.
 - [x] Is Lake Mountain Trails Coalition a current sponsor? Yes: Lake Mountain Trails Association, lakemountaintrails.org.
