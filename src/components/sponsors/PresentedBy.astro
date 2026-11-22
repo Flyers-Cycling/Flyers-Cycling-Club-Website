@@ -31,6 +31,16 @@ const titleSponsors = (await getCollection('sponsors'))
                 {sponsor.name}
               </span>
             )}
+            {sponsor.secondaryLogo && sponsor.logoBackground === 'dark' && (
+              <img
+                src={withBase(sponsor.secondaryLogo)}
+                alt=""
+                width="403"
+                height="68"
+                loading="lazy"
+                class="ml-3 h-6 w-auto"
+              />
+            )}
           </>
         );
         return sponsor.websiteUrl ? (

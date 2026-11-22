@@ -76,7 +76,7 @@ const scopeLabels: Record<SponsorScope, string> = {
               </div>
 
               <div
-                class={`mt-4 flex h-20 items-center justify-center rounded-xl border p-2 ${sponsor.logoBackground === 'dark' ? 'bg-flyers-slate-dark border-flyers-slate-dark' : 'bg-flyers-snow border-neutral-200/70'}`}
+                class={`mt-4 flex min-h-20 flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-xl border p-2 ${sponsor.logoBackground === 'dark' ? 'bg-flyers-slate-dark border-flyers-slate-dark' : 'bg-flyers-snow border-neutral-200/70'}`}
               >
                 {sponsor.logo ? (
                   <img
@@ -91,6 +91,16 @@ const scopeLabels: Record<SponsorScope, string> = {
                   <span class="font-display text-flyers-slate-dark text-center text-xl font-black tracking-wide uppercase">
                     {sponsor.name}
                   </span>
+                )}
+                {sponsor.secondaryLogo && (
+                  <img
+                    src={withBase(sponsor.secondaryLogo)}
+                    alt=""
+                    width="240"
+                    height="40"
+                    loading="lazy"
+                    class="h-7 w-auto"
+                  />
                 )}
               </div>
 

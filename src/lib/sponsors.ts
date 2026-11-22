@@ -8,6 +8,7 @@ export interface SponsorRecord {
   order: number;
   logo?: string;
   logoBackground?: 'light' | 'dark';
+  secondaryLogo?: string;
   websiteUrl?: string;
   scopes: SponsorScope[];
   summary: string;
