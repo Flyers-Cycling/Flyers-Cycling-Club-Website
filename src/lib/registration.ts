@@ -1,5 +1,6 @@
 import { siteConfig } from '../data/site';
 import { formatEventDate } from './dates';
+import { todayInUtah } from './events';
 import type { RegistrationStatus } from './programs';
 import { withBase } from './urls';
 
@@ -19,18 +20,30 @@ export function registrationOpensLabel(opensDate: string = siteConfig.registrati
   return formatEventDate(opensDate).replace(/, \d{4}$/, '');
 }
 
+/**
+ * The form links as of `today` (Utah time). Before opensDate every link is hidden, so the links
+ * can sit in site.ts early and go live on their own. The deploy workflow rebuilds every day at
+ * 2 AM Utah time, so the buttons switch over on the morning of opensDate.
+ */
+export function liveFormLinks(
+  links: RegistrationFormLinks = siteConfig.registration.forms,
+  opensDate: string = siteConfig.registration.opensDate,
+  today: string = todayInUtah(),
+): RegistrationFormLinks {
+  if (today >= opensDate) return links;
+  return Object.fromEntries(Object.keys(links).map((key) => [key, ''])) as RegistrationFormLinks;
+}
+
 /** The form link for a program, or '' if it isn't set yet. */
 export function registrationFormUrl(
   form: RegistrationForm,
-  links: RegistrationFormLinks = siteConfig.registration.forms,
+  links: RegistrationFormLinks = liveFormLinks(),
 ): string {
   return form === 'later' ? '' : links[form].trim();
 }
 
 /** True once any program's form link is in site.ts. */
-export function anyRegistrationOpen(
-  links: RegistrationFormLinks = siteConfig.registration.forms,
-): boolean {
+export function anyRegistrationOpen(links: RegistrationFormLinks = liveFormLinks()): boolean {
   return Object.values(links).some((url) => url.trim() !== '');
 }
 
@@ -40,7 +53,7 @@ export function anyRegistrationOpen(
  */
 export function registrationCta(
   form: RegistrationForm,
-  links: RegistrationFormLinks = siteConfig.registration.forms,
+  links: RegistrationFormLinks = liveFormLinks(),
 ): RegistrationCta {
   if (form === 'later') {
     return {
@@ -66,7 +79,7 @@ export function registrationCta(
 export function effectiveRegistrationStatus(
   status: RegistrationStatus,
   form: RegistrationForm,
-  links: RegistrationFormLinks = siteConfig.registration.forms,
+  links: RegistrationFormLinks = liveFormLinks(),
 ): RegistrationStatus {
   return status === 'upcoming' && registrationFormUrl(form, links) ? 'open' : status;
 }

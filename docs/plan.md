@@ -36,7 +36,7 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 ## Phase 1: Ready for registration (by Dec 1, 2026)
 
 - [x] Merge PR #8 (Jr. Flyers $35, Flyers XC Devo and Comp)
-- [ ] Paste the XC and Enduro/Gravity form links into `siteConfig.registration.forms` (skill: `update-registration-links`)
+- [x] Paste the XC and Enduro/Gravity form links into `siteConfig.registration.forms` (skill: `update-registration-links`). In since Nov 22; they go live on `opensDate` with the daily rebuild.
 - [ ] Kickoff ride time and trailhead (skill: `manage-events`)
 - [x] Real Zeffy donate link, so the Donate button works
 - [ ] Slack invite, email sign-up, and Google Calendar links on New Families
@@ -123,7 +123,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Which background check provider, and do coaches also complete concussion, abuse-awareness, or first aid/CPR training?
 - [ ] EIN, the full board list, and a 990 or annual report link
 - [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepherd (Jr. Flyers). Randall is sending these. Jessie's bio and photo, Randall's photo and draft bio, and a head coaches group photo are on /coaches (Nov 22, 2026). Still needed: Tim's bio and photo.
-- [ ] Registration form links (Dec 1, 2026) and the Jr. Flyers opening date
+- [ ] Jr. Flyers registration link and opening date. XC and Enduro/Gravity links answered Nov 22, 2026.
 - [ ] Real Zeffy links for donations, each tier, and the shop. Real Google Calendar embed. Real Volt store URL.
 - [x] Is Lake Mountain Trails Coalition a current sponsor? Yes: Lake Mountain Trails Association, lakemountaintrails.org.
 - [ ] What the Enduro/Gravity "gravity rider insurance" is, and why the fee is $150

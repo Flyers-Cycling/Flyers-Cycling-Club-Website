@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   anyRegistrationOpen,
   effectiveRegistrationStatus,
+  liveFormLinks,
   registrationCta,
 } from '../../src/lib/registration';
 
@@ -34,5 +35,18 @@ describe('registrationCta', () => {
     expect(cta.isOpen).toBe(false);
     expect(cta.label).toBe('Registration opens later');
     expect(effectiveRegistrationStatus('upcoming', 'later', xcOnly)).toBe('upcoming');
+  });
+});
+
+describe('liveFormLinks', () => {
+  const both = { xc: 'https://example.org/xc', enduro: 'https://example.org/enduro' };
+
+  it('hides every link before the open date (Utah time)', () => {
+    expect(liveFormLinks(both, '2026-12-01', '2026-11-30')).toEqual(none);
+  });
+
+  it('shows the links from the open date on', () => {
+    expect(liveFormLinks(both, '2026-12-01', '2026-12-01')).toEqual(both);
+    expect(liveFormLinks(both, '2026-12-01', '2027-01-15')).toEqual(both);
   });
 });
