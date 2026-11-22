@@ -22,6 +22,7 @@ const CORE_ROUTES = [
   '/safety',
   '/scholarships',
   '/volunteer',
+  '/support',
   '/learn',
   '/learn/pre-ride-check',
   '/coaches/resources',

@@ -150,10 +150,16 @@ const programs = (await getCollection('programs')).sort((a, b) => a.data.order -
         </p>
         <div class="mt-4 flex flex-col gap-2.5">
           <a
-            href={withBase('/sponsors')}
+            href={withBase('/support#donate')}
             class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-11 items-center justify-center rounded-lg px-4 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
           >
-            Sponsor or donate
+            Donate
+          </a>
+          <a
+            href={withBase('/sponsors')}
+            class="inline-flex min-h-11 items-center justify-center rounded-lg border border-white/25 bg-white/5 px-4 py-2 text-sm font-bold text-white transition hover:bg-white/15"
+          >
+            Become a sponsor
           </a>
           <a
             href={withBase('/sponsors/prospectus')}

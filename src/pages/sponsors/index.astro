@@ -6,9 +6,11 @@ import SponsorInquiryForm from '../../components/sponsors/SponsorInquiryForm.ast
 import SponsorGrid from '../../components/sponsors/SponsorGrid.astro';
 import { siteConfig } from '../../data/site';
 import { withBase } from '../../lib/urls';
+import { donateLink } from '../../lib/donate';
 
 const tiers = await getCollection('tiers');
 const sponsors = await getCollection('sponsors');
+const donate = donateLink();
 ---
 
 <BaseLayout
@@ -38,12 +40,12 @@ const sponsors = await getCollection('sponsors');
 
         <div class="mt-8 flex flex-wrap items-center gap-3.5">
           <a
-            href={siteConfig.integrations.zeffyDonateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={donate.href}
+            target={donate.external ? '_blank' : undefined}
+            rel={donate.external ? 'noopener noreferrer' : undefined}
             class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-lg font-extrabold tracking-wider text-white uppercase shadow-md transition"
           >
-            Donate on Zeffy &rarr;
+            {donate.label} &rarr;
           </a>
           <a
             href="#sponsor-inquiry"
@@ -155,12 +157,12 @@ const sponsors = await getCollection('sponsors');
             </p>
           </div>
           <a
-            href={siteConfig.integrations.zeffyDonateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={donate.href}
+            target={donate.external ? '_blank' : undefined}
+            rel={donate.external ? 'noopener noreferrer' : undefined}
             class="bg-flyers-slate hover:bg-flyers-slate-dark font-display inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl px-5 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
           >
-            Donate on Zeffy &rarr;
+            {donate.label} &rarr;
           </a>
         </div>
       </div>

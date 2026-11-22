@@ -38,7 +38,7 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 - [x] Merge PR #8 (Jr. Flyers $35, Flyers XC Devo and Comp)
 - [ ] Paste the XC and Enduro/Gravity form links into `siteConfig.registration.forms` (skill: `update-registration-links`)
 - [ ] Kickoff ride time and trailhead (skill: `manage-events`)
-- [ ] Real Zeffy donate link, so the Donate button works
+- [x] Real Zeffy donate link, so the Donate button works
 - [ ] Slack invite, email sign-up, and Google Calendar links on New Families
 - [ ] Google Calendar embed on Schedule
 - [ ] Update README.md, which still describes the old program ages and "U23"
@@ -92,12 +92,12 @@ For families already in the club.
 
 ## Phase 6: Community and support
 
-- [ ] "Support" menu (Donate, Volunteer, Shop) plus Sponsors as its own top-level item, cross-linked
-- [ ] Donate reachable from every page
+- [x] "Support" menu (Donate, Volunteer, Shop) plus Sponsors as its own top-level item, cross-linked. A /support page in the main nav next to Sponsors; Board moved to the mobile menu, footer, and About.
+- [x] Donate reachable from every page. The header and footer Donate buttons go to /support#donate. Until the real Zeffy link is in `siteConfig`, Donate opens an email instead of the bare zeffy.com page.
 - [ ] Real sponsors only; open sponsorship spots listed separately
 - [ ] Confirm every sponsor tier perk before it stays on the site
-- [ ] Impact numbers on the home page (riders, rides, volunteer hours, scholarships)
-- [ ] Adult riders: how parents and adults can ride, coach, and help (confirmed: the club wants this)
+- [x] Impact numbers on the home page (riders, rides, volunteer hours, scholarships). Riders per program for 2026 are in `siteConfig.impact`; volunteer hours and families helped still to come.
+- [x] Adult riders: how parents and adults can ride, coach, and help. Adults join as coaches; adult group rides are coach training rides (Randall, Nov 22 2026). On /volunteer.
 - [ ] Rider and family stories, with permission
 - [ ] Newsletter sign-up
 
@@ -112,7 +112,7 @@ Randall answered these on Nov 21, 2026. Each one goes into its home in content (
 - [x] **Coaches.** Every coach completes a background check and training from the head coaches. Many are also NICA coaches. Use this on the Safety and Coaches pages, and nothing stronger.
 - [x] **Help with costs.** Some help is available. Families reach out to a coach. Use this on the FAQ and the future Scholarships page.
 - [x] **Jr. Flyers uses Youth Blue and the club logo.** Switched the `jr` accent from berry to Youth Blue `#1e88e5`.
-- [ ] **Adults are welcome.** Add the adult riders page in Phase 6.
+- [x] **Adults are welcome.** Adults join as coaches; adult rides are coach training rides.
 
 ## Board and content questions
 

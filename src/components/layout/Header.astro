@@ -14,8 +14,9 @@ const navItems = [
   { label: 'Schedule', href: withBase('/schedule'), matchPrefix: '/schedule' },
   { label: 'New Families', href: withBase('/onboarding'), matchPrefix: '/onboarding' },
   { label: 'Coaches', href: withBase('/coaches'), matchPrefix: '/coaches' },
-  { label: 'Board', href: withBase('/board'), matchPrefix: '/board' },
   { label: 'Sponsors', href: withBase('/sponsors'), matchPrefix: '/sponsors' },
+  { label: 'Support', href: withBase('/support'), matchPrefix: '/support' },
+  { label: 'Board', href: withBase('/board'), matchPrefix: '/board', mobileOnly: true },
   { label: 'Gear & News', href: withBase('/store'), matchPrefix: '/store', mobileOnly: true },
   { label: 'About', href: withBase('/about'), matchPrefix: '/about' },
   { label: 'FAQ', href: withBase('/faq'), matchPrefix: '/faq' },
@@ -131,10 +132,10 @@ function isActive(matchPrefix: string): boolean {
         Register
       </a>
       <a
-        href={withBase('/sponsors')}
+        href={withBase('/support#donate')}
         class="bg-flyers-red hover:bg-flyers-red-bright font-display rounded-lg px-4 py-2 text-base font-extrabold tracking-wider whitespace-nowrap text-white uppercase shadow-sm transition"
       >
-        Sponsor or donate
+        Donate
       </a>
     </div>
 
@@ -252,10 +253,10 @@ function isActive(matchPrefix: string): boolean {
           Registration
         </a>
         <a
-          href={withBase('/sponsors')}
+          href={withBase('/support#donate')}
           class="bg-flyers-red hover:bg-flyers-red-bright font-display block w-full rounded-lg px-4 py-3 text-center text-base font-extrabold tracking-wider text-white uppercase"
         >
-          Sponsor or donate
+          Donate
         </a>
       </div>
     </div>
