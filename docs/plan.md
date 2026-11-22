@@ -129,7 +129,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] What the Enduro/Gravity "gravity rider insurance" is, and why the fee is $150
 - [x] Is there help with costs? Yes, some. Families reach out to a coach.
 - [ ] Scholarship details: what kinds of help (fee waivers, loaner bikes), and can we publish a contact?
-- [ ] Refund policy and waiver links, and links to the Google Docs behind each policy
+- [ ] Waiver link, and links to the Google Docs behind each policy. Refund policy answered: no refunds (Randall, Nov 22 2026), now in `siteConfig.refundPolicy`.
 - [x] Confirm the club will deliver every sponsor tier perk in `src/content/tiers/` (see Phase 6)
 - [x] Media releases for the Enduro/Gravity photos (confirmed by Randall, Nov 21 2026)
 - [ ] Real photos for the home page hero, coaches, Flyers XC, and Jr. Flyers (Randall uploading to the club Drive folder)

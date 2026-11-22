@@ -100,9 +100,17 @@ const heading = 'font-display text-flyers-slate-dark text-2xl font-black trackin
         </ul>
       </section>
 
-      <ComingSoon id="handbook-forms-heading" title="Forms and waivers">
-        <!-- TODO(board): link the waiver and any other forms each rider needs. -->
-        <p>The forms each rider needs before their first ride.</p>
+      <section aria-labelledby="handbook-refunds-heading" class={card}>
+        <h2 id="handbook-refunds-heading" class={heading}>Refunds</h2>
+        <p class="text-flyers-iron mt-2 text-sm leading-relaxed">
+          {siteConfig.refundPolicy}
+          <a href={withBase('/scholarships')} class={link}>How to ask for help with costs</a>.
+        </p>
+      </section>
+
+      <ComingSoon id="handbook-forms-heading" title="Waiver">
+        <!-- TODO(board): Randall is writing the waiver. Link it here when it's ready. -->
+        <p>Every rider needs a signed waiver before their first ride.</p>
       </ComingSoon>
 
       <section aria-labelledby="handbook-more-heading" class={card}>

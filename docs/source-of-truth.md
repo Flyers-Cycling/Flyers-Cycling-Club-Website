@@ -34,12 +34,13 @@ One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. 
 
 ## Registration
 
-| Fact                             | Where to edit                               | Status                           |
-| -------------------------------- | ------------------------------------------- | -------------------------------- |
-| Opening date (Dec 1, 2026)       | `siteConfig.registration.opensDate`         | Confirmed                        |
-| XC and Enduro/Gravity form links | `siteConfig.registration.forms`             | Needs board: Randall sends Dec 1 |
-| Jr. Flyers opening date          | `registrationWindowLabel` in `jr-flyers.md` | Needs board                      |
-| Refund policy, waiver            | (no home yet; planned Policies page)        | Needs board                      |
+| Fact                             | Where to edit                               | Status                                       |
+| -------------------------------- | ------------------------------------------- | -------------------------------------------- |
+| Opening date (Dec 1, 2026)       | `siteConfig.registration.opensDate`         | Confirmed                                    |
+| XC and Enduro/Gravity form links | `siteConfig.registration.forms`             | Needs board: Randall sends Dec 1             |
+| Jr. Flyers opening date          | `registrationWindowLabel` in `jr-flyers.md` | Needs board                                  |
+| Refund policy                    | `siteConfig.refundPolicy`                   | Confirmed: no refunds (Randall, Nov 22 2026) |
+| Waiver                           | `/onboarding` (link when ready)             | Needs board: Randall is writing it           |
 
 ## People
 

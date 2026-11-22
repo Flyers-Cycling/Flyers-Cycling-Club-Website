@@ -60,6 +60,9 @@ export const siteConfig = {
     summary:
       "Some help with costs is available. Talk to your rider's coach, or email us. We keep every request private.",
   },
+  // Confirmed by Randall (Nov 22, 2026): no refunds. Used on /onboarding and /register.
+  refundPolicy:
+    "Registration fees and camp payments aren't refundable. If cost is the worry, ask about help before you sign up.",
   // Confirmed by Randall (Nov 21, 2026). Used on /safety and /onboarding.
   weatherCalls:
     "We call off rides for lightning and mud. You'll hear in Slack at least 2 hours before the ride starts.",
@@ -69,7 +72,7 @@ export const siteConfig = {
     season: '2026',
     riders: {
       'jr-flyers': 238,
-      enduro: 50,
+      enduro: 73,
       xc: 20,
     },
   },
