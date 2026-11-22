@@ -65,7 +65,7 @@ One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. 
 | --------------------------- | -------------------------------------- | ------------------------------------------------ |
 | Donate, sponsor, shop links | `siteConfig.integrations.zeffy*Url`    | Needs board: all are the bare zeffy.com link     |
 | Sponsor tiers and perks     | `src/content/tiers/`                   | Needs board: confirm each perk will be delivered |
-| Sponsors                    | `src/content/sponsors/`                | Confirmed. Needs board: Firefly logo and link    |
+| Sponsors                    | `src/content/sponsors/`                | Confirmed                                        |
 | Kit store                   | `siteConfig.integrations.voltKitStore` | Needs board: real Volt URL                       |
 | Fee summary line            | `siteConfig.feePhilosophy`             | Check it matches the program fees                |
 

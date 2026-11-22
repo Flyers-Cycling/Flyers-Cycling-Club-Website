@@ -7,6 +7,7 @@ export interface SponsorRecord {
   tier: SponsorTierKey;
   order: number;
   logo?: string;
+  logoBackground?: 'light' | 'dark';
   websiteUrl?: string;
   scopes: SponsorScope[];
   summary: string;

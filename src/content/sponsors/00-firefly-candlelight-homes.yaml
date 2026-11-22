@@ -1,9 +1,11 @@
-# One of the club's main sponsors (Randall, Nov 22, 2026).
 # Title sponsor (Randall, Nov 22, 2026).
-# TODO(board): send the logo file and website link.
+# Logo and link from Randall (Nov 22, 2026). The logo is white, so it sits on a dark panel.
 name: Firefly by Candlelight Homes
 tier: title
 order: 1
+logo: /images/sponsor-firefly.png
+logoBackground: dark
+websiteUrl: https://www.candlelighthomes.com/firefly-vision
 scopes:
   - club
   - xc
