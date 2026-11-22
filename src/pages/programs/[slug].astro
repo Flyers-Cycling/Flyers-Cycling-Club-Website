@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SponsorGrid from '../../components/sponsors/SponsorGrid.astro';
 import PhotoPlaceholder from '../../components/layout/PhotoPlaceholder.astro';
+import RaceSchedule from '../../components/programs/RaceSchedule.astro';
 import { getRegistrationStatusMeta, programClasses, programTheme } from '../../lib/programs';
 import { withBase } from '../../lib/urls';
 import { formatEventDate } from '../../lib/dates';
@@ -40,6 +41,9 @@ const news = (await getCollection('updates'))
   .sort((a, b) => b.data.publishedDate.localeCompare(a.data.publishedDate))
   .slice(0, 2);
 const scheduleHref = withBase(`/schedule?program=${data.programId}`);
+const hasRaces = (await getCollection('races')).some(
+  (series) => series.data.program === data.programId,
+);
 
 // In-page links for the program section. Each target below carries the matching id.
 const sectionLinks = [
@@ -49,6 +53,7 @@ const sectionLinks = [
   { href: '#who', label: "Who it's for" },
   { href: '#cost', label: 'Cost' },
   { href: '#gear', label: 'Gear' },
+  ...(hasRaces ? [{ href: '#races', label: 'Races' }] : []),
   ...(coaches.length > 0 ? [{ href: '#coaches', label: 'Coaches' }] : []),
   ...(data.gallery?.length ? [{ href: '#photos', label: 'Photos' }] : []),
   { href: '#sponsors', label: 'Sponsors' },
@@ -456,6 +461,21 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
         </aside>
       </div>
     </section>
+
+    {
+      hasRaces && (
+        <div class="border-t border-neutral-200 py-14 sm:py-16">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <RaceSchedule
+              program={data.programId}
+              headingId="program-races-heading"
+              title={`${data.title} race schedule`}
+              intro="Racing is optional. Riders who want to race pick the races that suit them, and coaches help them get ready. These are the series we follow. Sign up for each race on the organizer's site."
+            />
+          </div>
+        </div>
+      )
+    }
 
     {
       data.gallery && data.gallery.length > 0 && (

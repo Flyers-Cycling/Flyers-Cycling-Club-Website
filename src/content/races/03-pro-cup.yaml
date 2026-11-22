@@ -1,0 +1,12 @@
+# USA Cycling Pro Cup stop at Soldier Hollow (SoHo Bike Fest). Checked Nov 22, 2026.
+# No 2027 date is posted on usacycling.org/national-calendars/pro-xct yet. The 2026 event was
+# June 25-28, 2026 (Utah Olympic Legacy tech guide). TODO(board): add the 2027 date once it's posted.
+series: US Pro Cup at Soldier Hollow
+program: xc
+order: 3
+website: https://www.usacycling.org/national-calendars/pro-xct/
+summary: SoHo Bike Fest at Soldier Hollow in Midway is Utah's stop on the USA Cycling Pro Cup. Pros race the same weekend as junior and amateur categories, so riders get to see racing at the top level up close.
+races:
+  - name: SoHo Bike Fest (US Pro Cup)
+    location: Soldier Hollow, Midway, UT
+    dateLabel: 2027 date not announced yet. In 2026 it ran June 25 to 28.

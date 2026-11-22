@@ -135,6 +135,15 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     expect(jrCount).toBeLessThan(allCount);
   });
 
+  test('Flyers XC race schedule shows on the XC page and the schedule', async ({ page }) => {
+    await page.goto('/programs/xc');
+    const races = page.getByRole('region', { name: 'Flyers XC race schedule' });
+    await expect(races).toBeVisible();
+    await expect(races.getByRole('heading', { name: 'Intermountain Cup (ICUP)' })).toBeVisible();
+    await page.goto('/schedule');
+    await expect(page.getByRole('region', { name: 'Flyers XC race schedule' })).toBeVisible();
+  });
+
   test('Program pages link to a filtered schedule', async ({ page }) => {
     await page.goto('/schedule?program=enduro');
     await expect(page.locator('input[name="programFilter"][value="enduro"]')).toBeChecked();
