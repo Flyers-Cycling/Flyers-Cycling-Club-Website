@@ -64,7 +64,7 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
   test('interactive Program Pathway Finder updates recommendation dynamically', async ({
     page,
   }) => {
-    await page.goto('/');
+    await page.goto('/programs');
     const finder = page.locator('#pathway-finder');
     await expect(finder).toBeVisible();
 

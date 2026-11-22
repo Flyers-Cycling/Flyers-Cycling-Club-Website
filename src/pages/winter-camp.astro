@@ -7,7 +7,7 @@ import { withBase } from '../lib/urls';
 
 // TODO(board): before publishing trail days, call the BLM St. George Field Office
 // (435-688-3200) to ask whether a club camp of this size needs a Special Recreation Permit
-// for rides on BLM land (Santa Clara River Reserve, Zen, JEM/Hurricane Cliffs, Prospector).
+// for rides on BLM land (Santa Clara River Reserve, Zen, Grafton Mesa, JEM/Hurricane Cliffs, Prospector).
 // Snake Hollow Bike Park is run by the City of St. George.
 
 const dates = formatEventDateRange(winterCamp.startDate, winterCamp.endDate);
@@ -70,9 +70,11 @@ const days: { date: string; theme: string; sessions: Session[] }[] = [
       {
         time: '1–4:30 PM',
         track: 'gravity',
-        title: 'Zen',
+        // Randall (Nov 22, 2026): Saturday's gravity ride moves to Grafton Mesa. TODO(board): confirm
+        // the trailhead and the drive time.
+        title: 'Grafton Mesa',
         detail:
-          'Rocky ledges and slickrock moves. Walk the hard sections first, then ride them until they flow.',
+          'Mesa-top singletrack with views of Zion, near Rockville, about 45 minutes east of St. George. We drive over after lunch at the bike park.',
       },
       {
         time: 'Evening',
