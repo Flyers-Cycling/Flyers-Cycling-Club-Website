@@ -11,6 +11,12 @@ const shopHref = shopReady
   ? siteConfig.integrations.zeffyShopUrl
   : `mailto:${siteConfig.contact.email}?subject=Club%20shop%20order`;
 
+// Same for the Volt kit store: until it has its own link, email us instead of the old site's home page.
+const kitReady = !isPlaceholderUrl(siteConfig.integrations.voltKitStore.url);
+const kitHref = kitReady
+  ? siteConfig.integrations.voltKitStore.url
+  : `mailto:${siteConfig.contact.email}?subject=Team%20kit%20order`;
+
 const updates = (await getCollection('updates')).sort((a, b) =>
   b.data.publishedDate.localeCompare(a.data.publishedDate),
 );
@@ -98,12 +104,12 @@ const renderedUpdates = await Promise.all(
           </div>
           <div class="mt-6 pt-4">
             <a
-              href={siteConfig.integrations.voltKitStore.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={kitHref}
+              target={kitReady ? '_blank' : undefined}
+              rel={kitReady ? 'noopener noreferrer' : undefined}
               class="bg-flyers-slate hover:bg-flyers-slate-dark font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-2.5 text-base font-extrabold tracking-wider text-white uppercase transition"
             >
-              See kit order details &rarr;
+              {kitReady ? 'See kit order details' : 'Email us about kits'} &rarr;
             </a>
           </div>
         </article>
@@ -127,8 +133,9 @@ const renderedUpdates = await Promise.all(
             </h3>
             <p class="text-flyers-iron mt-3 text-sm leading-relaxed">
               Every registered rider already gets a club t-shirt with registration. Extra tees for
-              parents and siblings, hats, stickers, and Flyers Enduro apparel are in our Zeffy shop.
-              Zeffy doesn't charge the club fees, so more of each purchase goes to the club.
+              parents and siblings, hats, stickers, and Flyers Enduro/Gravity apparel are in our
+              Zeffy shop. Zeffy doesn't charge the club fees, so more of each purchase goes to the
+              club.
             </p>
           </div>
           <div class="mt-6 pt-4">

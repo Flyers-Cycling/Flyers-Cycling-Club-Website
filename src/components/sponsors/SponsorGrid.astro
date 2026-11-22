@@ -44,7 +44,7 @@ const tierBadgeLabels: Record<string, { label: string; style: string }> = {
 const scopeLabels: Record<SponsorScope, string> = {
   club: 'Club-Wide',
   xc: 'Flyers XC',
-  enduro: 'Flyers Enduro',
+  enduro: 'Flyers Enduro/Gravity',
   'jr-flyers': 'Jr. Flyers',
 };
 ---
@@ -134,7 +134,7 @@ const scopeLabels: Record<SponsorScope, string> = {
                   href={linkHref}
                   target={external ? '_blank' : undefined}
                   rel={external ? 'noopener noreferrer' : undefined}
-                  class="text-flyers-red-deep hover:text-flyers-slate-dark text-xs font-extrabold underline transition"
+                  class="text-flyers-red-deep hover:text-flyers-slate-dark inline-flex min-h-12 items-center text-xs font-extrabold underline transition"
                 >
                   {sponsor.openSlot ? 'Ask about this spot' : 'Visit sponsor'} &rarr;
                 </a>

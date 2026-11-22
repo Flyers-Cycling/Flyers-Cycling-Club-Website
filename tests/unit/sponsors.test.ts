@@ -70,7 +70,7 @@ describe('buildSponsorInquiryMailto', () => {
         contactName: 'Jordan Rider',
         email: 'jordan@example.com',
         tier: 'Gold Kit & Pit Partner',
-        programScope: 'Flyers Enduro Spotlight',
+        programScope: 'Flyers Enduro/Gravity Spotlight',
         supportType: 'Check or ACH',
         notes: 'Happy to host packet pickup!',
       },
@@ -80,6 +80,6 @@ describe('buildSponsorInquiryMailto', () => {
     expect(href.startsWith('mailto:info@lakemountainflyers.com?')).toBe(true);
     expect(href).not.toContain('+');
     expect(decodeURIComponent(href)).toContain('Eagle Mountain Cycles');
-    expect(decodeURIComponent(href)).toContain('Flyers Enduro Spotlight');
+    expect(decodeURIComponent(href)).toContain('Flyers Enduro/Gravity Spotlight');
   });
 });

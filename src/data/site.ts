@@ -89,7 +89,8 @@ export const siteConfig = {
       vendor: 'Volt Cyclewear',
       status: 'seasonal' as 'open' | 'seasonal' | 'closed',
       windowLabel: 'Orders open winter to early spring',
-      url: 'https://www.lakemountainflyers.com/',
+      // TODO(board): the Volt Cyclewear order page. Until then the store page emails the club.
+      url: '',
       notes:
         'Optional Flyers jerseys and Alpine Thermal layers, made by Volt Cyclewear. Order in winter so kits arrive before spring.',
     },

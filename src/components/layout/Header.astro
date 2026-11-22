@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import { siteConfig } from '../../data/site';
 import { withBase } from '../../lib/urls';
 
 interface Props {
@@ -83,7 +82,7 @@ function isActive(matchPrefix: string): boolean {
         class="h-11 w-auto shrink-0 transition duration-200 group-hover:scale-[1.03]"
       />
       <div class="border-l border-white/20 pl-3.5">
-        <span class="sr-only">{siteConfig.name} — </span>
+        <span class="sr-only">Flyers</span>
         <span
           class="font-display block text-xl leading-none font-black tracking-wider text-white uppercase sm:text-2xl"
         >
