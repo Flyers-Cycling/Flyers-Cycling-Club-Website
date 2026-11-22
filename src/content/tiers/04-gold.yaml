@@ -15,4 +15,5 @@ perks:
   - Your logo on our homepage and on the XC, Enduro, and Jr. Flyers pages
   - A chance to host a packet pickup, shop night, or clinic with club families
   - A framed team photo to say thanks, plus a tax receipt from Lake Mountain Bicycle Club, Inc.
-zeffyUrl: https://www.zeffy.com/
+# Goes to the general donation form until each tier has its own Zeffy form.
+zeffyUrl: https://www.zeffy.com/en-US/donation-form/donate-to-fuel-the-ride?source=org-page

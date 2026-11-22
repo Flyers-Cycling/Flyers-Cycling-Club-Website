@@ -1,14 +1,14 @@
-# TODO(board): confirm this is a current sponsor and that the website URL is correct.
-name: Lake Mountain Trails Coalition
+# Confirmed by Randall (Nov 22, 2026). Website from the association's Trailforks listing.
+name: Lake Mountain Trails Association
 tier: gold
-order: 1
+order: 2
 logo: /images/sponsor-trails.svg
-websiteUrl: https://www.lakemountaintrails.org/
+websiteUrl: https://lakemountaintrails.org/
 scopes:
   - club
   - xc
   - enduro
   - jr-flyers
-summary: A local trail group that builds and maintains Utah singletrack for riders, runners, and hikers.
-location: Utah
+summary: A non-profit that builds and looks after the trails around Lake Mountain, where our riders train.
+location: Eagle Mountain, Utah
 active: true

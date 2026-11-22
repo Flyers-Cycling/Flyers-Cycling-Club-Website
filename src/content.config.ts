@@ -74,8 +74,14 @@ const sponsors = defineCollection({
     name: z.string(),
     tier: z.enum(['title', 'gold', 'silver', 'bronze', 'community']),
     order: z.number().int().positive(),
-    logo: z.string(),
-    websiteUrl: z.string().url(),
+    // Path to the logo in /public. Leave it out until the club has the file; the name shows instead.
+    logo: z.string().optional(),
+    // Use 'dark' for a white logo, so it sits on a dark panel instead of the light one.
+    logoBackground: z.enum(['light', 'dark']).default('light'),
+    // Optional second logo shown with the first, for example a parent company. Same background.
+    secondaryLogo: z.string().optional(),
+    // Leave it out if the sponsor has no website yet.
+    websiteUrl: z.string().url().optional(),
     scopes: z.array(programScopeEnum).min(1),
     summary: z.string(),
     location: z.string().optional(),

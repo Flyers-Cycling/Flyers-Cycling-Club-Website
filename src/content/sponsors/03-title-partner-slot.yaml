@@ -10,5 +10,6 @@ scopes:
   - jr-flyers
 summary: Our 2027 title sponsor spot is open. The title sponsor's logo goes front and center on club jerseys and at every event.
 location: Utah
-active: true
+# Hidden: Firefly by Candlelight Homes is the title sponsor (Nov 22, 2026).
+active: false
 openSlot: true

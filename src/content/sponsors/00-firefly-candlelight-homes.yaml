@@ -1,0 +1,17 @@
+# Title sponsor (Randall, Nov 22, 2026).
+# Logo and link from Randall (Nov 22, 2026). The logo is white, so it sits on a dark panel.
+name: Firefly by Candlelight Homes
+tier: title
+order: 1
+logo: /images/sponsor-firefly.png
+logoBackground: dark
+secondaryLogo: /images/sponsor-candlelight-homes-white.svg
+websiteUrl: https://www.candlelighthomes.com/firefly-vision
+scopes:
+  - club
+  - xc
+  - enduro
+  - jr-flyers
+summary: A local home builder building the Firefly and Firefly Ranch neighborhoods in Eagle Mountain.
+location: Eagle Mountain, Utah
+active: true

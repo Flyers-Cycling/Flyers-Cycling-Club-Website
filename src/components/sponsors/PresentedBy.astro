@@ -1,0 +1,61 @@
+---
+// "Presented by" credit for the club's title sponsor(s). Reads the sponsors collection, so it
+// updates on its own when a title sponsor is added or removed. Renders nothing if there is none.
+import { getCollection } from 'astro:content';
+import { withBase } from '../../lib/urls';
+
+const titleSponsors = (await getCollection('sponsors'))
+  .map((entry) => entry.data)
+  .filter((s) => s.active && !s.openSlot && s.tier === 'title')
+  .sort((a, b) => a.order - b.order);
+---
+
+{
+  titleSponsors.length > 0 && (
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <p class="text-xs font-extrabold tracking-widest text-white/70 uppercase">Presented by</p>
+      {titleSponsors.map((sponsor) => {
+        const label = (
+          <>
+            {sponsor.logo && sponsor.logoBackground === 'dark' ? (
+              <img
+                src={withBase(sponsor.logo)}
+                alt={sponsor.name}
+                width="512"
+                height="151"
+                loading="lazy"
+                class="h-8 w-auto"
+              />
+            ) : (
+              <span class="font-display text-lg font-black tracking-wide text-white uppercase">
+                {sponsor.name}
+              </span>
+            )}
+            {sponsor.secondaryLogo && sponsor.logoBackground === 'dark' && (
+              <img
+                src={withBase(sponsor.secondaryLogo)}
+                alt=""
+                width="403"
+                height="68"
+                loading="lazy"
+                class="ml-3 h-6 w-auto"
+              />
+            )}
+          </>
+        );
+        return sponsor.websiteUrl ? (
+          <a
+            href={sponsor.websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-12 items-center rounded-md px-1 transition hover:opacity-80"
+          >
+            {label}
+          </a>
+        ) : (
+          <span class="inline-flex min-h-12 items-center">{label}</span>
+        );
+      })}
+    </div>
+  )
+}

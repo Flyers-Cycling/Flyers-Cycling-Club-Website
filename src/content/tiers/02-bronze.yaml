@@ -14,4 +14,5 @@ perks:
   - Your logo and link on our Sponsors page and the program page you choose
   - Your logo on our shared race-day sponsor banner
   - A thank-you post on our social media
-zeffyUrl: https://www.zeffy.com/
+# Goes to the general donation form until each tier has its own Zeffy form.
+zeffyUrl: https://www.zeffy.com/en-US/donation-form/donate-to-fuel-the-ride?source=org-page

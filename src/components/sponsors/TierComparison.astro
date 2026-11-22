@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { isPlaceholderUrl } from '../../lib/urls';
 
 interface Props {
   tiers: CollectionEntry<'tiers'>[];
@@ -103,18 +104,20 @@ const sorted = [...tiers].sort((a, b) => a.data.order - b.data.order);
           </div>
 
           <div class="mt-6 space-y-2 pt-4">
-            <a
-              href={data.zeffyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={`font-display flex min-h-12 w-full items-center justify-center rounded-lg px-4 py-2.5 text-center text-sm font-extrabold tracking-wider uppercase transition ${
-                data.featured
-                  ? 'bg-flyers-red hover:bg-flyers-red-bright text-white'
-                  : 'bg-flyers-slate hover:bg-flyers-slate-dark text-white'
-              }`}
-            >
-              Give {data.amountLabel} on Zeffy
-            </a>
+            {!isPlaceholderUrl(data.zeffyUrl) && (
+              <a
+                href={data.zeffyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`font-display flex min-h-12 w-full items-center justify-center rounded-lg px-4 py-2.5 text-center text-sm font-extrabold tracking-wider uppercase transition ${
+                  data.featured
+                    ? 'bg-flyers-red hover:bg-flyers-red-bright text-white'
+                    : 'bg-flyers-slate hover:bg-flyers-slate-dark text-white'
+                }`}
+              >
+                Give {data.amountLabel} on Zeffy
+              </a>
+            )}
             <a
               href="#sponsor-inquiry"
               data-select-tier={data.name}
