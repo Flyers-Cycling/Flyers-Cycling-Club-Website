@@ -7,11 +7,12 @@ featured: false
 badgeLabel: Local Roots
 impactHeadline: Stocks ride groups with first-aid kits, cones, and trailside repair tools.
 jerseyPlacement: '—'
-tentBannerPlacement: Name on our supporter board at club events
+tentBannerPlacement: '—'
 digitalRecognition: Name or business listed on our Sponsors page
 perks:
   - Tax receipt from Lake Mountain Bicycle Club, Inc., a 501(c)(3) non-profit
   - Your name or business listed on our Sponsors page
   - Choose the whole club or one program (XC, Enduro, or Jr. Flyers)
   - A thank-you on our social media at the start of the season
-zeffyUrl: https://www.zeffy.com/
+# Goes to the general donation form until each tier has its own Zeffy form.
+zeffyUrl: https://www.zeffy.com/en-US/donation-form/donate-to-fuel-the-ride?source=org-page

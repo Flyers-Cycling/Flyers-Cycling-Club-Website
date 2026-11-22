@@ -74,8 +74,10 @@ const sponsors = defineCollection({
     name: z.string(),
     tier: z.enum(['title', 'gold', 'silver', 'bronze', 'community']),
     order: z.number().int().positive(),
-    logo: z.string(),
-    websiteUrl: z.string().url(),
+    // Path to the logo in /public. Leave it out until the club has the file; the name shows instead.
+    logo: z.string().optional(),
+    // Leave it out if the sponsor has no website yet.
+    websiteUrl: z.string().url().optional(),
     scopes: z.array(programScopeEnum).min(1),
     summary: z.string(),
     location: z.string().optional(),

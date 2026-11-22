@@ -76,25 +76,35 @@ const scopeLabels: Record<SponsorScope, string> = {
               </div>
 
               <div class="bg-flyers-snow mt-4 flex h-20 items-center justify-center rounded-xl border border-neutral-200/70 p-2">
-                <img
-                  src={withBase(sponsor.logo)}
-                  alt={`${sponsor.name} logo`}
-                  width="240"
-                  height="80"
-                  loading="lazy"
-                  class="max-h-16 w-auto object-contain"
-                />
+                {sponsor.logo ? (
+                  <img
+                    src={withBase(sponsor.logo)}
+                    alt={`${sponsor.name} logo`}
+                    width="240"
+                    height="80"
+                    loading="lazy"
+                    class="max-h-16 w-auto object-contain"
+                  />
+                ) : (
+                  <span class="font-display text-flyers-slate-dark text-center text-xl font-black tracking-wide uppercase">
+                    {sponsor.name}
+                  </span>
+                )}
               </div>
 
               <h3 class="font-display text-flyers-slate-dark mt-4 text-2xl font-black tracking-wide uppercase">
-                <a
-                  href={linkHref}
-                  target={external ? '_blank' : undefined}
-                  rel={external ? 'noopener noreferrer' : undefined}
-                  class="hover:text-flyers-red transition hover:underline"
-                >
-                  {sponsor.name}
-                </a>
+                {linkHref ? (
+                  <a
+                    href={linkHref}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    class="hover:text-flyers-red transition hover:underline"
+                  >
+                    {sponsor.name}
+                  </a>
+                ) : (
+                  sponsor.name
+                )}
               </h3>
               <p class="text-flyers-iron mt-2 text-sm leading-relaxed">{sponsor.summary}</p>
             </div>
@@ -107,14 +117,16 @@ const scopeLabels: Record<SponsorScope, string> = {
                   </span>
                 ))}
               </div>
-              <a
-                href={linkHref}
-                target={external ? '_blank' : undefined}
-                rel={external ? 'noopener noreferrer' : undefined}
-                class="text-flyers-red-deep hover:text-flyers-slate-dark text-xs font-extrabold underline transition"
-              >
-                {sponsor.openSlot ? 'Ask about this spot' : 'Visit sponsor'} &rarr;
-              </a>
+              {linkHref && (
+                <a
+                  href={linkHref}
+                  target={external ? '_blank' : undefined}
+                  rel={external ? 'noopener noreferrer' : undefined}
+                  class="text-flyers-red-deep hover:text-flyers-slate-dark text-xs font-extrabold underline transition"
+                >
+                  {sponsor.openSlot ? 'Ask about this spot' : 'Visit sponsor'} &rarr;
+                </a>
+              )}
             </div>
           </article>
         );

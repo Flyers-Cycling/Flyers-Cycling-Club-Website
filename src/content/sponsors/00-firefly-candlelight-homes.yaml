@@ -1,0 +1,13 @@
+# One of the club's main sponsors (Randall, Nov 22, 2026).
+# TODO(board): confirm the tier, and send the logo file and website link.
+name: Firefly by Candlelight Homes
+tier: gold
+order: 1
+scopes:
+  - club
+  - xc
+  - enduro
+  - jr-flyers
+summary: A local home builder building the Firefly and Firefly Ranch neighborhoods in Eagle Mountain.
+location: Eagle Mountain, Utah
+active: true

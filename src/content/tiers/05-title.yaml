@@ -15,4 +15,5 @@ perks:
   - Recognition on our homepage and footer, plus a story about your support
   - A co-hosted trail workday or kids' skills day
   - A tax receipt from Lake Mountain Bicycle Club, Inc. and a year-end summary of what your gift paid for
-zeffyUrl: https://www.zeffy.com/
+# Goes to the general donation form until each tier has its own Zeffy form.
+zeffyUrl: https://www.zeffy.com/en-US/donation-form/donate-to-fuel-the-ride?source=org-page

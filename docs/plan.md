@@ -94,12 +94,12 @@ For families already in the club.
 
 - [x] "Support" menu (Donate, Volunteer, Shop) plus Sponsors as its own top-level item, cross-linked. A /support page in the main nav next to Sponsors; Board moved to the mobile menu, footer, and About.
 - [x] Donate reachable from every page. The header and footer Donate buttons go to /support#donate. Until the real Zeffy link is in `siteConfig`, Donate opens an email instead of the bare zeffy.com page.
-- [ ] Real sponsors only; open sponsorship spots listed separately. Done in code: open spots only show under "Open spots" on /sponsors. Waiting on whether Lake Mountain Trails Coalition is a current sponsor. Tier and shop buttons hide or fall back to email while their Zeffy links are placeholders.
-- [ ] Confirm every sponsor tier perk before it stays on the site
+- [x] Real sponsors only; open sponsorship spots listed separately. Open spots only show under "Open spots" on /sponsors. Lake Mountain Trails Association confirmed and Firefly by Candlelight Homes added (Nov 22, 2026); Firefly's tier, logo, and link still to come. Tier buttons go to the general Zeffy form until each tier has its own.
+- [x] Confirm every sponsor tier perk before it stays on the site. Randall confirmed Nov 22, 2026: logos for Bronze and up, not Community; no supporter board; the rest stay.
 - [x] Impact numbers on the home page (riders, rides, volunteer hours, scholarships). Riders per program for 2026 are in `siteConfig.impact`; volunteer hours and families helped still to come.
 - [x] Adult riders: how parents and adults can ride, coach, and help. Adults join as coaches; adult group rides are coach training rides (Randall, Nov 22 2026). On /volunteer.
 - [ ] Rider and family stories, with permission
-- [ ] Newsletter sign-up
+- [ ] Newsletter sign-up. No newsletter yet; Randall may start one on Substack.
 
 ## Confirmed facts to add to the site
 
@@ -125,12 +125,12 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepard (Jr. Flyers). Randall is sending these.
 - [ ] Registration form links (Dec 1, 2026) and the Jr. Flyers opening date
 - [ ] Real Zeffy links for donations, each tier, and the shop. Real Google Calendar embed. Real Volt store URL.
-- [ ] Is Lake Mountain Trails Coalition a current sponsor? What is its URL?
+- [x] Is Lake Mountain Trails Coalition a current sponsor? Yes: Lake Mountain Trails Association, lakemountaintrails.org.
 - [ ] What the Enduro/Gravity "gravity rider insurance" is, and why the fee is $150
 - [x] Is there help with costs? Yes, some. Families reach out to a coach.
 - [ ] Scholarship details: what kinds of help (fee waivers, loaner bikes), and can we publish a contact?
 - [ ] Refund policy and waiver links, and links to the Google Docs behind each policy
-- [ ] Confirm the club will deliver every sponsor tier perk in `src/content/tiers/`
+- [x] Confirm the club will deliver every sponsor tier perk in `src/content/tiers/` (see Phase 6)
 - [x] Media releases for the Enduro/Gravity photos (confirmed by Randall, Nov 21 2026)
 - [ ] Real photos for the home page hero, coaches, Flyers XC, and Jr. Flyers (Randall uploading to the club Drive folder)
 - [x] Practice days for each program (see "Confirmed facts" above)
