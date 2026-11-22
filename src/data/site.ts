@@ -75,6 +75,40 @@ export const siteConfig = {
     width: 797,
     height: 1200,
   },
+  // Home page photo collage. Real club photos with media releases on file. `small` is a 640px-wide
+  // copy for phones. The hero photo is left out so it doesn't show twice.
+  // TODO(board): photo needed. Add Flyers XC and Jr. Flyers riding photos when they arrive, so every
+  // program shows here.
+  homeCollage: [
+    {
+      src: '/images/enduro/enduro-jump-chairlift.jpg',
+      small: '/images/home/enduro-jump-chairlift-640.jpg',
+      alt: 'A rider in a black and pink kit and full-face helmet sails off a dirt jump at a ski area while people on a chairlift and a crowd on the hillside watch.',
+      width: 1200,
+      height: 797,
+    },
+    {
+      src: '/images/enduro/enduro-rock-drop.jpg',
+      small: '/images/home/enduro-rock-drop-640.jpg',
+      alt: 'A rider in a full-face helmet and orange goggles rolls off a red rock ledge on a dusty desert trail lined with juniper trees.',
+      width: 797,
+      height: 1200,
+    },
+    {
+      src: '/images/enduro-iron-springs.jpg',
+      small: '/images/home/enduro-iron-springs-640.jpg',
+      alt: 'A group of Flyers Enduro/Gravity riders in full-face helmets and black and pink jerseys stand with their bikes in front of race tents.',
+      width: 1400,
+      height: 1050,
+    },
+    {
+      src: '/images/coaches/head-coaches.jpg',
+      small: '/images/home/head-coaches-640.jpg',
+      alt: 'Jessie, Tim, and Randall standing together outdoors in Flyers shirts, with mountains behind them.',
+      width: 1400,
+      height: 788,
+    },
+  ],
   // Riders per program, from Randall (Nov 22, 2026). Shown on the home page.
   // TODO(board): update after each season, and add volunteer hours and families helped when known.
   impact: {

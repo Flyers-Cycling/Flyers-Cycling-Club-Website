@@ -137,6 +137,7 @@ describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
 
     expect(homeHtml).toContain('/images/brand/flyers-logo-white.svg');
     expect(homeHtml).toContain('fetchpriority="low"');
+    expect(homeHtml).toContain('/images/home/enduro-jump-chairlift-640.jpg 640w');
     expect(prospectusHtml).toContain('/images/brand/flyers-logo-black.svg');
   });
 });

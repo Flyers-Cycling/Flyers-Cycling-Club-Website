@@ -1,0 +1,70 @@
+---
+import { siteConfig } from '../../data/site';
+import { withBase } from '../../lib/urls';
+
+// Real club photos only (AGENTS.md section 5). The list lives in siteConfig.homeCollage.
+// Layout on phones: wide, two squares, wide. On desktop: a big photo, a tall one, and two wide ones
+// stacked. Reordering siteConfig.homeCollage changes which photo gets which tile.
+const photos = siteConfig.homeCollage;
+const square = { cell: 'lg:col-span-2', focus: '', sizes: '(min-width: 1024px) 420px, 50vw' };
+const tiles = [
+  {
+    cell: 'col-span-2 lg:col-span-3 lg:row-span-2',
+    focus: 'object-[50%_25%]',
+    sizes: '(min-width: 1024px) 640px, 100vw',
+  },
+  { cell: 'lg:row-span-2', focus: '', sizes: '(min-width: 1024px) 220px, 50vw' },
+  square,
+  { cell: 'col-span-2', focus: 'object-[50%_30%]', sizes: '(min-width: 1024px) 420px, 100vw' },
+];
+const tile = (index: number) => tiles[index] ?? square;
+---
+
+<section
+  aria-labelledby="home-photos-heading"
+  class="bg-flyers-snow border-b border-neutral-200 py-12 sm:py-16"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
+      <div>
+        <p class="text-flyers-red-deep text-xs font-extrabold tracking-widest uppercase">
+          On the trail
+        </p>
+        <h2
+          id="home-photos-heading"
+          class="font-display text-flyers-slate-dark mt-2 text-4xl leading-tight font-black tracking-wide uppercase sm:text-5xl"
+        >
+          Flyers riders and coaches
+        </h2>
+      </div>
+      <a
+        href={withBase('/programs/enduro#photos')}
+        class="text-flyers-red-deep hover:text-flyers-slate-dark inline-flex min-h-12 items-center text-sm font-extrabold underline transition"
+      >
+        More Enduro/Gravity photos &rarr;
+      </a>
+    </div>
+
+    <ul
+      class="mt-8 grid auto-rows-[11rem] grid-cols-2 gap-3 sm:auto-rows-[16rem] sm:gap-4 lg:auto-rows-[13rem] lg:grid-cols-6"
+    >
+      {
+        photos.map((photo, index) => (
+          <li class:list={['bg-flyers-slate overflow-hidden rounded-2xl', tile(index).cell]}>
+            <img
+              src={withBase(photo.src)}
+              srcset={`${withBase(photo.small)} 640w, ${withBase(photo.src)} ${photo.width}w`}
+              sizes={tile(index).sizes}
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              loading="lazy"
+              decoding="async"
+              class:list={['h-full w-full object-cover', tile(index).focus]}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
