@@ -1,11 +1,11 @@
-name: Flyers Enduro Sponsor (Open)
+name: Flyers Enduro/Gravity Sponsor (Open)
 tier: gold
 order: 4
 logo: /images/sponsor-open-enduro.svg
 websiteUrl: https://www.zeffy.com/
 scopes:
   - enduro
-summary: An open spot for a business that wants to back Flyers Enduro, including gravity safety clinics, pit tools, and race days.
+summary: An open spot for a business that wants to back Flyers Enduro/Gravity, including gravity safety clinics, pit tools, and race days.
 location: Utah
 active: true
 openSlot: true
