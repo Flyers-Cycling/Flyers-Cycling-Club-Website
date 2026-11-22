@@ -335,9 +335,21 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
                 </h2>
                 <ul class="mt-4 space-y-4">
                   {coaches.map((coach) => (
-                    <li class="border-l-program-accent border-l-4 pl-3">
-                      <p class="text-flyers-slate-dark font-extrabold">{coach.data.name}</p>
-                      <p class="text-flyers-iron text-xs font-semibold">{coach.data.role}</p>
+                    <li class="border-l-program-accent flex items-center gap-3 border-l-4 pl-3">
+                      {coach.data.photo && (
+                        <img
+                          src={withBase(coach.data.photo)}
+                          alt=""
+                          width="48"
+                          height="48"
+                          loading="lazy"
+                          class="h-12 w-12 shrink-0 rounded-full object-cover object-top"
+                        />
+                      )}
+                      <div>
+                        <p class="text-flyers-slate-dark font-extrabold">{coach.data.name}</p>
+                        <p class="text-flyers-iron text-xs font-semibold">{coach.data.role}</p>
+                      </div>
                     </li>
                   ))}
                 </ul>

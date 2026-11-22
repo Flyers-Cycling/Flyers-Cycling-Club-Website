@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/layout/PageHero.astro';
-import ComingSoon from '../components/layout/ComingSoon.astro';
 import { siteConfig } from '../data/site';
 import { programTheme } from '../lib/programs';
 import { withBase } from '../lib/urls';
@@ -33,22 +32,53 @@ const leads = (await getCollection('leadership'))
         >
           Program coaches
         </h2>
-        <!-- TODO(board): add coach names, roles, short bios, and adult photos (with consent). -->
+        <figure
+          class="mt-6 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xs"
+        >
+          <img
+            src={withBase('/images/coaches/head-coaches.jpg')}
+            alt="Jessie, Tim, and Randall standing together outdoors in Flyers shirts, with mountains behind them."
+            width="1400"
+            height="788"
+            class="aspect-[16/9] w-full object-cover"
+          />
+          <figcaption class="text-flyers-iron px-5 py-3 text-sm">
+            Head coaches, from left: Jessie Shepherd (Jr. Flyers), Tim Richards (Flyers
+            Enduro/Gravity), and Randall Adams (Flyers XC).
+          </figcaption>
+        </figure>
+        <!-- TODO(board): photo of Tim Richards (with consent). -->
         <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {
             leads.map((lead) => (
               <article
                 data-program={programTheme(lead.data.program)}
-                class="border-t-program-accent rounded-2xl border border-t-4 border-neutral-200 bg-white p-6 shadow-xs"
+                class="border-t-program-accent overflow-hidden rounded-2xl border border-t-4 border-neutral-200 bg-white shadow-xs"
               >
-                <p class="text-program-ink text-xs font-extrabold tracking-wide uppercase">
-                  {lead.data.programFocus}
-                </p>
-                <h3 class="font-display text-flyers-slate-dark mt-1.5 text-2xl font-black tracking-wide uppercase">
-                  {lead.data.name}
-                </h3>
-                <p class="text-flyers-slate text-xs font-bold">{lead.data.role}</p>
-                <p class="text-flyers-iron mt-3 text-sm leading-relaxed">{lead.data.bio}</p>
+                {lead.data.photo && (
+                  <img
+                    src={withBase(lead.data.photo)}
+                    alt={lead.data.photoAlt ?? ''}
+                    width="768"
+                    height="768"
+                    loading="lazy"
+                    class="aspect-square w-full object-cover object-top"
+                  />
+                )}
+                <div class="p-6">
+                  <p class="text-program-ink text-xs font-extrabold tracking-wide uppercase">
+                    {lead.data.programFocus}
+                  </p>
+                  <h3 class="font-display text-flyers-slate-dark mt-1.5 text-2xl font-black tracking-wide uppercase">
+                    {lead.data.name}
+                  </h3>
+                  <p class="text-flyers-slate text-xs font-bold">{lead.data.role}</p>
+                  <div class="text-flyers-iron mt-3 space-y-3 text-sm leading-relaxed">
+                    {(lead.data.fullBio ?? lead.data.bio).split(/\n\s*\n/).map((para) => (
+                      <p>{para.trim()}</p>
+                    ))}
+                  </div>
+                </div>
               </article>
             ))
           }
@@ -61,10 +91,6 @@ const leads = (await getCollection('leadership'))
           class="text-flyers-red-deep font-bold underline">coach resources</a
         >.
       </p>
-
-      <ComingSoon id="coach-bios-heading" title="Coach bios">
-        <p>We'll introduce each coach here with a short bio and photo.</p>
-      </ComingSoon>
 
       <section
         aria-labelledby="coach-training-heading"

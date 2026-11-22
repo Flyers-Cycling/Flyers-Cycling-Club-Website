@@ -4,5 +4,19 @@ programFocus: Flyers XC
 program: xc
 order: 2
 coach: true
-# TODO(board): add a short bio and (with consent) a photo.
-bio: Coaches Flyers XC, from winter base rides to summer mountain rides.
+# Bio from Randall's answers (Nov 22, 2026).
+bio: Coaches Flyers XC and is a licensed NICA coach for Lehi MTB. He has ridden mountain bikes since he was 10.
+fullBio: |
+  Randall has ridden mountain bikes since he was 10 and has coached for six years. He is a licensed
+  NICA coach for the Lehi MTB high school team. He still races endurance events too, and took third
+  in the 40–49 category at the 2026 Sea Otter Classic after earlier elite podiums at Intermountain
+  Cup races.
+
+  At Flyers XC, he wants every rider to have fun and love being on a bike. The goals follow. He has
+  coached riders who started near the back and worked their way up to fast JV A and Varsity
+  races, and he gets just as excited when a rider finally cleans a line they used to walk.
+
+  Randall lives in Lehi with his wife and their four kids, who all ride. His favorite trail is
+  Hollow Point.
+photo: /images/coaches/randall-adams.jpg
+photoAlt: Randall smiling in a ball cap, with a red rock canyon behind him.
