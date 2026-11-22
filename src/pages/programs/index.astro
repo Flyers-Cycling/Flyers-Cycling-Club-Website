@@ -11,7 +11,7 @@ const byAge = [...programs].sort((a, b) => b.data.order - a.data.order);
 ---
 
 <BaseLayout
-  title="Programs: Jr. Flyers, Flyers XC & Flyers Enduro"
+  title="Programs: Flyers XC, Flyers Enduro/Gravity & Jr. Flyers"
   description="Compare Flyers Cycling Club's three youth mountain bike programs in Utah: Flyers XC, Flyers Enduro/Gravity, and Jr. Flyers."
 >
   <section class="dark-surface flyers-banner-bg py-14 text-white sm:py-20">
@@ -88,7 +88,7 @@ const byAge = [...programs].sort((a, b) => b.data.order - a.data.order);
                     </a>
                   </th>
                   <td class="px-4 py-3.5">
-                    {program.data.gradesLabel} ({program.data.agesLabel})
+                    {program.data.gradesLabel} · {program.data.agesLabel}
                   </td>
                   <td class="px-4 py-3.5">{program.data.seasonLabel}</td>
                   <td class="text-flyers-red-deep px-4 py-3.5 font-extrabold">

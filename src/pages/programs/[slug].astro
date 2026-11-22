@@ -259,7 +259,9 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
             <div
               class="border-flyers-slate/25 text-flyers-slate-dark bg-flyers-slate-light mt-6 rounded-xl border p-4 text-sm"
             >
-              <p class="font-extrabold">Riding with a school team</p>
+              <p class="font-extrabold">
+                {program.id === 'jr-flyers' ? 'After Jr. Flyers' : 'Riding with a school team'}
+              </p>
               <p class="text-flyers-charcoal mt-1 leading-relaxed">{data.schoolTeamNote}</p>
             </div>
           </div>

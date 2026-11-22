@@ -23,3 +23,6 @@ playwright-report/
 test-results/
 blob-report/
 playwright/.cache/
+
+# Python wheels downloaded for image tooling. Never commit these.
+*.whl

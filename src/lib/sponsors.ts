@@ -57,7 +57,7 @@ export function buildSponsorInquiryMailto(
   payload: SponsorInquiryPayload,
   recipientEmail: string,
 ): string {
-  const subject = `Flyers Cycling Club Sponsorship Inquiry — ${payload.organizationName} (${payload.tier})`;
+  const subject = `Flyers Cycling Club Sponsorship Inquiry: ${payload.organizationName} (${payload.tier})`;
   const lines = [
     'Hello Flyers Cycling Club / Lake Mountain Bicycle Club Board,',
     '',

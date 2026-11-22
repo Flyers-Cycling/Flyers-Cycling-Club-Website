@@ -64,7 +64,7 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
   test('interactive Program Pathway Finder updates recommendation dynamically', async ({
     page,
   }) => {
-    await page.goto('/');
+    await page.goto('/programs');
     const finder = page.locator('#pathway-finder');
     await expect(finder).toBeVisible();
 
@@ -109,7 +109,9 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     await page.fill('#organizationName', 'Eagle Mountain Trail Co');
     await page.fill('#contactName', 'Taylor Clark');
     await page.fill('#sponsorEmail', 'taylor@example.com');
-    await page.locator('input[name="programScope"][value="Flyers Enduro Spotlight"]').check();
+    await page
+      .locator('input[name="programScope"][value="Flyers Enduro/Gravity Spotlight"]')
+      .check();
 
     await page.click('#sponsor-submit-btn');
 

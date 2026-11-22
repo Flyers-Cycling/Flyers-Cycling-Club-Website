@@ -4,74 +4,77 @@ import { anyRegistrationOpen, registrationOpensLabel } from '../../lib/registrat
 import { withBase } from '../../lib/urls';
 
 const registrationOpen = anyRegistrationOpen();
+const photo = siteConfig.homePhoto;
 const season = siteConfig.registration.season;
 ---
 
 <section class="dark-surface bg-flyers-slate-dark relative overflow-hidden text-white">
-  <!--
-    TODO(board): photo needed. A real, media-released photo of Flyers riders goes here.
-    Never use AI-generated or stock images (AGENTS.md section 5). Until then, a plain brand
-    background with a faint crest.
-  -->
+  <!-- Real club photos only (AGENTS.md section 5). The photo lives in siteConfig.homePhoto. -->
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div class="from-flyers-slate-dark to-flyers-slate absolute inset-0 bg-gradient-to-br"></div>
-    <img
-      src={withBase('/images/brand/flyers-logo-white.svg')}
-      alt=""
-      width="310"
-      height="214"
-      class="absolute top-1/2 right-[-4rem] hidden h-auto w-[36rem] -translate-y-1/2 opacity-[0.07] lg:block"
-    />
   </div>
 
-  <div class="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-22 lg:px-8">
-    <div class="max-w-3xl">
-      <!-- Official Canva Brand Kit Crest + Non-Profit Badge Lockup -->
-      <div class="flex flex-wrap items-center gap-5">
-        <img
-          src={withBase('/images/brand/flyers-logo-white.svg')}
-          alt="Flyers mountain crest logo"
-          width="148"
-          height="104"
-          class="h-20 w-auto drop-shadow-lg sm:h-24"
-        />
-        <div
-          class="bg-flyers-slate-dark/85 inline-flex flex-wrap items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-extrabold tracking-wider text-white uppercase backdrop-blur-xs"
+  <div class="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-22 lg:px-8">
+    <div
+      class="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] xl:grid-cols-[minmax(0,1fr)_26rem]"
+    >
+      <div class="max-w-3xl">
+        <!-- Official Canva Brand Kit Crest + Non-Profit Badge Lockup -->
+        <div class="flex flex-wrap items-center gap-5">
+          <img
+            src={withBase('/images/brand/flyers-logo-white.svg')}
+            alt="Flyers mountain crest logo"
+            width="148"
+            height="104"
+            class="hidden h-24 w-auto drop-shadow-lg lg:block"
+          />
+          <div
+            class="bg-flyers-slate-dark/85 inline-flex flex-wrap items-center gap-2 rounded-full border border-white/20 px-4 py-1.5 text-xs font-extrabold tracking-wider text-white uppercase backdrop-blur-xs"
+          >
+            <span class="bg-flyers-red h-2 w-2 rounded-full" aria-hidden="true"></span>
+            <span>501(c)(3) Non-Profit</span>
+            <span class="text-flyers-gold" aria-hidden="true">·</span>
+            <span>Utah Youth MTB</span>
+          </div>
+        </div>
+
+        <h1
+          class="font-display flyers-stroke mt-6 text-5xl leading-[0.95] font-black tracking-wide text-white uppercase sm:text-6xl lg:text-7xl"
         >
-          <span class="bg-flyers-red h-2 w-2 rounded-full" aria-hidden="true"></span>
-          <span>501(c)(3) Non-Profit</span>
-          <span class="text-flyers-gold" aria-hidden="true">·</span>
-          <span>Utah Youth MTB</span>
+          Youth mountain biking in Utah. <span class="text-flyers-gold">All riders welcome.</span>
+        </h1>
+
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
+          Three programs, one club. Flyers XC is cross-country riding, racing, and endurance, with
+          Flyers XC Devo for riding and Flyers XC Comp for competitive racing. Flyers Enduro/Gravity
+          is for descending, and Jr. Flyers teaches first trail skills. You don't need to be fast,
+          and racing is optional.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3.5">
+          <a
+            href={withBase('/programs')}
+            class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-7 py-3 text-lg font-black tracking-wider text-white uppercase shadow-lg transition"
+          >
+            Explore programs &rarr;
+          </a>
+          <a
+            href={withBase('/support')}
+            class="border-flyers-gold/65 bg-flyers-slate-dark/80 text-flyers-gold hover:bg-flyers-gold hover:text-flyers-slate-dark inline-flex min-h-12 items-center justify-center rounded-xl border px-5 py-3 text-base font-extrabold backdrop-blur-xs transition"
+          >
+            Support the club
+          </a>
         </div>
       </div>
 
-      <h1
-        class="font-display flyers-stroke mt-6 text-5xl leading-[0.95] font-black tracking-wide text-white uppercase sm:text-6xl lg:text-7xl"
-      >
-        Youth mountain biking in Utah. <span class="text-flyers-gold">All riders welcome.</span>
-      </h1>
-
-      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
-        Three programs, one club. Flyers XC is cross-country riding, racing, and endurance, with
-        Flyers XC Devo for riding and Flyers XC Comp for competitive racing. Flyers Enduro/Gravity
-        is for descending, and Jr. Flyers teaches first trail skills. You don't need to be fast, and
-        racing is optional.
-      </p>
-
-      <div class="mt-8 flex flex-wrap items-center gap-3.5">
-        <a
-          href={withBase('/programs')}
-          class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-7 py-3 text-lg font-black tracking-wider text-white uppercase shadow-lg transition"
-        >
-          Explore programs &rarr;
-        </a>
-        <a
-          href={withBase('/support')}
-          class="border-flyers-gold/65 bg-flyers-slate-dark/80 text-flyers-gold hover:bg-flyers-gold hover:text-flyers-slate-dark inline-flex min-h-12 items-center justify-center rounded-xl border px-5 py-3 text-base font-extrabold backdrop-blur-xs transition"
-        >
-          Support the club
-        </a>
-      </div>
+      <img
+        src={withBase(photo.src)}
+        alt={photo.alt}
+        width={photo.width}
+        height={photo.height}
+        fetchpriority="high"
+        class="order-first aspect-[4/3] w-full rounded-2xl border border-white/15 object-cover object-[50%_40%] shadow-2xl lg:order-none lg:aspect-[4/5]"
+      />
     </div>
 
     <!-- Registration announcement -->

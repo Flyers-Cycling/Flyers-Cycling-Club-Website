@@ -5,7 +5,6 @@ import Hero from '../components/home/Hero.astro';
 import Differentiators from '../components/home/Differentiators.astro';
 import ImpactNumbers from '../components/home/ImpactNumbers.astro';
 import ProgramCards from '../components/programs/ProgramCards.astro';
-import ProgramPathwayFinder from '../components/programs/ProgramPathwayFinder.astro';
 import SponsorGrid from '../components/sponsors/SponsorGrid.astro';
 import { siteConfig } from '../data/site';
 import { isExternalUrl, withBase } from '../lib/urls';
@@ -49,7 +48,7 @@ const events = upcomingEvents(await getCollection('events')).slice(0, 3);
         </div>
         <a
           href={withBase('/programs')}
-          class="text-flyers-red-deep hover:text-flyers-slate-dark text-sm font-extrabold underline transition"
+          class="text-flyers-red-deep hover:text-flyers-slate-dark inline-flex min-h-12 items-center text-sm font-extrabold underline transition"
         >
           Compare programs and seasons &rarr;
         </a>
@@ -58,13 +57,6 @@ const events = upcomingEvents(await getCollection('events')).slice(0, 3);
       <div class="mt-10">
         <ProgramCards programs={programs} />
       </div>
-    </div>
-  </section>
-
-  <!-- Interactive Pathway Finder -->
-  <section class="bg-flyers-snow pb-16 sm:pb-20">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <ProgramPathwayFinder />
     </div>
   </section>
 

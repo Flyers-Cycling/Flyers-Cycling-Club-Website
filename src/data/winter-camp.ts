@@ -16,7 +16,7 @@ export const winterCamp = {
   eventId: '07-winter-camp',
   /** Programs whose riders can come. */
   programs: ['xc', 'enduro'] as const,
-  eligibility: 'Flyers XC and Flyers Enduro riders, ages 10–18, plus college racers',
+  eligibility: 'Flyers XC and Flyers Enduro/Gravity riders, ages 10–18, plus college racers',
 
   plannedRiders: 35,
   plannedAdults: 15,

@@ -44,11 +44,12 @@ export const siteConfig = {
   registration: {
     season: '2027',
     opensDate: '2026-12-01',
-    // TODO(board): paste each form link between the quotes on Dec 1. While a link is empty,
-    // that program's buttons say "Registration opens Dec 1" and go to /register.
+    // Links from Randall (Nov 22, 2026). They stay hidden until opensDate (Utah time), then the
+    // daily rebuild turns every Register button on. While a link is empty or it's before
+    // opensDate, that program's buttons say "Registration opens Dec 1" and go to /register.
     forms: {
-      xc: '' as string,
-      enduro: '' as string,
+      xc: 'https://www.zeffy.com/en-US/ticketing/flyers-xc-registration' as string,
+      enduro: 'https://www.zeffy.com/en-US/ticketing/flyers-enduro-registration' as string,
     },
   },
   // Confirmed by Randall (Nov 21, 2026). Used on /safety, /coaches, and /volunteer.
@@ -60,16 +61,27 @@ export const siteConfig = {
     summary:
       "Some help with costs is available. Talk to your rider's coach, or email us. We keep every request private.",
   },
+  // Confirmed by Randall (Nov 22, 2026): no refunds. Used on /onboarding and /register.
+  refundPolicy:
+    "Registration fees and camp payments aren't refundable. If cost is the worry, ask about help before you sign up.",
   // Confirmed by Randall (Nov 21, 2026). Used on /safety and /onboarding.
   weatherCalls:
     "We call off rides for lightning and mud. You'll hear in Slack at least 2 hours before the ride starts.",
+  // Home page photo, chosen by Randall (Nov 22, 2026). Media release on file.
+  // TODO(board): Randall will swap in a podium photo later. Keep the alt text true to the photo.
+  homePhoto: {
+    src: '/images/enduro/enduro-berm-pink-jersey.jpg',
+    alt: 'A young rider in a pink jersey and full-face helmet leans the bike hard through a dirt berm, kicking up dust.',
+    width: 797,
+    height: 1200,
+  },
   // Riders per program, from Randall (Nov 22, 2026). Shown on the home page.
   // TODO(board): update after each season, and add volunteer hours and families helped when known.
   impact: {
     season: '2026',
     riders: {
       'jr-flyers': 238,
-      enduro: 50,
+      enduro: 73,
       xc: 20,
     },
   },
@@ -88,10 +100,12 @@ export const siteConfig = {
     voltKitStore: {
       vendor: 'Volt Cyclewear',
       status: 'seasonal' as 'open' | 'seasonal' | 'closed',
-      windowLabel: 'Orders open winter to early spring',
-      url: 'https://www.lakemountainflyers.com/',
+      // Confirmed by Randall (Nov 22, 2026): the store opens with registration and runs through Dec 15.
+      windowLabel: 'Orders open Dec 1 to Dec 15',
+      // TODO(board): the Volt Cyclewear order page. Until then the store page emails the club.
+      url: '',
       notes:
-        'Optional Flyers jerseys and Alpine Thermal layers, made by Volt Cyclewear. Order in winter so kits arrive before spring.',
+        'Optional Flyers jerseys and Alpine Thermal layers, made by Volt Cyclewear. The store is open Dec 1 to Dec 15, so kits arrive before spring.',
     },
     googleCalendarEmbedUrl: '',
     sponsorFormEndpoint: import.meta.env.PUBLIC_SPONSOR_FORM_ENDPOINT || '',

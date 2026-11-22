@@ -34,12 +34,13 @@ One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. 
 
 ## Registration
 
-| Fact                             | Where to edit                               | Status                           |
-| -------------------------------- | ------------------------------------------- | -------------------------------- |
-| Opening date (Dec 1, 2026)       | `siteConfig.registration.opensDate`         | Confirmed                        |
-| XC and Enduro/Gravity form links | `siteConfig.registration.forms`             | Needs board: Randall sends Dec 1 |
-| Jr. Flyers opening date          | `registrationWindowLabel` in `jr-flyers.md` | Needs board                      |
-| Refund policy, waiver            | (no home yet; planned Policies page)        | Needs board                      |
+| Fact                             | Where to edit                               | Status                                                     |
+| -------------------------------- | ------------------------------------------- | ---------------------------------------------------------- |
+| Opening date (Dec 1, 2026)       | `siteConfig.registration.opensDate`         | Confirmed                                                  |
+| XC and Enduro/Gravity form links | `siteConfig.registration.forms`             | Confirmed (Randall, Nov 22 2026). Hidden until `opensDate` |
+| Jr. Flyers opening date          | `registrationWindowLabel` in `jr-flyers.md` | Needs board                                                |
+| Refund policy                    | `siteConfig.refundPolicy`                   | Confirmed: no refunds (Randall, Nov 22 2026)               |
+| Waiver                           | `/onboarding` (link when ready)             | Needs board: Randall is writing it                         |
 
 ## People
 
@@ -66,7 +67,7 @@ One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. 
 | Donate, sponsor, shop links | `siteConfig.integrations.zeffy*Url`    | Needs board: all are the bare zeffy.com link     |
 | Sponsor tiers and perks     | `src/content/tiers/`                   | Needs board: confirm each perk will be delivered |
 | Sponsors                    | `src/content/sponsors/`                | Confirmed                                        |
-| Kit store                   | `siteConfig.integrations.voltKitStore` | Needs board: real Volt URL                       |
+| Kit store                   | `siteConfig.integrations.voltKitStore` | Open Dec 1–15 confirmed. Needs board: Volt URL   |
 | Fee summary line            | `siteConfig.feePhilosophy`             | Check it matches the program fees                |
 
 ## When a fact changes
