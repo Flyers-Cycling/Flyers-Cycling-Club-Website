@@ -132,7 +132,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Waiver link, and links to the Google Docs behind each policy. Refund policy answered: no refunds (Randall, Nov 22 2026), now in `siteConfig.refundPolicy`.
 - [x] Confirm the club will deliver every sponsor tier perk in `src/content/tiers/` (see Phase 6)
 - [x] Media releases for the Enduro/Gravity photos (confirmed by Randall, Nov 21 2026)
-- [ ] Real photos for the home page hero, coaches, Flyers XC, and Jr. Flyers (Randall uploading to the club Drive folder)
+- [ ] Real photos for the home page hero, coaches, Flyers XC, and Jr. Flyers (Randall uploading to the club Drive folder). Home collage and Flyers XC photos added Nov 22, 2026; still needed: Jr. Flyers photos and the podium hero photo.
 - [x] Practice days for each program (see "Confirmed facts" above)
 - [ ] Practice times and locations for each program. Saturdays at 10am for Flyers XC and Enduro/Gravity, with the Jordan River or Murdock Canal trails when muddy (Randall, Nov 22 2026). Saturday place and Tuesday times still needed.
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.

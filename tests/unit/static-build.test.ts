@@ -137,6 +137,7 @@ describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
 
     expect(homeHtml).toContain('/images/brand/flyers-logo-white.svg');
     expect(homeHtml).toContain('fetchpriority="low"');
+    expect(homeHtml).toContain('/images/home/xc-overlook-group-640.jpg 640w');
     expect(prospectusHtml).toContain('/images/brand/flyers-logo-black.svg');
   });
 });

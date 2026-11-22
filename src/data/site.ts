@@ -75,6 +75,61 @@ export const siteConfig = {
     width: 797,
     height: 1200,
   },
+  // Home page photo collage. Real club photos. Randall confirmed media releases cover all of them (Nov 22, 2026). `small` is a 640px-wide
+  // copy for phones. The hero photo is left out so it doesn't show twice. Order sets the layout
+  // (see PhotoCollage.astro).
+  // TODO(board): photo needed. Add a Jr. Flyers riding photo when one arrives, so every program shows.
+  homeCollage: [
+    {
+      src: '/images/enduro/enduro-jump-chairlift.jpg',
+      small: '/images/home/enduro-jump-chairlift-640.jpg',
+      alt: 'A rider in a black and pink kit and full-face helmet sails off a dirt jump at a ski area while people on a chairlift and a crowd on the hillside watch.',
+      width: 1200,
+      height: 797,
+    },
+    {
+      src: '/images/enduro/enduro-rock-drop.jpg',
+      small: '/images/home/enduro-rock-drop-640.jpg',
+      alt: 'A rider in a full-face helmet and orange goggles rolls off a red rock ledge on a dusty desert trail lined with juniper trees.',
+      width: 797,
+      height: 1200,
+    },
+    {
+      src: '/images/xc/xc-slickrock.jpg',
+      small: '/images/home/xc-slickrock-640.jpg',
+      alt: 'A rider in a white helmet and red and black kit pedals a hardtail across slickrock with sagebrush and juniper trees behind.',
+      width: 1024,
+      height: 683,
+    },
+    {
+      src: '/images/enduro-iron-springs.jpg',
+      small: '/images/home/enduro-iron-springs-640.jpg',
+      alt: 'A group of Flyers Enduro/Gravity riders in full-face helmets and black and pink jerseys stand with their bikes in front of race tents.',
+      width: 1400,
+      height: 1050,
+    },
+    {
+      src: '/images/xc/xc-overlook-group.jpg',
+      small: '/images/home/xc-overlook-group-640.jpg',
+      alt: 'A Flyers XC group stands with their bikes on slickrock in front of a large sandstone boulder, with desert canyons and a blue sky behind them.',
+      width: 1400,
+      height: 788,
+    },
+    {
+      src: '/images/enduro/enduro-berm-desert.jpg',
+      small: '/images/home/enduro-berm-desert-640.jpg',
+      alt: 'A rider in a pink and black jersey, chest protector, and goggles carves a sandy berm between juniper trees as people watch.',
+      width: 1200,
+      height: 797,
+    },
+    {
+      src: '/images/coaches/head-coaches.jpg',
+      small: '/images/home/head-coaches-640.jpg',
+      alt: 'Jessie, Tim, and Randall standing together outdoors in Flyers shirts, with mountains behind them.',
+      width: 1400,
+      height: 788,
+    },
+  ],
   // Riders per program, from Randall (Nov 22, 2026). Shown on the home page.
   // TODO(board): update after each season, and add volunteer hours and families helped when known.
   impact: {

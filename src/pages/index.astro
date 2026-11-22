@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/home/Hero.astro';
+import PhotoCollage from '../components/home/PhotoCollage.astro';
 import Differentiators from '../components/home/Differentiators.astro';
 import ImpactNumbers from '../components/home/ImpactNumbers.astro';
 import ProgramCards from '../components/programs/ProgramCards.astro';
@@ -20,6 +21,8 @@ const events = upcomingEvents(await getCollection('events')).slice(0, 3);
 
 <BaseLayout title={siteConfig.name}>
   <Hero />
+
+  <PhotoCollage />
 
   <Differentiators />
 
