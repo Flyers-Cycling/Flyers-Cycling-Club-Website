@@ -1,8 +1,20 @@
-name: Jessie Shepard
+name: Jessie Shepherd
 role: Jr. Flyers coach
 programFocus: Jr. Flyers
 program: jr-flyers
 order: 4
 coach: true
-# TODO(board): add a short bio and (with consent) a photo.
-bio: Coaches Jr. Flyers, our summer program for our youngest riders.
+# Bio adapted from Jessie's own (club Drive, Nov 2026).
+bio: Coaches Jr. Flyers, our summer program for our youngest riders. She is a licensed mental health counselor and sits on the Lake Mountain Trails Association board.
+fullBio: |
+  Jessie Shepherd, MA, LCMHC, LPC, is a licensed clinical mental health counselor and the owner of
+  Blue Clover Therapy. With a background in mental health and youth development, she knows how much
+  time outside on a bike does for a kid's body and mind.
+
+  As a Jr. Flyers coach, Jessie helps our youngest riders build confidence and a love of riding that
+  lasts. She believes access to trails helps kids and families thrive.
+
+  Jessie also serves on the board of the Lake Mountain Trails Association, where she works for
+  sustainable trails and more access to the places we ride.
+photo: /images/coaches/jessie-shepherd.jpg
+photoAlt: Jessie smiling in a Jr. Flyers shirt, with snowy mountains behind her.

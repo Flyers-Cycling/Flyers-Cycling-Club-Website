@@ -64,7 +64,7 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 Parents look for these.
 
 - [x] Safety page: coach screening and training (background check plus head-coach training), two-adult rule, helmet and gear rules, concussion protocol, emergencies, how to report a concern. Drafted at /safety: screening, gear links, two-adult rule, national concussion guidelines, and a concern email (board follows up). Emergency action plan and weather call-offs (Slack, 2 hours ahead) added.
-- [ ] Coaches page with real bios and photos (adults, with consent)
+- [ ] Coaches page with real bios and photos (adults, with consent). Jessie and Randall done; Tim still needed.
 - [ ] Board page with every board member, the EIN, and a 990 or annual report link
 - [ ] Policies page: code of conduct, rider rules, waiver, refund and cancellation
 - [x] Scholarships page: what help exists and how to ask privately (today: reach out to a coach). Done at /scholarships ("Help with costs"): no set rules, families reach out, requests are private and the board follows up.
@@ -77,7 +77,7 @@ Each program becomes its own section, the way the club runs.
 - [x] Section layout: overview, groups, schedule, coaches, gear, resources, news. Each program page has section links, its coaches, club news, and a link to its own dates. A resources section waits on Phase 5 content.
 - [ ] Flyers XC: separate Devo and Comp pages, with how a rider picks or moves between them. Switching (Devo to Comp when a rider wants to race and commit to training) is on the XC page; separate pages still to do.
 - [ ] Flyers Enduro/Gravity: protective gear, bike park days, race support, Youth Enduro Series races. Where we ride (Eagle Mountain, Lake Mountain, Kyhv Peak, Sundance, Deer Valley, Solitude) is on the page.
-- [ ] Jr. Flyers: what a first session looks like, a parent's guide, bike sizing. Bike sizing: "ask a coach" (Randall). First-session details coming from Jessie Shepard.
+- [ ] Jr. Flyers: what a first session looks like, a parent's guide, bike sizing. Bike sizing: "ask a coach" (Randall). First-session details coming from Jessie Shepherd.
 - [x] Program filter on Schedule and News (events and posts already carry a program). Schedule opens filtered from each program page (`/schedule?program=xc`); program pages show news for that program plus club-wide posts.
 - [ ] Program-specific photos (real ones, with media releases)
 
@@ -122,7 +122,7 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [x] What screening and training do Flyers coaches complete? Background check plus training from head coaches; many are NICA coaches.
 - [ ] Which background check provider, and do coaches also complete concussion, abuse-awareness, or first aid/CPR training?
 - [ ] EIN, the full board list, and a 990 or annual report link
-- [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepard (Jr. Flyers). Randall is sending these.
+- [ ] Coach bios and photos: Randall Adams (XC), Tim Richards (Enduro/Gravity), Jessie Shepherd (Jr. Flyers). Randall is sending these. Jessie's bio and photo, Randall's photo and draft bio, and a head coaches group photo are on /coaches (Nov 22, 2026). Still needed: Tim's bio and photo, and Randall's final bio.
 - [ ] Registration form links (Dec 1, 2026) and the Jr. Flyers opening date
 - [ ] Real Zeffy links for donations, each tier, and the shop. Real Google Calendar embed. Real Volt store URL.
 - [x] Is Lake Mountain Trails Coalition a current sponsor? Yes: Lake Mountain Trails Association, lakemountaintrails.org.

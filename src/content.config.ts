@@ -133,7 +133,14 @@ const leadership = defineCollection({
     // Leave it out for club-wide roles.
     program: z.enum(['xc', 'enduro', 'jr-flyers']).optional(),
     order: z.number().int().positive(),
+    // One or two sentences, used on cards (About page).
     bio: z.string(),
+    // Longer bio for the Coaches page. Blank lines start new paragraphs.
+    fullBio: z.string().optional(),
+    // Adults only, with their consent. Path in /public, e.g. /images/coaches/jane-doe.jpg
+    photo: z.string().optional(),
+    // Describe what is in the photo.
+    photoAlt: z.string().optional(),
     // true lists this person on the Coaches page.
     coach: z.boolean().default(false),
     // Set for board members (e.g. President). Listed on the Board page.

@@ -4,5 +4,13 @@ programFocus: Flyers XC
 program: xc
 order: 2
 coach: true
-# TODO(board): add a short bio and (with consent) a photo.
-bio: Coaches Flyers XC, from winter base rides to summer mountain rides.
+# Draft bio from Randall's notes (Nov 22, 2026). TODO(board): Randall to review and add detail.
+bio: Coaches Flyers XC. He has ridden mountain bikes since he was 10 and has coached for six years.
+fullBio: |
+  Randall has ridden mountain bikes since he was 10 and has coached for six years. He still races
+  endurance events himself, with a third-place finish at the Sea Otter Classic and earlier elite
+  podiums at Intermountain Cup races.
+
+  With Flyers XC, he coaches from the winter base rides through the summer mountain rides.
+photo: /images/coaches/randall-adams.jpg
+photoAlt: Randall smiling in a ball cap, with a red rock canyon behind him.
