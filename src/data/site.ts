@@ -75,11 +75,10 @@ export const siteConfig = {
     width: 797,
     height: 1200,
   },
-  // Home page photo collage. Real club photos with media releases on file. `small` is a 640px-wide
+  // Home page photo collage. Real club photos. Randall confirmed media releases cover all of them (Nov 22, 2026). `small` is a 640px-wide
   // copy for phones. The hero photo is left out so it doesn't show twice. Order sets the layout
   // (see PhotoCollage.astro).
   // TODO(board): photo needed. Add a Jr. Flyers riding photo when one arrives, so every program shows.
-  // TODO(board): confirm media releases cover the XC photos (from Randall, Nov 22, 2026).
   homeCollage: [
     {
       src: '/images/enduro/enduro-jump-chairlift.jpg',
@@ -96,9 +95,9 @@ export const siteConfig = {
       height: 1200,
     },
     {
-      src: '/images/xc/xc-canyon-trail.jpg',
-      small: '/images/home/xc-canyon-trail-640.jpg',
-      alt: 'A rider in a white helmet and red and black jersey rides toward the camera on a desert trail, past a twisted juniper tree, with red rock canyons behind.',
+      src: '/images/xc/xc-slickrock.jpg',
+      small: '/images/home/xc-slickrock-640.jpg',
+      alt: 'A rider in a white helmet and red and black kit pedals a hardtail across slickrock with sagebrush and juniper trees behind.',
       width: 1024,
       height: 683,
     },

@@ -17,10 +17,14 @@ feeIncludes: Covers a club t-shirt and rider insurance.
 accentKey: xc
 heroImage: /images/xc/xc-overlook-group.jpg
 heroImageAlt: A Flyers XC group stands with their bikes on slickrock in front of a large sandstone boulder, with desert canyons and a blue sky behind them.
-# Photos from Randall (Nov 22, 2026). TODO(board): confirm media releases cover these XC photos.
+# Photos from Randall (Nov 22, 2026). Media releases are on file.
 gallery:
   - src: /images/xc/xc-trailhead-lineup.jpg
     alt: A Flyers XC group lines up with their bikes across a red dirt road at a desert trailhead, with parked cars and juniper trees around them.
+    width: 1400
+    height: 788
+  - src: /images/xc/xc-team-lineup.jpg
+    alt: A Flyers XC group of riders and adults stands in a row on a red dirt parking area under a blue sky, some smiling and giving a thumbs-up.
     width: 1400
     height: 788
   - src: /images/xc/xc-canyon-trail.jpg
