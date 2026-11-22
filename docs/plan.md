@@ -94,7 +94,7 @@ For families already in the club.
 
 - [x] "Support" menu (Donate, Volunteer, Shop) plus Sponsors as its own top-level item, cross-linked. A /support page in the main nav next to Sponsors; Board moved to the mobile menu, footer, and About.
 - [x] Donate reachable from every page. The header and footer Donate buttons go to /support#donate. Until the real Zeffy link is in `siteConfig`, Donate opens an email instead of the bare zeffy.com page.
-- [x] Real sponsors only; open sponsorship spots listed separately. Open spots only show under "Open spots" on /sponsors. Lake Mountain Trails Association confirmed and Firefly by Candlelight Homes added (Nov 22, 2026); Firefly's tier, logo, and link still to come. Tier buttons go to the general Zeffy form until each tier has its own.
+- [x] Real sponsors only; open sponsorship spots listed separately. Open spots only show under "Open spots" on /sponsors. Lake Mountain Trails Association confirmed and Firefly by Candlelight Homes added (Nov 22, 2026); Firefly is the title sponsor; its logo and link are still to come. Tier buttons go to the general Zeffy form until each tier has its own.
 - [x] Confirm every sponsor tier perk before it stays on the site. Randall confirmed Nov 22, 2026: logos for Bronze and up, not Community; no supporter board; the rest stay.
 - [x] Impact numbers on the home page (riders, rides, volunteer hours, scholarships). Riders per program for 2026 are in `siteConfig.impact`; volunteer hours and families helped still to come.
 - [x] Adult riders: how parents and adults can ride, coach, and help. Adults join as coaches; adult group rides are coach training rides (Randall, Nov 22 2026). On /volunteer.

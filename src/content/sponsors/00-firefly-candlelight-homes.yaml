@@ -1,7 +1,8 @@
 # One of the club's main sponsors (Randall, Nov 22, 2026).
-# TODO(board): confirm the tier, and send the logo file and website link.
+# Title sponsor (Randall, Nov 22, 2026).
+# TODO(board): send the logo file and website link.
 name: Firefly by Candlelight Homes
-tier: gold
+tier: title
 order: 1
 scopes:
   - club
