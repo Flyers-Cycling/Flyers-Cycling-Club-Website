@@ -16,6 +16,7 @@ registrationForm: later
 feeAmount: '$35'
 feeIncludes: Covers a Jr. Flyers t-shirt and rider insurance.
 accentKey: jr
+logo: /images/brand/jr-flyers-logo-blue.svg
 practiceSchedule:
   # TODO(board): add the practice time and location.
   - 'June to August: Tuesday sessions at a skills park and on beginner singletrack'

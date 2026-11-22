@@ -19,13 +19,13 @@
   --color-flyers-pink-dark: #8a0c45;
   --color-flyers-pink-light: #fdf0f6;
 
-  /* Jr. Flyers Youth Blue from the Brand Book (#1e88e5). Same rules as pink: -deep or -dark behind
+  /* Jr. Flyers Youth Blue, matched to the Junior Flyers logo (#00adef, Randall, Nov 2026). Same rules as pink: -deep or -dark behind
      white text, -bright for text on dark slate, the base blue for bars, dots, and blocks. */
-  --color-flyers-blue: #1e88e5;
-  --color-flyers-blue-bright: #64b5f6;
-  --color-flyers-blue-deep: #1565c0;
-  --color-flyers-blue-dark: #0d47a1;
-  --color-flyers-blue-light: #e8f3fc;
+  --color-flyers-blue: #00adef;
+  --color-flyers-blue-bright: #4fc8f5;
+  --color-flyers-blue-deep: #0077a8;
+  --color-flyers-blue-dark: #005478;
+  --color-flyers-blue-light: #e6f7fd;
 
   --color-flyers-slate: #203746;
   --color-flyers-slate-dark: #14242e;
