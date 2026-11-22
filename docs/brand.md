@@ -13,7 +13,7 @@ Status: the palette and the program-theme layer below exist today in `src/styles
 | Club    | Flyers Cycling Club   | Red, with black, slate, gold | Header, footer, home page, About, Sponsors, Board, non-profit details, anything club-wide |
 | Program | Flyers XC             | Red                          | XC pages, XC events, XC Devo and XC Comp                                                  |
 | Program | Flyers Enduro/Gravity | Pink                         | Enduro/Gravity pages and events                                                           |
-| Program | Jr. Flyers            | Youth Blue `#1e88e5`         | Jr. Flyers pages and events. Has its own Junior Flyers logo.                              |
+| Program | Jr. Flyers            | Youth Blue `#00adef`         | Jr. Flyers pages and events. Has its own Junior Flyers logo.                              |
 
 Rules:
 
@@ -36,7 +36,7 @@ Rules from the Brand Book:
 
 Files: `public/images/brand/` (SVG, traced from the club's PNGs) and `public/images/brand/png/`.
 
-The Junior Flyers logo (`jr-flyers-logo-blue.svg` and `jr-flyers-logo-white.svg`) came from the club's original Illustrator PDF (Nov 2026), so it is true vector art, not a trace. Its blue is `#00ADEF`, a lighter cyan than the Youth Blue `#1e88e5` the site uses for Jr. Flyers accents. TODO(board): confirm whether Youth Blue should change to match the logo. They're published on the site at [/brand](../src/pages/brand.astro). Still needed:
+The Junior Flyers logo (`jr-flyers-logo-blue.svg` and `jr-flyers-logo-white.svg`) came from the club's original Illustrator PDF (Nov 2026), so it is true vector art, not a trace. Its blue, `#00adef`, is the Jr. Flyers Youth Blue on the site (Randall chose to match the logo, Nov 2026). They're published on the site at [/brand](../src/pages/brand.astro). Still needed:
 
 - Program lockups (Flyers XC, Flyers Enduro/Gravity) and the Flyers Enduro script wordmark
 - The Lake Mountain long logo
@@ -64,10 +64,10 @@ palette         --color-flyers-*                                                
 | `flyers-red-bright`            | `#d12323` | 5.3:1                | Brand Book "Vivid Red". Hover and emphasis.                                                              |
 | `flyers-red`                   | `#b81e1e` | 6.5:1                | Accessible red for buttons and small text. Flyers XC primary.                                            |
 | `flyers-red-deep`              | `#8f1616` | 9.2:1                | Hover and pressed states.                                                                                |
-| `flyers-blue`                  | `#1e88e5` | 4.3:1 on slate-dark  | Brand Book "Youth Blue", Jr. Flyers. Bars, dots, accents. Not behind white text (3.7:1).                 |
-| `flyers-blue-deep`             | `#1565c0` | 5.8:1                | Jr. Flyers buttons and text on white.                                                                    |
-| `flyers-blue-dark`             | `#0d47a1` | 8.6:1                | Jr. Flyers hover and badge text.                                                                         |
-| `flyers-blue-bright`           | `#64b5f6` | 7.2:1 on slate-dark  | Jr. Flyers text on dark.                                                                                 |
+| `flyers-blue`                  | `#00adef` | 6.2:1 on slate-dark  | "Youth Blue", matched to the Junior Flyers logo. Bars, dots, accents. Not behind white text (2.6:1).     |
+| `flyers-blue-deep`             | `#0077a8` | 5.0:1                | Jr. Flyers buttons and text on white.                                                                    |
+| `flyers-blue-dark`             | `#005478` | 8.3:1                | Jr. Flyers hover and badge text.                                                                         |
+| `flyers-blue-bright`           | `#4fc8f5` | 8.3:1 on slate-dark  | Jr. Flyers text on dark.                                                                                 |
 | `flyers-berry`                 | `#9d112a` | 8.2:1                | Spare accent. No longer the Jr. Flyers color.                                                            |
 | `flyers-pink`                  | `#fe6cd0` | 6.3:1 on slate-dark  | Brand Book "Enduro Pink". Bars, dots, underlines, text on dark. Never behind white text (2.5:1).         |
 | `flyers-pink-deep`             | `#b8125f` | 6.4:1                | Enduro/Gravity buttons and text on white.                                                                |
@@ -131,7 +131,7 @@ If the club adds a members area or app later, move the tokens into one shared so
 | Topic                                   | Decision                                                                    |
 | --------------------------------------- | --------------------------------------------------------------------------- |
 | Club accent                             | Red. Pink is Flyers Enduro/Gravity only.                                    |
-| Jr. Flyers color                        | Youth Blue `#1e88e5`.                                                       |
+| Jr. Flyers color                        | Youth Blue `#00adef`, matched to the Junior Flyers logo (Nov 22 2026).      |
 | "Black" and "Slate"                     | Black `#14242e`, Slate `#203746`.                                           |
 | Website theme                           | Dark header, hero, and footer. Reading sections stay light.                 |
 | "Nation's largest youth enduro program" | Confirmed by Randall. Used on the Enduro/Gravity page.                      |

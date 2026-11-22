@@ -50,7 +50,7 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
   for (const [route, primary] of [
     ['/programs/xc', 'rgb(184, 30, 30)'],
     ['/programs/enduro', 'rgb(184, 18, 95)'],
-    ['/programs/jr-flyers', 'rgb(21, 101, 192)'],
+    ['/programs/jr-flyers', 'rgb(0, 119, 168)'],
   ] as const) {
     test(`${route} uses its program color`, async ({ page }) => {
       await page.goto(route);

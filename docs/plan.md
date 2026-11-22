@@ -50,7 +50,7 @@ A site a parent can trust in 2 minutes on a phone, and a member can use every we
 - [ ] Add the semantic token layer (surface, text, border, action, focus)
 - [x] Replace raw hex with tokens (`getProgramAccentMeta()` is now `programTheme()` plus the program utilities)
 - [x] Each program page sets `data-program` so its color comes from one place
-- [x] Logo files (SVG traced from the club PNGs) published at /brand. Jr. Flyers color: Youth Blue `#1e88e5`.
+- [x] Logo files (SVG traced from the club PNGs) published at /brand. Jr. Flyers color: Youth Blue `#00adef` (matched to its logo, Nov 2026).
 - [x] Switch to the Brand Book fonts (Anton, Epilogue) and colors (Enduro Pink `#fe6cd0`, signature red `#da4444`)
 - [x] Resolve the Brand Book conflicts (brand.md section 8)
 - [x] Underline stroke under display headlines, in the program color (red, pink on Enduro/Gravity, blue on Jr. Flyers)
@@ -137,5 +137,5 @@ Open facts the site needs. Resolve one, update the fact in its home ([source-of-
 - [ ] Practice times and locations for each program. Saturdays at 10am for Flyers XC and Enduro/Gravity, with the Jordan River or Murdock Canal trails when muddy (Randall, Nov 22 2026). Saturday place and Tuesday times still needed.
 - [x] Flyers Enduro/Gravity practices follow the Flyers XC schedule.
 - [ ] Dec 15 kickoff meeting time and place. Signature ride dates set (Randall, Nov 22 2026): Winter Classic Jan 23, Good Water Rim Feb 20, Antelope Island Mar 13, White Rim Spring Classic Apr 17. Start times still needed.
-- [x] Jr. Flyers brand color: Youth Blue #1e88e5. Its own Junior Flyers logo arrived Nov 2026 (on the Jr. Flyers page and /brand).
+- [x] Jr. Flyers brand color: Youth Blue #00adef, matched to its logo. Its own Junior Flyers logo arrived Nov 2026 (on the Jr. Flyers page and /brand).
 - [ ] Logo source files

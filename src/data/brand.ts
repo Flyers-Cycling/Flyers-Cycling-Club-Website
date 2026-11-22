@@ -71,9 +71,9 @@ export const brand = {
     },
     {
       name: 'Jr. Flyers: Youth Blue',
-      hex: '#1E88E5',
+      hex: '#00ADEF',
       token: 'flyers-blue',
-      use: 'Accents and bars. Behind white text use #1565C0.',
+      use: 'Matches the Junior Flyers logo. Accents and bars. Behind white text use #0077A8.',
     },
   ] satisfies BrandColor[],
   logos: [
