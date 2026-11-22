@@ -76,9 +76,10 @@ export const siteConfig = {
     height: 1200,
   },
   // Home page photo collage. Real club photos with media releases on file. `small` is a 640px-wide
-  // copy for phones. The hero photo is left out so it doesn't show twice.
-  // TODO(board): photo needed. Add Flyers XC and Jr. Flyers riding photos when they arrive, so every
-  // program shows here.
+  // copy for phones. The hero photo is left out so it doesn't show twice. Order sets the layout
+  // (see PhotoCollage.astro).
+  // TODO(board): photo needed. Add a Jr. Flyers riding photo when one arrives, so every program shows.
+  // TODO(board): confirm media releases cover the XC photos (from Randall, Nov 22, 2026).
   homeCollage: [
     {
       src: '/images/enduro/enduro-jump-chairlift.jpg',
@@ -95,11 +96,32 @@ export const siteConfig = {
       height: 1200,
     },
     {
+      src: '/images/xc/xc-canyon-trail.jpg',
+      small: '/images/home/xc-canyon-trail-640.jpg',
+      alt: 'A rider in a white helmet and red and black jersey rides toward the camera on a desert trail, past a twisted juniper tree, with red rock canyons behind.',
+      width: 1024,
+      height: 683,
+    },
+    {
       src: '/images/enduro-iron-springs.jpg',
       small: '/images/home/enduro-iron-springs-640.jpg',
       alt: 'A group of Flyers Enduro/Gravity riders in full-face helmets and black and pink jerseys stand with their bikes in front of race tents.',
       width: 1400,
       height: 1050,
+    },
+    {
+      src: '/images/xc/xc-overlook-group.jpg',
+      small: '/images/home/xc-overlook-group-640.jpg',
+      alt: 'A Flyers XC group stands with their bikes on slickrock in front of a large sandstone boulder, with desert canyons and a blue sky behind them.',
+      width: 1400,
+      height: 788,
+    },
+    {
+      src: '/images/enduro/enduro-berm-desert.jpg',
+      small: '/images/home/enduro-berm-desert-640.jpg',
+      alt: 'A rider in a pink and black jersey, chest protector, and goggles carves a sandy berm between juniper trees as people watch.',
+      width: 1200,
+      height: 797,
     },
     {
       src: '/images/coaches/head-coaches.jpg',

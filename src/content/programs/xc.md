@@ -15,6 +15,22 @@ registrationForm: xc
 feeAmount: '$50'
 feeIncludes: Covers a club t-shirt and rider insurance.
 accentKey: xc
+heroImage: /images/xc/xc-overlook-group.jpg
+heroImageAlt: A Flyers XC group stands with their bikes on slickrock in front of a large sandstone boulder, with desert canyons and a blue sky behind them.
+# Photos from Randall (Nov 22, 2026). TODO(board): confirm media releases cover these XC photos.
+gallery:
+  - src: /images/xc/xc-trailhead-lineup.jpg
+    alt: A Flyers XC group lines up with their bikes across a red dirt road at a desert trailhead, with parked cars and juniper trees around them.
+    width: 1400
+    height: 788
+  - src: /images/xc/xc-canyon-trail.jpg
+    alt: A rider in a white helmet and red and black jersey rides toward the camera on a desert trail, past a twisted juniper tree, with red rock canyons behind.
+    width: 1024
+    height: 683
+  - src: /images/xc/xc-slickrock.jpg
+    alt: A rider in a white helmet and red and black kit pedals a hardtail across slickrock with sagebrush and juniper trees behind.
+    width: 1024
+    height: 683
 groups:
   - id: devo
     name: Flyers XC Devo

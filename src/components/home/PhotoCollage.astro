@@ -3,8 +3,10 @@ import { siteConfig } from '../../data/site';
 import { withBase } from '../../lib/urls';
 
 // Real club photos only (AGENTS.md section 5). The list lives in siteConfig.homeCollage.
-// Layout on phones: wide, two squares, wide. On desktop: a big photo, a tall one, and two wide ones
-// stacked. Reordering siteConfig.homeCollage changes which photo gets which tile.
+// Seven photos. Phones (2 columns): wide, four squares, wide, wide. Desktop (6 columns, 3 rows): a big
+// photo, a tall one and two wide ones, then a wide group photo, a square, and a wide one.
+// grid-flow-dense fills the gaps, so reordering siteConfig.homeCollage changes which photo gets
+// which tile.
 const photos = siteConfig.homeCollage;
 const square = { cell: 'lg:col-span-2', focus: '', sizes: '(min-width: 1024px) 420px, 50vw' };
 const tiles = [
@@ -15,6 +17,13 @@ const tiles = [
   },
   { cell: 'lg:row-span-2', focus: '', sizes: '(min-width: 1024px) 220px, 50vw' },
   square,
+  square,
+  {
+    cell: 'col-span-2 lg:col-span-3',
+    focus: 'object-[50%_55%]',
+    sizes: '(min-width: 1024px) 640px, 100vw',
+  },
+  { cell: 'lg:col-span-1', focus: '', sizes: '(min-width: 1024px) 220px, 50vw' },
   { cell: 'col-span-2', focus: 'object-[50%_30%]', sizes: '(min-width: 1024px) 420px, 100vw' },
 ];
 const tile = (index: number) => tiles[index] ?? square;
@@ -37,16 +46,24 @@ const tile = (index: number) => tiles[index] ?? square;
           Flyers riders and coaches
         </h2>
       </div>
-      <a
-        href={withBase('/programs/enduro#photos')}
-        class="text-flyers-red-deep hover:text-flyers-slate-dark inline-flex min-h-12 items-center text-sm font-extrabold underline transition"
-      >
-        More Enduro/Gravity photos &rarr;
-      </a>
+      <div class="flex flex-wrap gap-x-6">
+        <a
+          href={withBase('/programs/xc#photos')}
+          class="text-flyers-red-deep hover:text-flyers-slate-dark inline-flex min-h-12 items-center text-sm font-extrabold underline transition"
+        >
+          Flyers XC photos &rarr;
+        </a>
+        <a
+          href={withBase('/programs/enduro#photos')}
+          class="text-flyers-red-deep hover:text-flyers-slate-dark inline-flex min-h-12 items-center text-sm font-extrabold underline transition"
+        >
+          Enduro/Gravity photos &rarr;
+        </a>
+      </div>
     </div>
 
     <ul
-      class="mt-8 grid auto-rows-[11rem] grid-cols-2 gap-3 sm:auto-rows-[16rem] sm:gap-4 lg:auto-rows-[13rem] lg:grid-cols-6"
+      class="mt-8 grid grid-flow-dense auto-rows-[11rem] grid-cols-2 gap-3 sm:auto-rows-[16rem] sm:gap-4 lg:auto-rows-[13rem] lg:grid-cols-6"
     >
       {
         photos.map((photo, index) => (
