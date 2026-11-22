@@ -1,0 +1,95 @@
+---
+// The race series a program follows, with each series' upcoming dates. Content lives in
+// src/content/races/. Past races drop off; races with no date yet show their dateLabel.
+import { getCollection } from 'astro:content';
+import { formatEventDateRange } from '../../lib/dates';
+import { raceEnds, upcomingRaces } from '../../lib/races';
+import { programTheme } from '../../lib/programs';
+
+interface Props {
+  program: 'xc' | 'enduro' | 'jr-flyers';
+  // Unique id for the section heading, so the section can be labelled.
+  headingId: string;
+  title: string;
+  intro: string;
+}
+
+const { program, headingId, title, intro } = Astro.props;
+
+const seriesList = (await getCollection('races'))
+  .filter((entry) => entry.data.program === program)
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((entry) => ({ ...entry.data, upcoming: upcomingRaces(entry.data.races) }));
+---
+
+{
+  seriesList.length > 0 && (
+    <section
+      id="races"
+      aria-labelledby={headingId}
+      data-program={programTheme(program)}
+      class="scroll-mt-24"
+    >
+      <h2
+        id={headingId}
+        class="font-display text-flyers-slate-dark text-3xl leading-tight font-black tracking-wide uppercase sm:text-4xl"
+      >
+        {title}
+      </h2>
+      <p class="text-flyers-iron mt-2 max-w-3xl text-sm leading-relaxed sm:text-base">{intro}</p>
+
+      <div class="mt-8 grid gap-6 lg:grid-cols-3">
+        {seriesList.map((series) => (
+          <article class="border-t-program-accent flex flex-col rounded-2xl border border-t-4 border-neutral-200 bg-white p-6 shadow-xs">
+            <h3 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase">
+              {series.series}
+            </h3>
+            <p class="text-flyers-iron mt-2 text-sm leading-relaxed">{series.summary}</p>
+
+            {series.upcoming.length > 0 ? (
+              <ul class="mt-5 divide-y divide-neutral-200 border-y border-neutral-200">
+                {series.upcoming.map((race) => (
+                  <li data-event-ends={raceEnds(race)} class="py-3">
+                    {race.date ? (
+                      <time
+                        datetime={race.date}
+                        class="text-program-ink text-xs font-extrabold tracking-wide"
+                      >
+                        {formatEventDateRange(race.date, race.endDate)}
+                      </time>
+                    ) : (
+                      <p class="text-flyers-slate-dark text-xs font-extrabold tracking-wide">
+                        <span class="bg-flyers-snow mr-1.5 rounded-full border border-neutral-300 px-2 py-0.5">
+                          Date TBD
+                        </span>
+                        {race.dateLabel}
+                      </p>
+                    )}
+                    <p class="text-flyers-slate-dark mt-1 font-bold">{race.name}</p>
+                    <p class="text-flyers-iron text-xs">{race.location}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="text-flyers-iron mt-5 text-sm">
+                This season's races are done. Next year's dates go up once the series posts them.
+              </p>
+            )}
+
+            {series.note && <p class="text-flyers-iron mt-3 text-xs">{series.note}</p>}
+
+            <a
+              href={series.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-program-ink mt-auto inline-flex min-h-12 items-center pt-4 text-sm font-extrabold underline"
+            >
+              {series.series} schedule and sign-up
+              <span class="sr-only"> (opens in a new tab)</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}

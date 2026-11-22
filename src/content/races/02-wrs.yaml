@@ -1,0 +1,28 @@
+# Utah's Weekly Race Series. Checked on weeklyraceseries.com/collections/races on Nov 22, 2026.
+# The organizer says "The 2027 race schedule is now posted" and lists races 1 to 6 (subject to change).
+# TODO(board): races after June 2 weren't posted yet. Add them when the series posts them.
+series: Weekly Race Series (WRS)
+program: xc
+order: 2
+website: https://weeklyraceseries.com/collections/races
+summary: Short Wednesday evening races in the Heber Valley and at Sundance Resort. Sign-up runs 5:30 to 6:20 PM and racing starts at 6:30 PM. They're a low-key way to try racing, and racers of every level show up.
+note: The series lists these dates as subject to change. More summer races may be added after June 2.
+races:
+  - name: Eagle Mtn. XC race (race 1)
+    date: '2027-04-14'
+    location: Eagle Mtn. # TODO(board): confirm which Eagle Mountain trails the series means
+  - name: Euclid Trails XC race (race 2), plus a kids race and BBQ
+    date: '2027-04-28'
+    location: Euclid Trails
+  - name: Sorensen Trails XC race (race 3)
+    date: '2027-05-12'
+    location: Sorensen Trails
+  - name: Sundance Resort XC race (race 4)
+    date: '2027-05-19'
+    location: Sundance Resort
+  - name: Euclid Trails mountain bike biathlon (race 5)
+    date: '2027-05-26'
+    location: Euclid Trails
+  - name: Sundance Resort XC race (race 6)
+    date: '2027-06-02'
+    location: Sundance Resort

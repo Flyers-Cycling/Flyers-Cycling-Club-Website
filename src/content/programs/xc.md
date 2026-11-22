@@ -48,7 +48,7 @@ practiceSchedule:
   - 'January to mid-March: Saturday rides at 10am, planned around the weather, with base miles and skill drills. Place to be announced.'
   - 'When the trails are muddy, Saturday rides move to the paved Jordan River Trail or Murdock Canal Trail. We post any change in Slack at least 2 hours before.'
   - 'Mid-March to August: Tuesday practices plus some Saturday rides'
-  - 'Racing is optional. Riders who want to race follow the Intermountain Cup (ICUP) and the weekly race series.'
+  - 'Racing is optional. Riders who want to race follow the Intermountain Cup (ICUP), the Weekly Race Series, and the US Pro Cup at Soldier Hollow. Dates are in the race schedule below.'
 whoItsFor:
   - Middle school, high school, and college-age riders (up to U23) who want to keep riding outside the fall NICA season
   - Younger riders, before 7th grade, at the coaches' discretion. Usually these are advanced riders who want to race.

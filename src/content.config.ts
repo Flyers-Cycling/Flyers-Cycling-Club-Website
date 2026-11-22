@@ -129,6 +129,46 @@ const events = defineCollection({
   }),
 });
 
+// Race series a program follows, one YAML file per series in src/content/races/.
+// Only list dates the organizer has posted. Leave `date` out and use `dateLabel` when a
+// race's date isn't out yet, so the page says so instead of guessing.
+const races = defineCollection({
+  loader: glob({ pattern: '**/*.yaml', base: './src/content/races' }),
+  schema: z.object({
+    series: z.string(),
+    program: z.enum(['xc', 'enduro', 'jr-flyers']),
+    order: z.number().int().positive(),
+    // The organizer's schedule page.
+    website: z.string().url(),
+    summary: z.string(),
+    // Optional short note shown under the list, e.g. "Dates are subject to change."
+    note: z.string().optional(),
+    races: z
+      .array(
+        z
+          .object({
+            name: z.string(),
+            // ISO date, quoted: '2027-02-27'. Leave out if the date isn't announced.
+            date: z
+              .string()
+              .regex(/^\d{4}-\d{2}-\d{2}$/, { message: "Use a quoted date like '2027-02-27'" })
+              .optional(),
+            endDate: z
+              .string()
+              .regex(/^\d{4}-\d{2}-\d{2}$/, { message: "Use a quoted date like '2027-02-28'" })
+              .optional(),
+            // Shown instead of a date when there is no date, e.g. "2027 date not announced yet."
+            dateLabel: z.string().optional(),
+            location: z.string(),
+          })
+          .refine((race) => race.date || race.dateLabel, {
+            message: 'Give each race a date, or a dateLabel saying the date is not out yet',
+          }),
+      )
+      .min(1),
+  }),
+});
+
 const faqs = defineCollection({
   loader: glob({ pattern: '**/*.yaml', base: './src/content/faqs' }),
   schema: z.object({
@@ -197,6 +237,7 @@ export const collections = {
   tiers,
   sponsors,
   events,
+  races,
   faqs,
   leadership,
   updates,

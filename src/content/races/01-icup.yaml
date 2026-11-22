@@ -1,0 +1,29 @@
+# Intermountain Cup cross-country series. Dates checked on intermountaincup.com on Nov 22, 2026.
+# The organizer had posted all seven 2027 XC dates; registration said "Coming Soon".
+series: Intermountain Cup (ICUP)
+program: xc
+order: 1
+website: https://www.intermountaincup.com/races/series/cross-country
+summary: Utah's main cross-country series, with seven Saturday races from the desert near St. George in February to the mountains in August. There are categories for first-time racers up to pros. This is the series our Flyers XC Comp riders train for.
+races:
+  - name: Red Rock Rampage
+    date: '2027-02-27'
+    location: St. George, UT
+  - name: Cactus Hugger
+    date: '2027-03-27'
+    location: Hurricane, UT
+  - name: Cliffrose High Desert Classic
+    date: '2027-04-24'
+    location: St. George, UT
+  - name: The Big Cheese at Beaver City
+    date: '2027-05-22'
+    location: Beaver, UT
+  - name: Fast Times in Richfield
+    date: '2027-06-12'
+    location: Richfield, UT
+  - name: Rage at Snowbird
+    date: '2027-07-17'
+    location: Snowbird, UT
+  - name: Alpine Rush at Beaver Mountain
+    date: '2027-08-07'
+    location: Garden City, UT
