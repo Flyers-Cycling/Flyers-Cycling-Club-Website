@@ -109,7 +109,7 @@ describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
     }
   });
 
-  it('keeps the home page on programs and registration, not fees, and lists all 5 NICA schools on About', () => {
+  it('shows program ages but not fees on the home page, and lists all 5 NICA schools on About', () => {
     const homeHtml = fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf8');
     const aboutHtml = fs.readFileSync(path.join(DIST_DIR, 'about/index.html'), 'utf8');
 
@@ -120,7 +120,9 @@ describe('Built Static Site HTML & Asset Integrity (dist/)', () => {
     expect(homeHtml).toContain('registration opens');
     expect(homeHtml).not.toContain('$50');
     expect(homeHtml).not.toContain('$150');
-    expect(homeHtml).not.toContain('U23');
+    expect(homeHtml).toContain('Ages 10–22 (U23)');
+    expect(homeHtml).toContain('Ages 10–18');
+    expect(homeHtml).toContain('Grades K–6');
     expect(homeHtml).toContain('closedby="any"');
 
     for (const school of ['Westlake', 'Lehi', 'Cedar Valley', 'Skyridge', 'Lone Peak']) {

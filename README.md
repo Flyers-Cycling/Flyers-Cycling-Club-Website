@@ -67,9 +67,11 @@ Coaches and board members can update seasonal details by editing human-readable 
    - Push this repository to GitHub (`main` branch).
    - In GitHub **Settings -> Pages**, set **Build and deployment -> Source** to **GitHub Actions**.
    - `.github/workflows/deploy.yml` automatically detects the repository base path (`https://<org>.github.io/<repo>/`) or custom domain origin and deploys `./dist`.
-2. **Custom Domain & Legacy Redirects (`lakemountainflyers.com` & `flyersxc.com`)**:
+2. **Cloudflare Workers (previews)**:
+   - Workers Builds is connected to this repository. `wrangler.jsonc` builds the site with `pnpm run build` and serves `./dist` as static assets, so each pull request gets a preview link. The `previews` block must stay, even if empty.
+3. **Custom Domain & Legacy Redirects (`lakemountainflyers.com` & `flyersxc.com`)**:
    - Copy `public/CNAME.example` to `public/CNAME` containing your primary custom domain (e.g., `www.flyerscycling.org` or `www.lakemountainflyers.com`).
    - Point your primary domain DNS `CNAME` (`www`) and `A`/`AAAA` apex records to GitHub Pages (or Cloudflare DNS).
    - Configure 301 permanent redirects at your DNS registrar / Cloudflare Rules from secondary domains (`flyersxc.com`, `lakemountainflyers.com`) to the unified domain so existing bookmarks and search rankings carry over seamlessly.
-3. **AWS S3 + CloudFront (Optional Future Migration)**:
+4. **AWS S3 + CloudFront (Optional Future Migration)**:
    - Run `SITE_URL=https://www.flyerscycling.org pnpm build` and sync `./dist` to your S3 bucket (`aws s3 sync dist/ s3://<bucket> --delete`).

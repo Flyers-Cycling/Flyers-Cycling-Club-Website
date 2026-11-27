@@ -1,0 +1,15 @@
+// Cloudflare Workers config. The site is fully static: Workers serves the
+// Astro build output in ./dist. `previews` (empty is fine) lets Workers Builds
+// run `wrangler preview` for each pull request.
+{
+  "name": "flyers-cycling-club-website",
+  "compatibility_date": "2026-11-01",
+  "build": {
+    "command": "pnpm run build",
+  },
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+  "previews": {},
+}

@@ -66,7 +66,11 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
                   {data.title}
                 </a>
               </h3>
-              <p class="text-flyers-iron mt-2 text-sm leading-relaxed">{data.summary}</p>
+              <p class="mt-2">
+                <span class="text-program-ink block text-lg font-extrabold">{data.agesLabel}</span>
+                <span class="text-flyers-iron block text-sm font-semibold">{data.gradesLabel}</span>
+              </p>
+              <p class="text-flyers-iron mt-3 text-sm leading-relaxed">{data.summary}</p>
               {data.groups && (
                 <ul class="mt-4 space-y-2">
                   {data.groups.map((group) => (
