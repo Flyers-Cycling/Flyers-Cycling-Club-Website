@@ -1,0 +1,102 @@
+name: Slack preview link
+
+# Posts the Cloudflare preview link to Slack once a pull request's preview is
+# built and deployed. Cloudflare's bot posts one comment per PR and edits it as
+# each build finishes, so this listens for that comment and posts once per
+# commit.
+#
+# Setup: add a Slack incoming webhook URL as the repository secret
+# SLACK_PREVIEW_WEBHOOK_URL. Without it, the job skips the Slack step.
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: slack-preview-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    name: Post preview link
+    if: github.event.issue.pull_request && github.event.comment.user.login == 'cloudflare-workers-and-pages[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      # issue_comment runs the workflow from main, so this checks out main,
+      # never the pull request's code.
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+
+      - name: Read preview comment
+        id: preview
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { parsePreviewComment } = await import(
+              `${process.env.GITHUB_WORKSPACE}/.github/scripts/cloudflare-preview.mjs`
+            );
+            const result = parsePreviewComment(context.payload.comment.body);
+            core.info(JSON.stringify(result));
+            core.setOutput('ready', String(result.ready));
+            core.setOutput('url', result.url ?? '');
+            core.setOutput('commit', result.commit ?? '');
+
+      # The bot edits its comment several times per build. A cache entry keyed
+      # on the commit records that this commit's link was already posted.
+      - name: Check whether this commit was already posted
+        id: sent
+        if: steps.preview.outputs.ready == 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: .slack-preview-sent
+          key: slack-preview-${{ github.event.issue.number }}-${{ steps.preview.outputs.commit }}
+          lookup-only: true
+
+      - name: Post to Slack
+        id: post
+        if: steps.preview.outputs.ready == 'true' && steps.sent.outputs.cache-hit != 'true'
+        uses: actions/github-script@v7
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_PREVIEW_WEBHOOK_URL }}
+          PREVIEW_URL: ${{ steps.preview.outputs.url }}
+        with:
+          script: |
+            if (!process.env.SLACK_WEBHOOK_URL) {
+              core.notice('SLACK_PREVIEW_WEBHOOK_URL is not set, so no Slack message was sent.');
+              core.setOutput('sent', 'false');
+              return;
+            }
+            const { slackMessage } = await import(
+              `${process.env.GITHUB_WORKSPACE}/.github/scripts/cloudflare-preview.mjs`
+            );
+            const issue = context.payload.issue;
+            const payload = slackMessage({
+              url: process.env.PREVIEW_URL,
+              number: issue.number,
+              title: issue.title,
+              prUrl: issue.html_url,
+              author: issue.user.login,
+            });
+            const res = await fetch(process.env.SLACK_WEBHOOK_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+            if (!res.ok) core.setFailed(`Slack returned ${res.status}: ${await res.text()}`);
+            core.setOutput('sent', String(res.ok));
+
+      - name: Remember this commit was posted
+        if: steps.post.outputs.sent == 'true'
+        run: mkdir -p .slack-preview-sent && echo "${{ steps.preview.outputs.commit }}" > .slack-preview-sent/commit
+
+      - name: Save posted marker
+        if: steps.post.outputs.sent == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .slack-preview-sent
+          key: slack-preview-${{ github.event.issue.number }}-${{ steps.preview.outputs.commit }}

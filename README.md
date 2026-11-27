@@ -69,6 +69,7 @@ Coaches and board members can update seasonal details by editing human-readable 
    - `.github/workflows/deploy.yml` automatically detects the repository base path (`https://<org>.github.io/<repo>/`) or custom domain origin and deploys `./dist`.
 2. **Cloudflare Workers (previews)**:
    - Workers Builds is connected to this repository. `wrangler.jsonc` builds the site with `pnpm run build` and serves `./dist` as static assets, so each pull request gets a preview link. The `previews` block must stay, even if empty.
+   - **Slack preview links:** `.github/workflows/slack-preview.yml` posts each PR's preview link to Slack once Cloudflare finishes deploying it (once per commit). It needs a Slack incoming webhook saved as the repository secret `SLACK_PREVIEW_WEBHOOK_URL`. To set it up: at api.slack.com/apps, create an app in the club workspace, turn on **Incoming Webhooks**, click **Add New Webhook to Workspace**, pick the channel, and copy the URL. Then in GitHub go to **Settings -> Secrets and variables -> Actions -> New repository secret** and paste it. Until the secret exists, the workflow runs and skips the Slack step.
 3. **Custom Domain & Legacy Redirects (`lakemountainflyers.com` & `flyersxc.com`)**:
    - Copy `public/CNAME.example` to `public/CNAME` containing your primary custom domain (e.g., `www.flyerscycling.org` or `www.lakemountainflyers.com`).
    - Point your primary domain DNS `CNAME` (`www`) and `A`/`AAAA` apex records to GitHub Pages (or Cloudflare DNS).
