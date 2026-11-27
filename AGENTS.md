@@ -16,7 +16,7 @@ Read the full sections below, but never break these:
    - Flyers Enduro/Gravity: ages 10–18 (minimum age 10), Jan–Aug, with its own registration form.
    - Jr. Flyers: K–6, summer only (Jun 1–mid-August), registers later than the other two.
    - Riders can join more than one program.
-5. **Tone:** all riders welcome. Follow docs/voice.md. No em dashes in copy. Lead with programs and what riders do. Ages, grades, and fees appear only on program detail pages and in the FAQ, never on the home page, header, or program cards.
+5. **Tone:** all riders welcome. Follow docs/voice.md. No em dashes in copy. Lead with programs and what riders do. Program cards (home page and /programs) show each program's ages and grades so families can tell at a glance who it's for (Randall, Nov 27 2026). Fees appear only on program detail pages and in the FAQ, never on the home page, header, or program cards.
 6. **Never invent facts, people, or photos.** Use `TODO(board): …` placeholders (section 5).
 
 **Project skills** in `.claude/skills/` walk through common edits: `update-registration-links`, `manage-events`, and `update-people`.
