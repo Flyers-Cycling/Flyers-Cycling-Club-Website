@@ -1,0 +1,284 @@
+---
+// Illustration for the 404 page: a Flyers bike that left the trail and stopped at a "404" sign.
+// Decorative only (aria-hidden). Drawn in brand tokens. Motion is off under prefers-reduced-motion.
+---
+
+<svg
+  class="off-trail -ml-[60%] block h-auto w-[160%] max-w-none sm:ml-0 sm:w-full"
+  viewBox="0 0 800 360"
+  preserveAspectRatio="xMidYMax meet"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <linearGradient id="off-trail-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" style="stop-color: var(--color-flyers-slate-dark)"></stop>
+      <stop offset="1" style="stop-color: var(--color-flyers-slate-mid)"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky, stars, moon -->
+  <rect width="800" height="360" fill="url(#off-trail-sky)"></rect>
+  <g class="fill-flyers-gold-bright">
+    <circle class="star" cx="80" cy="50" r="2"></circle>
+    <circle class="star star-b" cx="190" cy="90" r="1.5"></circle>
+    <circle class="star" cx="300" cy="36" r="2"></circle>
+    <circle class="star star-c" cx="420" cy="70" r="1.5"></circle>
+    <circle class="star star-b" cx="520" cy="28" r="2"></circle>
+    <circle class="star star-c" cx="740" cy="60" r="1.5"></circle>
+    <circle class="star" cx="760" cy="130" r="1.5"></circle>
+  </g>
+  <circle class="fill-flyers-gold" cx="640" cy="88" r="30"></circle>
+  <circle class="fill-flyers-slate-mid" cx="654" cy="78" r="26" opacity="0.9"></circle>
+
+  <!-- Far range -->
+  <path
+    class="fill-flyers-slate-mid"
+    d="M0 230 L70 170 L120 200 L210 110 L280 180 L340 140 L430 210 L520 120 L600 190 L660 150 L740 200 L800 170 L800 360 L0 360 Z"
+    opacity="0.85"></path>
+  <!-- Snow on the far peaks -->
+  <g class="fill-flyers-silver" opacity="0.55">
+    <path d="M210 110 L232 132 L218 128 L204 138 L190 130 Z"></path>
+    <path d="M520 120 L542 142 L528 138 L514 146 L500 140 Z"></path>
+  </g>
+
+  <!-- Near range -->
+  <path
+    class="fill-flyers-slate"
+    d="M0 270 L90 220 L160 250 L250 190 L330 240 L400 205 L470 250 L560 200 L650 245 L720 215 L800 240 L800 360 L0 360 Z"
+  ></path>
+
+  <!-- Pines -->
+  <g class="fill-flyers-slate-dark">
+    <path d="M60 280 L78 236 L96 280 Z"></path>
+    <path d="M86 284 L100 250 L114 284 Z"></path>
+    <path d="M410 270 L424 238 L438 270 Z"></path>
+    <path d="M432 274 L450 228 L468 274 Z"></path>
+    <path d="M740 268 L756 230 L772 268 Z"></path>
+    <path d="M762 272 L776 240 L790 272 Z"></path>
+  </g>
+
+  <!-- Foreground ground -->
+  <path
+    class="fill-flyers-slate-dark"
+    d="M0 300 C 140 286, 300 284, 430 298 S 660 318, 800 300 L800 360 L0 360 Z"></path>
+
+  <!-- The trail, winding up into the hills -->
+  <path
+    d="M-10 352 C 110 336, 200 318, 300 312 S 420 286, 460 262 S 520 232, 560 222"
+    fill="none"
+    class="stroke-flyers-iron"
+    stroke-width="16"
+    stroke-linecap="round"></path>
+  <path
+    d="M-10 352 C 110 336, 200 318, 300 312 S 420 286, 460 262 S 520 232, 560 222"
+    fill="none"
+    class="stroke-flyers-silver"
+    stroke-width="2"
+    stroke-dasharray="6 12"
+    opacity="0.5"></path>
+
+  <!-- Tire track leaving the trail -->
+  <path
+    class="track stroke-flyers-gold"
+    d="M300 314 C 380 318, 430 330, 480 331 L 606 331"
+    fill="none"
+    stroke-width="3"
+    stroke-linecap="round"
+    pathLength="1"
+    opacity="0.8"></path>
+
+  <!-- Bushes by the sign -->
+  <g class="fill-flyers-slate-mid">
+    <circle cx="692" cy="332" r="16"></circle>
+    <circle cx="712" cy="324" r="20"></circle>
+    <circle cx="738" cy="334" r="15"></circle>
+  </g>
+
+  <!-- Trail sign -->
+  <g class="sign">
+    <rect class="fill-flyers-gold-deep" x="706" y="226" width="8" height="110" rx="2"></rect>
+    <rect class="fill-flyers-gold" x="664" y="232" width="96" height="44" rx="4"></rect>
+    <text
+      x="712"
+      y="268"
+      text-anchor="middle"
+      class="fill-flyers-slate-dark"
+      font-family="Anton, Impact, sans-serif"
+      font-size="36"
+      letter-spacing="2">404</text
+    >
+    <g class="sign-arrow">
+      <path class="fill-flyers-red" d="M650 284 L742 284 L742 308 L650 308 L638 296 Z"></path>
+      <text
+        x="694"
+        y="302"
+        text-anchor="middle"
+        class="fill-white"
+        font-family="Anton, Impact, sans-serif"
+        font-size="14"
+        letter-spacing="2">TRAIL</text
+      >
+    </g>
+  </g>
+
+  <!-- The bike. Rear axle at (0,0), front axle at (78,0), tires touch the ground at y=331. -->
+  <g transform="translate(528 309)">
+    <g class="bike">
+      <g class="wheel">
+        <circle r="22" fill="none" class="stroke-flyers-silver" stroke-width="5"></circle>
+        <circle r="16" fill="none" class="stroke-flyers-iron" stroke-width="1.5"></circle>
+        <path
+          d="M0 -16 L0 16 M-16 0 L16 0 M-11 -11 L11 11 M-11 11 L11 -11"
+          class="stroke-flyers-iron"
+          stroke-width="1.2"></path>
+        <circle r="2.5" class="fill-flyers-silver"></circle>
+      </g>
+      <g transform="translate(78 0)">
+        <g class="wheel">
+          <circle r="22" fill="none" class="stroke-flyers-silver" stroke-width="5"></circle>
+          <circle r="16" fill="none" class="stroke-flyers-iron" stroke-width="1.5"></circle>
+          <path
+            d="M0 -16 L0 16 M-16 0 L16 0 M-11 -11 L11 11 M-11 11 L11 -11"
+            class="stroke-flyers-iron"
+            stroke-width="1.2"></path>
+          <circle r="2.5" class="fill-flyers-silver"></circle>
+        </g>
+      </g>
+      <g
+        fill="none"
+        class="stroke-flyers-red-signature"
+        stroke-width="4.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <!-- chainstay, seatstay, seat tube, top tube, down tube -->
+        <path d="M0 0 L33 3 L26 -34 Z"></path>
+        <path d="M26 -34 L64 -32 L67 -22 L33 3"></path>
+        <!-- fork -->
+        <path d="M67 -22 L78 0" stroke-width="3.5"></path>
+      </g>
+      <!-- seatpost, saddle, stem, bars, crank -->
+      <g class="stroke-flyers-silver" stroke-linecap="round" fill="none">
+        <path d="M26 -34 L23 -44" stroke-width="3"></path>
+        <path d="M14 -46 L31 -45" stroke-width="5"></path>
+        <path d="M64 -32 L66 -42" stroke-width="3"></path>
+        <path d="M58 -44 L74 -42" stroke-width="3.5"></path>
+        <path d="M33 3 L40 12" stroke-width="3"></path>
+      </g>
+      <circle cx="33" cy="3" r="6" fill="none" class="stroke-flyers-silver" stroke-width="2"
+      ></circle>
+    </g>
+    <!-- Puzzled little question mark once the bike stops -->
+    <text
+      class="huh fill-flyers-gold-bright"
+      x="44"
+      y="-60"
+      text-anchor="middle"
+      font-family="Anton, Impact, sans-serif"
+      font-size="30">?</text
+    >
+  </g>
+</svg>
+
+<style>
+  .off-trail .wheel {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .off-trail .huh,
+  .off-trail .sign-arrow {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .off-trail .track {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: off-trail-draw 1.6s ease-out 0.2s forwards;
+    }
+    .off-trail .bike {
+      animation: off-trail-roll 1.6s cubic-bezier(0.2, 0.7, 0.3, 1) 0.2s both;
+    }
+    .off-trail .wheel {
+      animation: off-trail-spin 1.6s cubic-bezier(0.2, 0.7, 0.3, 1) 0.2s both;
+    }
+    .off-trail .huh {
+      animation: off-trail-pop 0.5s ease-out 1.9s both;
+    }
+    .off-trail .sign-arrow {
+      animation: off-trail-point 2.4s ease-in-out 2.4s infinite;
+    }
+    .off-trail .star {
+      animation: off-trail-twinkle 3s ease-in-out infinite;
+    }
+    .off-trail .star-b {
+      animation-delay: 1s;
+    }
+    .off-trail .star-c {
+      animation-delay: 2s;
+    }
+  }
+
+  @keyframes off-trail-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes off-trail-roll {
+    from {
+      transform: translateX(-200px);
+    }
+    85% {
+      transform: translateX(4px);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes off-trail-spin {
+    from {
+      transform: rotate(-720deg);
+    }
+    to {
+      transform: rotate(0);
+    }
+  }
+  @keyframes off-trail-pop {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.4);
+    }
+    70% {
+      opacity: 1;
+      transform: translateY(-3px) scale(1.1);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes off-trail-point {
+    0%,
+    70%,
+    100% {
+      transform: translateX(0);
+    }
+    80% {
+      transform: translateX(-6px);
+    }
+    90% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes off-trail-twinkle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+</style>
