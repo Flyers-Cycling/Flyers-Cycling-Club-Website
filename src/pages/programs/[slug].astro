@@ -9,6 +9,7 @@ import { withBase } from '../../lib/urls';
 import { formatEventDate } from '../../lib/dates';
 import { eventEnds, isUpcoming, upcomingEvents } from '../../lib/events';
 import { winterCamp } from '../../data/winter-camp';
+import { siteConfig } from '../../data/site';
 import { effectiveRegistrationStatus, registrationCta } from '../../lib/registration';
 
 export async function getStaticPaths() {
@@ -63,6 +64,10 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
   (ev) =>
     (ev.data.program === data.programId || ev.data.program === 'all') &&
     (ev.id !== winterCamp.eventId || campEligible),
+);
+// School team names come from siteConfig.nicaPartners, e.g. "Westlake, Lehi, and Skyridge".
+const nicaSchools = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' }).format(
+  siteConfig.nicaPartners.map((team) => team.school.replace(/ High School$/, '')),
 );
 ---
 
@@ -268,6 +273,13 @@ const programEvents = upcomingEvents(await getCollection('events')).filter(
                 {program.id === 'jr-flyers' ? 'After Jr. Flyers' : 'Riding with a school team'}
               </p>
               <p class="text-flyers-charcoal mt-1 leading-relaxed">{data.schoolTeamNote}</p>
+              {
+                program.id === 'jr-flyers' && (
+                  <p class="text-flyers-charcoal mt-2 leading-relaxed">
+                    {`Flyers riders race for school teams such as ${nicaSchools}.`}
+                  </p>
+                )
+              }
             </div>
           </div>
         </div>
