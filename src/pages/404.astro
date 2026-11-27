@@ -1,51 +1,148 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OffTrailScene from '../components/layout/OffTrailScene.astro';
+import { programClasses, programTheme } from '../lib/programs';
 import { withBase } from '../lib/urls';
+
+const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
+
+const otherTrails = [
+  { label: 'See the schedule', path: '/schedule' },
+  { label: 'Register', path: '/register' },
+  { label: 'Read the FAQ', path: '/faq' },
+  { label: 'Support the club', path: '/support' },
+];
 ---
 
-<BaseLayout title="Page Not Found (404)">
-  <section class="py-20 text-center sm:py-24">
-    <div class="mx-auto max-w-xl px-4 sm:px-6">
-      <img
-        src={withBase('/images/brand/flyers-logo-black.svg')}
-        alt="Flyers Cycling Club mountain crest logo"
-        width="140"
-        height="96"
-        class="mx-auto h-20 w-auto"
-      />
-      <p class="text-flyers-red-deep mt-5 text-sm font-extrabold tracking-widest uppercase">
-        404 · Wrong turn
-      </p>
+<BaseLayout
+  title="Off trail (404)"
+  description="This page isn't on the Flyers Cycling Club map. Head back home or pick a program."
+>
+  <section aria-labelledby="off-trail-heading" class="bg-flyers-slate-dark text-white">
+    <div class="mx-auto max-w-3xl px-4 pt-14 text-center sm:px-6 sm:pt-20">
+      <p class="text-flyers-gold text-sm font-extrabold tracking-widest uppercase">Error 404</p>
       <h1
-        class="font-display text-flyers-slate-dark mt-2 text-4xl font-black tracking-wide uppercase sm:text-5xl"
+        id="off-trail-heading"
+        class="font-display mt-2 text-5xl tracking-wide uppercase sm:text-6xl"
       >
-        We can't find that page
+        You went off trail
       </h1>
-      <p class="text-flyers-iron mt-4 text-base leading-relaxed">
-        Looking for an older link from <code>lakemountainflyers.com</code> or <code
-          >flyersxc.com</code
-        >? Everything for Flyers XC, Flyers Enduro/Gravity, and Jr. Flyers is on this site now.
+      <p class="text-flyers-silver mx-auto mt-4 max-w-xl text-lg leading-relaxed">
+        This page isn't on our map. The link may be old, or the address has a typo. Turn around and
+        we'll point you back to the dirt.
+      </p>
+      <p
+        id="off-trail-path"
+        class="text-flyers-silver mt-3 hidden text-sm break-all"
+        data-base={withBase('/')}
+      >
+        Trail not found: <code class="text-flyers-gold-bright"></code>
       </p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
         <a
           href={withBase('/')}
-          class="bg-flyers-red hover:bg-flyers-red-bright font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-base font-extrabold tracking-wider text-white uppercase transition"
+          class="bg-flyers-red hover:bg-flyers-red-deep font-display inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-base tracking-wider text-white uppercase transition"
         >
-          Back to Home
+          Back to the trailhead
         </a>
         <a
           href={withBase('/programs')}
-          class="bg-flyers-slate hover:bg-flyers-slate-dark font-display inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-3 text-base font-extrabold tracking-wider text-white uppercase transition"
+          class="font-display text-flyers-slate-dark bg-flyers-gold hover:bg-flyers-gold-bright inline-flex min-h-12 items-center justify-center rounded-xl px-6 py-3 text-base tracking-wider uppercase transition"
         >
           See programs
         </a>
-        <a
-          href={withBase('/support')}
-          class="text-flyers-slate-dark hover:bg-flyers-snow inline-flex min-h-12 items-center justify-center rounded-xl border border-neutral-300 bg-white px-5 py-3 text-sm font-bold transition"
-        >
-          Support the club
-        </a>
       </div>
+    </div>
+    <div class="off-trail-fade mx-auto mt-10 max-w-5xl overflow-hidden">
+      <OffTrailScene />
+    </div>
+  </section>
+
+  <section aria-labelledby="pick-trail-heading" class="py-14 sm:py-16">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <h2
+        id="pick-trail-heading"
+        class="font-display text-flyers-slate-dark text-3xl tracking-wide uppercase"
+      >
+        Pick a trail
+      </h2>
+      <ul class="mt-6 grid gap-4 sm:grid-cols-3">
+        {
+          programs.map((program) => (
+            <li data-program={programTheme(program.data.accentKey)}>
+              <a
+                href={withBase(`/programs/${program.data.programId}`)}
+                class={`group flex h-full min-h-12 flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition ${programClasses.hoverBorder}`}
+              >
+                <span class={`h-2 w-full ${programClasses.bar}`} aria-hidden="true" />
+                <span class="flex flex-1 items-center justify-between gap-3 p-5">
+                  <span>
+                    <span class="font-display text-flyers-slate-dark block text-xl tracking-wide uppercase">
+                      {program.data.title}
+                    </span>
+                    <span class="text-flyers-iron mt-1 block text-sm">
+                      {program.data.discipline}
+                    </span>
+                  </span>
+                  <span
+                    class="text-program-ink text-2xl transition group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul class="mt-6 flex flex-wrap gap-3">
+        {
+          otherTrails.map((trail) => (
+            <li>
+              <a
+                href={withBase(trail.path)}
+                class="text-flyers-slate-dark hover:bg-flyers-slate-light inline-flex min-h-12 items-center rounded-xl border border-neutral-300 bg-white px-5 py-3 text-sm font-bold transition"
+              >
+                {trail.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="text-flyers-iron mt-8 max-w-2xl text-sm leading-relaxed">
+        Following an older link from <code>lakemountainflyers.com</code> or <code>flyersxc.com</code
+        >? Everything for Flyers XC, Flyers Enduro/Gravity, and Jr. Flyers lives on this site now.
+      </p>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  /* Fade the scene's left and right edges into the page background. */
+  @media (min-width: 640px) {
+    .off-trail-fade {
+      mask-image: linear-gradient(to right, transparent, #000 6%, #000 97%, transparent);
+    }
+  }
+</style>
+
+<script>
+  // Show the address the visitor tried, so a typo is easy to spot. Text only, never HTML.
+  const note = document.getElementById('off-trail-path');
+  const base = note?.dataset.base ?? '/';
+  let path = window.location.pathname;
+  try {
+    path = decodeURI(path);
+  } catch {
+    // Keep the raw path if it has a broken escape like %E0.
+  }
+  if (note && path !== base && !/\/404(\.html)?\/?$/.test(path)) {
+    const code = note.querySelector('code');
+    if (code) code.textContent = path;
+    note.classList.remove('hidden');
+  }
+</script>

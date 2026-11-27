@@ -61,6 +61,19 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     });
   }
 
+  test('unknown pages get the off-trail 404 page with a 404 status', async ({ page }) => {
+    const response = await page.goto('/no-such-trail');
+    expect(response?.status()).toBe(404);
+    await expect(page.locator('h1')).toHaveText('You went off trail');
+    await expect(page.locator('#off-trail-path code')).toHaveText('/no-such-trail');
+    await expect(page.locator('main a[href$="/programs/jr-flyers"]')).toBeVisible();
+
+    const accessibilityScan = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    expect(accessibilityScan.violations).toEqual([]);
+  });
+
   test('interactive Program Pathway Finder updates recommendation dynamically', async ({
     page,
   }) => {
