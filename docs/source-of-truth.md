@@ -21,17 +21,17 @@ Status key: **Confirmed** (by Randall or the board, with the date), **Needs boar
 
 One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. Ages, grades, season, fee, what the fee covers, practice rhythm, who it's for, gear, and the NICA note all live in the frontmatter.
 
-| Fact                                             | Status                                                                                                                  |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| Flyers XC ages (10–22, U23), season, fee, groups | Confirmed (Randall, Nov 21 2026). Devo and Comp groups in `xc.md`.                                                      |
-| Flyers Enduro/Gravity ages, season               | Confirmed. Minimum age is `siteConfig.enduroMinimumAge`.                                                                |
-| Enduro/Gravity fee and insurance                 | Needs board: what the gravity insurance is, and why $150                                                                |
-| Jr. Flyers grades, season                        | Confirmed                                                                                                               |
-| Jr. Flyers fee                                   | Confirmed $35 (Randall, Nov 21 2026)                                                                                    |
-| Practice days                                    | Confirmed Nov 21 2026. In each program's `practiceSchedule`.                                                            |
-| Practice times, locations                        | Needs board for all three programs                                                                                      |
-| Races each program follows                       | Confirmed Nov 21 2026. In the XC and Enduro/Gravity program files.                                                      |
-| Flyers XC 2027 race dates                        | `src/content/races/`, one file per series. ICUP and WRS races 1–6 from organizer sites (Nov 22 2026). Pro Cup date TBD. |
+| Fact                                             | Status                                                                                                                                                |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Flyers XC ages (10–22, U23), season, fee, groups | Confirmed (Randall, Nov 21 2026). Devo and Comp groups in `xc.md`. Grade 5 and up, with 5th and 6th graders by coach approval (Randall, Nov 27 2026). |
+| Flyers Enduro/Gravity ages, season               | Confirmed. Minimum age is `siteConfig.enduroMinimumAge`.                                                                                              |
+| Enduro/Gravity fee and insurance                 | Needs board: what the gravity insurance is, and why $150                                                                                              |
+| Jr. Flyers grades, season                        | Confirmed                                                                                                                                             |
+| Jr. Flyers fee                                   | Confirmed $35 (Randall, Nov 21 2026)                                                                                                                  |
+| Practice days                                    | Confirmed Nov 21 2026. In each program's `practiceSchedule`.                                                                                          |
+| Practice times, locations                        | Needs board for all three programs                                                                                                                    |
+| Races each program follows                       | Confirmed Nov 21 2026. In the XC and Enduro/Gravity program files.                                                                                    |
+| Flyers XC 2027 race dates                        | `src/content/races/`, one file per series. ICUP and WRS races 1–6 from organizer sites (Nov 22 2026). Pro Cup date TBD.                               |
 
 ## Registration
 

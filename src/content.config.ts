@@ -16,6 +16,8 @@ const programs = defineCollection({
       order: z.number().int().positive(),
       agesLabel: z.string(),
       gradesLabel: z.string(),
+      // Optional link shown right after gradesLabel, e.g. { label: Talk to a coach, href: /coaches }.
+      gradesLink: z.object({ label: z.string(), href: z.string().startsWith('/') }).optional(),
       seasonLabel: z.string(),
       registrationWindowLabel: z.string(),
       registrationStatus: z.enum(['open', 'upcoming', 'waitlist', 'closed']),

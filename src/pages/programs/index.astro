@@ -89,6 +89,17 @@ const byAge = [...programs].sort((a, b) => b.data.order - a.data.order);
                   </th>
                   <td class="px-4 py-3.5">
                     {program.data.gradesLabel} · {program.data.agesLabel}
+                    {program.data.gradesLink && (
+                      <>
+                        {' '}
+                        <a
+                          href={withBase(program.data.gradesLink.href)}
+                          class="font-semibold underline"
+                        >
+                          {program.data.gradesLink.label}
+                        </a>
+                      </>
+                    )}
                   </td>
                   <td class="px-4 py-3.5">{program.data.seasonLabel}</td>
                   <td class="text-flyers-red-deep px-4 py-3.5 font-extrabold">
