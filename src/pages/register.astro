@@ -5,6 +5,7 @@ import PageHero from '../components/layout/PageHero.astro';
 import { siteConfig } from '../data/site';
 import {
   anyRegistrationOpen,
+  registrationClosed,
   registrationClosesLabel,
   registrationCta,
   registrationOpensLabel,
@@ -18,21 +19,27 @@ const programs = (await getCollection('programs'))
 const { season } = siteConfig.registration;
 const opens = registrationOpensLabel();
 const closes = registrationClosesLabel();
+const xcClosed = registrationClosed('xc');
 const isOpen = anyRegistrationOpen();
 ---
 
 <BaseLayout
   title={`${season} Registration`}
-  description={`Registration for ${season} Flyers XC and Flyers Enduro/Gravity opens ${opens} and closes ${closes}. Each program has its own sign-up form.`}
+  description={`Registration for ${season} Flyers XC and Flyers Enduro/Gravity opens ${opens}. Flyers XC closes ${closes}. Each program has its own sign-up form.`}
 >
   <PageHero
     eyebrow={`${season} season`}
     title={isOpen ? 'Registration is open' : `Registration opens ${opens}`}
   >
     <p>
-      <strong>Registration closes {closes}.</strong> Flyers XC and Flyers Enduro/Gravity each have their
-      own sign-up form. Riders can join more than one program, and beginners are always welcome. Jr. Flyers
-      registration opens later.
+      <strong
+        >{
+          xcClosed
+            ? `Flyers XC registration closed ${closes}.`
+            : `Flyers XC registration closes ${closes}.`
+        }</strong
+      > Flyers XC and Flyers Enduro/Gravity each have their own sign-up form. Riders can join more than
+      one program, and beginners are always welcome. Jr. Flyers registration opens later.
     </p>
   </PageHero>
 

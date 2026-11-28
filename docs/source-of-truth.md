@@ -37,14 +37,15 @@ One file each in `src/content/programs/`: `xc.md`, `enduro.md`, `jr-flyers.md`. 
 
 ## Registration
 
-| Fact                             | Where to edit                               | Status                                                     |
-| -------------------------------- | ------------------------------------------- | ---------------------------------------------------------- |
-| Opening date (Dec 1, 2026)       | `siteConfig.registration.opensDate`         | Confirmed                                                  |
-| Closing date (Dec 15, 2026)      | `siteConfig.registration.closesDate`        | Confirmed (Randall, Nov 27 2026)                           |
-| XC and Enduro/Gravity form links | `siteConfig.registration.forms`             | Confirmed (Randall, Nov 22 2026). Hidden until `opensDate` |
-| Jr. Flyers opening date          | `registrationWindowLabel` in `jr-flyers.md` | Needs board                                                |
-| Refund policy                    | `siteConfig.refundPolicy`                   | Confirmed: no refunds (Randall, Nov 22 2026)               |
-| Waiver                           | `/onboarding` (link when ready)             | Needs board: Randall is writing it                         |
+| Fact                             | Where to edit                                | Status                                                     |
+| -------------------------------- | -------------------------------------------- | ---------------------------------------------------------- |
+| Opening date (Dec 1, 2026)       | `siteConfig.registration.opensDate`          | Confirmed                                                  |
+| XC closing date (Dec 15, 2026)   | `siteConfig.registration.closesDates.xc`     | Confirmed (Randall, Nov 27 2026)                           |
+| Enduro/Gravity closing date      | `siteConfig.registration.closesDates.enduro` | Needs board: Tim Richards to confirm                       |
+| XC and Enduro/Gravity form links | `siteConfig.registration.forms`              | Confirmed (Randall, Nov 22 2026). Hidden until `opensDate` |
+| Jr. Flyers opening date          | `registrationWindowLabel` in `jr-flyers.md`  | Needs board                                                |
+| Refund policy                    | `siteConfig.refundPolicy`                    | Confirmed: no refunds (Randall, Nov 22 2026)               |
+| Waiver                           | `/onboarding` (link when ready)              | Needs board: Randall is writing it                         |
 
 ## People
 
