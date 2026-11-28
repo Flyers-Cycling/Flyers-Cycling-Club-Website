@@ -79,8 +79,9 @@ jobs:
           PREVIEW_URL: ${{ steps.preview.outputs.url }}
         with:
           script: |
-            const { SLACK_BOT_TOKEN: token, SLACK_CHANNEL_ID: channel, SLACK_WEBHOOK_URL: webhook } =
-              process.env;
+            const token = process.env.SLACK_BOT_TOKEN?.trim();
+            const channel = process.env.SLACK_CHANNEL_ID?.trim();
+            const webhook = process.env.SLACK_WEBHOOK_URL?.trim();
             const { slackMessage } = await import(
               `${process.env.GITHUB_WORKSPACE}/.github/scripts/cloudflare-preview.mjs`
             );
@@ -112,7 +113,11 @@ jobs:
               // chat.postMessage answers 200 even on errors, with ok: false.
               const data = await res.json();
               if (!data.ok) {
-                core.setFailed(`Slack chat.postMessage failed: ${data.error}`);
+                const hint =
+                  data.error === 'channel_not_found' || data.error === 'not_in_channel'
+                    ? ' Check that SLACK_PREVIEW_CHANNEL_ID is the channel ID (starts with C) and that the bot is invited to the channel.'
+                    : '';
+                core.setFailed(`Slack chat.postMessage failed: ${data.error}.${hint}`);
                 return;
               }
             } else if (webhook) {
