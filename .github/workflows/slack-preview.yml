@@ -5,8 +5,12 @@ name: Slack preview link
 # each build finishes, so this listens for that comment and posts once per
 # commit.
 #
-# Setup: add a Slack incoming webhook URL as the repository secret
-# SLACK_PREVIEW_WEBHOOK_URL. Without it, the job skips the Slack step.
+# Setup (either one works; the bot token wins if both are set):
+# - Bot token: repository secret SLACK_BOT_TOKEN (xoxb-..., needs the
+#   chat:write scope) plus repository variable SLACK_PREVIEW_CHANNEL_ID. Invite
+#   the bot to that channel.
+# - Webhook: repository secret SLACK_PREVIEW_WEBHOOK_URL.
+# With neither, the job skips the Slack step.
 
 on:
   issue_comment:
@@ -62,33 +66,61 @@ jobs:
         if: steps.preview.outputs.ready == 'true' && steps.sent.outputs.cache-hit != 'true'
         uses: actions/github-script@v7
         env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ vars.SLACK_PREVIEW_CHANNEL_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_PREVIEW_WEBHOOK_URL }}
           PREVIEW_URL: ${{ steps.preview.outputs.url }}
         with:
           script: |
-            if (!process.env.SLACK_WEBHOOK_URL) {
-              core.notice('SLACK_PREVIEW_WEBHOOK_URL is not set, so no Slack message was sent.');
-              core.setOutput('sent', 'false');
-              return;
-            }
+            const { SLACK_BOT_TOKEN: token, SLACK_CHANNEL_ID: channel, SLACK_WEBHOOK_URL: webhook } =
+              process.env;
             const { slackMessage } = await import(
               `${process.env.GITHUB_WORKSPACE}/.github/scripts/cloudflare-preview.mjs`
             );
             const issue = context.payload.issue;
-            const payload = slackMessage({
+            const message = slackMessage({
               url: process.env.PREVIEW_URL,
               number: issue.number,
               title: issue.title,
               prUrl: issue.html_url,
               author: issue.user.login,
             });
-            const res = await fetch(process.env.SLACK_WEBHOOK_URL, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-            });
-            if (!res.ok) core.setFailed(`Slack returned ${res.status}: ${await res.text()}`);
-            core.setOutput('sent', String(res.ok));
+
+            let res;
+            if (token) {
+              if (!channel) {
+                core.setFailed('SLACK_BOT_TOKEN is set but the SLACK_PREVIEW_CHANNEL_ID variable is not.');
+                return;
+              }
+              res = await fetch('https://slack.com/api/chat.postMessage', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json; charset=utf-8',
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ channel, unfurl_links: false, ...message }),
+              });
+              // chat.postMessage answers 200 even on errors, with ok: false.
+              const data = await res.json();
+              if (!data.ok) {
+                core.setFailed(`Slack chat.postMessage failed: ${data.error}`);
+                return;
+              }
+            } else if (webhook) {
+              res = await fetch(webhook, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(message),
+              });
+              if (!res.ok) {
+                core.setFailed(`Slack webhook returned ${res.status}: ${await res.text()}`);
+                return;
+              }
+            } else {
+              core.notice('No Slack bot token or webhook is set, so no Slack message was sent.');
+              return;
+            }
+            core.setOutput('sent', 'true');
 
       - name: Remember this commit was posted
         if: steps.post.outputs.sent == 'true'
