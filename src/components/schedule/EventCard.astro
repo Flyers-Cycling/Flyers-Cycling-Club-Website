@@ -1,0 +1,76 @@
+---
+// One dated event on /schedule. The schedule filter reads data-event-program, and
+// data-event-ends lets the page hide the card the day after it ends.
+import type { CollectionEntry } from 'astro:content';
+import { isExternalUrl, withBase } from '../../lib/urls';
+import { formatEventDateRange } from '../../lib/dates';
+import { eventEnds } from '../../lib/events';
+import { programTheme } from '../../lib/programs';
+import ProgramBadge from '../programs/ProgramBadge.astro';
+
+interface Props {
+  event: CollectionEntry<'events'>;
+  // 3 when the card sits under a section heading, 4 under a sub-heading.
+  headingLevel?: 3 | 4;
+}
+
+const { event, headingLevel = 3 } = Astro.props;
+const Heading = headingLevel === 3 ? 'h3' : 'h4';
+
+const categoryLabels: Record<string, string> = {
+  practice: 'Practice / Ride',
+  race: 'Race Day',
+  clinic: 'Skills Clinic',
+  'trail-work': 'Trail Work',
+  registration: 'Registration Window',
+  meeting: 'Meeting',
+};
+---
+
+<article
+  data-event-program={event.data.program}
+  data-program={programTheme(event.data.program)}
+  data-event-ends={eventEnds(event.data)}
+  class="schedule-event-card schedule-filterable border-l-program-accent flex flex-col justify-between gap-4 rounded-2xl border border-l-4 border-neutral-200 bg-white p-6 shadow-xs sm:flex-row sm:items-center"
+>
+  <div class="space-y-2">
+    <div class="flex flex-wrap items-center gap-2 text-xs">
+      <ProgramBadge program={event.data.program} />
+      <span
+        class="bg-flyers-snow text-flyers-iron rounded-full border border-neutral-200 px-2.5 py-0.5 font-bold"
+      >
+        {categoryLabels[event.data.category]}
+      </span>
+      <time datetime={event.data.startDate} class="text-flyers-slate-dark font-bold">
+        {formatEventDateRange(event.data.startDate, event.data.endDate)}
+      </time>
+    </div>
+
+    <Heading
+      class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase sm:text-3xl"
+    >
+      {event.data.title}
+    </Heading>
+    <p class="text-flyers-iron text-xs font-semibold">
+      {event.data.timeLabel} · {event.data.location}
+    </p>
+    <p class="text-flyers-iron max-w-3xl text-sm leading-relaxed">
+      {event.data.summary}
+    </p>
+  </div>
+
+  {
+    event.data.actionUrl && event.data.actionLabel && (
+      <div class="shrink-0">
+        <a
+          href={withBase(event.data.actionUrl)}
+          target={isExternalUrl(event.data.actionUrl) ? '_blank' : undefined}
+          rel={isExternalUrl(event.data.actionUrl) ? 'noopener noreferrer' : undefined}
+          class="bg-program hover:bg-program-hover font-display inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-sm font-extrabold tracking-wider text-white uppercase transition"
+        >
+          {event.data.actionLabel} &rarr;
+        </a>
+      </div>
+    )
+  }
+</article>

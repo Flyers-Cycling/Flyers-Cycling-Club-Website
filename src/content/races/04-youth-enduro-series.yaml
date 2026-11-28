@@ -1,0 +1,13 @@
+# Youth Enduro Series (YES). Checked youthenduroseries.org on Nov 28, 2026.
+# No 2027 dates were posted. The 2026 season opened April 25 at Iron Springs Adventure Resort
+# and the site's last listed event was the Cedar City Funduro on Oct 3, 2026.
+# TODO(board): add each 2027 round (name, date, venue) once the series posts them.
+series: Youth Enduro Series (YES)
+program: enduro
+order: 1
+website: https://youthenduroseries.org/
+summary: An enduro series only for riders 10 to 18, with courses designed for youth riders in Utah. Riders race the timed stages and ride between them at their own pace. Classes go by age, plus advanced classes for 15 to 18. Entries are capped and there's no race-day sign-up, so register early.
+races:
+  - name: 2027 season
+    location: Utah venues to be announced
+    dateLabel: 2027 dates not posted yet. In 2026 the series opened April 25 at Iron Springs Adventure Resort.
