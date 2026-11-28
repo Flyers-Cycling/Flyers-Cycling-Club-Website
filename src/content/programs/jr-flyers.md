@@ -31,7 +31,7 @@ gearChecklist:
   - Properly fitted cycling helmet (mandatory at all times when straddling a bike)
   - Closed-toe athletic shoes, cycling gloves (highly recommended for little hands), and a water bottle or small hydration pack
   - Not sure what size bike fits? Ask a coach.
-schoolTeamNote: Jr. Flyers is where riders start. When they're ready, they move up to Flyers XC or Flyers Enduro/Gravity, both open from age 10 (Flyers XC takes younger riders at the coaches' discretion). From 7th grade, riders can also join their school NICA team in the fall and keep riding with Flyers the rest of the year.
+schoolTeamNote: Jr. Flyers is where riders start. When they're ready, they move up to Flyers XC or Flyers Enduro/Gravity, both open from age 10. Flyers XC starts at 5th grade, but 5th and 6th graders must be accepted by a coach, and most stay in Jr. Flyers. From 7th grade, riders can also join their school NICA team in the fall and keep riding with Flyers the rest of the year.
 ---
 
 ## Where lifelong riders get their start

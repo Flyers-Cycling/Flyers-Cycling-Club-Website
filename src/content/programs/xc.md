@@ -7,7 +7,7 @@ tagline: Winter-to-summer cross-country (XC) riding, racing, and endurance, in t
 summary: Flyers XC (started in 2020) is our cross-country program for riding, racing, and endurance. Choose Flyers XC Devo or Flyers XC Comp.
 order: 1
 agesLabel: Ages 10–22 (U23)
-gradesLabel: Grade 7 and up (younger at the coaches' discretion)
+gradesLabel: Grade 5 and up (5th and 6th graders by coach approval)
 seasonLabel: Jan 1 – August (Winter, Spring & Summer)
 registrationWindowLabel: Opens Dec 1, 2026
 registrationStatus: upcoming
@@ -51,7 +51,7 @@ practiceSchedule:
   - 'Racing is optional. Riders who want to race follow the Intermountain Cup (ICUP), the Weekly Race Series, and the US Pro Cup at Soldier Hollow. Dates are in the race schedule below.'
 whoItsFor:
   - Middle school, high school, and college-age riders (up to U23) who want to keep riding outside the fall NICA season
-  - Younger riders, before 7th grade, at the coaches' discretion. Usually these are advanced riders who want to race.
+  - 5th and 6th graders who are accepted by a coach. Not every 5th or 6th grader can ride with Flyers XC, and most join Jr. Flyers instead.
   - Riders who want to ride and build skills (Flyers XC Devo), and riders who want to race competitively (Flyers XC Comp)
   - Riders from any school who want a friendly club to ride with
   - Riders who want to add Flyers Enduro/Gravity too. You can join more than one program.
