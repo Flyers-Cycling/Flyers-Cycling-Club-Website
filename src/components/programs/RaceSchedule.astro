@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 import { formatEventDateRange } from '../../lib/dates';
 import { raceEnds, upcomingRaces } from '../../lib/races';
 import { programTheme } from '../../lib/programs';
+import { withBase } from '../../lib/urls';
 
 interface Props {
   program: 'xc' | 'enduro' | 'jr-flyers';
@@ -17,9 +18,19 @@ interface Props {
   sectionId?: string;
   // 2 on program pages. 3 when the list sits inside a larger section, as on /schedule.
   headingLevel?: 2 | 3;
+  // The "Talk to a coach" link under the intro. /schedule shows it once for all programs.
+  showCoachLink?: boolean;
 }
 
-const { program, headingId, title, intro, sectionId = 'races', headingLevel = 2 } = Astro.props;
+const {
+  program,
+  headingId,
+  title,
+  intro,
+  sectionId = 'races',
+  headingLevel = 2,
+  showCoachLink = true,
+} = Astro.props;
 const Heading = headingLevel === 2 ? 'h2' : 'h3';
 const SeriesHeading = headingLevel === 2 ? 'h3' : 'h4';
 
@@ -47,6 +58,17 @@ const seriesList = (await getCollection('races'))
         {title}
       </Heading>
       <p class="text-flyers-iron mt-2 max-w-3xl text-sm leading-relaxed sm:text-base">{intro}</p>
+      {showCoachLink && (
+        <p class="text-flyers-iron text-sm sm:text-base">
+          Not sure which races fit your rider?{' '}
+          <a
+            href={withBase('/coaches')}
+            class="text-program-ink inline-flex min-h-12 items-center font-extrabold underline"
+          >
+            Talk to a coach
+          </a>
+        </p>
+      )}
 
       <div class="mt-8 grid gap-6 lg:grid-cols-3">
         {seriesList.map((series) => (

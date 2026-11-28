@@ -222,6 +222,15 @@ const sectionLinks = [
           Racing is optional. Riders who want to race pick the races that suit them, and coaches
           help them get ready. Sign up for each race on the organizer's site.
         </p>
+        <p class="text-flyers-iron text-sm sm:text-base">
+          Not sure which races fit your rider?{' '}
+          <a
+            href={withBase('/coaches')}
+            class="text-flyers-slate-dark inline-flex min-h-12 items-center font-extrabold underline"
+          >
+            Talk to a coach
+          </a>
+        </p>
 
         {
           raceEvents.length > 0 && (
@@ -240,6 +249,7 @@ const sectionLinks = [
                 program="xc"
                 sectionId="races-xc"
                 headingLevel={3}
+                showCoachLink={false}
                 headingId="schedule-xc-races-heading"
                 title="Flyers XC race schedule"
                 intro="Flyers XC riders who want to race follow these series."
@@ -255,6 +265,7 @@ const sectionLinks = [
                 program="enduro"
                 sectionId="races-enduro"
                 headingLevel={3}
+                showCoachLink={false}
                 headingId="schedule-enduro-races-heading"
                 title="Flyers Enduro/Gravity race schedule"
                 intro="Flyers Enduro/Gravity riders who want to race follow this series."

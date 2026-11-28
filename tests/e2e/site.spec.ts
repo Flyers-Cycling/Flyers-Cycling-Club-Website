@@ -176,10 +176,12 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     await expect(enduroRaces).toBeHidden();
     await expect(page.getByText("Jr. Flyers doesn't race.")).toBeVisible();
 
+    await expect(page.getByRole('link', { name: 'Talk to a coach' })).toHaveCount(1);
+
     await page.goto('/programs/enduro');
-    await expect(
-      page.getByRole('region', { name: 'Flyers Enduro/Gravity race schedule' }),
-    ).toBeVisible();
+    const programRaces = page.getByRole('region', { name: 'Flyers Enduro/Gravity race schedule' });
+    await expect(programRaces).toBeVisible();
+    await expect(programRaces.getByRole('link', { name: 'Talk to a coach' })).toBeVisible();
   });
 
   test('Program pages link to a filtered schedule', async ({ page }) => {
