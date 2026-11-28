@@ -68,7 +68,17 @@ import PhotoPlaceholder from '../layout/PhotoPlaceholder.astro';
               </h3>
               <p class="mt-2">
                 <span class="text-program-ink block text-lg font-extrabold">{data.agesLabel}</span>
-                <span class="text-flyers-iron block text-sm font-semibold">{data.gradesLabel}</span>
+                <span class="text-flyers-iron block text-sm font-semibold">
+                  {data.gradesLabel}
+                  {data.gradesLink && (
+                    <>
+                      {' '}
+                      <a href={withBase(data.gradesLink.href)} class="text-program-ink underline">
+                        {data.gradesLink.label}
+                      </a>
+                    </>
+                  )}
+                </span>
               </p>
               <p class="text-flyers-iron mt-3 text-sm leading-relaxed">{data.summary}</p>
               {data.groups && (

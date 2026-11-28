@@ -8,6 +8,9 @@ summary: Flyers XC (started in 2020) is our cross-country program for riding, ra
 order: 1
 agesLabel: Ages 10–22 (U23)
 gradesLabel: Grade 5 and up (5th and 6th graders by coach approval)
+gradesLink:
+  label: Talk to a coach
+  href: /coaches
 seasonLabel: Jan 1 – August (Winter, Spring & Summer)
 registrationWindowLabel: Opens Dec 1, 2026
 registrationStatus: upcoming
