@@ -7,26 +7,30 @@ name: Slack preview link
 #
 # Setup (either one works; the bot token wins if both are set):
 # - Bot token: repository secret SLACK_BOT_TOKEN (xoxb-..., needs the
-#   chat:write scope) plus repository variable SLACK_PREVIEW_CHANNEL_ID. Invite
-#   the bot to that channel.
+#   chat:write scope) plus SLACK_PREVIEW_CHANNEL_ID, as a repository variable
+#   or secret. Invite the bot to that channel.
+# - To test: Actions -> Slack preview link -> Run workflow sends a test message.
 # - Webhook: repository secret SLACK_PREVIEW_WEBHOOK_URL.
 # With neither, the job skips the Slack step.
 
 on:
   issue_comment:
     types: [created, edited]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: slack-preview-${{ github.event.issue.number }}
+  group: slack-preview-${{ github.event.issue.number || 'test' }}
   cancel-in-progress: false
 
 jobs:
   notify:
     name: Post preview link
-    if: github.event.issue.pull_request && github.event.comment.user.login == 'cloudflare-workers-and-pages[bot]'
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.issue.pull_request && github.event.comment.user.login == 'cloudflare-workers-and-pages[bot]')
     runs-on: ubuntu-latest
     steps:
       # issue_comment runs the workflow from main, so this checks out main,
@@ -38,6 +42,7 @@ jobs:
 
       - name: Read preview comment
         id: preview
+        if: github.event_name == 'issue_comment'
         uses: actions/github-script@v7
         with:
           script: |
@@ -63,33 +68,38 @@ jobs:
 
       - name: Post to Slack
         id: post
-        if: steps.preview.outputs.ready == 'true' && steps.sent.outputs.cache-hit != 'true'
+        if: >-
+          github.event_name == 'workflow_dispatch' ||
+          (steps.preview.outputs.ready == 'true' && steps.sent.outputs.cache-hit != 'true')
         uses: actions/github-script@v7
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          SLACK_CHANNEL_ID: ${{ vars.SLACK_PREVIEW_CHANNEL_ID }}
+          SLACK_CHANNEL_ID: ${{ vars.SLACK_PREVIEW_CHANNEL_ID || secrets.SLACK_PREVIEW_CHANNEL_ID }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_PREVIEW_WEBHOOK_URL }}
           PREVIEW_URL: ${{ steps.preview.outputs.url }}
         with:
           script: |
-            const { SLACK_BOT_TOKEN: token, SLACK_CHANNEL_ID: channel, SLACK_WEBHOOK_URL: webhook } =
-              process.env;
+            const token = process.env.SLACK_BOT_TOKEN?.trim();
+            const channel = process.env.SLACK_CHANNEL_ID?.trim();
+            const webhook = process.env.SLACK_WEBHOOK_URL?.trim();
             const { slackMessage } = await import(
               `${process.env.GITHUB_WORKSPACE}/.github/scripts/cloudflare-preview.mjs`
             );
             const issue = context.payload.issue;
-            const message = slackMessage({
-              url: process.env.PREVIEW_URL,
-              number: issue.number,
-              title: issue.title,
-              prUrl: issue.html_url,
-              author: issue.user.login,
-            });
+            const message = issue
+              ? slackMessage({
+                  url: process.env.PREVIEW_URL,
+                  number: issue.number,
+                  title: issue.title,
+                  prUrl: issue.html_url,
+                  author: issue.user.login,
+                })
+              : { text: 'Test from GitHub: website preview links will post in this channel.' };
 
             let res;
             if (token) {
               if (!channel) {
-                core.setFailed('SLACK_BOT_TOKEN is set but the SLACK_PREVIEW_CHANNEL_ID variable is not.');
+                core.setFailed('SLACK_BOT_TOKEN is set but SLACK_PREVIEW_CHANNEL_ID is not (as a variable or secret).');
                 return;
               }
               res = await fetch('https://slack.com/api/chat.postMessage', {
@@ -103,7 +113,11 @@ jobs:
               // chat.postMessage answers 200 even on errors, with ok: false.
               const data = await res.json();
               if (!data.ok) {
-                core.setFailed(`Slack chat.postMessage failed: ${data.error}`);
+                const hint =
+                  data.error === 'channel_not_found' || data.error === 'not_in_channel'
+                    ? ' Check that SLACK_PREVIEW_CHANNEL_ID is the channel ID (starts with C) and that the bot is invited to the channel.'
+                    : '';
+                core.setFailed(`Slack chat.postMessage failed: ${data.error}.${hint}`);
                 return;
               }
             } else if (webhook) {
@@ -123,11 +137,11 @@ jobs:
             core.setOutput('sent', 'true');
 
       - name: Remember this commit was posted
-        if: steps.post.outputs.sent == 'true'
+        if: github.event_name == 'issue_comment' && steps.post.outputs.sent == 'true'
         run: mkdir -p .slack-preview-sent && echo "${{ steps.preview.outputs.commit }}" > .slack-preview-sent/commit
 
       - name: Save posted marker
-        if: steps.post.outputs.sent == 'true'
+        if: github.event_name == 'issue_comment' && steps.post.outputs.sent == 'true'
         uses: actions/cache/save@v4
         with:
           path: .slack-preview-sent

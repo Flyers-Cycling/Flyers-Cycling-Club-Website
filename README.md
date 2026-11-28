@@ -70,8 +70,9 @@ Coaches and board members can update seasonal details by editing human-readable 
 2. **Cloudflare Workers (previews)**:
    - Workers Builds is connected to this repository. `wrangler.jsonc` builds the site with `pnpm run build` and serves `./dist` as static assets, so each pull request gets a preview link. The `previews` block must stay, even if empty.
    - **Slack preview links:** `.github/workflows/slack-preview.yml` posts each PR's preview link to Slack once Cloudflare finishes deploying it (once per commit). Set it up with a Slack bot (preferred) or an incoming webhook:
-     - **Bot:** give the bot the `chat:write` scope, install it to the workspace, and invite it to the channel (`/invite @botname`). In GitHub, go to **Settings -> Secrets and variables -> Actions**. Add the bot token (`xoxb-…`) as the secret `SLACK_BOT_TOKEN`. Then, on the **Variables** tab, add the channel ID (in Slack: channel name -> **About** -> bottom of the panel, starts with `C`) as `SLACK_PREVIEW_CHANNEL_ID`. The app-level token (`xapp-…`) isn't needed.
+     - **Bot:** give the bot the `chat:write` scope, install it to the workspace, and invite it to the channel (`/invite @botname`). In GitHub, go to **Settings -> Secrets and variables -> Actions**. Add the bot token (`xoxb-…`) as the secret `SLACK_BOT_TOKEN`. Then add the channel ID (in Slack: channel name -> **About** -> bottom of the panel, starts with `C`) as `SLACK_PREVIEW_CHANNEL_ID`, either as a variable or a secret. The app-level token (`xapp-…`) isn't needed.
      - **Webhook:** turn on **Incoming Webhooks** for the app, add one for the channel, and save its URL as the secret `SLACK_PREVIEW_WEBHOOK_URL`.
+     - To test, go to **Actions -> Slack preview link -> Run workflow**. It sends a test message to the channel.
      - Until one of these is set, the workflow runs and skips the Slack step.
 3. **Custom Domain & Legacy Redirects (`lakemountainflyers.com` & `flyersxc.com`)**:
    - Copy `public/CNAME.example` to `public/CNAME` containing your primary custom domain (e.g., `www.flyerscycling.org` or `www.lakemountainflyers.com`).
