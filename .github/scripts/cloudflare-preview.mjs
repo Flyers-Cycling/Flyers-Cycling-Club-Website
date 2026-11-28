@@ -20,9 +20,13 @@ export function parsePreviewComment(body) {
   const commit = line[1].match(/\(commit ([0-9a-f]{7,40})\)/)?.[1];
   if (!url || !commit) return { ready: false };
 
-  // Each table row is one commit. Find the row for the latest commit and
-  // check that both its build and deployment say Success.
-  const row = body.split(/<tr>/).find((r) => r.includes(`<td>${commit}</td>`));
+  // Each table row is one commit, newest first. While a new push builds, the
+  // "Preview URL" line still names the previous commit, so only count it as
+  // ready when the newest row is that commit and both its build and
+  // deployment say Success.
+  const tbody = body.split(/<tbody>/)[1] ?? '';
+  const row = tbody.split(/<tr>/).find((r) => r.includes('<td>'));
+  if (!row?.includes(`<td>${commit}</td>`)) return { ready: false, url, commit };
   const ready =
     !!row && /Build:<\/b>\s*Success/.test(row) && /Deployment:<\/b>\s*Success/.test(row);
 

@@ -55,6 +55,17 @@ describe('parsePreviewComment', () => {
     expect(parsePreviewComment(body).ready).toBe(false);
   });
 
+  it('waits while a newer push builds, even though the old preview is still live', () => {
+    // Shape seen on PR #26: the Preview URL line keeps the old commit while
+    // the new commit's row (first) is still building.
+    const building = row('639459c', 'In progress 🔵', '').replace(
+      /<li><b>Deployment:<\/b> <\/li>/,
+      '',
+    );
+    const body = comment('5b988d2', building + row('5b988d2', 'Success ✅', 'Success ✅'));
+    expect(parsePreviewComment(body).ready).toBe(false);
+  });
+
   it('is not ready when the build failed', () => {
     const body = comment('abc1234', row('abc1234', 'Failed ❌', 'Skipped'));
     expect(parsePreviewComment(body).ready).toBe(false);
