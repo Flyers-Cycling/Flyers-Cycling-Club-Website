@@ -12,7 +12,7 @@ Read the full sections below, but never break these:
 2. **CI must pass before merging.** Run `pnpm verify` before every commit and `pnpm test:e2e` after markup changes. A human approves every merge.
 3. **Club facts live in content, not components.** Programs, events, FAQs, people, and updates are YAML/Markdown in `src/content/`. Global facts (registration links, mission, contact, minimum ages) are in `src/data/site.ts`.
 4. **Program rules:**
-   - Flyers XC: cross-country riding, racing, and endurance, in two groups: Flyers XC Devo (riding and skills, less focus on racing) and Flyers XC Comp (competitive racing). Ages 10–22 (U23), Jan 1–Aug; before 7th grade at the coaches' discretion. The overlap with Jr. Flyers is on purpose, so advanced Jr. Flyers can ride in Flyers XC.
+   - Flyers XC: cross-country riding, racing, and endurance, in two groups: Flyers XC Devo (riding and skills, less focus on racing) and Flyers XC Comp (competitive racing). Ages 10–22 (U23), grade 5 and up, Jan 1–Aug. 5th and 6th graders must be accepted by a coach, not all of them can ride XC, and most join Jr. Flyers (Randall, Nov 27 2026). The overlap with Jr. Flyers is on purpose, so advanced Jr. Flyers can ride in Flyers XC.
    - Flyers Enduro/Gravity: ages 10–18 (minimum age 10), Jan–Aug, with its own registration form.
    - Jr. Flyers: K–6, summer only (Jun 1–mid-August), registers later than the other two.
    - Riders can join more than one program.
@@ -27,11 +27,11 @@ Read the full sections below, but never break these:
 
 Flyers Cycling Club is the public home of three youth mountain bike programs run by **Lake Mountain Bicycle Club, Inc.**, a volunteer-run 501(c)(3) in Utah:
 
-| Program               | Who                                                       | Season                      | Fee  |
-| --------------------- | --------------------------------------------------------- | --------------------------- | ---- |
-| Jr. Flyers            | Grades K–6 (ages 5–12)                                    | Jun 1–mid-Aug (summer only) | $35  |
-| Flyers XC             | Ages 10–22 (U23; before 7th grade at coaches' discretion) | Jan 1–Aug                   | $50  |
-| Flyers Enduro/Gravity | Ages 10–18 (grades 5–12)                                  | Jan–Aug                     | $150 |
+| Program               | Who                                                         | Season                      | Fee  |
+| --------------------- | ----------------------------------------------------------- | --------------------------- | ---- |
+| Jr. Flyers            | Grades K–6 (ages 5–12)                                      | Jun 1–mid-Aug (summer only) | $35  |
+| Flyers XC             | Ages 10–22 (U23); grade 5 and up, 5th–6th by coach approval | Jan 1–Aug                   | $50  |
+| Flyers Enduro/Gravity | Ages 10–18 (grades 5–12)                                    | Jan–Aug                     | $150 |
 
 The programs run outside the fall NICA (Utah High School Cycling League) season and are meant to work alongside local school teams, not compete with them.
 

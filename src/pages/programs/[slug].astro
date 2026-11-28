@@ -301,6 +301,18 @@ const nicaSchools = new Intl.ListFormat('en', { style: 'long', type: 'conjunctio
                 <dd class="text-flyers-slate-dark mt-1 font-extrabold">
                   {data.gradesLabel} · {data.agesLabel}
                 </dd>
+                {
+                  data.gradesLink && (
+                    <dd class="mt-1 text-sm">
+                      <a
+                        href={withBase(data.gradesLink.href)}
+                        class="text-program-ink font-bold underline"
+                      >
+                        {data.gradesLink.label}
+                      </a>
+                    </dd>
+                  )
+                }
               </div>
               <div class="py-3">
                 <dt class="text-flyers-iron text-xs font-bold tracking-wider uppercase">Season</dt>

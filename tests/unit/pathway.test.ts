@@ -31,10 +31,10 @@ describe('matchProgramPathway', () => {
     expect(gravity.comboNote).toContain('10 and older');
   });
 
-  it('recommends Flyers XC Comp to 5th–6th graders who want to race, at the coaches’ discretion', () => {
+  it('recommends Flyers XC Comp to 5th–6th graders who want to race, with coach approval', () => {
     const match = matchProgramPathway('5-6', 'xc-comp');
     expect(match.primaryProgram).toBe('xc-comp');
-    expect(match.explanation).toContain('coaches’ discretion');
+    expect(match.explanation).toContain('accepted by a coach');
   });
 
   it('recommends Flyers Enduro/Gravity for grades 5–6 gravity riders and states the minimum age', () => {

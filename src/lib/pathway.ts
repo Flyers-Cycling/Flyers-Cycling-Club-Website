@@ -1,7 +1,7 @@
 // Grade bands shown in the program finder. Values are stable IDs; labels live in the component.
 //   'k-4'    → Kindergarten–4th grade (Jr. Flyers)
-//   '5-6'    → 5th–6th grade (Jr. Flyers; Flyers XC at the coaches' discretion, usually advanced
-//              riders who want to race; Enduro/Gravity from age 10)
+//   '5-6'    → 5th–6th grade (Jr. Flyers for most; Flyers XC only if a coach accepts the rider;
+//              Enduro/Gravity from age 10)
 //   '7-plus' → 7th grade and up (Flyers XC Devo or Comp, and Flyers Enduro/Gravity)
 export type AgeBand = 'k-4' | '5-6' | '7-plus';
 export type RidingFocus = 'xc-devo' | 'xc-comp' | 'gravity' | 'fundamentals';
@@ -62,7 +62,7 @@ export function matchProgramPathway(
         primaryProgram: 'xc-comp',
         secondaryProgram: 'jr-flyers',
         headline: 'Try Flyers XC Comp',
-        explanation: `${COMP} Riders before 7th grade join at the coaches’ discretion, usually advanced riders who want to race.`,
+        explanation: `${COMP} 5th and 6th graders must be accepted by a coach, and not all can ride with Flyers XC. Most join Jr. Flyers.`,
         comboNote: `Riders can add Flyers Enduro/Gravity too. ${enduroAge}`,
         nicaNote: 'Winter-to-summer racing that builds fitness before middle school NICA.',
       };
@@ -74,7 +74,7 @@ export function matchProgramPathway(
       headline: 'Start with Jr. Flyers',
       explanation:
         focus === 'xc-devo'
-          ? 'Jr. Flyers is the best place for 5th and 6th graders to ride and build skills. Flyers XC Devo is open from 7th grade.'
+          ? 'Most 5th and 6th graders ride and build skills in Jr. Flyers. Flyers XC Devo takes some 5th and 6th graders when a coach accepts them.'
           : 'Jr. Flyers is a relaxed place to build trail basics with friends, with skill games and beginner singletrack all summer.',
       comboNote: `${enduroAge} Riders can do it alongside Jr. Flyers.`,
       nicaNote: 'Good preparation for Flyers XC and NICA.',
