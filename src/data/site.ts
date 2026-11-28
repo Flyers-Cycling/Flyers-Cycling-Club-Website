@@ -44,6 +44,13 @@ export const siteConfig = {
   registration: {
     season: '2027',
     opensDate: '2026-12-01',
+    // Last day each form takes sign-ups (Utah time). The day after, that program's buttons say
+    // "Registration closed". Leave a date empty until it's confirmed.
+    // XC: Dec 15 (Randall, Nov 27, 2026). Enduro/Gravity: not set yet; Tim Richards to confirm.
+    closesDates: {
+      xc: '2026-12-15',
+      enduro: '',
+    } as Record<'xc' | 'enduro', string>,
     // Links from Randall (Nov 22, 2026). They stay hidden until opensDate (Utah time), then the
     // daily rebuild turns every Register button on. While a link is empty or it's before
     // opensDate, that program's buttons say "Registration opens Dec 1" and go to /register.

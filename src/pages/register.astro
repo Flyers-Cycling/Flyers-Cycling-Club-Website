@@ -3,7 +3,13 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/layout/PageHero.astro';
 import { siteConfig } from '../data/site';
-import { anyRegistrationOpen, registrationCta, registrationOpensLabel } from '../lib/registration';
+import {
+  anyRegistrationOpen,
+  registrationClosed,
+  registrationClosesLabel,
+  registrationCta,
+  registrationOpensLabel,
+} from '../lib/registration';
 import { programTheme } from '../lib/programs';
 import { withBase } from '../lib/urls';
 
@@ -12,20 +18,28 @@ const programs = (await getCollection('programs'))
   .map((program) => ({ ...program, cta: registrationCta(program.data.registrationForm) }));
 const { season } = siteConfig.registration;
 const opens = registrationOpensLabel();
+const closes = registrationClosesLabel();
+const xcClosed = registrationClosed('xc');
 const isOpen = anyRegistrationOpen();
 ---
 
 <BaseLayout
   title={`${season} Registration`}
-  description={`Registration for ${season} Flyers XC and Flyers Enduro/Gravity opens ${opens}. Each program has its own sign-up form.`}
+  description={`Registration for ${season} Flyers XC and Flyers Enduro/Gravity opens ${opens}. Flyers XC closes ${closes}. Each program has its own sign-up form.`}
 >
   <PageHero
     eyebrow={`${season} season`}
     title={isOpen ? 'Registration is open' : `Registration opens ${opens}`}
   >
     <p>
-      Flyers XC and Flyers Enduro/Gravity each have their own sign-up form. Riders can join more
-      than one program, and beginners are always welcome. Jr. Flyers registration opens later.
+      <strong
+        >{
+          xcClosed
+            ? `Flyers XC registration closed ${closes}.`
+            : `Flyers XC registration closes ${closes}.`
+        }</strong
+      > Flyers XC and Flyers Enduro/Gravity each have their own sign-up form. Riders can join more than
+      one program, and beginners are always welcome. Jr. Flyers registration opens later.
     </p>
   </PageHero>
 

@@ -1,9 +1,16 @@
 ---
 import { siteConfig } from '../../data/site';
-import { anyRegistrationOpen, registrationOpensLabel } from '../../lib/registration';
+import {
+  anyRegistrationOpen,
+  registrationClosed,
+  registrationClosesLabel,
+  registrationOpensLabel,
+} from '../../lib/registration';
 import { withBase } from '../../lib/urls';
 
 const registrationOpen = anyRegistrationOpen();
+const xcCloses = registrationClosesLabel();
+const xcClosed = registrationClosed('xc');
 const photo = siteConfig.homePhoto;
 const season = siteConfig.registration.season;
 ---
@@ -95,8 +102,13 @@ const season = siteConfig.registration.season;
           }
         </h2>
         <p class="mt-1 text-sm text-white/85">
-          Flyers XC and Flyers Enduro/Gravity each have a sign-up form. Riders can join both. Jr.
-          Flyers opens later.
+          {
+            xcClosed
+              ? `Flyers XC registration closed ${xcCloses}.`
+              : `Flyers XC registration closes ${xcCloses}.`
+          }
+          Flyers XC and Flyers Enduro/Gravity each have a sign-up form. Riders can join both. Jr. Flyers
+          opens later.
         </p>
       </div>
       <a

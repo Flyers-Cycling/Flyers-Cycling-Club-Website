@@ -3,6 +3,8 @@ import {
   anyRegistrationOpen,
   effectiveRegistrationStatus,
   liveFormLinks,
+  registrationClosed,
+  registrationClosesLabel,
   registrationCta,
 } from '../../src/lib/registration';
 
@@ -47,6 +49,36 @@ describe('liveFormLinks', () => {
 
   it('shows the links from the open date on', () => {
     expect(liveFormLinks(both, '2026-12-01', '2026-12-01')).toEqual(both);
-    expect(liveFormLinks(both, '2026-12-01', '2027-01-15')).toEqual(both);
+    expect(liveFormLinks(both, '2026-12-01', '2027-01-15', none)).toEqual(both);
+  });
+});
+
+describe('registrationClosesLabel', () => {
+  it('shows the close date without the year', () => {
+    expect(registrationClosesLabel('2026-12-15')).toBe('Tue, Dec 15');
+  });
+});
+
+describe('registration close dates', () => {
+  const both = { xc: 'https://example.org/xc', enduro: 'https://example.org/enduro' };
+  const closes = { xc: '2026-12-15', enduro: '' };
+
+  it('keeps a form open through its close date', () => {
+    expect(liveFormLinks(both, '2026-12-01', '2026-12-15', closes)).toEqual(both);
+    expect(registrationClosed('xc', '2026-12-15', closes)).toBe(false);
+  });
+
+  it('hides the form and says "Registration closed" the day after', () => {
+    expect(liveFormLinks(both, '2026-12-01', '2026-12-16', closes)).toEqual({
+      xc: '',
+      enduro: 'https://example.org/enduro',
+    });
+    expect(registrationClosed('xc', '2026-12-16', closes)).toBe(true);
+    expect(registrationCta('xc', none, true).label).toBe('Registration closed');
+  });
+
+  it('never closes a form with no close date', () => {
+    expect(registrationClosed('enduro', '2027-06-01', closes)).toBe(false);
+    expect(registrationClosed('later', '2027-06-01', closes)).toBe(false);
   });
 });
