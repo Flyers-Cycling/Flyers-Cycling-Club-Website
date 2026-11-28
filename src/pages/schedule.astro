@@ -2,28 +2,35 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../data/site';
-import { isExternalUrl, withBase } from '../lib/urls';
-import { formatEventDateRange } from '../lib/dates';
-import { eventEnds, upcomingEvents } from '../lib/events';
+import { withBase } from '../lib/urls';
+import { upcomingEvents } from '../lib/events';
 import { programTheme } from '../lib/programs';
 import ProgramBadge from '../components/programs/ProgramBadge.astro';
 import RaceSchedule from '../components/programs/RaceSchedule.astro';
+import EventCard from '../components/schedule/EventCard.astro';
 
 const events = upcomingEvents(await getCollection('events'));
+const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
 
-const categoryLabels: Record<string, string> = {
-  practice: 'Practice / Ride',
-  race: 'Race Day',
-  clinic: 'Skills Clinic',
-  'trail-work': 'Trail Work',
-  registration: 'Registration Window',
-  meeting: 'Meeting',
-};
+// The page is split by what kind of date it is. Races come from src/content/races/ plus any
+// one-off race events; everything that isn't a practice or a race is an event.
+const practiceEvents = events.filter((event) => event.data.category === 'practice');
+const raceEvents = events.filter((event) => event.data.category === 'race');
+const otherEvents = events.filter(
+  (event) => event.data.category !== 'practice' && event.data.category !== 'race',
+);
+const racePrograms = new Set((await getCollection('races')).map((series) => series.data.program));
+
+const sectionLinks = [
+  { href: '#practices', label: 'Practices' },
+  { href: '#races', label: 'Races' },
+  { href: '#events', label: 'Events' },
+];
 ---
 
 <BaseLayout
   title="Schedule"
-  description="Season kickoffs, camps, club rides, and the Flyers XC race schedule for Flyers XC, Flyers Enduro/Gravity, and Jr. Flyers."
+  description="Practices, races, and club events for Flyers XC, Flyers Enduro/Gravity, and Jr. Flyers, with the race series each program follows."
 >
   <section class="dark-surface flyers-banner-bg py-14 text-white sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -34,8 +41,8 @@ const categoryLabels: Record<string, string> = {
         What's coming up
       </h1>
       <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
-        Season kickoffs, camps, and club rides for every program. More dates are on the way, and
-        we'll add them to a club calendar as they're set.
+        Practices, races, and club events for every program. Pick a program to see only its dates.
+        More dates are on the way, and we'll add them to a club calendar as they're set.
       </p>
     </div>
   </section>
@@ -117,70 +124,177 @@ const categoryLabels: Record<string, string> = {
         >
           {
             events.length === 0
-              ? 'No events on the calendar right now. Check back soon.'
-              : `Showing all ${events.length} ${events.length === 1 ? 'event' : 'events'}`
+              ? 'No dated events on the calendar right now. Check back soon.'
+              : `Showing all ${events.length} dated ${events.length === 1 ? 'event' : 'events'}`
           }
         </p>
       </search>
 
-      <div id="schedule-events-list" class="mt-8 space-y-4">
-        {
-          events.map((event) => {
-            return (
+      <nav aria-label="Schedule sections" class="mt-6">
+        <ul class="flex flex-wrap gap-2.5">
+          {
+            sectionLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-flyers-slate-dark hover:border-flyers-slate inline-flex min-h-12 items-center rounded-xl border border-neutral-300 bg-white px-4 py-2 text-sm font-extrabold underline-offset-4 hover:underline"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <section
+        id="practices"
+        aria-labelledby="schedule-practices-heading"
+        class="schedule-group mt-12 scroll-mt-24"
+      >
+        <h2
+          id="schedule-practices-heading"
+          class="font-display text-flyers-slate-dark text-3xl leading-tight font-black tracking-wide uppercase sm:text-4xl"
+        >
+          Practices
+        </h2>
+        <p class="text-flyers-iron mt-2 max-w-3xl text-sm leading-relaxed sm:text-base">
+          Each program's regular practice days, then the bigger rides with their own dates.
+          Registered families get trailheads and weather changes in Slack.
+        </p>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+          {
+            programs.map((program) => (
               <article
-                data-event-program={event.data.program}
-                data-program={programTheme(event.data.program)}
-                data-event-ends={eventEnds(event.data)}
-                class="schedule-event-card border-l-program-accent flex flex-col justify-between gap-4 rounded-2xl border border-l-4 border-neutral-200 bg-white p-6 shadow-xs sm:flex-row sm:items-center"
+                data-event-program={program.data.programId}
+                data-program={programTheme(program.data.programId)}
+                class="schedule-filterable border-t-program-accent rounded-2xl border border-t-4 border-neutral-200 bg-white p-6 shadow-xs"
               >
-                <div class="space-y-2">
-                  <div class="flex flex-wrap items-center gap-2 text-xs">
-                    <ProgramBadge program={event.data.program} />
-                    <span class="bg-flyers-snow text-flyers-iron rounded-full border border-neutral-200 px-2.5 py-0.5 font-bold">
-                      {categoryLabels[event.data.category]}
-                    </span>
-                    <time datetime={event.data.startDate} class="text-flyers-slate-dark font-bold">
-                      {formatEventDateRange(event.data.startDate, event.data.endDate)}
-                    </time>
-                  </div>
-
-                  <h2 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase sm:text-3xl">
-                    {event.data.title}
-                  </h2>
-                  <p class="text-flyers-iron text-xs font-semibold">
-                    {event.data.timeLabel} · {event.data.location}
-                  </p>
-                  <p class="text-flyers-iron max-w-3xl text-sm leading-relaxed">
-                    {event.data.summary}
-                  </p>
-                </div>
-
-                {event.data.actionUrl && event.data.actionLabel && (
-                  <div class="shrink-0">
-                    <a
-                      href={withBase(event.data.actionUrl)}
-                      target={isExternalUrl(event.data.actionUrl) ? '_blank' : undefined}
-                      rel={isExternalUrl(event.data.actionUrl) ? 'noopener noreferrer' : undefined}
-                      class="bg-program hover:bg-program-hover font-display inline-flex min-h-12 items-center justify-center rounded-xl px-5 py-2.5 text-sm font-extrabold tracking-wider text-white uppercase transition"
-                    >
-                      {event.data.actionLabel} &rarr;
-                    </a>
-                  </div>
-                )}
+                <ProgramBadge program={program.data.programId} />
+                <h3 class="font-display text-flyers-slate-dark mt-3 text-2xl font-black tracking-wide uppercase">
+                  Weekly practices
+                </h3>
+                <ul class="text-flyers-iron mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed">
+                  {program.data.practiceSchedule.map((line) => (
+                    <li>{line}</li>
+                  ))}
+                </ul>
+                <a
+                  href={withBase(`/programs/${program.data.programId}#when`)}
+                  class="text-program-ink mt-2 inline-flex min-h-12 items-center text-sm font-extrabold underline"
+                >
+                  More about {program.data.title}
+                </a>
               </article>
-            );
-          })
-        }
-      </div>
+            ))
+          }
+        </div>
 
-      <div class="mt-14">
-        <RaceSchedule
-          program="xc"
-          headingId="schedule-xc-races-heading"
-          title="Flyers XC race schedule"
-          intro="Racing is optional. Flyers XC riders who want to race follow these series. Sign up for each race on the organizer's site."
-        />
-      </div>
+        {
+          practiceEvents.length > 0 && (
+            <div class="schedule-subgroup mt-10">
+              <h3 class="font-display text-flyers-slate-dark text-2xl font-black tracking-wide uppercase">
+                Upcoming rides
+              </h3>
+              <div class="mt-4 space-y-4">
+                {practiceEvents.map((event) => (
+                  <EventCard event={event} headingLevel={4} />
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </section>
+
+      <section
+        id="races"
+        aria-labelledby="schedule-races-heading"
+        class="schedule-group mt-14 scroll-mt-24"
+      >
+        <h2
+          id="schedule-races-heading"
+          class="font-display text-flyers-slate-dark text-3xl leading-tight font-black tracking-wide uppercase sm:text-4xl"
+        >
+          Races
+        </h2>
+        <p class="text-flyers-iron mt-2 max-w-3xl text-sm leading-relaxed sm:text-base">
+          Racing is optional. Riders who want to race pick the races that suit them, and coaches
+          help them get ready. Sign up for each race on the organizer's site.
+        </p>
+
+        {
+          raceEvents.length > 0 && (
+            <div class="mt-6 space-y-4">
+              {raceEvents.map((event) => (
+                <EventCard event={event} />
+              ))}
+            </div>
+          )
+        }
+
+        {
+          racePrograms.has('xc') && (
+            <div data-event-program="xc" class="schedule-filterable mt-8">
+              <RaceSchedule
+                program="xc"
+                sectionId="races-xc"
+                headingLevel={3}
+                headingId="schedule-xc-races-heading"
+                title="Flyers XC race schedule"
+                intro="Flyers XC riders who want to race follow these series."
+              />
+            </div>
+          )
+        }
+
+        {
+          racePrograms.has('enduro') && (
+            <div data-event-program="enduro" class="schedule-filterable mt-12">
+              <RaceSchedule
+                program="enduro"
+                sectionId="races-enduro"
+                headingLevel={3}
+                headingId="schedule-enduro-races-heading"
+                title="Flyers Enduro/Gravity race schedule"
+                intro="Flyers Enduro/Gravity riders who want to race follow this series."
+              />
+            </div>
+          )
+        }
+
+        <p
+          data-empty-for="jr-flyers"
+          class="text-flyers-iron mt-6 hidden rounded-2xl border border-neutral-200 bg-white p-6 text-sm"
+        >
+          Jr. Flyers doesn't race. It's weekly summer practices, all about riding for fun.
+        </p>
+      </section>
+
+      <section
+        id="events"
+        aria-labelledby="schedule-events-heading"
+        class="schedule-group mt-14 scroll-mt-24"
+      >
+        <h2
+          id="schedule-events-heading"
+          class="font-display text-flyers-slate-dark text-3xl leading-tight font-black tracking-wide uppercase sm:text-4xl"
+        >
+          Events
+        </h2>
+        <p class="text-flyers-iron mt-2 max-w-3xl text-sm leading-relaxed sm:text-base">
+          Meetings, camps, clinics, and trail days.
+        </p>
+        <div class="mt-6 space-y-4">
+          {otherEvents.map((event) => <EventCard event={event} />)}
+        </div>
+        <p
+          data-empty-message
+          class="text-flyers-iron mt-6 hidden rounded-2xl border border-neutral-200 bg-white p-6 text-sm"
+        >
+          No events for this program on the calendar right now. Check back soon.
+        </p>
+      </section>
 
       {
         siteConfig.integrations.googleCalendarEmbedUrl ? (
@@ -217,11 +331,19 @@ const categoryLabels: Record<string, string> = {
 
   const form = document.getElementById('schedule-filter-form') as HTMLFormElement | null;
   const today = todayInUtah();
-  // Drop cards whose last day has passed (BaseLayout hides them too, if a rebuild is missed).
-  const cards = Array.from(document.querySelectorAll<HTMLElement>('.schedule-event-card')).filter(
-    (card) => (card.dataset.eventEnds ?? '') >= today,
+  // Everything the program filter can hide: event cards, weekly practice cards, and race lists.
+  // Event cards whose last day has passed stay hidden (BaseLayout hides them too, if a rebuild
+  // is missed).
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.schedule-filterable')).filter(
+    (item) => !item.dataset.eventEnds || item.dataset.eventEnds >= today,
   );
+  const subgroups = Array.from(document.querySelectorAll<HTMLElement>('.schedule-subgroup'));
+  const emptyMessages = Array.from(document.querySelectorAll<HTMLElement>('[data-empty-message]'));
+  const programNotes = Array.from(document.querySelectorAll<HTMLElement>('[data-empty-for]'));
   const countEl = document.getElementById('schedule-filter-count');
+
+  const hasVisibleItem = (container: HTMLElement) =>
+    items.some((item) => container.contains(item) && !item.classList.contains('hidden'));
 
   function applyFilter() {
     const selected = form
@@ -229,18 +351,26 @@ const categoryLabels: Record<string, string> = {
       : 'everything';
     let visibleCount = 0;
 
-    for (const card of cards) {
-      const prog = card.dataset.eventProgram || 'all';
+    for (const item of items) {
+      const prog = item.dataset.eventProgram || 'all';
       const show = selected === 'everything' || prog === selected || prog === 'all';
-      card.classList.toggle('hidden', !show);
-      if (show) visibleCount += 1;
+      item.classList.toggle('hidden', !show);
+      if (show && item.classList.contains('schedule-event-card')) visibleCount += 1;
     }
+
+    for (const group of subgroups) group.classList.toggle('hidden', !hasVisibleItem(group));
+    for (const message of emptyMessages) {
+      const section = message.closest<HTMLElement>('section');
+      message.classList.toggle('hidden', !section || hasVisibleItem(section));
+    }
+    for (const note of programNotes)
+      note.classList.toggle('hidden', note.dataset.emptyFor !== selected);
 
     if (countEl) {
       countEl.textContent =
         visibleCount === 0
-          ? 'No events on the calendar right now. Check back soon.'
-          : `Showing ${selected === 'everything' ? 'all ' : ''}${visibleCount} ${visibleCount === 1 ? 'event' : 'events'}`;
+          ? 'No dated events for this program right now. Check back soon.'
+          : `Showing ${selected === 'everything' ? 'all ' : ''}${visibleCount} dated ${visibleCount === 1 ? 'event' : 'events'}`;
     }
   }
 
