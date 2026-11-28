@@ -140,6 +140,9 @@ const races = defineCollection({
     series: z.string(),
     program: z.enum(['xc', 'enduro', 'jr-flyers']),
     order: z.number().int().positive(),
+    // true for extra races riders can choose to add, like long endurance events. These show in
+    // their own "Optional endurance races" group, after the series the program follows.
+    optional: z.boolean().default(false),
     // The organizer's schedule page.
     website: z.string().url(),
     summary: z.string(),

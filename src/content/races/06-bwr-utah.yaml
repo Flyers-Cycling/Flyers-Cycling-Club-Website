@@ -1,0 +1,15 @@
+# Belgian Waffle Ride Utah. Checked belgianwaffleride.bike/pages/utah, ucigravelworldseries.com/en/cedar-city
+# and the Nov 17, 2026 series press release on Nov 28, 2026. All three give May 14-15, 2027, with the
+# main race on Saturday, May 15. The organizer says 2027 routes, venue and start times aren't final.
+# TODO(board): the organizer hasn't posted junior age rules. Confirm which riders can enter.
+series: Belgian Waffle Ride Utah
+program: xc
+order: 5
+optional: true
+website: https://www.belgianwaffleride.bike/pages/utah
+summary: A big mixed-surface ride out of Cedar City, mostly dirt roads, forest roads and singletrack. In 2026 the routes ran from about 31 to 106 miles. The 2027 routes aren't final yet, and the organizer hasn't posted junior age rules, so check with a coach first.
+races:
+  - name: Belgian Waffle Ride Utah
+    date: '2027-05-14'
+    endDate: '2027-05-15'
+    location: Cedar City, UT

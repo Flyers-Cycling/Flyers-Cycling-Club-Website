@@ -153,6 +153,9 @@ test.describe('Flyers Cycling Club — Navigation, Workflows & Accessibility', (
     const races = page.getByRole('region', { name: 'Flyers XC race schedule' });
     await expect(races).toBeVisible();
     await expect(races.getByRole('heading', { name: 'Intermountain Cup (ICUP)' })).toBeVisible();
+    const optional = races.getByRole('group', { name: 'Optional endurance races' });
+    await expect(optional.getByRole('heading', { name: 'Belgian Waffle Ride Utah' })).toBeVisible();
+    await expect(optional.getByRole('heading', { name: 'ICUP Endurance Series' })).toBeVisible();
     await page.goto('/schedule');
     await expect(page.getByRole('region', { name: 'Flyers XC race schedule' })).toBeVisible();
   });
