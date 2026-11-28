@@ -39,11 +39,13 @@ export const siteConfig = {
     detail:
       "Every Flyers program is run by volunteers. Registration is $35–$150, depending on the program, and covers a club t-shirt and rider insurance. Sponsors and donors pay for the rest, so cost doesn't keep kids off the trail.",
   },
-  // Flyers XC and Flyers Enduro/Gravity each have their own registration form, opening Dec 1.
+  // Flyers XC and Flyers Enduro/Gravity each have their own registration form, open Dec 1 to Dec 15
+  // (close date from Randall, Nov 27, 2026).
   // Jr. Flyers registers later (registrationForm: later in src/content/programs/jr-flyers.md).
   registration: {
     season: '2027',
     opensDate: '2026-12-01',
+    closesDate: '2026-12-15',
     // Links from Randall (Nov 22, 2026). They stay hidden until opensDate (Utah time), then the
     // daily rebuild turns every Register button on. While a link is empty or it's before
     // opensDate, that program's buttons say "Registration opens Dec 1" and go to /register.

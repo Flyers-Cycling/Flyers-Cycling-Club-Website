@@ -12,7 +12,7 @@ gradesLink:
   label: Talk to a coach
   href: /coaches
 seasonLabel: Jan 1 – August (Winter, Spring & Summer)
-registrationWindowLabel: Opens Dec 1, 2026
+registrationWindowLabel: Opens Dec 1, closes Dec 15, 2026
 registrationStatus: upcoming
 registrationForm: xc
 feeAmount: '$50'

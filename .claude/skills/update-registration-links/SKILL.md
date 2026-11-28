@@ -10,7 +10,7 @@ Use this when the club sends a new registration form link, when registration ope
 ## Where things live
 
 - `src/data/site.ts` → `registration`:
-  - `season` (e.g. `'2027'`) and `opensDate` (ISO date, e.g. `'2026-12-01'`).
+  - `season` (e.g. `'2027'`) and `opensDate` and `closesDate` (ISO dates, e.g. `'2026-12-01'` and `'2026-12-15'`). Also update `registrationWindowLabel` in `xc.md` and `enduro.md` and the registration event in `src/content/events/`.
   - `forms.xc` and `forms.enduro`: one link per form. Empty string = not open yet. Links can go in early: `liveFormLinks()` hides them until `opensDate` (Utah time), and the daily 2 AM rebuild turns them on.
 - `src/content/programs/*.md` → `registrationForm: xc | enduro | later` says which form a program uses. `later` means "Registration opens later" (Jr. Flyers today).
 - `registrationStatus` in each program file sets the badge. An `upcoming` program shows as open once its form link is set.

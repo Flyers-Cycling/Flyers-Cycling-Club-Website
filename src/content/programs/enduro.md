@@ -9,7 +9,7 @@ order: 2
 agesLabel: Ages 10–18
 gradesLabel: Grades 5–12
 seasonLabel: January – August
-registrationWindowLabel: Opens Dec 1, 2026
+registrationWindowLabel: Opens Dec 1, closes Dec 15, 2026
 registrationStatus: upcoming
 registrationForm: enduro
 feeAmount: '$150'

@@ -3,6 +3,7 @@ import {
   anyRegistrationOpen,
   effectiveRegistrationStatus,
   liveFormLinks,
+  registrationClosesLabel,
   registrationCta,
 } from '../../src/lib/registration';
 
@@ -48,5 +49,11 @@ describe('liveFormLinks', () => {
   it('shows the links from the open date on', () => {
     expect(liveFormLinks(both, '2026-12-01', '2026-12-01')).toEqual(both);
     expect(liveFormLinks(both, '2026-12-01', '2027-01-15')).toEqual(both);
+  });
+});
+
+describe('registrationClosesLabel', () => {
+  it('shows the close date without the year', () => {
+    expect(registrationClosesLabel('2026-12-15')).toBe('Tue, Dec 15');
   });
 });

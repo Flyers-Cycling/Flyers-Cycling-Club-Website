@@ -20,6 +20,11 @@ export function registrationOpensLabel(opensDate: string = siteConfig.registrati
   return formatEventDate(opensDate).replace(/, \d{4}$/, '');
 }
 
+/** "Tue, Dec 15": the last day of registration without the year. */
+export function registrationClosesLabel(closesDate: string = siteConfig.registration.closesDate) {
+  return formatEventDate(closesDate).replace(/, \d{4}$/, '');
+}
+
 /**
  * The form links as of `today` (Utah time). Before opensDate every link is hidden, so the links
  * can sit in site.ts early and go live on their own. The deploy workflow rebuilds every day at
